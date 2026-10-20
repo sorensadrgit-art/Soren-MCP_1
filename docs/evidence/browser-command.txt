@@ -1,0 +1,45 @@
+[WebServer] npm notice run soren-shared-mcp-skills@1.0.0 start
+[WebServer] npm notice run next start --hostname 127.0.0.1 --port 3187
+[WebServer] (node:32540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 32 tests using 1 worker
+
+(node:44368) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [desktop] › tests\browser\accessibility.spec.ts:38:1 › rendered gradient backdrops preserve representative text contrast (1.0s)
+  ok  2 [desktop] › tests\browser\accessibility.spec.ts:84:1 › rendered public routes have no axe WCAG 2.2 AA violations (3.7s)
+  ok  3 [desktop] › tests\browser\accessibility.spec.ts:93:1 › labelled management fixtures have no axe WCAG 2.2 AA violations, including exact review and arming forms (1.1s)
+  ok  4 [desktop] › tests\browser\accessibility.spec.ts:107:1 › 320 pixel reflow and reduced motion preserve rendered public and management content (825ms)
+  ok  5 [desktop] › tests\browser\accessibility.spec.ts:138:1 › keyboard reaches client selection and labelled review controls with visible focus and no trap (533ms)
+  ok  6 [desktop] › tests\browser\journeys.spec.ts:10:1 › six formats match the independent specification and selection never installs (365ms)
+  ok  7 [desktop] › tests\browser\journeys.spec.ts:17:1 › clipboard rejection provides selectable manual fallback and keyboard focus (302ms)
+  ok  8 [desktop] › tests\browser\journeys.spec.ts:21:1 › native clipboard success reflects the copied payload (270ms)
+  ok  9 [desktop] › tests\browser\journeys.spec.ts:25:1 › private pages and unauthorized mutations fail closed against the real server (361ms)
+  ok 10 [desktop] › tests\browser\journeys.spec.ts:30:1 › API failure preserves a useful retry state and approved local routing works (405ms)
+  ok 11 [desktop] › tests\browser\journeys.spec.ts:36:1 › fixture review displays old/new bytes and changed revision blocks submission (348ms)
+  ok 12 [desktop] › tests\browser\journeys.spec.ts:44:1 › fixture owner pause binds policy digest and generation while unavailable arm stays disabled (305ms)
+  ok 13 [desktop] › tests\browser\journeys.spec.ts:50:1 › fixture health displays database timestamps and stale evidence as unknown (289ms)
+  ok 14 [desktop] › tests\browser\journeys.spec.ts:55:1 › fixture approved library distinguishes approval from publication (256ms)
+  ok 15 [desktop] › tests\browser\journeys.spec.ts:58:1 › failed OAuth callback has an actionable error instead of a silent login loop (235ms)
+  ok 16 [desktop] › tests\browser\journeys.spec.ts:61:1 › public health, navigation and layouts stay usable without private infrastructure (706ms)
+(node:52616) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 17 [narrow] › tests\browser\accessibility.spec.ts:38:1 › rendered gradient backdrops preserve representative text contrast (882ms)
+  ok 18 [narrow] › tests\browser\accessibility.spec.ts:84:1 › rendered public routes have no axe WCAG 2.2 AA violations (1.4s)
+  ok 19 [narrow] › tests\browser\accessibility.spec.ts:93:1 › labelled management fixtures have no axe WCAG 2.2 AA violations, including exact review and arming forms (1.0s)
+  ok 20 [narrow] › tests\browser\accessibility.spec.ts:107:1 › 320 pixel reflow and reduced motion preserve rendered public and management content (820ms)
+  ok 21 [narrow] › tests\browser\accessibility.spec.ts:138:1 › keyboard reaches client selection and labelled review controls with visible focus and no trap (601ms)
+  ok 22 [narrow] › tests\browser\journeys.spec.ts:10:1 › six formats match the independent specification and selection never installs (362ms)
+  ok 23 [narrow] › tests\browser\journeys.spec.ts:17:1 › clipboard rejection provides selectable manual fallback and keyboard focus (316ms)
+  ok 24 [narrow] › tests\browser\journeys.spec.ts:21:1 › native clipboard success reflects the copied payload (334ms)
+  ok 25 [narrow] › tests\browser\journeys.spec.ts:25:1 › private pages and unauthorized mutations fail closed against the real server (266ms)
+  ok 26 [narrow] › tests\browser\journeys.spec.ts:30:1 › API failure preserves a useful retry state and approved local routing works (433ms)
+  ok 27 [narrow] › tests\browser\journeys.spec.ts:36:1 › fixture review displays old/new bytes and changed revision blocks submission (423ms)
+  ok 28 [narrow] › tests\browser\journeys.spec.ts:44:1 › fixture owner pause binds policy digest and generation while unavailable arm stays disabled (316ms)
+  ok 29 [narrow] › tests\browser\journeys.spec.ts:50:1 › fixture health displays database timestamps and stale evidence as unknown (250ms)
+  ok 30 [narrow] › tests\browser\journeys.spec.ts:55:1 › fixture approved library distinguishes approval from publication (235ms)
+  ok 31 [narrow] › tests\browser\journeys.spec.ts:58:1 › failed OAuth callback has an actionable error instead of a silent login loop (217ms)
+  ok 32 [narrow] › tests\browser\journeys.spec.ts:61:1 › public health, navigation and layouts stay usable without private infrastructure (601ms)
+
+  32 passed (22.5s)

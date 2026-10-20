@@ -1,0 +1,917 @@
+TAP version 13
+# Subtest: catalog entries have distinct names and valid skill files
+ok 1 - catalog entries have distinct names and valid skill files
+  ---
+  duration_ms: 3.2927
+  type: 'test'
+  ...
+# Subtest: motion-related tasks route to motion systems
+ok 2 - motion-related tasks route to motion systems
+  ---
+  duration_ms: 6.8197
+  type: 'test'
+  ...
+# Subtest: accessibility searches find the WCAG skill
+ok 3 - accessibility searches find the WCAG skill
+  ---
+  duration_ms: 0.2471
+  type: 'test'
+  ...
+# Subtest: search is bounded and invalid read names are rejected
+ok 4 - search is bounded and invalid read names are rejected
+  ---
+  duration_ms: 0.2042
+  type: 'test'
+  ...
+# Subtest: agent routing does not execute arbitrary skills
+ok 5 - agent routing does not execute arbitrary skills
+  ---
+  duration_ms: 0.1435
+  type: 'test'
+  ...
+# Subtest: Server advertises a distinct Soren identity and stable tool identities
+ok 6 - Server advertises a distinct Soren identity and stable tool identities
+  ---
+  duration_ms: 1.1509
+  type: 'test'
+  ...
+# Subtest: All tools advertise a non-destructive read-only intent, with accurate open-world exposure
+ok 7 - All tools advertise a non-destructive read-only intent, with accurate open-world exposure
+  ---
+  duration_ms: 0.4751
+  type: 'test'
+  ...
+# Subtest: Router instructions cannot overrule host agent, user, or project instructions
+ok 8 - Router instructions cannot overrule host agent, user, or project instructions
+  ---
+  duration_ms: 0.2062
+  type: 'test'
+  ...
+# Subtest: Every client has a correct native configuration with a single endpoint and consistent alias
+ok 9 - Every client has a correct native configuration with a single endpoint and consistent alias
+  ---
+  duration_ms: 0.4351
+  type: 'test'
+  ...
+# Subtest: Approved curated skills remain unchanged
+ok 10 - Approved curated skills remain unchanged
+  ---
+  duration_ms: 0.1101
+  type: 'test'
+  ...
+# Subtest: verification permits explicit loopback only for insecure development transport
+ok 11 - verification permits explicit loopback only for insecure development transport
+  ---
+  duration_ms: 0.5784
+  type: 'test'
+  ...
+# Subtest: evidence requires execution identity, clock, observation and references for PASS
+ok 12 - evidence requires execution identity, clock, observation and references for PASS
+  ---
+  duration_ms: 1.663
+  type: 'test'
+  ...
+# Subtest: unexecuted or blocked evidence never becomes PASS
+ok 13 - unexecuted or blocked evidence never becomes PASS
+  ---
+  duration_ms: 0.1742
+  type: 'test'
+  ...
+# Subtest: public queries strip secrets, emails, local paths and identifying text
+ok 14 - public queries strip secrets, emails, local paths and identifying text
+  ---
+  duration_ms: 3.2225
+  type: 'test'
+  ...
+# Subtest: SkillsMP uses public remote MCP (no credentials) and normalizes candidates
+ok 15 - SkillsMP uses public remote MCP (no credentials) and normalizes candidates
+  ---
+  duration_ms: 15.7667
+  type: 'test'
+  ...
+# Subtest: Skills.sh uses the documented authenticated v1 search endpoint
+ok 16 - Skills.sh uses the documented authenticated v1 search endpoint
+  ---
+  duration_ms: 0.708
+  type: 'test'
+  ...
+# Subtest: Unavailable Skills.sh auth does not cause search failure
+ok 17 - Unavailable Skills.sh auth does not cause search failure
+  ---
+  duration_ms: 0.2258
+  type: 'test'
+  ...
+# Subtest: provider outage is isolated and reported without losing healthy candidates
+ok 18 - provider outage is isolated and reported without losing healthy candidates
+  ---
+  duration_ms: 0.5369
+  type: 'test'
+  ...
+# Subtest: deduplicate cross-source skills, retain provenance, and expose ranking reasons
+ok 19 - deduplicate cross-source skills, retain provenance, and expose ranking reasons
+  ---
+  duration_ms: 1.2148
+  type: 'test'
+  ...
+# Subtest: matching names and repository metadata cannot merge unresolved provider identities
+ok 20 - matching names and repository metadata cannot merge unresolved provider identities
+  ---
+  duration_ms: 6.0513
+  type: 'test'
+  ...
+# Subtest: federated routing retains locally approved primary and marks remote skills non-activatable
+ok 21 - federated routing retains locally approved primary and marks remote skills non-activatable
+  ---
+  duration_ms: 0.987
+  type: 'test'
+  ...
+# Subtest: scanning detects instruction injection and exfiltration shapes
+ok 22 - scanning detects instruction injection and exfiltration shapes
+  ---
+  duration_ms: 0.4266
+  type: 'test'
+  ...
+# Subtest: SkillsMP inspection is metadata-only, and candidate IDs are validated
+ok 23 - SkillsMP inspection is metadata-only, and candidate IDs are validated
+  ---
+  duration_ms: 0.7948
+  type: 'test'
+  ...
+# Subtest: Skills.sh inspection audits and scans instructions without auto approving
+ok 24 - Skills.sh inspection audits and scans instructions without auto approving
+  ---
+  duration_ms: 0.6831
+  type: 'test'
+  ...
+# Subtest: MCP server discovery stays separate from agent skill rankings
+ok 25 - MCP server discovery stays separate from agent skill rankings
+  ---
+  duration_ms: 0.5305
+  type: 'test'
+  ...
+# Subtest: Provider catalog records auth and role honestly
+ok 26 - Provider catalog records auth and role honestly
+  ---
+  duration_ms: 0.0489
+  type: 'test'
+  ...
+# Subtest: version detection accepts native v prefixes and never hides prerelease or build identity
+ok 27 - version detection accepts native v prefixes and never hides prerelease or build identity
+  ---
+  duration_ms: 0.5763
+  type: 'test'
+  ...
+# Subtest: OpenCode desktop bundled CLI is detected when its directory is absent from PATH
+ok 28 - OpenCode desktop bundled CLI is detected when its directory is absent from PATH
+  ---
+  duration_ms: 7.0658
+  type: 'test'
+  ...
+# Subtest: factory: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+ok 29 - factory: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+  ---
+  duration_ms: 10.7004
+  type: 'test'
+  ...
+# Subtest: codex: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+ok 30 - codex: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+  ---
+  duration_ms: 8.5094
+  type: 'test'
+  ...
+# Subtest: antigravity: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+ok 31 - antigravity: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+  ---
+  duration_ms: 4.5234
+  type: 'test'
+  ...
+# Subtest: opencode: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+ok 32 - opencode: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+  ---
+  duration_ms: 4.038
+  type: 'test'
+  ...
+# Subtest: claude: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+ok 33 - claude: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+  ---
+  duration_ms: 4.5322
+  type: 'test'
+  ...
+# Subtest: qwen: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+ok 34 - qwen: BOM, CRLF, Unicode, comments and unrelated values survive install/remove
+  ---
+  duration_ms: 4.7489
+  type: 'test'
+  ...
+# Subtest: six-client transaction is idempotent, journal is secret-free, and later unrelated user edits survive removal
+ok 35 - six-client transaction is idempotent, journal is secret-free, and later unrelated user edits survive removal
+  ---
+  duration_ms: 11340.6356
+  type: 'test'
+  ...
+# Subtest: unknown version and missing executable produce no-write plans
+ok 36 - unknown version and missing executable produce no-write plans
+  ---
+  duration_ms: 14.1502
+  type: 'test'
+  ...
+# Subtest: checksum drift is rejected and preserved; expiry and caller identity refuse writes
+ok 37 - checksum drift is rejected and preserved; expiry and caller identity refuse writes
+  ---
+  duration_ms: 765.5048
+  type: 'test'
+  ...
+# Subtest: duplicates, project overrides, plugin ownership, malformed configs and edited guide refuse plans
+ok 38 - duplicates, project overrides, plugin ownership, malformed configs and edited guide refuse plans
+  ---
+  duration_ms: 37.088
+  type: 'test'
+  ...
+# Subtest: symlink or junction, outside-home target and read-only config fail safely
+ok 39 - symlink or junction, outside-home target and read-only config fail safely
+  ---
+  duration_ms: 7.8318
+  type: 'test'
+  ...
+# Subtest: atomic writer refuses concurrent edit before rename and leaves no sibling temporary
+ok 40 - atomic writer refuses concurrent edit before rename and leaves no sibling temporary
+  ---
+  duration_ms: 211.0524
+  type: 'test'
+  ...
+# Subtest: interrupted two-file install reconciles observed state and can remove only completed owned entry
+ok 41 - interrupted two-file install reconciles observed state and can remove only completed owned entry
+  ---
+  duration_ms: 2046.3826
+  type: 'test'
+  ...
+# Subtest: edited owned entry or block is preserved and requires manual reconciliation
+ok 42 - edited owned entry or block is preserved and requires manual reconciliation
+  ---
+  duration_ms: 2399.6708
+  type: 'test'
+  ...
+# Subtest: guide update has one exact boundary and preserves outside text
+ok 43 - guide update has one exact boundary and preserves outside text
+  ---
+  duration_ms: 0.375
+  type: 'test'
+  ...
+# Subtest: TOML quoted/inline owned tables are refused instead of rewriting unrelated syntax
+ok 44 - TOML quoted/inline owned tables are refused instead of rewriting unrelated syntax
+  ---
+  duration_ms: 0.3126
+  type: 'test'
+  ...
+# Subtest: existing empty TOML parent table survives owned entry removal
+ok 45 - existing empty TOML parent table survives owned entry removal
+  ---
+  duration_ms: 0.3532
+  type: 'test'
+  ...
+# Subtest: duplicate JSON properties are refused rather than silently adopting the last alias
+ok 46 - duplicate JSON properties are refused rather than silently adopting the last alias
+  ---
+  duration_ms: 0.1601
+  type: 'test'
+  ...
+# Subtest: existing transaction lock is never stolen or deleted
+ok 47 - existing transaction lock is never stolen or deleted
+  ---
+  duration_ms: 261.8457
+  type: 'test'
+  ...
+# Subtest: active Windows file-sharing lock fails without changing bytes
+ok 48 - active Windows file-sharing lock fails without changing bytes
+  ---
+  duration_ms: 249.4223
+  type: 'test'
+  ...
+# Subtest: denied Windows directory DACL refuses atomic temporary-file creation and preserves original bytes
+ok 49 - denied Windows directory DACL refuses atomic temporary-file creation and preserves original bytes
+  ---
+  duration_ms: 1014.4225
+  type: 'test'
+  ...
+# Subtest: actual CODEX_HOME outside the default home is the only additional writable scope
+ok 50 - actual CODEX_HOME outside the default home is the only additional writable scope
+  ---
+  duration_ms: 238.6314
+  type: 'test'
+  ...
+# Subtest: tampered semantic no-op plan cannot add an entry
+ok 51 - tampered semantic no-op plan cannot add an entry
+  ---
+  duration_ms: 758.595
+  type: 'test'
+  ...
+# Subtest: new comments inside owned JSONC or TOML section survive attempted removal
+ok 52 - new comments inside owned JSONC or TOML section survive attempted removal
+  ---
+  duration_ms: 4543.6958
+  type: 'test'
+  ...
+# Subtest: actual npm tarball installs with an empty offline cache and inspects six isolated clients
+ok 53 - actual npm tarball installs with an empty offline cache and inspects six isolated clients
+  ---
+  duration_ms: 9521.796
+  type: 'test'
+  ...
+# Archive 3171267 bytes; 15 locked runtime packages; producer had verified tarball content only, consumer cache was empty.
+# Subtest: real SDK transport proves contract and harmless local-mode call without claiming native client
+ok 54 - real SDK transport proves contract and harmless local-mode call without claiming native client
+  ---
+  duration_ms: 32.4506
+  type: 'test'
+  ...
+# Subtest: tool contract mismatch fails without serializing returned content
+ok 55 - tool contract mismatch fails without serializing returned content
+  ---
+  duration_ms: 1.3005
+  type: 'test'
+  ...
+# Subtest: invalid token rejection never becomes anonymous fallback
+ok 56 - invalid token rejection never becomes anonymous fallback
+  ---
+  duration_ms: 0.6703
+  type: 'test'
+  ...
+# Subtest: real Postgres intent claims are idempotent, payload-conflicting and fenced
+ok 57 - real Postgres intent claims are idempotent, payload-conflicting and fenced
+  ---
+  duration_ms: 1487.4408
+  type: 'test'
+  ...
+# Subtest: real Postgres RLS isolates workspaces and immutable approval/revocation governs retrieval
+ok 58 - real Postgres RLS isolates workspaces and immutable approval/revocation governs retrieval
+  ---
+  duration_ms: 964.9967
+  type: 'test'
+  ...
+# Subtest: durable federation quotas serialize aggregate and cache rejects authorization errors
+ok 59 - durable federation quotas serialize aggregate and cache rejects authorization errors
+  ---
+  duration_ms: 954.0623
+  type: 'test'
+  ...
+# Subtest: crashed final safe attempt becomes a visible deduplicated dead letter instead of an unbounded retry
+ok 60 - crashed final safe attempt becomes a visible deduplicated dead letter instead of an unbounded retry
+  ---
+  duration_ms: 890.4992
+  type: 'test'
+  ...
+# Subtest: gateway database role cannot mutate reviews, publish catalogs, read admin state or call updater RPCs
+ok 61 - gateway database role cannot mutate reviews, publish catalogs, read admin state or call updater RPCs
+  ---
+  duration_ms: 1199.6003
+  type: 'test'
+  ...
+# Subtest: Postgres incident pipeline deduplicates delivery, opens at three and resolves at two successes
+ok 62 - Postgres incident pipeline deduplicates delivery, opens at three and resolves at two successes
+  ---
+  duration_ms: 1216.3505
+  type: 'test'
+  ...
+# Subtest: grant revocation immediately removes principal read permission; no agent can grant human authority
+ok 63 - grant revocation immediately removes principal read permission; no agent can grant human authority
+  ---
+  duration_ms: 925.8107
+  type: 'test'
+  ...
+# Subtest: incidents require three distinct consecutive fresh failure slots, followed by two fresh successes
+ok 64 - incidents require three distinct consecutive fresh failure slots, followed by two fresh successes
+  ---
+  duration_ms: 1.7099
+  type: 'test'
+  ...
+# Subtest: missing or expired observations are UNKNOWN, with cadence-aware freshness
+ok 65 - missing or expired observations are UNKNOWN, with cadence-aware freshness
+  ---
+  duration_ms: 0.204
+  type: 'test'
+  ...
+# Subtest: provider outages and ambiguous network failures never authorize release rollback
+ok 66 - provider outages and ambiguous network failures never authorize release rollback
+  ---
+  duration_ms: 0.5075
+  type: 'test'
+  ...
+# Subtest: independent watcher requires fresh dispatcher and separate declared deployment failure domain
+ok 67 - independent watcher requires fresh dispatcher and separate declared deployment failure domain
+  ---
+  duration_ms: 0.1785
+  type: 'test'
+  ...
+# Subtest: bounded safe retry respects larger Retry-After and denies uncertain/auth/policy retries
+ok 68 - bounded safe retry respects larger Retry-After and denies uncertain/auth/policy retries
+  ---
+  duration_ms: 0.1263
+  type: 'test'
+  ...
+# Subtest: maintenance cannot start without a persisted entitled owner-consented scheduler profile
+ok 69 - maintenance cannot start without a persisted entitled owner-consented scheduler profile
+  ---
+  duration_ms: 0.6915
+  type: 'test'
+  ...
+# Subtest: maintenance budget prevents a later lease mutation after a slow dependency
+ok 70 - maintenance budget prevents a later lease mutation after a slow dependency
+  ---
+  duration_ms: 0.1331
+  type: 'test'
+  ...
+# Subtest: public-only readiness avoids private dependencies and private mode fails closed on missing auth or database
+ok 71 - public-only readiness avoids private dependencies and private mode fails closed on missing auth or database
+  ---
+  duration_ms: 12.8997
+  type: 'test'
+  ...
+# Subtest: maintenance persists bounded jobs, skips duplicate slots and retries only eligible due jobs in Postgres
+ok 72 - maintenance persists bounded jobs, skips duplicate slots and retries only eligible due jobs in Postgres
+  ---
+  duration_ms: 1314.8186
+  type: 'test'
+  ...
+# Subtest: independent watcher exposes missing durable delivery and ambiguous outages honestly
+ok 73 - independent watcher exposes missing durable delivery and ambiguous outages honestly
+  ---
+  duration_ms: 2.0026
+  type: 'test'
+  ...
+# Subtest: watcher delivery is explicit and writes only the fixed authenticated receipt endpoint
+ok 74 - watcher delivery is explicit and writes only the fixed authenticated receipt endpoint
+  ---
+  duration_ms: 0.3481
+  type: 'test'
+  ...
+# Subtest: watcher CLI fails enabled durable delivery failures even when gateway probes are healthy
+ok 75 - watcher CLI fails enabled durable delivery failures even when gateway probes are healthy
+  ---
+  duration_ms: 1.0486
+  type: 'test'
+  ...
+# Subtest: private probes separate database, auth service liveness and actually verified managed identity
+ok 76 - private probes separate database, auth service liveness and actually verified managed identity
+  ---
+  duration_ms: 12.3309
+  type: 'test'
+  ...
+# Subtest: provider probes use shared budget and classify 429 with Retry-After without becoming core failures
+ok 77 - provider probes use shared budget and classify 429 with Retry-After without becoming core failures
+  ---
+  duration_ms: 3.7431
+  type: 'test'
+  ...
+# Subtest: release probes observe persisted policy and unresolved outcome freshness without deployment authority
+ok 78 - release probes observe persisted policy and unresolved outcome freshness without deployment authority
+  ---
+  duration_ms: 0.2435
+  type: 'test'
+  ...
+# Subtest: scheduler and watcher gaps remain UNKNOWN and fixed watcher receipts reject false healthy or arbitrary fields
+ok 79 - scheduler and watcher gaps remain UNKNOWN and fixed watcher receipts reject false healthy or arbitrary fields
+  ---
+  duration_ms: 0.4524
+  type: 'test'
+  ...
+# Subtest: fenced retention rolls up each expired sample once, bounds deletion and preserves recent/private records
+ok 80 - fenced retention rolls up each expired sample once, bounds deletion and preserves recent/private records
+  ---
+  duration_ms: 1195.1001
+  type: 'test'
+  ...
+# Subtest: Supabase durable adapter has no memory fallback, refuses missing environment, and redacts SQL failures
+ok 81 - Supabase durable adapter has no memory fallback, refuses missing environment, and redacts SQL failures
+  ---
+  duration_ms: 13.0213
+  type: 'test'
+  ...
+# Subtest: public gateway uses a distinct restricted credential without service-role fallback or admin methods
+ok 82 - public gateway uses a distinct restricted credential without service-role fallback or admin methods
+  ---
+  duration_ms: 0.5247
+  type: 'test'
+  ...
+# Subtest: private content adapter revalidates every read and preserves canonical JSON after database key reordering
+ok 83 - private content adapter revalidates every read and preserves canonical JSON after database key reordering
+  ---
+  duration_ms: 1.3323
+  type: 'test'
+  ...
+# Subtest: independent observer receipts persist with exact-slot deduplication and reject grants, identity, domain and payload drift
+ok 84 - independent observer receipts persist with exact-slot deduplication and reject grants, identity, domain and payload drift
+  ---
+  duration_ms: 1218.3112
+  type: 'test'
+  ...
+# Subtest: three distinct missed watcher samples persist one UNKNOWN deadman incident, not a fabricated outage
+ok 85 - three distinct missed watcher samples persist one UNKNOWN deadman incident, not a fabricated outage
+  ---
+  duration_ms: 936.6685
+  type: 'test'
+  ...
+# Subtest: canonical repository/path identity distinguishes nested paths and rejects mutable branch URLs
+ok 86 - canonical repository/path identity distinguishes nested paths and rejects mutable branch URLs
+  ---
+  duration_ms: 1.1962
+  type: 'test'
+  ...
+# Subtest: file and repository paths reject encoded traversal, absolute paths, backslashes and alternate streams
+ok 87 - file and repository paths reject encoded traversal, absolute paths, backslashes and alternate streams
+  ---
+  duration_ms: 0.155
+  type: 'test'
+  ...
+# Subtest: changed instruction or supporting bytes change exact manifest identity
+ok 88 - changed instruction or supporting bytes change exact manifest identity
+  ---
+  duration_ms: 7.8795
+  type: 'test'
+  ...
+# Subtest: private retrieval verifies exact immutable manifest and individual declared file integrity
+ok 89 - private retrieval verifies exact immutable manifest and individual declared file integrity
+  ---
+  duration_ms: 0.7093
+  type: 'test'
+  ...
+# Subtest: frozen 60-case routing regression preserves choices, bypasses and concurrency
+ok 90 - frozen 60-case routing regression preserves choices, bypasses and concurrency
+  ---
+  duration_ms: 71.0049
+  type: 'test'
+  ...
+# Subtest: same-origin browser calls use the preserved Host through Next URL normalization
+ok 91 - same-origin browser calls use the preserved Host through Next URL normalization
+  ---
+  duration_ms: 1.2096
+  type: 'test'
+  ...
+# Subtest: request size enforcement handles declared and streaming bodies
+ok 92 - request size enforcement handles declared and streaming bodies
+  ---
+  duration_ms: 2.3988
+  type: 'test'
+  ...
+# Subtest: a missing durable budget cannot trigger provider traffic
+ok 93 - a missing durable budget cannot trigger provider traffic
+  ---
+  duration_ms: 0.2628
+  type: 'test'
+  ...
+# Subtest: shared quota rejects after cache lookup and coalesces identical concurrent public queries
+ok 94 - shared quota rejects after cache lookup and coalesces identical concurrent public queries
+  ---
+  duration_ms: 6.9272
+  type: 'test'
+  ...
+# Subtest: invalid supplied authorization cannot fall back to anonymous or cached results
+ok 95 - invalid supplied authorization cannot fall back to anonymous or cached results
+  ---
+  duration_ms: 0.2933
+  type: 'test'
+  ...
+# Subtest: 401 provider outcomes are never cached
+ok 96 - 401 provider outcomes are never cached
+  ---
+  duration_ms: 0.1664
+  type: 'test'
+  ...
+# Subtest: a durable unexpired cache value uses its actual SQL RPC shape without claiming quota
+ok 97 - a durable unexpired cache value uses its actual SQL RPC shape without claiming quota
+  ---
+  duration_ms: 0.1325
+  type: 'test'
+  ...
+# Subtest: MCP boundary validates supplied identity even for bundled or keyword-free calls
+ok 98 - MCP boundary validates supplied identity even for bundled or keyword-free calls
+  ---
+  duration_ms: 0.3409
+  type: 'test'
+  ...
+# Subtest: anonymous quota identity never trusts a caller supplied generic forwarding header
+ok 99 - anonymous quota identity never trusts a caller supplied generic forwarding header
+  ---
+  duration_ms: 0.3157
+  type: 'test'
+  ...
+# Subtest: canonical identity binds repository, nested path, exact commit and bytes
+ok 100 - canonical identity binds repository, nested path, exact commit and bytes
+  ---
+  duration_ms: 0.754
+  type: 'test'
+  ...
+# Subtest: unresolved equal names remain separate provisional identities
+ok 101 - unresolved equal names remain separate provisional identities
+  ---
+  duration_ms: 0.1316
+  type: 'test'
+  ...
+# Subtest: provider timeouts, oversized chunked responses, malformed metadata and redirects stay isolated
+ok 102 - provider timeouts, oversized chunked responses, malformed metadata and redirects stay isolated
+  ---
+  duration_ms: 33.5402
+  type: 'test'
+  ...
+# Subtest: instruction streams enforce 60000 bytes before buffering
+ok 103 - instruction streams enforce 60000 bytes before buffering
+  ---
+  duration_ms: 0.9224
+  type: 'test'
+  ...
+# Subtest: opt-in auto avoids remote calls for strong approved coverage and honors explicit choices
+ok 104 - opt-in auto avoids remote calls for strong approved coverage and honors explicit choices
+  ---
+  duration_ms: 6.2156
+  type: 'test'
+  ...
+# Subtest: managed auth validates remotely before enforcing issuer audience resource expiry and client binding
+ok 105 - managed auth validates remotely before enforcing issuer audience resource expiry and client binding
+  ---
+  duration_ms: 16.1211
+  type: 'test'
+  ...
+# Subtest: invalid explicit tokens and revoked grants never become anonymous reads
+ok 106 - invalid explicit tokens and revoked grants never become anonymous reads
+  ---
+  duration_ms: 0.8498
+  type: 'test'
+  ...
+# Subtest: agent grants do not confer human approval or owner authority; recent authentication and CSRF bind writes
+ok 107 - agent grants do not confer human approval or owner authority; recent authentication and CSRF bind writes
+  ---
+  duration_ms: 1.4741
+  type: 'test'
+  ...
+# Subtest: identity and database outages fail closed with redacted errors
+ok 108 - identity and database outages fail closed with redacted errors
+  ---
+  duration_ms: 0.4934
+  type: 'test'
+  ...
+# Subtest: chunked Auth responses stop at the byte limit before buffering their remaining body
+ok 109 - chunked Auth responses stop at the byte limit before buffering their remaining body
+  ---
+  duration_ms: 0.8063
+  type: 'test'
+  ...
+# Subtest: scheduler authentication is constant-time and refuses missing/short configured secrets
+ok 110 - scheduler authentication is constant-time and refuses missing/short configured secrets
+  ---
+  duration_ms: 0.4539
+  type: 'test'
+  ...
+# Subtest: JSON trust boundary caps actual streaming bytes and rejects invalid bodies
+ok 111 - JSON trust boundary caps actual streaming bytes and rejects invalid bodies
+  ---
+  duration_ms: 1.0334
+  type: 'test'
+  ...
+# Subtest: management session is authenticated encrypted bounded and expires
+ok 112 - management session is authenticated encrypted bounded and expires
+  ---
+  duration_ms: 13.4562
+  type: 'test'
+  ...
+# Subtest: OAuth requires HTTPS configured origin and PKCE state before exchanging code
+ok 113 - OAuth requires HTTPS configured origin and PKCE state before exchanging code
+  ---
+  duration_ms: 3.1177
+  type: 'test'
+  ...
+# Subtest: update status reports observe and unsupported arming; owner pause binds exact policy and generation
+ok 114 - update status reports observe and unsupported arming; owner pause binds exact policy and generation
+  ---
+  duration_ms: 16.2569
+  type: 'test'
+  ...
+# Subtest: agent mutation and fabricated activation evidence cannot arm updates
+ok 115 - agent mutation and fabricated activation evidence cannot arm updates
+  ---
+  duration_ms: 0.6755
+  type: 'test'
+  ...
+# Subtest: Postgres update intent is payload-bound, unresolved singleton and stale-fence protected
+ok 116 - Postgres update intent is payload-bound, unresolved singleton and stale-fence protected
+  ---
+  duration_ms: 1294.2793
+  type: 'test'
+  ...
+# Subtest: Postgres owner pause invalidates unsent promotion and agent cannot call private update RPC
+ok 117 - Postgres owner pause invalidates unsent promotion and agent cannot call private update RPC
+  ---
+  duration_ms: 964.2907
+  type: 'test'
+  ...
+# Subtest: owner CLI registers metadata, trusted runner receipts deduplicate, owner authorizes exact stage/promotion and old outcome cannot regress state
+ok 118 - owner CLI registers metadata, trusted runner receipts deduplicate, owner authorizes exact stage/promotion and old outcome cannot regress state
+  ---
+  duration_ms: 1428.9069
+  type: 'test'
+  ...
+# Subtest: trusted producer binds exact build, evidence, SBOM and toolchain without fabricating staged checks
+ok 119 - trusted producer binds exact build, evidence, SBOM and toolchain without fabricating staged checks
+  ---
+  duration_ms: 31.5157
+  type: 'test'
+  ...
+# Subtest: PR, nonstable, wrong workflow and dirty source fail before tests, credentials or signing
+ok 120 - PR, nonstable, wrong workflow and dirty source fail before tests, credentials or signing
+  ---
+  duration_ms: 21.1369
+  type: 'test'
+  ...
+# Subtest: failed suite, unreviewed toolchain and toolchain drift never sign or output a candidate
+ok 121 - failed suite, unreviewed toolchain and toolchain drift never sign or output a candidate
+  ---
+  duration_ms: 16.0479
+  type: 'test'
+  ...
+# Subtest: maintained verifier rejection prevents artifact publication
+ok 122 - maintained verifier rejection prevents artifact publication
+  ---
+  duration_ms: 13.6884
+  type: 'test'
+  ...
+# Subtest: producer input parser refuses placeholders, ambiguous approvals and invalid numeric scope
+ok 123 - producer input parser refuses placeholders, ambiguous approvals and invalid numeric scope
+  ---
+  duration_ms: 0.4028
+  type: 'test'
+  ...
+# Subtest: fixture orchestration binds same artifact and new exact staged evidence without claiming a live run
+ok 124 - fixture orchestration binds same artifact and new exact staged evidence without claiming a live run
+  ---
+  duration_ms: 43.2315
+  type: 'test'
+  ...
+# Subtest: missing credentials, PR source, candidate lock drift and dirty source block without signing
+ok 125 - missing credentials, PR source, candidate lock drift and dirty source block without signing
+  ---
+  duration_ms: 40.6367
+  type: 'test'
+  ...
+# Subtest: remote mismatch, stale watcher, changed parent and observation gaps fail closed
+ok 126 - remote mismatch, stale watcher, changed parent and observation gaps fail closed
+  ---
+  duration_ms: 35.6539
+  type: 'test'
+  ...
+# Subtest: failed real browser gate, private read or security gate never attests PASS
+ok 127 - failed real browser gate, private read or security gate never attests PASS
+  ---
+  duration_ms: 26.0208
+  type: 'test'
+  ...
+# Subtest: unapproved staged signer and tampered artifact fail before source suites
+ok 128 - unapproved staged signer and tampered artifact fail before source suites
+  ---
+  duration_ms: 17.0269
+  type: 'test'
+  ...
+# Subtest: snapshot rejects revoked identity and SSRF-shaped deployment URL
+ok 129 - snapshot rejects revoked identity and SSRF-shaped deployment URL
+  ---
+  duration_ms: 8.9744
+  type: 'test'
+  ...
+# Subtest: real readonly endpoint preserves the SQL snapshot staged target and PASS watcher contract
+ok 130 - real readonly endpoint preserves the SQL snapshot staged target and PASS watcher contract
+  ---
+  duration_ms: 6.6916
+  type: 'test'
+  ...
+# Subtest: observe defaults, expired arming falls back, owner pause immediately invalidates generation
+ok 131 - observe defaults, expired arming falls back, owner pause immediately invalidates generation
+  ---
+  duration_ms: 2.3008
+  type: 'test'
+  ...
+# Subtest: arming requires exact scope, expiring owner grant and persisted rehearsals
+ok 132 - arming requires exact scope, expiring owner grant and persisted rehearsals
+  ---
+  duration_ms: 0.6614
+  type: 'test'
+  ...
+# Subtest: four lanes retain authority; semver patch and omitted risk analysis grant no approval
+ok 133 - four lanes retain authority; semver patch and omitted risk analysis grant no approval
+  ---
+  duration_ms: 0.7893
+  type: 'test'
+  ...
+# Subtest: manifest schema, expiry, source/artifact/lock/policy digests and evidence bind exact bytes
+ok 134 - manifest schema, expiry, source/artifact/lock/policy digests and evidence bind exact bytes
+  ---
+  duration_ms: 3.5324
+  type: 'test'
+  ...
+# Subtest: provenance invokes maintained verifier with anchored identity; unprovisioned trust and mixed claims denied
+ok 135 - provenance invokes maintained verifier with anchored identity; unprovisioned trust and mixed claims denied
+  ---
+  duration_ms: 0.8804
+  type: 'test'
+  ...
+# Subtest: unknown outcome after sent mutation reconciles exact provider identity; never retries mutation
+ok 136 - unknown outcome after sent mutation reconciles exact provider identity; never retries mutation
+  ---
+  duration_ms: 1.6659
+  type: 'test'
+  ...
+# Subtest: Vercel without atomic parent CAS denies automatic promotion; exact short-lived manual owner scope can promote
+ok 137 - Vercel without atomic parent CAS denies automatic promotion; exact short-lived manual owner scope can promote
+  ---
+  duration_ms: 0.9165
+  type: 'test'
+  ...
+# Subtest: operator release command executes the complete injected nonproduction rehearsal and preserves uncertain outcome
+ok 138 - operator release command executes the complete injected nonproduction rehearsal and preserves uncertain outcome
+  ---
+  duration_ms: 1.2478
+  type: 'test'
+  ...
+# Subtest: promotion denies stale fence, pause, parent drift, watcher absence, revoked bytes, changed policy and budget
+ok 139 - promotion denies stale fence, pause, parent drift, watcher absence, revoked bytes, changed policy and budget
+  ---
+  duration_ms: 3.2497
+  type: 'test'
+  ...
+# Subtest: revocation during awaited staged inspection is rechecked immediately before any dispatch
+ok 140 - revocation during awaited staged inspection is rechecked immediately before any dispatch
+  ---
+  duration_ms: 0.5057
+  type: 'test'
+  ...
+# Subtest: stage authorization expiry during parent inspection denies the upload
+ok 141 - stage authorization expiry during parent inspection denies the upload
+  ---
+  duration_ms: 0.4639
+  type: 'test'
+  ...
+# Subtest: rollback previous revocation during awaited parent inspection denies the routing mutation
+ok 142 - rollback previous revocation during awaited parent inspection denies the routing mutation
+  ---
+  duration_ms: 0.652
+  type: 'test'
+  ...
+# Subtest: rollback rejects previous schema metadata that contradicts verified manifest before mutation
+ok 143 - rollback rejects previous schema metadata that contradicts verified manifest before mutation
+  ---
+  duration_ms: 0.2808
+  type: 'test'
+  ...
+# Subtest: expired historical manifest is usable only for the exact durable known-good predecessor
+ok 144 - expired historical manifest is usable only for the exact durable known-good predecessor
+  ---
+  duration_ms: 0.7693
+  type: 'test'
+  ...
+# Subtest: rollback requires candidate fault, healthy control, independent corroboration, safe previous release and one probation attempt
+ok 145 - rollback requires candidate fault, healthy control, independent corroboration, safe previous release and one probation attempt
+  ---
+  duration_ms: 0.5541
+  type: 'test'
+  ...
+# Subtest: probation cannot become stable without full 30-minute one-minute probe coverage
+ok 146 - probation cannot become stable without full 30-minute one-minute probe coverage
+  ---
+  duration_ms: 0.542
+  type: 'test'
+  ...
+# Subtest: probation finalization rechecks pause, revocation, security and exact active alias after inspection
+ok 147 - probation finalization rechecks pause, revocation, security and exact active alias after inspection
+  ---
+  duration_ms: 1.4819
+  type: 'test'
+  ...
+# Subtest: prebuilt package preserves exact bytes/modes and rejects traversal, changed bytes and source scope
+ok 148 - prebuilt package preserves exact bytes/modes and rejects traversal, changed bytes and source scope
+  ---
+  duration_ms: 5.7242
+  type: 'test'
+  ...
+# Subtest: real Vercel adapter verifies remote prebuilt bytes and aliases; stages with skip-domain; manual mutation only
+ok 149 - real Vercel adapter verifies remote prebuilt bytes and aliases; stages with skip-domain; manual mutation only
+  ---
+  duration_ms: 26.5267
+  type: 'test'
+  ...
+# Subtest: operator command preflight is truthful and never enables production; argument parser rejects unknown or missing values
+ok 150 - operator command preflight is truthful and never enables production; argument parser rejects unknown or missing values
+  ---
+  duration_ms: 5.3056
+  type: 'test'
+  ...
+# Subtest: application artifact limits match reviewed policy and keep skill package ceiling separate
+ok 151 - application artifact limits match reviewed policy and keep skill package ceiling separate
+  ---
+  duration_ms: 0.9494
+  type: 'test'
+  ...
+1..151
+# tests 151
+# suites 0
+# pass 151
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 26548.8805

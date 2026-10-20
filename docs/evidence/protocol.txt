@@ -1,0 +1,33 @@
+PASS Responsive web dashboard and connection navigator
+PASS Legacy 2025 handshake and branded server identity
+PASS Native 2026-07 discovery
+PASS Eight distinct tool schemas and safety annotations
+PASS All four SKILL.md resources listed and readable
+PASS Tool list_skills
+PASS Tool search_skills
+PASS Tool read_skill
+PASS Tool list_providers
+PASS Tool route_task
+PASS Federated routing returns review-only candidates
+WARN SkillsMP external discovery
+WARN Skills.sh authenticated discovery and inspection
+WARN Official MCP registry discovery
+PASS Reject non-curated SKILL.md path traversal
+PASS Reject invalid external candidate path
+PASS Reject malformed route arguments
+PASS Four simultaneous agent requests do not cross-contaminate
+PASS Cross-origin browser request rejected
+PASS Reject supplied malformed identity even for a bundled public read
+PASS Reject oversized streaming request body
+{
+  "endpoint": "http://127.0.0.1:3187/api/mcp",
+  "requests": 21,
+  "checks": 21,
+  "passed": 18,
+  "failed": [],
+  "warnings": [
+    "SkillsMP external discovery",
+    "Skills.sh authenticated discovery and inspection",
+    "Official MCP registry discovery"
+  ]
+}

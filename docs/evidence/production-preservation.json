@@ -1,0 +1,12 @@
+{
+  "observedAt": "2026-10-20T12:06:58.560Z",
+  "method": "Read-only Vercel project and latest three production deployment metadata",
+  "projectId": "prj_mJgbERJNKW1V96leE2yWOzsqxkpo",
+  "nodeRuntime": "22.x",
+  "latestProductionDeploymentId": "dpl_8efcRaKMX6uZX6fqPRJq7aEQ2NvT",
+  "baselineDeploymentId": "dpl_8efcRaKMX6uZX6fqPRJq7aEQ2NvT",
+  "matchesBaseline": true,
+  "state": "READY",
+  "productionMutationPerformed": false,
+  "limits": "Metadata preservation only; no new production rollout or runtime acceptance is claimed."
+}

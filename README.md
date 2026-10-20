@@ -2,7 +2,7 @@
 
 An extension of the existing Next.js/Vercel MCP service, with a one-shot six-client installer, private skill reviews, durable operations, health monitoring, controlled releases, and an operations dashboard.
 
-**Status:** implementation and local verification in progress. Hosted private identity, production activation, real client invocation, external scheduled delivery, and release signing require their own evidence. Default updater mode is **observe**. Publishing this source does not deploy it or arm updates.
+**Status:** local implementation verified on Windows and in Ubuntu CI. The [acceptance ledger](docs/acceptance-matrix.csv) records 41 verified requirements and 24 blocked gates. Hosted private identity, production activation, real client invocation, external scheduled delivery, and release signing require their own evidence. Default updater mode is **observe**. Publishing this source does not deploy it or arm updates.
 
 ## Start locally
 
@@ -22,6 +22,7 @@ Public bundled skills and local routing work without cloud credentials. External
 - [Architecture and source map](docs/project-map.md)
 - [Verified source admission](docs/work-admission.md)
 - [Installer and safe removal](docs/installer.md)
+- [Offline installer archive](artifacts/installer/soren-agents-installer-1.0.0.tgz) and [unsigned integrity manifest](artifacts/installer/soren-agents-installer-1.0.0.tgz.manifest.json)
 - [Private operations and authorization](docs/operations-implementation.md)
 - [Update policy](docs/update-policy.md) and [rollback](docs/rollback.md)
 - [Current verification results](docs/verification-results.md)

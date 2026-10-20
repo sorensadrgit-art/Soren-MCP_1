@@ -1,0 +1,29 @@
+{
+  "testId": "native-postgres",
+  "status": "PASS",
+  "scope": "integration",
+  "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+  "lockfileSha256": "26134ea4a7f4a40dd6df5d04451f15603e30e6d972b761c9bfe639490841de3d",
+  "method": "GitHub Actions Source quality / native-postgres: npm run test:db:native",
+  "environment": "isolated_ci",
+  "startedAt": "2026-10-20T12:15:36Z",
+  "finishedAt": "2026-10-20T12:16:15Z",
+  "evidenceRefs": [
+    "docs/evidence/native-postgres.txt",
+    "https://github.com/sorensadrgit-art/Soren-MCP_1/actions/runs/39420898619/job/118621268051"
+  ],
+  "observed": {
+    "postgresVersion": "PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit",
+    "distinctBackendSessions": true,
+    "tests": 3,
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "runId": 39420898619,
+    "jobId": 118621268051,
+    "jobConclusion": "success",
+    "runConclusion": "success",
+    "outputSha256": "f39401a5dbdb494d420be88edcd975bd6c5192c20855b0df397a0eddcd59735f",
+    "databaseIsolation": "Fresh random database in pinned ephemeral PostgreSQL service; dropped in finally"
+  }
+}

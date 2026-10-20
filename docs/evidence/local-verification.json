@@ -1,0 +1,158 @@
+{
+  "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+  "lockfileSha256": "26134ea4a7f4a40dd6df5d04451f15603e30e6d972b761c9bfe639490841de3d",
+  "policySha256": "3f1f2a3a8d396e81d5397631d340c69e208da9bcc6b562885c3ed6fcc0fcaf48",
+  "rows": [
+    {
+      "testId": "unit",
+      "status": "PASS",
+      "scope": "integration",
+      "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+      "lockfileSha256": "26134ea4a7f4a40dd6df5d04451f15603e30e6d972b761c9bfe639490841de3d",
+      "method": "C:\\Program Files\\nodejs\\node.exe --test --test-concurrency=2 --test-reporter=tap tests/**/*.test.mjs",
+      "environment": "development",
+      "startedAt": "2026-10-20T12:15:35.211Z",
+      "finishedAt": "2026-10-20T12:16:01.812Z",
+      "evidenceRefs": [
+        "docs/evidence/unit-results.tap"
+      ],
+      "observed": {
+        "exitCode": 0,
+        "outputSha256": "6801585bb090fadf3a36195a9d25927c2d0bdf94d09e835189c06115654b99df",
+        "runtime": "v24.19.0",
+        "platform": "win32",
+        "tests": 151,
+        "pass": 151,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "testId": "typecheck",
+      "status": "PASS",
+      "scope": "unit",
+      "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+      "lockfileSha256": "26134ea4a7f4a40dd6df5d04451f15603e30e6d972b761c9bfe639490841de3d",
+      "method": "C:\\Program Files\\nodejs\\node.exe node_modules/typescript/bin/tsc --noEmit",
+      "environment": "development",
+      "startedAt": "2026-10-20T12:16:01.814Z",
+      "finishedAt": "2026-10-20T12:16:03.252Z",
+      "evidenceRefs": [
+        "docs/evidence/typecheck.txt"
+      ],
+      "observed": {
+        "exitCode": 0,
+        "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "runtime": "v24.19.0",
+        "platform": "win32"
+      }
+    },
+    {
+      "testId": "build",
+      "status": "PASS",
+      "scope": "integration",
+      "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+      "lockfileSha256": "26134ea4a7f4a40dd6df5d04451f15603e30e6d972b761c9bfe639490841de3d",
+      "method": "C:\\Program Files\\nodejs\\node.exe node_modules/next/dist/bin/next build",
+      "environment": "development",
+      "startedAt": "2026-10-20T12:16:03.254Z",
+      "finishedAt": "2026-10-20T12:16:10.878Z",
+      "evidenceRefs": [
+        "docs/evidence/build.txt"
+      ],
+      "observed": {
+        "exitCode": 0,
+        "outputSha256": "caeff8ed938cd8a6e699bea3599566039b428bc4d53a77f63e644e62a022790b",
+        "runtime": "v24.19.0",
+        "platform": "win32"
+      }
+    },
+    {
+      "testId": "dependencies",
+      "status": "PASS",
+      "scope": "security",
+      "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+      "lockfileSha256": "26134ea4a7f4a40dd6df5d04451f15603e30e6d972b761c9bfe639490841de3d",
+      "method": "C:\\Program Files\\nodejs\\node.exe C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js audit --json",
+      "environment": "development",
+      "startedAt": "2026-10-20T12:16:10.879Z",
+      "finishedAt": "2026-10-20T12:16:11.815Z",
+      "evidenceRefs": [
+        "docs/evidence/dependency-audit.json"
+      ],
+      "observed": {
+        "exitCode": 0,
+        "outputSha256": "fb919fc6953a5a6f3399175541757e8069c3323064217d0513dc0a4caed6be86",
+        "runtime": "v24.19.0",
+        "platform": "win32"
+      }
+    },
+    {
+      "testId": "routing",
+      "status": "PASS",
+      "scope": "unit",
+      "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+      "lockfileSha256": "26134ea4a7f4a40dd6df5d04451f15603e30e6d972b761c9bfe639490841de3d",
+      "method": "C:\\Program Files\\nodejs\\node.exe scripts/evaluate-routing.mjs",
+      "environment": "development",
+      "startedAt": "2026-10-20T12:16:11.817Z",
+      "finishedAt": "2026-10-20T12:16:12.003Z",
+      "evidenceRefs": [
+        "docs/evidence/routing-command.txt"
+      ],
+      "observed": {
+        "exitCode": 0,
+        "outputSha256": "55590f7cc5f2818de79444cf2e08cf3b639841283ea88d4c8e4fe5cd4447abc1",
+        "runtime": "v24.19.0",
+        "platform": "win32"
+      }
+    },
+    {
+      "testId": "browser",
+      "status": "PASS",
+      "scope": "browser",
+      "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+      "lockfileSha256": "26134ea4a7f4a40dd6df5d04451f15603e30e6d972b761c9bfe639490841de3d",
+      "method": "C:\\Program Files\\nodejs\\node.exe node_modules/@playwright/test/cli.js test",
+      "environment": "development",
+      "startedAt": "2026-10-20T12:16:12.005Z",
+      "finishedAt": "2026-10-20T12:16:38.003Z",
+      "evidenceRefs": [
+        "docs/evidence/browser-command.txt"
+      ],
+      "observed": {
+        "exitCode": 0,
+        "outputSha256": "2236ddb1a63173fc6a7d36770d6fb07a070643bec8934c8c387ad55380862b0e",
+        "runtime": "v24.19.0",
+        "platform": "win32"
+      }
+    },
+    {
+      "testId": "protocol",
+      "status": "PASS",
+      "scope": "protocol",
+      "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+      "lockfileSha256": "26134ea4a7f4a40dd6df5d04451f15603e30e6d972b761c9bfe639490841de3d",
+      "method": "node scripts/verify-mcp.mjs http://127.0.0.1:3187/api/mcp",
+      "environment": "development",
+      "startedAt": "2026-10-20T12:17:19.483Z",
+      "finishedAt": "2026-10-20T12:17:19.822Z",
+      "evidenceRefs": [
+        "docs/evidence/protocol.txt"
+      ],
+      "observed": {
+        "endpoint": "http://127.0.0.1:3187/api/mcp",
+        "requests": 21,
+        "checks": 21,
+        "passed": 18,
+        "failed": [],
+        "warnings": [
+          "SkillsMP external discovery",
+          "Skills.sh authenticated discovery and inspection",
+          "Official MCP registry discovery"
+        ],
+        "outputSha256": "86d19d67b988f1ebce8bdf0142bde747e69aafef02ed534849e3fc0a8aaeca90"
+      }
+    }
+  ]
+}

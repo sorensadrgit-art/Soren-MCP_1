@@ -1,0 +1,371 @@
+{
+  "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+  "startedAt": "2026-10-20T12:16:15.457Z",
+  "durationMs": 22534.255,
+  "expected": 32,
+  "unexpected": 0,
+  "flaky": 0,
+  "skipped": 0,
+  "projects": [
+    {
+      "name": "desktop"
+    },
+    {
+      "name": "narrow"
+    }
+  ],
+  "checks": [
+    {
+      "title": "accessibility.spec.ts / rendered gradient backdrops preserve representative text contrast",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1016
+        }
+      ]
+    },
+    {
+      "title": "accessibility.spec.ts / rendered public routes have no axe WCAG 2.2 AA violations",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 3685
+        }
+      ]
+    },
+    {
+      "title": "accessibility.spec.ts / labelled management fixtures have no axe WCAG 2.2 AA violations, including exact review and arming forms",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1079
+        }
+      ]
+    },
+    {
+      "title": "accessibility.spec.ts / 320 pixel reflow and reduced motion preserve rendered public and management content",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 825
+        }
+      ]
+    },
+    {
+      "title": "accessibility.spec.ts / keyboard reaches client selection and labelled review controls with visible focus and no trap",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 533
+        }
+      ]
+    },
+    {
+      "title": "accessibility.spec.ts / rendered gradient backdrops preserve representative text contrast",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 882
+        }
+      ]
+    },
+    {
+      "title": "accessibility.spec.ts / rendered public routes have no axe WCAG 2.2 AA violations",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1443
+        }
+      ]
+    },
+    {
+      "title": "accessibility.spec.ts / labelled management fixtures have no axe WCAG 2.2 AA violations, including exact review and arming forms",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 1042
+        }
+      ]
+    },
+    {
+      "title": "accessibility.spec.ts / 320 pixel reflow and reduced motion preserve rendered public and management content",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 820
+        }
+      ]
+    },
+    {
+      "title": "accessibility.spec.ts / keyboard reaches client selection and labelled review controls with visible focus and no trap",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 601
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / six formats match the independent specification and selection never installs",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 365
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / clipboard rejection provides selectable manual fallback and keyboard focus",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 302
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / native clipboard success reflects the copied payload",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 270
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / private pages and unauthorized mutations fail closed against the real server",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 361
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / API failure preserves a useful retry state and approved local routing works",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 405
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / fixture review displays old/new bytes and changed revision blocks submission",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 348
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / fixture owner pause binds policy digest and generation while unavailable arm stays disabled",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 305
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / fixture health displays database timestamps and stale evidence as unknown",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 289
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / fixture approved library distinguishes approval from publication",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 256
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / failed OAuth callback has an actionable error instead of a silent login loop",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 235
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / public health, navigation and layouts stay usable without private infrastructure",
+      "project": "desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 706
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / six formats match the independent specification and selection never installs",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 362
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / clipboard rejection provides selectable manual fallback and keyboard focus",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 316
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / native clipboard success reflects the copied payload",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 334
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / private pages and unauthorized mutations fail closed against the real server",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 266
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / API failure preserves a useful retry state and approved local routing works",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 433
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / fixture review displays old/new bytes and changed revision blocks submission",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 423
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / fixture owner pause binds policy digest and generation while unavailable arm stays disabled",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 316
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / fixture health displays database timestamps and stale evidence as unknown",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 250
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / fixture approved library distinguishes approval from publication",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 235
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / failed OAuth callback has an actionable error instead of a silent login loop",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 217
+        }
+      ]
+    },
+    {
+      "title": "journeys.spec.ts / public health, navigation and layouts stay usable without private infrastructure",
+      "project": "narrow",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 601
+        }
+      ]
+    }
+  ]
+}

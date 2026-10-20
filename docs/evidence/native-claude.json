@@ -1,0 +1,13 @@
+{
+  "client": "Claude Code",
+  "scope": "isolated_native_cli_not_desktop_gui",
+  "version": "2.1.283",
+  "status": "BLOCKED",
+  "startedAt": "2026-10-20T10:20:38.227Z",
+  "finishedAt": "2026-10-20T10:20:42.741Z",
+  "configuration": "explicit temporary one-server configuration; existing configuration unchanged",
+  "toolCalls": [],
+  "toolResults": 0,
+  "errorClass": "native_client_rejected_or_unavailable",
+  "guiVerified": false
+}

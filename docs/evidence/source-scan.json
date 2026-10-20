@@ -1,0 +1,15 @@
+{
+  "observedAt": "2026-10-20T12:19:15.624Z",
+  "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+  "scope": "Tracked and publishable untracked text files; ignored local profiles, environments and raw native output excluded.",
+  "scannedFiles": 239,
+  "rules": [
+    "github_token",
+    "private_key",
+    "google_api_key",
+    "provider_key",
+    "aws_access_key"
+  ],
+  "findings": [],
+  "limitations": "Pattern scan and manual publication inventory, not a guarantee against every possible credential format."
+}

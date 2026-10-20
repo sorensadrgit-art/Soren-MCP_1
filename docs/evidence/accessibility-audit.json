@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-10-20T12:16:37.991Z",
+  "scope": "Actual local production preview at http://127.0.0.1:3187. Protected management content uses explicitly labelled deterministic API fixtures; no live OAuth or private-service verification.",
+  "productionBuildId": "l5F5SkDYMeFhWALfG1bBb",
+  "browser": {
+    "engine": "Google Chrome",
+    "version": "155.0.8059.85",
+    "driver": "Playwright",
+    "channel": "chrome"
+  },
+  "versions": {
+    "axe": "4.14.0"
+  },
+  "sourceSha256": {
+    "tests/browser/accessibility.spec.ts": "95068af89b67f6b4e3b09d88c372032a3502e48c9e1a271b81e29d8bdabaef23",
+    "app/globals.css": "16cd5a701e1a9fece54f9258e315336d80cb9c949aa4b84a7cc02b4dae636c1a",
+    "components/ConnectionGuide.tsx": "e0f1e2f979f9ca474faaee85f33048ee4bfb98df08794e5d0500bd1951809b93"
+  },
+  "command": "PLAYWRIGHT_CHANNEL=chrome node node_modules/@playwright/test/cli.js test tests/browser/accessibility.spec.ts",
+  "tests": {
+    "passed": 10,
+    "failed": 0,
+    "axeScans": 22,
+    "axeViolations": 0,
+    "publicRoutes": [
+      "/",
+      "/connect",
+      "/manage",
+      "/registry",
+      "/reviews",
+      "/health",
+      "/updates"
+    ],
+    "managementFixtureRoutes": [
+      "/registry",
+      "/reviews (expanded exact review)",
+      "/health",
+      "/updates"
+    ],
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "reflowWidth": 320,
+    "keyboard": "Client selection, exact review evidence, consent checkbox and approve/reject controls; visible focus and no observed trap.",
+    "reducedMotion": "Rendered routes have no active CSS animations with reduced motion requested."
+  },
+  "representativeContrast": {
+    "method": "Browser-painted PNG backdrop with selected text hidden without layout changes; conservative brightest pixel across each text rectangle and gradient endpoints.",
+    "sampleCount": 71,
+    "smallestNormalTextRatio": 5.22,
+    "smallestLargeTextRatio": 3.6,
+    "requiredNormalTextRatio": 4.5,
+    "requiredLargeTextRatio": 3
+  },
+  "correctedIssues": [
+    "Policy digest wraps instead of clipping at320px.",
+    "Heading gradient endpoint and small feature labels meet representative rendered contrast thresholds.",
+    "Focusable connection instructions have a named region role."
+  ],
+  "axeIncompleteRuleIds": [
+    "color-contrast"
+  ],
+  "limits": [
+    "Automated checks and representative browser-painted gradient samples do not establish complete WCAG conformance.",
+    "Manual screen-reader review, all dynamic/error/hover states, high-contrast modes, user text-spacing overrides and real authenticated management sessions were not audited.",
+    "Hosted OAuth, provider operations, native MCP clients and deployed mobile devices were not exercised."
+  ],
+  "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465"
+}

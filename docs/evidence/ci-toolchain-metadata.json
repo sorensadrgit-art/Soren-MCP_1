@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-10-20T10:32:10.127Z",
+  "actions": [
+    {
+      "repository": "actions/checkout",
+      "sha": "11d5960a326750d5838078e36cf38b85af677262",
+      "verified": true,
+      "status": 200
+    },
+    {
+      "repository": "actions/setup-node",
+      "sha": "49933ea5288caeca8642d1e84afbd3f7d6820020",
+      "verified": true,
+      "status": 200
+    },
+    {
+      "repository": "actions/upload-artifact",
+      "sha": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "verified": true,
+      "status": 200
+    }
+  ],
+  "postgres": {
+    "tag": "postgres:17.11",
+    "status": 200,
+    "digest": "sha256:2d2b8998d31037bf721cfdf764d76ba74171b4fab3431b7f72c27c56ddbdf9e3",
+    "observedAt": "2026-10-20T11:03:28.752Z",
+    "versionPolicySource": "https://www.postgresql.org/support/versioning/"
+  }
+}

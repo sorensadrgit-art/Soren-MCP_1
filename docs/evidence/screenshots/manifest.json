@@ -1,0 +1,36 @@
+{
+  "sourceRevision": "f34b7719e6838bd439d6c9e38400b395589f4465",
+  "browserEvidence": "../browser-results.json",
+  "files": [
+    {
+      "file": "desktop-connect.png",
+      "scope": "public",
+      "sha256": "5aa1ed0ce36983c69f950a9b8d517b886bec46890443114ee4de3773228614ba",
+      "bytes": 154603
+    },
+    {
+      "file": "narrow-connect.png",
+      "scope": "public",
+      "sha256": "a9f7ab648183c7c98c95ac8d1af7bd1c380e8cdc4d4089f83e032b2838e5e84d",
+      "bytes": 118414
+    },
+    {
+      "file": "desktop-health.png",
+      "scope": "public",
+      "sha256": "08fa0eb935148d33492fc6c1c6b54344fe6f8776b4650809aafb896131274c55",
+      "bytes": 124585
+    },
+    {
+      "file": "fixture-narrow-review-keyboard.png",
+      "scope": "labelled_management_fixture",
+      "sha256": "7cc2db97aa632025baeb3a162ff1e09208d253a7ae50841efd0a93914ea70a05",
+      "bytes": 109518
+    },
+    {
+      "file": "fixture-320-updates.png",
+      "scope": "labelled_management_fixture",
+      "sha256": "c863a59c8ff7fe3f6a842eeb2d04f891911dd8eee1d410745a9a5a1fdb968418",
+      "bytes": 115244
+    }
+  ]
+}

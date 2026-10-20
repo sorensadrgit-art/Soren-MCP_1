@@ -1,0 +1,10 @@
+2026-10-20T12:15:40.2156035Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+2026-10-20T12:15:40.6596251Z node: v22.23.3
+2026-10-20T12:15:40.6617110Z [command]/opt/hostedtoolcache/node/22.23.3/x64/bin/npm config get cache
+2026-10-20T12:15:49.7069814Z found 0 vulnerabilities
+2026-10-20T12:16:19.0218090Z # tests 151
+2026-10-20T12:16:19.0218671Z # pass 149
+2026-10-20T12:16:19.0218959Z # fail 0
+2026-10-20T12:16:19.0222511Z # skipped 2
+2026-10-20T12:16:19.5075067Z found 0 vulnerabilities
+2026-10-20T12:17:22.6561450Z   32 passed (31.6s)

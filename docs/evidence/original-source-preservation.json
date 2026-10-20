@@ -1,0 +1,76 @@
+{
+  "observedAt": "2026-10-20T11:47:50.714Z",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "ded3314b4bf01fa4a8da9718fe4ac23358c22580caf827ddc3a93c5851727d43",
+      "expectedSha256": "ded3314b4bf01fa4a8da9718fe4ac23358c22580caf827ddc3a93c5851727d43",
+      "matches": true,
+      "bytes": 694
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "b0c97bfe0eb1861f20be21852c66be974a6743ff87515ce5cff8580af90b4544",
+      "expectedSha256": "b0c97bfe0eb1861f20be21852c66be974a6743ff87515ce5cff8580af90b4544",
+      "matches": true,
+      "bytes": 46903
+    },
+    {
+      "path": "next.config.mjs",
+      "sha256": "8c0cf55542ff065013138ee8ed21fb61501211f6932c620fd16dccdc5626356f",
+      "expectedSha256": "8c0cf55542ff065013138ee8ed21fb61501211f6932c620fd16dccdc5626356f",
+      "matches": true,
+      "bytes": 126
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "1df25d27cf27edda5a84fabab0867fc8c7242d97f3010f6133b0eba96c6de0b1",
+      "expectedSha256": "1df25d27cf27edda5a84fabab0867fc8c7242d97f3010f6133b0eba96c6de0b1",
+      "matches": true,
+      "bytes": 663
+    },
+    {
+      "path": "app/api/mcp/route.ts",
+      "sha256": "c23a12f453d82f2e28c581040cd044b9fca542e6081526da3606cfb4eab84912",
+      "expectedSha256": "c23a12f453d82f2e28c581040cd044b9fca542e6081526da3606cfb4eab84912",
+      "matches": true,
+      "bytes": 6710
+    },
+    {
+      "path": "lib/catalog.mjs",
+      "sha256": "8c1d78aa269cfc5de274b817044ca306a690c3ff9426d6d182e4c06afc713253",
+      "expectedSha256": "8c1d78aa269cfc5de274b817044ca306a690c3ff9426d6d182e4c06afc713253",
+      "matches": true,
+      "bytes": 3779
+    },
+    {
+      "path": "lib/federation.mjs",
+      "sha256": "933b1cb97621344aa651381965475c27f6158a89178e31a459a159134b56467a",
+      "expectedSha256": "933b1cb97621344aa651381965475c27f6158a89178e31a459a159134b56467a",
+      "matches": true,
+      "bytes": 18660
+    },
+    {
+      "path": "lib/client-contract.mjs",
+      "sha256": "7f803befc06e696e5eb9a105fd9a885b410783c06dcc500c9dcf2fb5b1c06b54",
+      "expectedSha256": "7f803befc06e696e5eb9a105fd9a885b410783c06dcc500c9dcf2fb5b1c06b54",
+      "matches": true,
+      "bytes": 3217
+    },
+    {
+      "path": "scripts/verify-mcp.mjs",
+      "sha256": "cd89dc88225e421c91829a1187d8f5c55b347b0b9905f9abba602707ec98366d",
+      "expectedSha256": "cd89dc88225e421c91829a1187d8f5c55b347b0b9905f9abba602707ec98366d",
+      "matches": true,
+      "bytes": 7420
+    },
+    {
+      "path": "AUDIT-20261019.md",
+      "sha256": "2e9450b2b15aa13e367755de7323ac5839781af63712866f8502e600a86e0cc3",
+      "expectedSha256": "2e9450b2b15aa13e367755de7323ac5839781af63712866f8502e600a86e0cc3",
+      "matches": true,
+      "bytes": 7776
+    }
+  ],
+  "modified": false
+}

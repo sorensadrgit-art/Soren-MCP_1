@@ -1,0 +1,30 @@
+2026-10-20T12:16:12.5266456Z TAP version 13
+2026-10-20T12:16:12.8273041Z # Subtest: native PostgreSQL uses independent backend sessions for claims, fences and permissions
+2026-10-20T12:16:12.8274705Z     # Subtest: simultaneous intent claims elect one worker and a stale fence cannot finish
+2026-10-20T12:16:12.8286401Z     ok 1 - simultaneous intent claims elect one worker and a stale fence cannot finish
+2026-10-20T12:16:12.8287531Z       ---
+2026-10-20T12:16:12.8312150Z       duration_ms: 12.685364
+2026-10-20T12:16:12.8312977Z       type: 'test'
+2026-10-20T12:16:12.8313886Z       ...
+2026-10-20T12:16:12.8445537Z     # Subtest: RLS and the gateway role deny cross-workspace and administrative access
+2026-10-20T12:16:12.8474589Z     ok 2 - RLS and the gateway role deny cross-workspace and administrative access
+2026-10-20T12:16:12.8484560Z       ---
+2026-10-20T12:16:12.8496423Z       duration_ms: 16.902819
+2026-10-20T12:16:12.8497442Z       type: 'test'
+2026-10-20T12:16:12.8498439Z       ...
+2026-10-20T12:16:12.8795158Z     1..2
+2026-10-20T12:16:12.8800707Z ok 1 - native PostgreSQL uses independent backend sessions for claims, fences and permissions
+2026-10-20T12:16:12.8802121Z   ---
+2026-10-20T12:16:12.8810355Z   duration_ms: 262.789859
+2026-10-20T12:16:12.8811112Z   type: 'test'
+2026-10-20T12:16:12.8811644Z   ...
+2026-10-20T12:16:12.8813347Z # {"postgresVersion":"PostgreSQL 17.11 (Debian 17.11-1.pgdg13+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit","distinctBackendSessions":true}
+2026-10-20T12:16:12.8929364Z 1..1
+2026-10-20T12:16:12.8946155Z # tests 3
+2026-10-20T12:16:12.8946565Z # suites 0
+2026-10-20T12:16:12.8946905Z # pass 3
+2026-10-20T12:16:12.8947240Z # fail 0
+2026-10-20T12:16:12.8947645Z # cancelled 0
+2026-10-20T12:16:12.8948008Z # skipped 0
+2026-10-20T12:16:12.8952877Z # todo 0
+2026-10-20T12:16:12.8953681Z # duration_ms 382.017884
