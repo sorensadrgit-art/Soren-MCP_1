@@ -1,0 +1,59 @@
+{
+  "scope": "research artifacts only; hashes provide consistency not signed provenance",
+  "files": [
+    {
+      "path": "AGENT_GUIDE.md",
+      "bytes": 3281,
+      "sha256": "23034fd9bff6448e82416577794e822341affab45756d4d76f867d0b86b77a99",
+      "gitBlobSha": "51cd41a100af3ce36edf9b8c8bd14b08c0ed842d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 18352,
+      "sha256": "d1eca2275ec967d7935efa816947e3ebc9f0e77d7e553ea1d564c898cd73a0fa",
+      "gitBlobSha": "080a5f040fcc512bf0e6eab65b5cf7a91f3c8a2c"
+    },
+    {
+      "path": "VALIDATION.json",
+      "bytes": 991,
+      "sha256": "c96634f3e28be852df3bb7f9fbde868b7720da28169ebd8fba90cb6037d04f70",
+      "gitBlobSha": "cc7070045a4b5491275c4b662636087fc619d9fc"
+    },
+    {
+      "path": "catalog.json",
+      "bytes": 26163,
+      "sha256": "a1399732bc053b62bbfd611d76c77e02e548aa90c47936329aeaea1941b7a443",
+      "gitBlobSha": "0cdafcfcc32b50d3dd3efd7d0aa58b6bda9ea6d8"
+    },
+    {
+      "path": "catalog.schema.json",
+      "bytes": 8151,
+      "sha256": "59e1bad3f97d7bb57d7522beb215c1847eebd462d18f365ab0939a11053d32a6",
+      "gitBlobSha": "980eb6ff9664e8b5653aeb75ffdef18f11f671dc"
+    },
+    {
+      "path": "evaluation-cases.json",
+      "bytes": 6806,
+      "sha256": "7b7937e8482084ab2d0c81d8810b8c77accb664a8c37d4b87c9bd166f6320205",
+      "gitBlobSha": "491a92cf9479b70f46f40975eb9f78cdfb8a45b9"
+    },
+    {
+      "path": "sources.json",
+      "bytes": 8707,
+      "sha256": "d300caa12c0ddd50bc791344d1f172f0eecace019fc8f28e874167f504b30833",
+      "gitBlobSha": "cd35807880a43fa5d41993f23477a4b89d947ee6"
+    },
+    {
+      "path": "validate_catalog.py",
+      "bytes": 5576,
+      "sha256": "6974ee07a2daa11f444b1d29e4558b9384abba634779f569dc71d3e35aacac00",
+      "gitBlobSha": "b1d6613e620dcbb429beb69416915e2ebbe76395"
+    },
+    {
+      "path": "workflows.json",
+      "bytes": 16466,
+      "sha256": "977565accc7d0c7b95f31ab199b67c089f584c7a96007cae03f33339e487616b",
+      "gitBlobSha": "a03a1f13ef60257481d8298ddc93c93622b4360a"
+    }
+  ]
+}
