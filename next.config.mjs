@@ -1,2 +1,2 @@
-const nextConfig={poweredByHeader:false,outputFileTracingIncludes:{'/api/mcp':['./skills/**/*']}};
+const nextConfig={poweredByHeader:false,outputFileTracingIncludes:{'/api/**':['./skills/**/*','./config/*.json','./docs/implementation/contracts/*.json']}};
 export default nextConfig;

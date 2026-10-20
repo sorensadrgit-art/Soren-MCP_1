@@ -1,0 +1,12 @@
+# Copy into .github/dependabot.yml only after owner activation and entitlement review.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+      time: '07:17'
+      timezone: Etc/UTC
+    open-pull-requests-limit: 1
+    labels: [dependencies]
+    # One open proposal is stricter than the three-open budget. No unrelated grouping or automatic merge.

@@ -1,0 +1,7 @@
+{
+  "status": "NOT_RUN",
+  "manifest": null,
+  "productionModified": false,
+  "updaterMode": "observe",
+  "reason": "No owner-reviewed production artifact, authenticated provenance, signing entitlement, independent one-minute watcher or release authorization has been provisioned. This status envelope is deliberately not a deployable release manifest."
+}

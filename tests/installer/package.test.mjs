@@ -1,0 +1,32 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
+
+test('actual npm tarball installs offline and its executable inspects six isolated clients', { timeout: 90000 }, async t => {
+  const root = fileURLToPath(new URL('../../', import.meta.url));
+  const staging = await fs.mkdtemp(path.join(os.tmpdir(), 'soren-package-test-'));
+  t.after(() => fs.rm(staging, { recursive: true, force: true }));
+  const packed = JSON.parse(execFileSync(process.execPath, [path.join(root, 'scripts', 'package-installer.mjs'), path.join(staging, 'artifacts')], { cwd: root, encoding: 'utf8', timeout: 60000, windowsHide: true }));
+  const manifest = JSON.parse(await fs.readFile(packed.manifestPath, 'utf8'));
+  assert.equal(manifest.sha256, createHash('sha256').update(await fs.readFile(packed.artifactPath)).digest('hex'));
+  assert.equal(manifest.signed, false);
+  assert.ok(manifest.files.includes('npm-shrinkwrap.json'));
+  assert.ok(!manifest.files.some(file => /(?:\.env|local-inventory|\.before)$/.test(file)));
+  const installation = path.join(staging, 'installation');
+  const npmCli = process.env.npm_execpath || path.join(path.dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npm-cli.js');
+  execFileSync(process.execPath, [npmCli, 'install', '--ignore-scripts', '--no-audit', '--no-fund', '--offline', '--prefix', installation, packed.artifactPath], { encoding: 'utf8', timeout: 60000, windowsHide: true });
+  const fixtureHome = path.join(staging, 'fixture-home');
+  await fs.mkdir(fixtureHome);
+  const cli = path.join(installation, 'node_modules', 'soren-agents-installer', 'scripts', 'setup-agents.mjs');
+  const output = execFileSync(process.execPath, [cli, 'inspect', '--agents', 'all'], { cwd: fixtureHome, encoding: 'utf8', timeout: 30000, windowsHide: true, env: { ...process.env, USERPROFILE: fixtureHome, HOME: fixtureHome, LOCALAPPDATA: path.join(fixtureHome,'AppData','Local'), APPDATA: path.join(fixtureHome,'AppData','Roaming'), CODEX_HOME: '', PATH: '' } });
+  const report = JSON.parse(output);
+  assert.equal(report.clients.length, 6);
+  assert.ok(report.clients.every(client => client.detection === 'EXECUTABLE_MISSING'));
+  assert.equal(report.residentService, false);
+  await assert.rejects(fs.access(path.join(fixtureHome, '.soren-installer')));
+});

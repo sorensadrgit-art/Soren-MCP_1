@@ -38,7 +38,7 @@ test("Router instructions cannot overrule host agent, user, or project instructi
 
 test("Every client has a correct native configuration with a single endpoint and consistent alias",()=>{
   assert.ok(/^https:\/\/[^ ]+\/api\/mcp$/.test(ENDPOINT));
-  for(const agent of ["factory","codex","antigravity","opencode"]){
+  for(const agent of ["factory","codex","antigravity","opencode","claude","qwen"]){
     const config=getClientSnippet(agent);
     assert.ok(config.includes(ENDPOINT),agent);
     assert.match(config,/soren-skills/,agent);
@@ -53,6 +53,8 @@ test("Every client has a correct native configuration with a single endpoint and
   assert.equal(open.mcp.servers["soren-skills"].type,"remote");
   assert.equal(open.mcp.servers["soren-skills"].disabled,false);
   assert.match(CLIENT_SNIPPETS.codex,/\[mcp_servers\.soren-skills\]/);
+  assert.deepEqual(JSON.parse(CLIENT_SNIPPETS.claude).mcpServers['soren-skills'],{type:'http',url:ENDPOINT});
+  assert.deepEqual(JSON.parse(CLIENT_SNIPPETS.qwen).mcpServers['soren-skills'],{httpUrl:ENDPOINT});
   assert.throws(()=>getClientSnippet("unknown"),/Unsupported/);
 });
 

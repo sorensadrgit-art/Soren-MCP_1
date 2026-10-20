@@ -1,0 +1,94 @@
+name: Owner reviewed production artifact producer
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact reviewed current stable HEAD
+        type: string
+        required: true
+      expected_parent:
+        description: Current production deployment ID; no deployment occurs here
+        type: string
+        required: true
+      catalog_generation:
+        type: string
+        required: true
+      schema_minimum:
+        type: string
+        required: true
+      schema_maximum:
+        type: string
+        required: true
+      approval_ids:
+        description: JSON array of reserved approval IDs; owner authorization occurs later
+        type: string
+        required: true
+permissions:
+  contents: read
+  actions: read
+  deployments: read
+concurrency:
+  group: reviewed-production-build
+  cancel-in-progress: false
+jobs:
+  build:
+    if: ${{ github.ref == 'refs/heads/stable' && vars.SOREN_RELEASE_BUILD_ENABLED == 'true' }}
+    environment: production-release-build
+    runs-on: ${{ vars.SOREN_RELEASE_BUILD_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 45
+    permissions:
+      contents: read
+      actions: read
+      deployments: read
+      id-token: write
+    steps:
+      - name: Require exact source and protected human review environment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]]
+          test "$SOURCE_SHA" = "$EXPECTED_SHA"
+          gh api "repos/$GH_REPO/environments/production-release-build" --jq '.protection_rules[] | select(.type == "required_reviewers") | .reviewers | length' | grep -qE '^[1-9][0-9]*$'
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ inputs.source_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Produce and verify exact signed candidate without deploying
+        env:
+          SOREN_REVIEWED_SOURCE_SHA: ${{ inputs.source_sha }}
+          SOREN_EXPECTED_PARENT_DEPLOYMENT_ID: ${{ inputs.expected_parent }}
+          SOREN_CATALOG_GENERATION: ${{ inputs.catalog_generation }}
+          SOREN_SCHEMA_MINIMUM: ${{ inputs.schema_minimum }}
+          SOREN_SCHEMA_MAXIMUM: ${{ inputs.schema_maximum }}
+          SOREN_RELEASE_APPROVAL_IDS: ${{ inputs.approval_ids }}
+          SOREN_RELEASE_PROJECT_ID: ${{ vars.SOREN_RELEASE_PROJECT_ID }}
+          SOREN_RELEASE_TEAM_ID: ${{ vars.SOREN_RELEASE_TEAM_ID }}
+          SOREN_BUILD_ENVIRONMENT: production-release-build
+          SOREN_BUILD_TOOLCHAIN_APPROVED: ${{ vars.SOREN_BUILD_TOOLCHAIN_APPROVED }}
+          SOREN_BUILD_TOOLCHAIN_REVIEW_REF: ${{ vars.SOREN_BUILD_TOOLCHAIN_REVIEW_REF }}
+          SOREN_BUILD_TOOLCHAIN_ROOT: ${{ vars.SOREN_BUILD_TOOLCHAIN_ROOT }}
+          SOREN_BUILD_TOOLCHAIN_MANIFEST: ${{ vars.SOREN_BUILD_TOOLCHAIN_MANIFEST }}
+          SOREN_BUILD_TOOLCHAIN_SHA256: ${{ vars.SOREN_BUILD_TOOLCHAIN_SHA256 }}
+          SOREN_VERCEL_CLI_PATH: ${{ vars.SOREN_VERCEL_CLI_PATH }}
+          SOREN_VERCEL_CLI_SHA256: ${{ vars.SOREN_VERCEL_CLI_SHA256 }}
+          SOREN_CANDIDATE_OUTPUT: ${{ runner.temp }}/reviewed-candidate
+          VERCEL_TOKEN: ${{ secrets.VERCEL_BUILD_READ_TOKEN }}
+        run: npm run release:produce
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: reviewed-candidate
+          path: ${{ runner.temp }}/reviewed-candidate/
+          if-no-files-found: error
+          retention-days: 7
+      # No PR trigger, deployment, promotion, owner approval grant or signing key.
+      # Sigstore uses GitHub OIDC and verifies the exact workflow SAN before upload.
+      # Candidate evidence is isolated CI only. Promotion needs a separate trusted
+      # staged verifier and a new attestation over this same artifact and fresh evidence.
+      # Its changed manifest needs a new releaseId and fresh exact owner authorization.

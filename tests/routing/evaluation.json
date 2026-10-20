@@ -1,0 +1,639 @@
+{
+  "schemaVersion": 1,
+  "labelReview": "developer_authored_human_review_pending",
+  "note": "Labels are frozen before scoring this candidate. They are not represented as human approval.",
+  "tasks": [
+    {
+      "id": "ROUTE-001",
+      "category": "direct",
+      "task": "Audit WCAG keyboard focus",
+      "acceptableTopThree": [
+        "accessibility"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-002",
+      "category": "direct",
+      "task": "Create GSAP ScrollTrigger camera animation",
+      "acceptableTopThree": [
+        "motion-systems"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-003",
+      "category": "direct",
+      "task": "Configure MCP Streamable HTTP clients",
+      "acceptableTopThree": [
+        "mcp-integration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-004",
+      "category": "direct",
+      "task": "Rank and select approved skill catalog entries",
+      "acceptableTopThree": [
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-005",
+      "category": "direct",
+      "task": "Fix screen reader ARIA labels",
+      "acceptableTopThree": [
+        "accessibility"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-006",
+      "category": "direct",
+      "task": "Design Three.js shaders and cinematic motion",
+      "acceptableTopThree": [
+        "motion-systems"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-007",
+      "category": "direct",
+      "task": "Integrate remote MCP connector authentication",
+      "acceptableTopThree": [
+        "mcp-integration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-008",
+      "category": "direct",
+      "task": "Search and discover approved agent skills",
+      "acceptableTopThree": [
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-009",
+      "category": "direct",
+      "task": "Check accessible contrast and focus",
+      "acceptableTopThree": [
+        "accessibility"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-010",
+      "category": "direct",
+      "task": "Build React Three Fiber animation",
+      "acceptableTopThree": [
+        "motion-systems"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-011",
+      "category": "mixed",
+      "task": "Build accessible React Three Fiber controls",
+      "acceptableTopThree": [
+        "accessibility",
+        "motion-systems"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-012",
+      "category": "mixed",
+      "task": "Audit GSAP reduced motion and keyboard focus",
+      "acceptableTopThree": [
+        "accessibility",
+        "motion-systems"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-013",
+      "category": "mixed",
+      "task": "Configure an authenticated MCP skill catalog",
+      "acceptableTopThree": [
+        "mcp-integration",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-014",
+      "category": "mixed",
+      "task": "Rank motion skills for WebGL work",
+      "acceptableTopThree": [
+        "skill-orchestration",
+        "motion-systems"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-015",
+      "category": "mixed",
+      "task": "Inspect MCP tools for WCAG audits",
+      "acceptableTopThree": [
+        "mcp-integration",
+        "accessibility"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-016",
+      "category": "mixed",
+      "task": "Build an agent registry with Streamable HTTP",
+      "acceptableTopThree": [
+        "mcp-integration",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-017",
+      "category": "mixed",
+      "task": "Design cinematic scroll with screen reader support",
+      "acceptableTopThree": [
+        "motion-systems",
+        "accessibility"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-018",
+      "category": "mixed",
+      "task": "Find approved ARIA skills",
+      "acceptableTopThree": [
+        "accessibility",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-019",
+      "category": "mixed",
+      "task": "Configure a remote server and route substantial tasks",
+      "acceptableTopThree": [
+        "mcp-integration",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-020",
+      "category": "mixed",
+      "task": "Rank camera animation skill candidates",
+      "acceptableTopThree": [
+        "motion-systems",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-021",
+      "category": "mixed",
+      "task": "Improve keyboard focus in a Three.js editor",
+      "acceptableTopThree": [
+        "accessibility",
+        "motion-systems"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-022",
+      "category": "mixed",
+      "task": "Build a read-only skill directory MCP connector",
+      "acceptableTopThree": [
+        "mcp-integration",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-023",
+      "category": "mixed",
+      "task": "Add accessible client authentication forms",
+      "acceptableTopThree": [
+        "accessibility",
+        "mcp-integration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-024",
+      "category": "mixed",
+      "task": "Select approved cinematic animation references",
+      "acceptableTopThree": [
+        "motion-systems",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-025",
+      "category": "mixed",
+      "task": "Audit tool authentication and catalog search",
+      "acceptableTopThree": [
+        "mcp-integration",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-026",
+      "category": "trivial",
+      "task": "What is 2 plus 2?",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-027",
+      "category": "trivial",
+      "task": "Translate hola to English",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-028",
+      "category": "trivial",
+      "task": "Capitalize this sentence",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-029",
+      "category": "trivial",
+      "task": "Sort 3, 1, 2",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-030",
+      "category": "trivial",
+      "task": "Convert ten meters to feet",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-031",
+      "category": "trivial",
+      "task": "Name three colors",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-032",
+      "category": "trivial",
+      "task": "Reverse the letters abc",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-033",
+      "category": "trivial",
+      "task": "Write a thank-you sentence",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-034",
+      "category": "trivial",
+      "task": "Tell me a short joke",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-035",
+      "category": "trivial",
+      "task": "Put these words in alphabetical order",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-036",
+      "category": "provider",
+      "task": "Find skills on SkillsMP",
+      "acceptableTopThree": [
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-037",
+      "category": "provider",
+      "task": "Discover skills.sh skill catalog entries",
+      "acceptableTopThree": [
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-038",
+      "category": "provider",
+      "task": "Inspect an Anthropic skill resource",
+      "acceptableTopThree": [
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-039",
+      "category": "provider",
+      "task": "Find an MCP server in the official registry",
+      "acceptableTopThree": [
+        "mcp-integration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-040",
+      "category": "provider",
+      "task": "Search SkillsMP for ARIA accessibility",
+      "acceptableTopThree": [
+        "accessibility",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-041",
+      "category": "provider",
+      "task": "Search Skills.sh for GSAP animation",
+      "acceptableTopThree": [
+        "motion-systems",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-042",
+      "category": "provider",
+      "task": "Search the Anthropic catalog for agent skills",
+      "acceptableTopThree": [
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-043",
+      "category": "provider",
+      "task": "Inspect a remote MCP connector",
+      "acceptableTopThree": [
+        "mcp-integration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-044",
+      "category": "provider",
+      "task": "Compare external skill providers",
+      "acceptableTopThree": [
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-045",
+      "category": "provider",
+      "task": "Find approved local skills before external discovery",
+      "acceptableTopThree": [
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-046",
+      "category": "conflicting_names",
+      "task": "A provider candidate named accessibility still needs review",
+      "acceptableTopThree": [
+        "accessibility",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-047",
+      "category": "conflicting_names",
+      "task": "Compare two skill entries with the same name",
+      "acceptableTopThree": [
+        "skill-orchestration",
+        "mcp-integration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-048",
+      "category": "conflicting_names",
+      "task": "Find nested skill paths in an agent registry",
+      "acceptableTopThree": [
+        "skill-orchestration",
+        "mcp-integration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-049",
+      "category": "conflicting_names",
+      "task": "Inspect two motion-systems catalog candidates",
+      "acceptableTopThree": [
+        "motion-systems",
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-050",
+      "category": "conflicting_names",
+      "task": "Distinguish MCP server names from skill names",
+      "acceptableTopThree": [
+        "skill-orchestration",
+        "mcp-integration"
+      ],
+      "bypass": false,
+      "options": {}
+    },
+    {
+      "id": "ROUTE-051",
+      "category": "explicit_choice",
+      "task": "Use approved mcp-integration for a WebGL problem",
+      "acceptableTopThree": [
+        "mcp-integration"
+      ],
+      "bypass": false,
+      "options": {
+        "preferredSkills": [
+          "mcp-integration"
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-052",
+      "category": "explicit_choice",
+      "task": "Use accessibility for a skill search",
+      "acceptableTopThree": [
+        "accessibility"
+      ],
+      "bypass": false,
+      "options": {
+        "preferredSkills": [
+          "accessibility"
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-053",
+      "category": "explicit_choice",
+      "task": "Use motion-systems for this connector description",
+      "acceptableTopThree": [
+        "motion-systems"
+      ],
+      "bypass": false,
+      "options": {
+        "preferredSkills": [
+          "motion-systems"
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-054",
+      "category": "explicit_choice",
+      "task": "Use skill-orchestration for camera references",
+      "acceptableTopThree": [
+        "skill-orchestration"
+      ],
+      "bypass": false,
+      "options": {
+        "preferredSkills": [
+          "skill-orchestration"
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-055",
+      "category": "explicit_choice",
+      "task": "Use accessibility for this remote server review",
+      "acceptableTopThree": [
+        "accessibility"
+      ],
+      "bypass": false,
+      "options": {
+        "preferredSkills": [
+          "accessibility"
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-056",
+      "category": "unavailable",
+      "task": "GSAP WebGL camera",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {
+        "unavailableSkills": [
+          "motion-systems"
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-057",
+      "category": "unavailable",
+      "task": "WCAG ARIA keyboard focus",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {
+        "unavailableSkills": [
+          "accessibility"
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-058",
+      "category": "unavailable",
+      "task": "Remote MCP Streamable HTTP",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {
+        "unavailableSkills": [
+          "mcp-integration"
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-059",
+      "category": "unavailable",
+      "task": "Rank approved skill catalogs",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {
+        "unavailableSkills": [
+          "skill-orchestration"
+        ]
+      }
+    },
+    {
+      "id": "ROUTE-060",
+      "category": "unavailable",
+      "task": "Cinematic Three.js animation",
+      "acceptableTopThree": [],
+      "bypass": true,
+      "options": {
+        "unavailableSkills": [
+          "motion-systems"
+        ]
+      }
+    }
+  ]
+}

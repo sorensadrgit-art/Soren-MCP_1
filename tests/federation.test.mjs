@@ -73,9 +73,10 @@ test("provider outage is isolated and reported without losing healthy candidates
 });
 
 test("deduplicate cross-source skills, retain provenance, and expose ranking reasons",()=>{
+  const identity={repositoryUrl:"https://github.com/nexu-io/open-design",skillPath:"skills/gsap-performance",resolvedCommit:"a".repeat(40),manifestSha256:"b".repeat(64)};
   const rows=[
-    {provider:"skillsmp",id:"a",name:"gsap-performance",description:"GSAP performance",source:"nexu-io/open-design",popularity:100,reviewStatus:"requires_review"},
-    {provider:"skills_sh",id:"b",name:"gsap-performance",description:"GSAP performance",source:"nexu-io/open-design",popularity:300,reviewStatus:"requires_review"},
+    {provider:"skillsmp",id:"a",name:"gsap-performance",description:"GSAP performance",source:"nexu-io/open-design",identity,popularity:100,reviewStatus:"requires_review"},
+    {provider:"skills_sh",id:"b",name:"gsap-performance",description:"GSAP performance",source:"nexu-io/open-design",identity,popularity:300,reviewStatus:"requires_review"},
     {provider:"skillsmp",id:"c",name:"generic",description:"helpful notes",source:"other/repo",popularity:99999,reviewStatus:"requires_review"}
   ];
   const sorted=rankCandidates(rows,"Optimize gsap performance");
@@ -84,6 +85,11 @@ test("deduplicate cross-source skills, retain provenance, and expose ranking rea
   assert.ok(sorted[0].score>0);
   assert.equal(sorted[0].popularity,300);
   assert.ok(sorted[0].reasons.length);
+});
+
+test("matching names and repository metadata cannot merge unresolved provider identities",()=>{
+  const rows=["skillsmp","skills_sh"].map(provider=>({provider,id:provider,name:"gsap-performance",source:"same/repo",description:"GSAP performance"}));
+  assert.equal(rankCandidates(rows,"GSAP performance").length,2);
 });
 
 test("federated routing retains locally approved primary and marks remote skills non-activatable",async()=>{

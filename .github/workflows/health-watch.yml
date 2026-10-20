@@ -1,0 +1,41 @@
+name: Independent best effort health watch
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+permissions:
+  contents: read
+concurrency:
+  group: independent-health-watch
+  cancel-in-progress: false
+jobs:
+  observe:
+    if: ${{ vars.SOREN_WATCHER_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: stable
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Independent read-only probe
+        env:
+          SOREN_WATCH_GATEWAY_URL: ${{ vars.SOREN_WATCH_GATEWAY_URL }}
+          SOREN_WATCHER_ACCESS_TOKEN: ${{ secrets.SOREN_WATCHER_ACCESS_TOKEN }}
+          SOREN_GATEWAY_FAILURE_DOMAIN: ${{ vars.SOREN_GATEWAY_FAILURE_DOMAIN }}
+          SOREN_WATCHER_FAILURE_DOMAIN: ${{ vars.SOREN_WATCHER_FAILURE_DOMAIN }}
+          SOREN_WATCHER_DELIVERY_ENABLED: ${{ vars.SOREN_WATCHER_DELIVERY_ENABLED }}
+          SOREN_WATCHER_CADENCE_SECONDS: '900'
+          SOREN_ENVIRONMENT: production
+        run: node scripts/health-once.mjs > health-observation.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: independent-health-observation
+          path: health-observation.json
+          retention-days: 30
+          if-no-files-found: error
+      # GitHub scheduled runs are best effort. This 15-minute watch cannot qualify the one-minute promotion probation gate.

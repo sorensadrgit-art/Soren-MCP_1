@@ -1,0 +1,20 @@
+{
+  "enabled": false,
+  "identities": [
+    {
+      "certificateIssuer": "https://token.actions.githubusercontent.com",
+      "certificateIdentityURI": "https://github.com/sorensadrgit-art/Soren-MCP_1/.github/workflows/release-build.yml@refs/heads/stable",
+      "repository": "https://github.com/sorensadrgit-art/Soren-MCP_1",
+      "workflow": ".github/workflows/release-build.yml",
+      "ref": "refs/heads/stable"
+    },
+    {
+      "certificateIssuer": "https://token.actions.githubusercontent.com",
+      "certificateIdentityURI": "https://github.com/sorensadrgit-art/Soren-MCP_1/.github/workflows/staged-verification.yml@refs/heads/stable",
+      "repository": "https://github.com/sorensadrgit-art/Soren-MCP_1",
+      "workflow": ".github/workflows/staged-verification.yml",
+      "ref": "refs/heads/stable"
+    }
+  ],
+  "status": "BLOCKED: owner must verify the exact workflow identity, source review, signing entitlement and environment protection"
+}

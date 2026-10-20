@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import {ENDPOINT,TOOL_NAMES,MCP_SERVER_NAME} from "../lib/client-contract.mjs";
+import {verificationEndpoint} from '../lib/contracts/endpoint.mjs';
 
-const endpoint=(process.argv[2]||ENDPOINT).trim();
-assert(/^https:\/\/[a-z0-9.-]+\/api\/mcp$/.test(endpoint),"Require an HTTPS MCP endpoint");
+const endpoint=verificationEndpoint((process.argv[2]||ENDPOINT).trim());
 const checks=[]; let requests=0;
 function check(label,success,detail="",optional=false){
   checks.push({label,success,optional});
@@ -50,7 +50,7 @@ async function guarded(label,run,optional=false){
 await guarded("Responsive web dashboard and connection navigator",async()=>{
   const r=await fetch(new URL(endpoint).origin,{signal:AbortSignal.timeout(12000)});
   const html=await r.text();
-  return r.status===200&&html.includes("Connect without conflicts.")&&html.includes("Factory Droid")&&html.includes("OpenCode");
+  return r.status===200&&html.includes("Connect without conflicts.")&&['Factory Droid','Codex Desktop','Antigravity','OpenCode','Claude Code','Qwen Code'].every(name=>html.includes(name));
 });
 await guarded("Legacy 2025 handshake and branded server identity",async()=>{
   const r=await rpc("initialize",{protocolVersion:"2025-06-18",capabilities:{},clientInfo:{name:"legacy-audit",version:"1"}});
@@ -127,6 +127,14 @@ await guarded("Cross-origin browser request rejected",async()=>{
   const r=await fetch(endpoint,{method:"POST",headers:{"Origin":"https://untrusted.invalid",
     "Content-Type":"application/json"},body:"{}",signal:AbortSignal.timeout(8000)});
   return r.status===403;
+});
+await guarded('Reject supplied malformed identity even for a bundled public read',async()=>{
+  const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Basic invalid',Accept:'application/json, text/event-stream'},body:JSON.stringify({jsonrpc:'2.0',id:900,method:'tools/call',params:{name:'list_skills',arguments:{}}}),signal:AbortSignal.timeout(8000)});
+  return r.status===401;
+});
+await guarded('Reject oversized streaming request body',async()=>{
+  const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:901,method:'tools/call',params:{name:'route_task',arguments:{task:'x'.repeat(17000)}}}),signal:AbortSignal.timeout(8000)});
+  return r.status===413;
 });
 const failing=checks.filter(x=>!x.success&&!x.optional);
 const warnings=checks.filter(x=>!x.success&&x.optional);

@@ -1,0 +1,22 @@
+name: Dependency proposal budget
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '41 7 * * *'
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  inspect:
+    if: ${{ vars.SOREN_DEPENDENCY_PROPOSALS_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check the single Dependabot proposal queue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          count=$(gh pr list --state open --author 'app/dependabot' --json number --jq length)
+          test "$count" -le 3
+          echo "Open dependency proposals: $count. Human review and required checks remain mandatory."

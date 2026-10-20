@@ -1,0 +1,114 @@
+name: Owner reviewed exact release
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact reviewed commit already on stable
+        required: true
+        type: string
+      candidate_run_id:
+        description: Owner-reviewed trusted CI run containing the reviewed-candidate artifact
+        required: true
+        type: string
+      action:
+        description: Stage or manually promote the exact staged production artifact
+        type: choice
+        options: [verify, stage, promote]
+        default: verify
+      deployment_id:
+        description: Exact previously staged deployment ID for promotion
+        type: string
+      policy_generation:
+        description: Exact owner-approved current policy generation
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: production-release
+  cancel-in-progress: false
+jobs:
+  release:
+    environment: production-owner-review
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Reject an unbound source or candidate path
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+          CANDIDATE_RUN: ${{ inputs.candidate_run_id }}
+          GENERATION: ${{ inputs.policy_generation }}
+        run: |
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]]
+          [[ "$CANDIDATE_RUN" =~ ^[0-9]+$ ]]
+          [[ "$GENERATION" =~ ^[0-9]+$ ]]
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ inputs.source_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Require stable ancestry and an actual protected owner environment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          git merge-base --is-ancestor HEAD origin/stable
+          gh api "repos/$GH_REPO/environments/production-owner-review" --jq '.protection_rules[] | select(.type == "required_reviewers") | .reviewers | length' | grep -qE '^[1-9][0-9]*$'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Provision exact owner-managed trust outside the candidate
+        env:
+          SOREN_RELEASE_TRUST_JSON: ${{ vars.SOREN_RELEASE_TRUST_JSON }}
+          SOREN_RELEASE_TRUST_SHA256: ${{ vars.SOREN_RELEASE_TRUST_SHA256 }}
+        run: |
+          umask 077
+          node --input-type=module <<'NODE'
+          import { createHash } from 'node:crypto';
+          import { writeFileSync, appendFileSync } from 'node:fs';
+          import { join } from 'node:path';
+          const bytes = process.env.SOREN_RELEASE_TRUST_JSON;
+          if (!bytes || !/^[a-f0-9]{64}$/.test(process.env.SOREN_RELEASE_TRUST_SHA256 ?? '') || createHash('sha256').update(bytes).digest('hex') !== process.env.SOREN_RELEASE_TRUST_SHA256) throw new Error('owner_trust_digest_mismatch');
+          JSON.parse(bytes);
+          const path = join(process.env.RUNNER_TEMP, 'owner-release-trust.json');
+          writeFileSync(path, bytes, { flag: 'wx', mode: 0o600 });
+          appendFileSync(process.env.GITHUB_ENV, `SOREN_RELEASE_TRUST_FILE=${path}\n`);
+          NODE
+      - run: npm ci --ignore-scripts
+      - run: npm run test:contracts && npm run test:security && npm run test:operations && npm run test:updates
+      - name: Retrieve the reviewed candidate without rebuilding
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          CANDIDATE_RUN: ${{ inputs.candidate_run_id }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          gh api "repos/$GH_REPO/actions/runs/$CANDIDATE_RUN" --jq 'select(.event == "workflow_dispatch" and .head_branch == "stable" and .conclusion == "success" and (.path == ".github/workflows/release-build.yml" or .path == ".github/workflows/staged-verification.yml")) | .head_sha' | grep -Fx "$SOURCE_SHA"
+          gh run download "$CANDIDATE_RUN" --repo "$GH_REPO" --name reviewed-candidate --dir release/candidates/owner-reviewed
+      - name: Verify identity or execute the narrowly authorized durable release flow
+        env:
+          CANDIDATE: release/candidates/owner-reviewed
+          ACTION: ${{ inputs.action }}
+          DEPLOYMENT: ${{ inputs.deployment_id }}
+          GENERATION: ${{ inputs.policy_generation }}
+          SOREN_RELEASE_PROJECT_ID: ${{ vars.SOREN_RELEASE_PROJECT_ID }}
+          SOREN_RELEASE_TEAM_ID: ${{ vars.SOREN_RELEASE_TEAM_ID }}
+          SOREN_RELEASE_ENVIRONMENT: production
+          SOREN_PRODUCTION_DOMAINS: ${{ vars.SOREN_PRODUCTION_DOMAINS }}
+          SOREN_WORKSPACE_ID: ${{ vars.SOREN_WORKSPACE_ID }}
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          SOREN_VERCEL_CLI_PATH: ${{ vars.SOREN_VERCEL_CLI_PATH }}
+          SOREN_VERCEL_CLI_SHA256: ${{ vars.SOREN_VERCEL_CLI_SHA256 }}
+        run: |
+          case "$ACTION" in
+            verify) node scripts/verify-release.mjs --input "$CANDIDATE" ;;
+            stage) node scripts/release.mjs --input "$CANDIDATE" --stage --policy-generation "$GENERATION" ;;
+            promote) test -n "$DEPLOYMENT" && node scripts/release.mjs --input "$CANDIDATE" --deployment "$DEPLOYMENT" --manual --policy-generation "$GENERATION" ;;
+            *) exit 1 ;;
+          esac
+      # Artifact building/signing happens once in the separately owner-approved trusted build environment.
+      # No PR trigger, pull_request_target, arbitrary workflow_run, self-signing key, or direct production fallback exists.

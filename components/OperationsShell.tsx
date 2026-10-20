@@ -1,0 +1,4 @@
+import Link from 'next/link';
+export default function OperationsShell({title,description,children}:{title:string;description:string;children:React.ReactNode}){
+  return <div className="shell"><header className="nav"><Link href="/" className="identity"><span className="mark">S/</span><span>SOREN <b>UNIVERSAL</b></span></Link><nav className="opsNav" aria-label="Main"><Link href="/">Discover</Link><Link href="/connect">Connect</Link><Link href="/registry">Library</Link><Link href="/reviews">Reviews</Link><Link href="/health">Health</Link><Link href="/updates">Updates</Link><Link href="/manage">Account</Link></nav></header><main className="operationsMain"><span className="tiny">SOREN OPERATIONS</span><h1 className="operationsTitle">{title}</h1><p className="setupIntro">{description}</p>{children}</main></div>;
+}

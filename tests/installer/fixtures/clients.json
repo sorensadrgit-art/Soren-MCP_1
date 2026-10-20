@@ -1,0 +1,8 @@
+{
+  "recordedAt": "2026-10-20T00:00:00Z",
+  "platform": "win32",
+  "versions": { "factory": "0.244.0", "codex": "0.157.1", "antigravity": "1.4.2", "opencode": "2.0.32", "claude": "2.1.283", "qwen": "0.25.3" },
+  "provenance": { "factory": "local --version", "codex": "local --version", "antigravity": "local agy --version", "opencode": "work-package recorded baseline, executable absent from PATH", "claude": "local --version", "qwen": "local --version" },
+  "jsonc": "﻿{\r\n  // Keep Unicode and unrelated credentials local.\r\n  \"theme\": \"夜\",\r\n  \"credential\": \"fixture-secret-never-in-journal\",\r\n  \"other\": { \"enabled\": true },\r\n}\r\n",
+  "toml": "﻿# Keep Unicode and unrelated credentials local.\r\ntheme = \"夜\"\r\ncredential = \"fixture-secret-never-in-journal\"\r\n[other]\r\nenabled = true\r\n"
+}

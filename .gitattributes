@@ -1,2 +1,18 @@
-# Preserve exact handoff bytes so the package integrity manifest remains valid.
+# Keep release-bound text bytes stable across Windows and CI checkouts.
+* text=auto
+*.json text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.css text eol=lf
+*.sql text eol=lf
+*.ps1 text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+# Preserve supplied and generated artifact bytes exactly.
+skills/** -text
 docs/implementation/** -text
+specs/soren-router-work-package/** -text
+artifacts/** -text

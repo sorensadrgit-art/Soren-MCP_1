@@ -1,0 +1,128 @@
+name: Owner reviewed staged production verification
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact current reviewed stable HEAD used by the signed candidate
+        type: string
+        required: true
+      producer_run_id:
+        description: Successful trusted release-build workflow run containing reviewed-candidate
+        type: string
+        required: true
+      staged_deployment:
+        description: Existing exact production-configured deployment with no production domains
+        type: string
+        required: true
+      expected_parent:
+        type: string
+        required: true
+      catalog_generation:
+        type: string
+        required: true
+      schema_minimum:
+        type: string
+        required: true
+      schema_maximum:
+        type: string
+        required: true
+      approval_ids:
+        description: JSON array of fresh reserved approval IDs for the new exact manifest
+        type: string
+        required: true
+permissions:
+  contents: read
+  actions: read
+  deployments: read
+concurrency:
+  group: staged-production-verification
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: ${{ github.ref == 'refs/heads/stable' && vars.SOREN_STAGED_VERIFICATION_ENABLED == 'true' }}
+    environment: production-staged-verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      actions: read
+      deployments: read
+      id-token: write
+    steps:
+      - name: Require exact source, human review protection and successful trusted producer
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+          EXPECTED_SHA: ${{ github.sha }}
+          PRODUCER_RUN_ID: ${{ inputs.producer_run_id }}
+        run: |
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]]
+          [[ "$PRODUCER_RUN_ID" =~ ^[0-9]+$ ]]
+          test "$SOURCE_SHA" = "$EXPECTED_SHA"
+          gh api "repos/$GH_REPO/environments/production-staged-verification" --jq '.protection_rules[] | select(.type == "required_reviewers") | .reviewers | length' | grep -qE '^[1-9][0-9]*$'
+          gh api "repos/$GH_REPO/actions/runs/$PRODUCER_RUN_ID" > "$RUNNER_TEMP/producer-run.json"
+          jq -e --arg sha "$SOURCE_SHA" --arg repo "$GH_REPO" '.event == "workflow_dispatch" and .conclusion == "success" and .head_branch == "stable" and .head_sha == $sha and .repository.full_name == $repo and .path == ".github/workflows/release-build.yml"' "$RUNNER_TEMP/producer-run.json"
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ inputs.source_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install reviewed locked source dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Materialize owner managed public trust roots outside the candidate
+        env:
+          OWNER_TRUST_JSON: ${{ vars.SOREN_RELEASE_TRUST_JSON }}
+          OWNER_TRUST_SHA256: ${{ vars.SOREN_RELEASE_TRUST_SHA256 }}
+        run: |
+          [[ "$OWNER_TRUST_SHA256" =~ ^[a-f0-9]{64}$ ]]
+          umask 077
+          set -o noclobber
+          printf '%s' "$OWNER_TRUST_JSON" > "$RUNNER_TEMP/release-trust.json"
+          printf '%s  %s\n' "$OWNER_TRUST_SHA256" "$RUNNER_TEMP/release-trust.json" | sha256sum --check --status
+      - name: Download exact candidate from the verified producer run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PRODUCER_RUN_ID: ${{ inputs.producer_run_id }}
+        run: gh run download "$PRODUCER_RUN_ID" --repo "$GH_REPO" --name reviewed-candidate --dir "$RUNNER_TEMP/stage-input"
+      - name: Verify staged bytes, real browser flows and fifteen minute observation, then attest
+        env:
+          SOREN_REVIEWED_SOURCE_SHA: ${{ inputs.source_sha }}
+          SOREN_EXPECTED_PARENT_DEPLOYMENT_ID: ${{ inputs.expected_parent }}
+          SOREN_CATALOG_GENERATION: ${{ inputs.catalog_generation }}
+          SOREN_SCHEMA_MINIMUM: ${{ inputs.schema_minimum }}
+          SOREN_SCHEMA_MAXIMUM: ${{ inputs.schema_maximum }}
+          SOREN_RELEASE_APPROVAL_IDS: ${{ inputs.approval_ids }}
+          SOREN_RELEASE_PROJECT_ID: ${{ vars.SOREN_RELEASE_PROJECT_ID }}
+          SOREN_RELEASE_TEAM_ID: ${{ vars.SOREN_RELEASE_TEAM_ID }}
+          SOREN_PRODUCTION_DOMAINS: ${{ vars.SOREN_PRODUCTION_DOMAINS }}
+          SOREN_ADMIN_ORIGIN: ${{ vars.SOREN_ADMIN_ORIGIN }}
+          SOREN_RELEASE_TRUST_FILE: ${{ runner.temp }}/release-trust.json
+          SOREN_RELEASE_TRUST_SHA256: ${{ vars.SOREN_RELEASE_TRUST_SHA256 }}
+          SOREN_STAGED_ENVIRONMENT: production-staged-verification
+          SOREN_PRODUCTION_ARTIFACT_TRUST_APPROVED: ${{ vars.SOREN_PRODUCTION_ARTIFACT_TRUST_APPROVED }}
+          SOREN_STAGED_DEPLOYMENT_ID: ${{ inputs.staged_deployment }}
+          SOREN_STAGED_CANDIDATE_INPUT: ${{ runner.temp }}/stage-input
+          SOREN_CANDIDATE_OUTPUT: ${{ runner.temp }}/reviewed-candidate
+          SOREN_PRIVATE_PROBE_VERSION_ID: ${{ vars.SOREN_PRIVATE_PROBE_VERSION_ID }}
+          SOREN_PRIVATE_PROBE_MANIFEST_SHA256: ${{ vars.SOREN_PRIVATE_PROBE_MANIFEST_SHA256 }}
+          SOREN_PRIVATE_PROBE_CONTENT_SHA256: ${{ vars.SOREN_PRIVATE_PROBE_CONTENT_SHA256 }}
+          SOREN_RELEASE_OBSERVER_ACCESS_TOKEN: ${{ secrets.SOREN_RELEASE_OBSERVER_ACCESS_TOKEN }}
+          SOREN_PRIVATE_READ_ACCESS_TOKEN: ${{ secrets.SOREN_PRIVATE_READ_ACCESS_TOKEN }}
+          SOREN_VERCEL_PROTECTION_BYPASS: ${{ secrets.SOREN_VERCEL_PROTECTION_BYPASS }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_READ_TOKEN }}
+        run: npm run release:verify-staged
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: reviewed-candidate
+          path: ${{ runner.temp }}/reviewed-candidate/
+          if-no-files-found: error
+          retention-days: 1
+      # No PR or scheduled trigger; no deploy, promotion, rebuild, owner grant or service role.
+      # Missing persisted independent watcher, readonly credentials, protected environment,
+      # exact trust roots or actual remote artifact file access fails BLOCKED.
+      # New manifest and release ID require separate exact human owner registration/authorization.

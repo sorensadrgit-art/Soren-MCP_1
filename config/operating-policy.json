@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "documentStatus": "proposed_for_implementation_not_active",
+  "publicMcp": {
+    "endpoint": "https://soren-shared-mcp-skills.vercel.app/api/mcp",
+    "alias": "soren-skills",
+    "readOnly": true,
+    "preserveEightToolNames": true,
+    "privateMutationTools": false
+  },
+  "installer": {
+    "userScope": true,
+    "residentService": false,
+    "scheduledDesktopUpdater": false,
+    "unknownClientVersion": "inspect_only",
+    "planExpiryHours": 24,
+    "idempotent": true,
+    "conflictPolicy": "preserve_and_replan",
+    "credentialLogging": false
+  },
+  "operations": {
+    "mode": "observe",
+    "selectedScheduleProfile": null,
+    "entitlementCheckRequired": true,
+    "automaticSpendUpgrade": false,
+    "schedulerProfiles": {
+      "frequent": {
+        "scheduler": "vercel_cron_entitled",
+        "dispatcherCronUtc": "*/5 * * * *",
+        "independentWatcherRequired": true
+      },
+      "budget": {
+        "scheduler": "vercel_daily_and_authorized_github_best_effort",
+        "dispatcherCronUtc": "23 7 * * *",
+        "watcherCronUtc": "7,22,37,52 * * * *",
+        "precisionClaim": "best_effort",
+        "unattendedPromotionPermittedWithoutIndependentMonitor": false
+      }
+    },
+    "health": {
+      "openAfterFreshFailures": 3,
+      "resolveAfterFreshSuccesses": 2,
+      "staleAfterCadenceMultiples": 3,
+      "incidentEscalationCooldownMinutes": 30,
+      "observationRetentionDays": 30,
+      "aggregateRetentionDays": 180,
+      "decisionRetentionDays": 365,
+      "maxJobExecutionSeconds": 45,
+      "leaseTtlSeconds": 120,
+      "leaseRenewalSeconds": 30,
+      "safeRetryDelaySeconds": [
+        30,
+        120,
+        600
+      ],
+      "respectRetryAfter": true,
+      "maxSafeAttempts": 3,
+      "externalNotificationsEnabled": false,
+      "defaultNotificationChannel": "authenticated_dashboard_inbox"
+    }
+  },
+  "discovery": {
+    "maxProviders": 3,
+    "maxReturnedExternalCandidates": 8,
+    "providerDeadlineMs": 3000,
+    "overallDeadlineMs": 5000,
+    "requestBodyMaxBytes": 16384,
+    "upstreamMetadataMaxBytes": 650000,
+    "instructionFileMaxBytes": 60000,
+    "stagedPackageMaxBytes": 2097152,
+    "publicCacheTtlSeconds": 600,
+    "negativeCacheTtlSeconds": 30,
+    "anonymousExpensiveRequestsPerMinutePerAddress": 6,
+    "anonymousExpensiveRequestsPerMinuteGlobal": 30,
+    "authenticatedExpensiveRequestsPerMinutePerGrant": 30,
+    "upstreamLimitsAlwaysApply": true,
+    "fullPromptForwarding": false
+  },
+  "performanceTargets": {
+    "warmLocalRouteP95Ms": 300,
+    "warmBundledReadP95Ms": 500,
+    "measured": false
+  },
+  "updates": {
+    "defaultMode": "observe",
+    "applicationArtifactMaxBytes": 134217728,
+    "applicationArtifactMaxFiles": 20000,
+    "stableChannelArmingRequired": true,
+    "armingExpiryDays": 30,
+    "maxPromotionsPer24Hours": 1,
+    "maxOpenDependencyProposals": 3,
+    "maxDependencyProposalsPerDay": 1,
+    "maxStagedCandidatesPerBatch": 50,
+    "fullEvidenceMaxAgeMinutes": 60,
+    "finalSmokeMaxAgeMinutes": 5,
+    "stagedObservationMinutes": 15,
+    "postPromotionProbationMinutes": 30,
+    "probationProbeMaxIntervalSeconds": 60,
+    "maximumAutomaticRollbacksPerRelease": 1,
+    "postRollbackCooldownMinutes": 60,
+    "signedIdentityRequired": true,
+    "expectedParentCasRequired": true,
+    "fencedLeaseRequired": true,
+    "unknownOutcomePolicy": "reconcile_before_retry",
+    "allowAutomaticDatabaseDownMigration": false,
+    "changedSkillInstructions": "stage_then_human_review",
+    "newDependencyPublishers": "human_review",
+    "applicationPromotion": "already_reviewed_exact_artifact_only_when_armed",
+    "localFiles": "explicit_installer_invocation_or_verified_native_updater_only",
+    "protectedPaths": [
+      "lib/security/",
+      "lib/updates/",
+      "lib/client-contract.mjs",
+      ".github/workflows/",
+      "installer/",
+      "supabase/migrations/",
+      "config/operating-policy.json"
+    ],
+    "policySelfModification": false,
+    "minimumSecureVersionRequired": true,
+    "revocationOverridesRollback": true
+  },
+  "activation": {
+    "healthJobsCreatedByThisPackage": false,
+    "updaterArmedByThisPackage": false,
+    "productionModifiedByThisPackage": false,
+    "workDispatched": false
+  }
+}

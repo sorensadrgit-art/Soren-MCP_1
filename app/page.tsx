@@ -1,26 +1,13 @@
 "use client";
 import {useState} from "react";
-import {CLIENT_SNIPPETS} from "../lib/client-contract.mjs";
-
-const DESKTOP_AGENTS=["factory","codex","antigravity","opencode"] as const;
-type DesktopAgent=typeof DESKTOP_AGENTS[number];
-const AGENT_LABELS:Record<DesktopAgent,string>={
-  factory:"Factory Droid",codex:"Codex Desktop",antigravity:"Antigravity",opencode:"OpenCode",
-};
-const AGENT_CONFIG_PATHS:Record<DesktopAgent,string>={
-  factory:"~/.factory/mcp.json",
-  codex:"~/.codex/config.toml",
-  antigravity:"~/.gemini/config/mcp_config.json",
-  opencode:"~/.config/opencode/opencode.json",
-};
-
+import ConnectionGuide from "../components/ConnectionGuide";
 
 type Candidate={name:string;provider:string;providers?:string[];description?:string;score?:number};
 type RouteResult={primary?:{name:string;description?:string}|null;publicSearchQuery?:string;
   discoveredCandidates?:Candidate[];providerStatus?:Record<string,{status:string;count:number}>;
   nextAction?:string;safetyPolicy?:string};
 const SAMPLES=["Cinematic GSAP WebGL and Three.js","React accessibility and Playwright testing","Python agent MCP integration"];
-const ENDPOINT="https://soren-shared-mcp-skills.vercel.app/api/mcp";
+
 
 function decodeMcp(text:string):RouteResult{
   let outer:any;
@@ -39,16 +26,6 @@ function decodeMcp(text:string):RouteResult{
 export default function Home(){
   const [query,setQuery]=useState(SAMPLES[0]),[pending,setPending]=useState(false);
   const [result,setResult]=useState<RouteResult|null>(null),[error,setError]=useState("");
-  const [activeAgent,setActiveAgent]=useState<DesktopAgent>("factory");
-  const [copyMessage,setCopyMessage]=useState("");
-  async function copyClientSnippet(){
-    try{
-      if(!navigator.clipboard?.writeText)throw new Error("Clipboard unavailable");
-      await navigator.clipboard.writeText(CLIENT_SNIPPETS[activeAgent]);
-      setCopyMessage(AGENT_LABELS[activeAgent]+" configuration copied.");
-    }catch{setCopyMessage("Clipboard unavailable. Select and copy the configuration text manually.");}
-  }
-
   async function routeTask(value=query){
     const task=value.trim();if(task.length<2)return;
     setQuery(task);setPending(true);setResult(null);setError("");
@@ -69,7 +46,7 @@ export default function Home(){
     <div className="ambient ambientB" aria-hidden="true"/>
     <header className="nav">
       <a href="/" className="identity"><span className="mark">S/</span><span>SOREN <b>UNIVERSAL</b></span></a>
-      <div className="navRight"><span className="online"><i/> FEDERATED MCP</span><a className="navLink" href="https://skills.sh/docs/api" target="_blank" rel="noreferrer">DOCUMENTATION ↗</a></div>
+      <div className="navRight"><span className="minor">READ-ONLY MCP</span><a className="navLink" href="/connect">CONNECT</a><a className="navLink" href="/health">HEALTH</a><a className="navLink" href="/updates">UPDATES</a><a className="navLink" href="https://skills.sh/docs/api" target="_blank" rel="noreferrer">DOCUMENTATION ↗</a></div>
     </header>
     <main>
       <div className="eyebrow"><span className="line"/> AGENT CAPABILITY INFRASTRUCTURE / V2</div>
@@ -109,42 +86,15 @@ export default function Home(){
         </div>}
       </section>
       <section className="providers">
-        <div className="sectionTitle"><div><span className="tiny">CONNECTED DISCOVERY SOURCES</span><h2>Federated intelligence.</h2></div><span className="minor">01 / PROVIDER NETWORK</span></div>
+        <div className="sectionTitle"><div><span className="tiny">DISCOVERY ADAPTERS</span><h2>Federated intelligence.</h2></div><span className="minor">01 / PROVIDER NETWORK</span></div>
         <div className="providerCards">
           <article><div className="providerIcon">S/</div><h3>Skills.sh</h3><p>Official catalog search, trends, skill files and independent security audits.</p><span>VERCEL OIDC API</span></article>
           <article><div className="providerIcon">M.</div><h3>SkillsMP</h3><p>Community discovery through a public, read-only remote MCP server.</p><span>STREAMABLE HTTP MCP</span></article>
           <article><div className="providerIcon">A*</div><h3>Anthropic Skills</h3><p>First-party skills discovered through GitHub's contents API.</p><span>PUBLIC GITHUB API</span></article>
         </div>
       </section>
-      <section className="clientConnect" id="connect" aria-labelledby="connect-title">
-        <div className="sectionTitle">
-          <div><span className="tiny">FOUR DESKTOP AGENTS ? ONE ENDPOINT</span><h2 id="connect-title">Connect without conflicts.</h2></div>
-          <span className="minor">02 / SETUP</span>
-        </div>
-        <p className="setupIntro">Choose your agent to see its native MCP format. Add the <strong>soren-skills</strong> entry to your existing configuration; do not overwrite your other MCP servers, system prompts, or project instructions.</p>
-        <div className="connectPanel">
-          <div className="clientTabs" role="group" aria-label="Choose desktop agent">
-            {DESKTOP_AGENTS.map(agent=><button key={agent} type="button" aria-pressed={activeAgent===agent} onClick={()=>{
-              setActiveAgent(agent);setCopyMessage("");
-            }}>{AGENT_LABELS[agent]}</button>)}
-          </div>
-          <div className="clientConfig">
-            <div className="configHeader"><span>CONFIG FILE</span><code>{AGENT_CONFIG_PATHS[activeAgent]}</code></div>
-            <pre tabIndex={0} aria-label={AGENT_LABELS[activeAgent]+" MCP configuration snippet"}><code>{CLIENT_SNIPPETS[activeAgent]}</code></pre>
-            <div className="configActions"><span role="status" aria-live="polite">{copyMessage}</span>
-              <button type="button" onClick={()=>void copyClientSnippet()}>COPY CONFIGURATION ?</button>
-            </div>
-          </div>
-        </div>
-        <div className="steps">
-          <div><span>01 / CONNECT</span><p>Merge the server entry and refresh your agent?s MCP connections.</p></div>
-          <div><span>02 / ROUTE</span><p>Use <code>route_task</code> once when a substantial task benefits from specialized skills.</p></div>
-          <div><span>03 / EXECUTE</span><p>Read approved skills with <code>read_skill</code>, then use the agent?s native tools and permissions.</p></div>
-        </div>
-        <p className="setupCaution">External suggestions are review-only. The router never installs a skill, executes code, replaces agent instructions, or controls another MCP server.</p>
-      </section>
-      <section className="endpoint"><div><span className="tiny">SHARED AGENT ENDPOINT</span><div className="address">{ENDPOINT}</div></div><button type="button" onClick={()=>navigator.clipboard?.writeText(ENDPOINT)}>COPY ENDPOINT ↗</button></section>
-      <footer><span>SOREN SYSTEMS © 2026</span><span>Factory Droid · Codex · Antigravity · OpenCode · Claude</span></footer>
+      <ConnectionGuide/>
+      <footer><span>SOREN SYSTEMS © 2026</span><span>Factory Droid · Codex · Antigravity · OpenCode · Claude Code · Qwen Code</span></footer>
     </main>
   </div>;
 }

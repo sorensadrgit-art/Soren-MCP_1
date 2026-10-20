@@ -1,0 +1,24 @@
+name: Observe update candidates
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '53 7 * * *'
+permissions:
+  contents: read
+jobs:
+  observe:
+    if: ${{ vars.SOREN_UPDATE_CHECK_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: stable
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: node scripts/updates-check.mjs
+      # Read-only policy classification, maximum 50 supplied candidates. No signing/deployment/admin secrets.
