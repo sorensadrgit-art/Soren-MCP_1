@@ -1,0 +1,93 @@
+{
+  "evidenceType": "read-only source inspection and deployment metadata",
+  "preparedDate": "2026-10-19",
+  "sourceRoot": "C:\\Users\\soren\\projects\\soren-shared-mcp-skills",
+  "sourceIncluded": false,
+  "gitDirectoryPresent": false,
+  "endpoint": "https://soren-shared-mcp-skills.vercel.app/api/mcp",
+  "serverAlias": "soren-skills",
+  "mcpServerName": "soren-universal-skill-router",
+  "mcpVersion": "2.2.0",
+  "packageVersion": "1.0.0",
+  "vercel": {
+    "projectId": "prj_mJgbERJNKW1V96leE2yWOzsqxkpo",
+    "teamId": "team_4EjLBPTV0cEpjMytwNJlggaW",
+    "latestReturnedDeploymentId": "dpl_8efcRaKMX6uZX6fqPRJq7aEQ2NvT",
+    "readyState": "READY",
+    "target": "production",
+    "nodeRuntime": "22.x",
+    "metadataIsRuntimeHealthProof": false
+  },
+  "lockedVersions": {
+    "mcp-handler": "2.3.0",
+    "next": "16.4.2",
+    "@modelcontextprotocol/server": "2.3.1",
+    "@vercel/oidc": "4.0.1",
+    "react": "19.3.1",
+    "zod": "4.6.7",
+    "typescript": "5.9.3"
+  },
+  "historicalAudit": {
+    "unitTestsPassed": 22,
+    "liveChecksPassed": 19,
+    "rerunDuringPreparation": false
+  },
+  "selectedFiles": [
+    {
+      "path": "package.json",
+      "bytes": 694,
+      "sha256": "ded3314b4bf01fa4a8da9718fe4ac23358c22580caf827ddc3a93c5851727d43"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 46903,
+      "sha256": "b0c97bfe0eb1861f20be21852c66be974a6743ff87515ce5cff8580af90b4544"
+    },
+    {
+      "path": "next.config.mjs",
+      "bytes": 126,
+      "sha256": "8c0cf55542ff065013138ee8ed21fb61501211f6932c620fd16dccdc5626356f"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 663,
+      "sha256": "1df25d27cf27edda5a84fabab0867fc8c7242d97f3010f6133b0eba96c6de0b1"
+    },
+    {
+      "path": "app/api/mcp/route.ts",
+      "bytes": 6710,
+      "sha256": "c23a12f453d82f2e28c581040cd044b9fca542e6081526da3606cfb4eab84912"
+    },
+    {
+      "path": "lib/catalog.mjs",
+      "bytes": 3779,
+      "sha256": "8c1d78aa269cfc5de274b817044ca306a690c3ff9426d6d182e4c06afc713253"
+    },
+    {
+      "path": "lib/federation.mjs",
+      "bytes": 18660,
+      "sha256": "933b1cb97621344aa651381965475c27f6158a89178e31a459a159134b56467a"
+    },
+    {
+      "path": "lib/client-contract.mjs",
+      "bytes": 3217,
+      "sha256": "7f803befc06e696e5eb9a105fd9a885b410783c06dcc500c9dcf2fb5b1c06b54"
+    },
+    {
+      "path": "scripts/verify-mcp.mjs",
+      "bytes": 7420,
+      "sha256": "cd89dc88225e421c91829a1187d8f5c55b347b0b9905f9abba602707ec98366d"
+    },
+    {
+      "path": "AUDIT-20261019.md",
+      "bytes": 7776,
+      "sha256": "2e9450b2b15aa13e367755de7323ac5839781af63712866f8502e600a86e0cc3"
+    }
+  ],
+  "limitations": [
+    "Selected-file hashes only; not a full source snapshot.",
+    "No application test execution in preparation.",
+    "Hash list is not a trusted code-signing identity.",
+    "Work access must be independently established."
+  ]
+}

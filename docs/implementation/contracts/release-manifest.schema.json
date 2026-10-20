@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reviewed release manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "sourceCommit",
+    "lockfileSha256",
+    "artifactSha256",
+    "policySha256",
+    "environment",
+    "projectId",
+    "expectedParentDeploymentId",
+    "catalogGeneration",
+    "schemaCompatibility",
+    "approvalIds",
+    "provenance",
+    "createdAt",
+    "expiresAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "releaseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceCommit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+    },
+    "lockfileSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "artifactSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "policySha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "environment": {
+      "type": "string",
+      "enum": [
+        "staged_production",
+        "production"
+      ]
+    },
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expectedParentDeploymentId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "catalogGeneration": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "schemaCompatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum",
+        "maximum",
+        "destructiveMigration"
+      ],
+      "properties": {
+        "minimum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "destructiveMigration": {
+          "const": false
+        }
+      }
+    },
+    "approvalIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "verificationReference",
+        "trustedIdentity"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "tuf",
+            "verified_ci_attestation",
+            "approved_managed_signer"
+          ]
+        },
+        "verificationReference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "trustedIdentity": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

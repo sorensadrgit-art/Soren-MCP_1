@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Health observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "component",
+    "environment",
+    "observedAt",
+    "status",
+    "probeIdentity",
+    "scheduledSlot",
+    "failureClass",
+    "sourceRevision",
+    "evidenceRefs"
+  ],
+  "properties": {
+    "component": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "HEALTHY",
+        "DEGRADED",
+        "UNHEALTHY",
+        "UNKNOWN",
+        "DISABLED"
+      ]
+    },
+    "probeIdentity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scheduledSlot": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "latencyMs": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "failureClass": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceRevision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
