@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Owned installation plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "planId",
+    "createdAt",
+    "expiresAt",
+    "hostIdentity",
+    "clients",
+    "residentService"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "planId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "hostIdentity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "residentService": {
+      "const": false
+    },
+    "clients": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "client",
+          "adapterVersion",
+          "targetPath",
+          "ownershipMode",
+          "expectedPreimageSha256",
+          "ownedKeys",
+          "plannedChanges"
+        ],
+        "properties": {
+          "client": {
+            "enum": [
+              "factory",
+              "codex",
+              "antigravity",
+              "opencode",
+              "claude",
+              "qwen"
+            ]
+          },
+          "adapterVersion": {
+            "type": "string"
+          },
+          "targetPath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ownershipMode": {
+            "enum": [
+              "manual",
+              "plugin"
+            ]
+          },
+          "expectedPreimageSha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "ownedKeys": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "plannedChanges": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "operation",
+                "semanticPath"
+              ],
+              "properties": {
+                "operation": {
+                  "enum": [
+                    "add",
+                    "update",
+                    "remove",
+                    "no_op"
+                  ]
+                },
+                "semanticPath": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

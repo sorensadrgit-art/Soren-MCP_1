@@ -1,0 +1,131 @@
+{
+  "formatVersion": 1,
+  "package": "Soren Universal Skill Router Work Handoff",
+  "preparedDate": "2026-10-19",
+  "kind": "specification_not_implemented_system",
+  "workDispatchStatus": "not_dispatched_no_native_submission_action_exposed",
+  "sourceIncluded": false,
+  "cryptographicallySigned": false,
+  "files": [
+    {
+      "path": "00_START_HERE.md",
+      "bytes": 8303,
+      "sha256": "35a88d72075a0b67bec08dd2cd3b0be171516bbd125c859cf6c9c995d3edb7e2"
+    },
+    {
+      "path": "01_BASELINE_AND_EVIDENCE.md",
+      "bytes": 5176,
+      "sha256": "24e980b177aaf10d58b69f394b0a7b39f37ab78df7103637f8134a6037eea22e"
+    },
+    {
+      "path": "02_SYSTEM_SPEC.md",
+      "bytes": 8604,
+      "sha256": "d5ebed006371293530a7f1eef8c463280d1d0c9e458f282d18be0f344463a749"
+    },
+    {
+      "path": "03_ARCHITECTURE_AND_DATA.md",
+      "bytes": 8371,
+      "sha256": "02b7b0b74ff7a36b11abe2f088de7dffd55ba776036f9922a7cb1235176d4406"
+    },
+    {
+      "path": "04_INSTALLATION_AND_CLIENTS.md",
+      "bytes": 7751,
+      "sha256": "b621bd8be5bea730bd87639ca20b0b28cd8c984479e997646cc7e6c202f6b24c"
+    },
+    {
+      "path": "05_VERIFICATION_AND_ACCEPTANCE.md",
+      "bytes": 7372,
+      "sha256": "92532f225d6b7db3f7fd2a588e80ecb2e100a9c5de3b74a47888dfd30322d0b1"
+    },
+    {
+      "path": "06_HEALTH_MAINTAINER.md",
+      "bytes": 9391,
+      "sha256": "ed8485ad06412919d592fa37200a5e490003f26bfb34b63ec2594bae7aecd0eb"
+    },
+    {
+      "path": "07_CONTROLLED_AUTO_UPDATER.md",
+      "bytes": 10550,
+      "sha256": "0ef4583da3e16d0ecc3f959a06f1e66866fd56ba3374fd88063a7e8a6574b022"
+    },
+    {
+      "path": "08_SECURITY_AND_PERMISSIONS.md",
+      "bytes": 7287,
+      "sha256": "996de88404e3bd5c8edce4f24e72ef342265c672c62fc455d5df437c31409f13"
+    },
+    {
+      "path": "09_DEPLOYMENT_AND_OPERATIONS.md",
+      "bytes": 6824,
+      "sha256": "874ff59699a03af85f6304b61810f5f32b9ef8c3061c67499475c88024874922"
+    },
+    {
+      "path": "10_IMPLEMENTATION_PLAN.md",
+      "bytes": 12770,
+      "sha256": "915bfefff14bb9521e068637456f0973e7829debf2f03843150f388b74075a3d"
+    },
+    {
+      "path": "11_DASHBOARD_AND_AGENT_UX.md",
+      "bytes": 3691,
+      "sha256": "490b35dfee88ba711ac492755798f45306a49028cbe6d2b89daa5d56ab71a06d"
+    },
+    {
+      "path": "12_PRIMARY_SOURCES.md",
+      "bytes": 5126,
+      "sha256": "aac2371e114d3c5478e0b1d584ea912487a4c2d17eb056ddcc516202932d8c94"
+    },
+    {
+      "path": "13_RUNBOOKS.md",
+      "bytes": 3453,
+      "sha256": "e7d1cf22b8a216dac4f9f921b5268ac0902410c5931aef36035b0ea7808860da"
+    },
+    {
+      "path": "PACKAGE_CHECKS.md",
+      "bytes": 1632,
+      "sha256": "7bd3d36424c2ae75f0023d761dedf067e74e761832ffe4e875962b62995b8f64"
+    },
+    {
+      "path": "acceptance/acceptance-matrix.csv",
+      "bytes": 10355,
+      "sha256": "6781843ed6dbeeac63743b11e01e8070e06d8bbb92c1a0158af93c9e7cf54d82"
+    },
+    {
+      "path": "config/operating-policy.json",
+      "bytes": 4157,
+      "sha256": "58ea6f2de484b2e1d3a2ae2f481719c8d1a809a930ebece77df0db7c059fca8b"
+    },
+    {
+      "path": "contracts/health-observation.schema.json",
+      "bytes": 1273,
+      "sha256": "74eb9750766f8fda85d71c123b774be31450387615ec71403e82c32513f1d8b8"
+    },
+    {
+      "path": "contracts/install-plan.schema.json",
+      "bytes": 2737,
+      "sha256": "69263fd4b33c09009b71ed30526c06ce784f829e83047ed26c4c274c4b95d345"
+    },
+    {
+      "path": "contracts/release-manifest.schema.json",
+      "bytes": 2727,
+      "sha256": "23663d6f2201b3145966c805a67ce1e93aed2d7c4c4c32ec7e063fb6c8fb54a4"
+    },
+    {
+      "path": "contracts/verification-evidence.schema.json",
+      "bytes": 2579,
+      "sha256": "497c37c056eb673c157d7127cbe798e8fd3d9da6013d3d95e3ae8c69eccb2d3d"
+    },
+    {
+      "path": "evidence/source-baseline.json",
+      "bytes": 2891,
+      "sha256": "54038fa596eb5c3aed4800a125e92d18bec2cbbd5eac86f4fc851257ecec7acd"
+    },
+    {
+      "path": "evidence/verification-template.json",
+      "bytes": 399,
+      "sha256": "d9dad6e7eb2f952622a8f4312f5c2637fa3694c08fb5b9539f0fb9a64cba4ce2"
+    },
+    {
+      "path": "verify_package.py",
+      "bytes": 1045,
+      "sha256": "ecc2e93d1c80129cbe11cd9d7b2c28448c1c409a3be916d27a0cb4fcfa5b3cf0"
+    }
+  ]
+}
