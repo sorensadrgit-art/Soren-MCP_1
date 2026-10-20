@@ -16,3 +16,6 @@ skills/** -text
 docs/implementation/** -text
 specs/soren-router-work-package/** -text
 artifacts/** -text
+# Preserve command transcripts and their hashes, including console whitespace.
+docs/evidence/*.txt -text -whitespace
+docs/evidence/*.tap -text -whitespace
