@@ -1,0 +1,51 @@
+▲ Next.js 16.4.2 (Turbopack)
+✓ Running next.config.mjs took 13ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 643ms
+  Running TypeScript ...
+  Finished TypeScript in 1541ms ...
+  Collecting page data using 31 workers ...
+  Generating static pages using 31 workers (0/10) ...
+  Generating static pages using 31 workers (2/10) 
+  Generating static pages using 31 workers (4/10) 
+  Generating static pages using 31 workers (7/10) 
+✓ Generating static pages using 31 workers (10/10) in 235ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/admin/grants
+├ ƒ /api/admin/health
+├ ƒ /api/admin/health/watcher
+├ ƒ /api/admin/registry/publish
+├ ƒ /api/admin/registry/revoke
+├ ƒ /api/admin/registry/stage
+├ ƒ /api/admin/reviews
+├ ƒ /api/admin/status
+├ ƒ /api/admin/updates
+├ ƒ /api/admin/updates/arm
+├ ƒ /api/admin/updates/evidence
+├ ƒ /api/admin/updates/pause
+├ ƒ /api/admin/updates/releases
+├ ƒ /api/admin/updates/releases/authorize
+├ ƒ /api/auth/callback
+├ ƒ /api/auth/login
+├ ƒ /api/auth/logout
+├ ƒ /api/auth/session
+├ ƒ /api/cron/maintenance
+├ ƒ /api/health/live
+├ ƒ /api/health/ready
+├ ƒ /api/mcp
+├ ○ /connect
+├ ○ /health
+├ ○ /manage
+├ ○ /registry
+├ ○ /reviews
+└ ○ /updates
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
