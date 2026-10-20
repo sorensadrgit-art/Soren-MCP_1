@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Verification evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "testId",
+    "status",
+    "scope",
+    "sourceRevision",
+    "method",
+    "environment",
+    "startedAt",
+    "finishedAt",
+    "evidenceRefs",
+    "observed"
+  ],
+  "properties": {
+    "testId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "NOT_RUN",
+        "PASS",
+        "FAIL",
+        "BLOCKED",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "unit",
+        "integration",
+        "security",
+        "protocol",
+        "native_client",
+        "browser",
+        "scheduler",
+        "update_rehearsal",
+        "release"
+      ]
+    },
+    "sourceRevision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lockfileSha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "string",
+      "enum": [
+        "preparation",
+        "development",
+        "isolated_ci",
+        "preview",
+        "staged_production",
+        "production",
+        "windows_client"
+      ]
+    },
+    "startedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "finishedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "observed": {
+      "type": "object"
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "actor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "PASS"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "sourceRevision": {
+            "type": "string",
+            "minLength": 1
+          },
+          "startedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finishedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "evidenceRefs": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+
+:root{color-scheme:dark}*{box-sizing:border-box}
+body{margin:0;background:#05070c;color:#edf1ff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input{font:inherit}
+.shell{min-height:100vh;position:relative;overflow:hidden;background:radial-gradient(ellipse 950px 800px at 90% -350px,#14254b88,transparent 85%),#05070c}
+.shell:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:radial-gradient(#9baccc .45px,transparent .65px);background-size:7px 7px;z-index:1}
+.ambient{position:absolute;border-radius:50%;filter:blur(95px);pointer-events:none}
+.ambientA{height:480px;width:700px;top:-340px;right:-210px;background:#273e7550}
+.ambientB{height:500px;width:450px;left:-320px;top:590px;background:#5b659b25}
+.nav,main{position:relative;z-index:3}
+.nav{height:91px;display:flex;justify-content:space-between;align-items:center;max-width:1270px;margin:0 auto;padding:0 34px;border-bottom:1px solid #263042}
+.identity{display:flex;align-items:center;gap:15px;font-size:12px;font-weight:800;letter-spacing:.15em;text-decoration:none;color:#eff2fa}
+.identity b{color:#93a2be;font-weight:450}
+.mark{background:#e6eefa;color:#111a29;width:44px;height:44px;display:grid;place-items:center;border-radius:11px;font-weight:900;font-size:19px;letter-spacing:-.15em}
+.navRight{display:flex;align-items:center;gap:36px}
+.online,.navLink{color:#afbed5;text-decoration:none;font-size:10px;font-weight:750;letter-spacing:.14em}
+.online i,.indicator{display:inline-block;background:#aef7c5;border-radius:50%;width:7px;height:7px;margin-right:9px;box-shadow:0 0 15px #6be69c86}
+main{max-width:1270px;margin:auto;padding:85px 34px 25px}
+.eyebrow,.smallLabel,.tiny{color:#8e9fba;font-weight:780;letter-spacing:.14em;font-size:10px}
+.line{display:inline-block;vertical-align:middle;width:24px;height:1px;background:#d5e0f4;margin-right:12px}
+h1{font-size:clamp(55px,8.9vw,124px);line-height:1.03;letter-spacing:-.081em;font-weight:570;margin:25px 0 28px}
+h1 em{font-style:normal;background:linear-gradient(90deg,#f5faff,#9aafda 56%,#535d86);background-clip:text;color:transparent}
+.subtitle{font-size:clamp(16px,2vw,20px);line-height:1.7;max-width:725px;color:#a6b4cc;font-weight:360;letter-spacing:-.015em}
+.features{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid #293248;margin:60px 0 66px}
+.features>div{padding:25px 15px 27px 0;display:flex;flex-direction:column;gap:8px}
+.features>div+div{padding-left:28px;border-left:1px solid #293248}
+.metric{font-size:37px;font-variant-numeric:tabular-nums;letter-spacing:-.05em;font-weight:550}
+.metric.accent{color:#a3c3f1}
+.features small{font-size:10px;letter-spacing:.1em;color:#7788a4}
+.terminal{background:linear-gradient(125deg,#151e30 0%,#0d1220 50%,#080b12 100%);border:1px solid #354158;border-radius:19px;box-shadow:0 28px 105px #0007,inset 0 1px #ffffff0c;overflow:hidden}
+.terminalHead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #344053;padding:19px 26px;color:#dee9fa;letter-spacing:.13em;font-size:10px;font-weight:800}
+.terminalMeta{color:#8091ad}
+.queryForm{padding:31px 26px 27px}
+.queryForm label{color:#9cabc5;font-size:10px;font-weight:800;letter-spacing:.15em}
+.queryRow{display:flex;gap:10px;margin:12px 0 17px}
+.queryRow input{flex:1;min-width:0;padding:19px 20px;color:#eff5ff;border:1px solid #40506c;border-radius:9px;background:#0a1220;font-size:15px;outline:none}
+.queryRow input:focus{border-color:#abc2ea;box-shadow:0 0 0 3px #93b8ed2a}
+.queryRow button,.endpoint button{background:#e1e9f5;color:#0b1523;border:0;border-radius:9px;padding:0 25px;letter-spacing:.075em;font-size:11px;font-weight:900;cursor:pointer}
+.queryRow button:hover:not(:disabled),.endpoint button:hover{background:#fff}
+.queryRow button:disabled{opacity:.6;cursor:wait}
+.examples{display:flex;flex-wrap:wrap;gap:10px}
+.examples button{background:transparent;border:1px solid #34445e;border-radius:999px;color:#9eafcc;font-size:11px;padding:10px 13px;cursor:pointer}
+.examples button:hover{color:#fff;border-color:#879fca}
+.statusPanel,.error{margin:0 26px 27px;padding:17px;border-radius:10px;font-size:13px;border:1px solid #3f536e;color:#c5dbf6}
+.error{border-color:#8b5050;color:#fbc5c5}
+.pulse{display:inline-block;background:#8bbdec;width:8px;height:8px;border-radius:50%;margin-right:10px;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.15}}
+.results{border-top:1px solid #33425c;padding:26px}
+.searchMeta,.suggestionHeader,.providerBar{display:flex;justify-content:space-between;gap:15px;align-items:center}
+.searchMeta{color:#a1b3cf;font-size:10px;letter-spacing:.1em}
+.primary{border:1px solid #526884;background:#182b4190;border-radius:11px;margin:25px 0;padding:19px 21px}
+.primary h2{font-size:23px;margin:9px 0}
+.primary p,.suggestion p{color:#adbbd1;font-size:13px;line-height:1.6}
+.suggestions .smallLabel{margin-bottom:13px}
+.suggestion{border-top:1px solid #2a3850;padding:16px 0}
+.suggestionHeader strong{font-size:15px}
+.suggestionHeader span{font-size:10px;color:#92a6c5}
+.review{color:#dcc499;font-size:10px;letter-spacing:.11em}
+.providerBar{justify-content:flex-start;flex-wrap:wrap;gap:9px;margin-top:15px}
+.providerBar span{font-size:10px;border-radius:50px;padding:7px 11px;background:#1a304a;color:#c0dfff}
+.providerBar .providerWarn{background:#363026;color:#dcc494}
+.notice,.noMatches{font-size:12px;color:#8a9eb8}
+.providers{margin:110px 0 80px}
+.sectionTitle{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:25px}
+.sectionTitle h2{font-size:clamp(29px,4.5vw,44px);font-weight:560;letter-spacing:-.05em;margin:12px 0}
+.minor{font-size:10px;letter-spacing:.12em;color:#8395b1}
+.providerCards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.providerCards article{background:linear-gradient(145deg,#141d2c,#090e18);border:1px solid #333f57;border-radius:16px;padding:26px;min-height:248px}
+.providerIcon{background:#233859;color:#d6e7ff;border:1px solid #425e80;width:46px;height:46px;border-radius:10px;display:grid;place-items:center;font-weight:850}
+.providerCards h3{font-size:20px;margin:20px 0 10px;letter-spacing:-.025em}
+.providerCards p{color:#9aabc8;line-height:1.67;font-size:13px;min-height:55px}
+.providerCards span{display:inline-block;margin-top:13px;color:#bacbe5;font-size:9px;letter-spacing:.13em}
+.endpoint{border:1px solid #384962;background:#131e2e;padding:24px;border-radius:13px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.address{color:#d5e0f1;font-size:clamp(11px,1.5vw,17px);font-family:ui-monospace,Consolas,monospace;word-break:break-all;margin-top:11px}
+.endpoint button{min-height:45px;white-space:nowrap}
+footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #27364c;color:#8593ab;font-size:10px;letter-spacing:.1em;padding-top:26px;margin-top:82px}
+@media(max-width:800px){
+  .nav{height:72px;padding:0 20px}.navLink{display:none}
+  main{padding:55px 20px 23px}
+  h1{font-size:clamp(55px,12vw,85px)}
+  .features{grid-template-columns:repeat(2,1fr);margin:46px 0 50px}
+  .features>div{border-bottom:1px solid #28364d}
+  .features>div+div{border-left:none;padding-left:0}
+  .features>div:nth-child(even){padding-left:18px;border-left:1px solid #28364d}
+  .terminalHead{padding:17px}.terminalMeta{display:none}
+  .queryForm,.results{padding:22px 16px}
+  .queryRow{flex-direction:column}.queryRow button{padding:17px}
+  .providerCards{grid-template-columns:1fr}.providers{margin:75px 0 48px}
+  .minor{display:none}.endpoint{flex-direction:column;align-items:stretch}
+  footer{margin-top:45px;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){.pulse{animation:none}*{transition:none!important;animation:none!important}}
+
+/* Native desktop MCP connector navigator */
+.clientConnect{margin:5px 0 75px}
+.setupIntro{max-width:790px;color:#a5b5d0;font-size:14px;line-height:1.8;margin:-5px 0 28px}
+.setupIntro strong{color:#eef2ff}
+.connectPanel{border:1px solid #35435c;border-radius:16px;background:#0b111d;overflow:hidden;box-shadow:0 26px 75px #0005}
+.clientTabs{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;background:#111b2c;border-bottom:1px solid #33425b;padding:7px}
+.clientTabs button{flex:1 1 180px;border:1px solid transparent;border-radius:9px;min-height:45px;background:transparent;color:#98abc8;font-size:12px;font-weight:700;letter-spacing:.015em;cursor:pointer}
+.clientTabs button:hover{color:#f0f5ff}.clientTabs button:focus-visible{outline:2px solid #a5c9f9;outline-offset:1px}
+.clientTabs button[aria-pressed=true]{background:#263956;color:#f2f6ff;border-color:#516786}
+.clientConfig{padding:23px}
+.configHeader{display:flex;flex-wrap:wrap;align-items:center;gap:14px;color:#899cb9;font-size:10px;font-weight:800;letter-spacing:.12em}
+.configHeader code{font-size:12px;font-weight:500;color:#d3e2fc;letter-spacing:0}
+.clientConfig pre{padding:24px;border:1px solid #2d3d54;border-radius:11px;background:#070d17;color:#a7d7f7;overflow:auto;line-height:1.65;font-size:13px;tab-size:2;white-space:pre}
+.clientConfig pre:focus-visible{outline:2px solid #b5d2f7;outline-offset:3px}
+.configActions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.configActions span{font-size:12px;color:#b8d7f4}
+.configActions button{padding:14px 21px;border:1px solid #e1ecfc;color:#0b1625;background:#e3edfa;border-radius:9px;cursor:pointer;font-weight:800;letter-spacing:.07em;font-size:11px}
+.configActions button:hover{background:white}
+.configActions button:focus-visible{outline:2px solid #d5e8ff;outline-offset:2px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.steps>div{border:1px solid #27364c;background:#0d1523;border-radius:11px;padding:19px}
+.steps span{font-size:10px;font-weight:700;letter-spacing:.12em;color:#a9c5ea}
+.steps p{margin:11px 0 0;color:#a5b7d2;font-size:12px;line-height:1.7}
+.steps code{color:#d7e8ff}
+.setupCaution{font-size:12px;color:#98a9c3;margin:16px 2px 0;line-height:1.65}
+@media(max-width:800px){.clientConnect{margin-bottom:52px}.clientConfig{padding:16px}.clientConfig pre{font-size:11px;padding:17px}.steps{grid-template-columns:1fr}.clientTabs button{flex:1 1 130px;font-size:11px}}

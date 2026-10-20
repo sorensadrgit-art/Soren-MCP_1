@@ -1,0 +1,17 @@
+node_modules/
+.next/
+.vercel/
+.env*
+!.env.example
+*.tsbuildinfo
+coverage/
+test-results/
+playwright-report/
+.local/
+dist/
+*.log
+*.pem
+*.key
+*.pfx
+*.p12
+!.github/**

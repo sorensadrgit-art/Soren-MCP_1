@@ -1,0 +1,15 @@
+{
+  "testId": "BASE-01",
+  "status": "NOT_RUN",
+  "scope": "integration",
+  "sourceRevision": null,
+  "lockfileSha256": null,
+  "method": "Run by Work after source acquisition",
+  "environment": "preparation",
+  "startedAt": null,
+  "finishedAt": null,
+  "evidenceRefs": [],
+  "observed": {},
+  "reason": "Handoff package only; application tests not executed during preparation.",
+  "actor": null
+}
