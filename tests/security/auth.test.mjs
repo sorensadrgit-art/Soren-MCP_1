@@ -67,3 +67,36 @@ test('JSON trust boundary caps actual streaming bytes and rejects invalid bodies
   for (const body of ['[]', 'null', '{']) await assert.rejects(readJsonBody(make(body)), error => error.status === 400);
   await assert.rejects(readJsonBody(make('{"value":"long"}'), 5), error => error.status === 413);
 });
+
+// RFC 7519: nbf is optional, but when present its value must be a NumericDate.
+// The managed identity response is deliberately stubbed so local binding validation
+// is exercised independently; these are not claims of a hosted Auth-service bypass.
+for (const [label, nbf] of [
+  ['nonnumeric string', 'not-a-date'], ['numeric string', String(now / 1000 - 10)],
+  ['null', null], ['false', false], ['object', {}], ['array', []],
+]) {
+  test(`verified identity still rejects malformed nbf (${label}) before grant lookup`, async () => {
+    let grantLookups = 0;
+    const trackedStore = {getPrincipalContext: async () => { grantLookups++; return context; }};
+    await assert.rejects(
+      authenticateRequest(request({nbf}), {env, fetchImpl, store: trackedStore, now}),
+      error => error.status === 401 && error.code === 'invalid_token_binding',
+    );
+    assert.equal(grantLookups, 0);
+  });
+}
+
+test('malformed claims payload is a redacted authorization denial, not an internal exception', async () => {
+  for (const value of [null, [], 7, 'claims']) {
+    const encoded = `${Buffer.from('{}').toString('base64url')}.${Buffer.from(JSON.stringify(value)).toString('base64url')}.signature`;
+    const input = new Request('https://router.example/api/admin/status', {headers: {Authorization: `Bearer ${encoded}`}});
+    await assert.rejects(authenticateRequest(input, {env, fetchImpl, store, now}), error => error.status === 401);
+  }
+});
+
+test('absent and finite numeric not-before claims retain valid boundary behavior', async () => {
+  for (const nbf of [undefined, 0, now / 1000 - 0.25, now / 1000]) {
+    const actual = await authenticateRequest(request({nbf}), {env, fetchImpl, store, now});
+    assert.equal(actual.workspaceId, context.workspaceId);
+  }
+});

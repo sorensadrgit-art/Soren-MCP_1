@@ -24,6 +24,7 @@ Public bundled skills and local routing work without cloud credentials. External
 - [Installer and safe removal](docs/installer.md)
 - [Offline installer archive](artifacts/installer/soren-agents-installer-1.0.0.tgz) and [unsigned integrity manifest](artifacts/installer/soren-agents-installer-1.0.0.tgz.manifest.json)
 - [Private operations and authorization](docs/operations-implementation.md)
+- [Read-only activation preflight](docs/activation-preflight.md) and [release-gate progress](docs/release-gates-progress-20261020.md)
 - [Update policy](docs/update-policy.md) and [rollback](docs/rollback.md)
 - [Current verification results](docs/verification-results.md)
 - [Current 65-requirement acceptance ledger](docs/acceptance-matrix.csv)
@@ -58,11 +59,14 @@ npm run test:db
 npm run test:routing
 npm run test:browser
 npm run agents:inspect
+npm run activation:preflight
 npm run package:installer
 npm run evaluate:routing
 ```
 
 Browser tests use an isolated Chromium profile; install the matching Playwright Chromium or set `PLAYWRIGHT_CHANNEL=chrome` for an installed Chrome. Successful private UI fixtures are labeled fixtures and do not establish live OAuth or owner approval.
+
+The activation preflight is configuration-only and exits `2` while live activation gates remain; it neither activates services nor returns secrets.
 
 The installer runs explicitly and exits. It refuses unsupported versions, duplicates, changed preimages, unsafe paths, and edited owned sections. No resident Windows service, startup entry, or local update scheduler is created. The local installer tarball is unsigned and must not be advertised as an authenticated release.
 

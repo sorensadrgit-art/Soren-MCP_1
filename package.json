@@ -30,7 +30,8 @@
     "release:reconcile": "node scripts/reconcile-release.mjs",
     "evaluate:routing": "node scripts/evaluate-routing.mjs",
     "release:produce": "node scripts/produce-release.mjs",
-    "release:verify-staged": "node scripts/verify-staged-release.mjs"
+    "release:verify-staged": "node scripts/verify-staged-release.mjs",
+    "activation:preflight": "node scripts/activation-preflight.mjs"
   },
   "dependencies": {
     "@iarna/toml": "2.2.5",
