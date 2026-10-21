@@ -71,3 +71,7 @@ The installer runs explicitly and exits. It refuses unsupported versions, duplic
 Cloud workflows remain owner-gated. Production-intended staging, signed artifact/evidence identity, expiring owner authorization, database fences, current revocations, independent watcher evidence, and post-release observation are required. Unknown network outcomes reconcile before retry. Vercel's unproven atomic parent compare-and-swap blocks unattended promotion; manual exact-artifact owner authorization is separate.
 
 No production or signing secrets belong in public MCP responses, browser bundles, pull-request jobs, or this repository. Actual dependency-audit findings and unverified entitlements remain release blockers, not passing checks.
+
+## Opt-in typed capability planning
+
+This source branch adds `include_capability_plan: true` to `route_task`, backed by the reviewed 30-entry, five-domain catalog. It returns a bounded plan with missing connection/runtime/review requirements; it does not install or execute capabilities. Existing requests retain their original response fields and behavior. New planning defaults to provided-only sources. Optional TypeSafe advice remains disabled until both caller and server opt in. See [the implementation and request guide](docs/capability-planning.md). Source publication is not production activation.
