@@ -1,6 +1,6 @@
 # Local Codex learning loop
 
-This branch adds `soren-learning-loop` to the existing read-only skill catalog. It does not add tools, a database service, hooks, permissions, packages, or model training. No hosted change is active until separately reviewed and released. The original catalog order and V3 feature gate remain intact.
+This branch adds `soren-learning-loop` to the existing read-only skill catalog. A dedicated, user-reviewed Codex Stop handler drives local post-task capture. It adds no MCP tools, database service, permissions, packages, or model training. No hosted change is active until separately reviewed and released. The original catalog order and V3 feature gate remain intact.
 
 ## Architecture and scopes
 
@@ -32,7 +32,7 @@ node --test tests/client-contract.test.mjs "tests/contracts/*.test.mjs" "tests/r
 git diff --check
 ```
 
-On the isolated worktree: 8 Python tests and 116 Node tests passed. Tests cover independent-process persistence, exact project scope, portable facts, unverified/factual record rejection, stale source/lesson rejection, latest failed evidence, output marker checks, duplicate protection, common credential patterns, catalog lookup, MCP contracts, and unchanged V3 gating. Receipts retain output hashes rather than raw logs. Tests establish these explicit checks, not complete secret detection or semantic correctness of every future lesson.
+After the Stop repair: 20 Python tests and 116 Node tests passed. Tests cover independent-process persistence, project scope, portable facts, invalid evidence, output markers, duplicates, common credential patterns, bounded Stop continuation, staged packet validation, session/turn idempotency, interruption recovery, recursion prevention and failure logging. Receipts retain output hashes rather than raw logs. Python subprocess tests establish the recorder protocol, not native Codex dispatch or complete semantic/secret detection.
 
 A real `argparse.REMAINDER` option-order failure was reproduced, checked, recorded, recalled by a fresh Codex process, and rendered as an inactive skill candidate. A first CLI attempt failed through the configured model/proxy stream; a desktop-bundled CLI read-only attempt could read injected instructions but could not read the global skill under the Windows sandbox. A subsequent fresh bundled CLI session under the existing permission profile successfully read the skill and recalled the record, its `check-passed` label and inactive status. No permission configuration was changed to perform this test.
 
@@ -42,6 +42,10 @@ Live read-only MCP calls succeeded for SOREN routing and approved-skill reading,
 
 Checks execute only when explicitly invoked and already authorized for the task. A receipt proves a command returned zero, printed its expected marker, and left tracked input hashes unchanged. It does not prove semantic relevance, owner approval, or hostile-user tamper resistance. Human review remains mandatory. Secret screening is heuristic; curate minimal data instead of dumping transcripts.
 
-The global instruction block makes the before/after workflow discoverable. It is agent guidance, not a background daemon or enforcement hook. Native memory eligibility, quota and idle-time rules can delay consolidation. No service or scheduled task was registered. No client TOML or existing V3 configuration was changed.
+The original acceptance failed because the global instruction block provided guidance without a lifecycle capture handler. No recorder or candidate call occurred; rejection and wrong storage were not the observed cause. The repair appends one Stop handler to the existing user `hooks.json`, using an absolute Windows Python path and the installed `learning.py stop-hook` command. Existing registrations and client TOML are preserved. [Official Codex hook trust rules](https://developers.openai.com/codex/hooks) require manual `/hooks` review; the handler remains untrusted until that action. Trust hashes and bypass flags must never be used to work around the gate.
+
+On Stop, the handler logs a sanitized event and requests at most one native continuation to stage a curated lesson plus a relevant authorized passing check, or an explicit skip. The next Stop validates event binding, source hashes and exact-content novelty before writing to the existing store and generating only an inactive candidate. It never reads a transcript or runs a test command during hook dispatch. A changed continuation turn ID is linked to the original session/turn idempotency key. Missing packets, failed checks and runtime errors are visible; no daemon or recursive Codex subprocess is used. See `skills/soren-learning-loop/references/records.md` for staging commands and logs.
+
+Real bundled Codex 0.163.0-alpha.11.1 exposes this handler through native `hooks/list` with event `stop`, enabled `true` and trust status `untrusted`. A real readiness session completed but produced no new capture log. Live automatic writeback and fresh-session recall therefore remain unverified pending the user's hook review. No PASS is claimed for that acceptance gate. Native memory consolidation remains a separate asynchronous feature.
 
 Rollback the local installation by removing only the marked global instruction block and archiving the bootstrap, evidence store and update proposal. Keep native generated memory and unrelated instructions intact. Repository changes remain isolated on `feat/soren-learning-loop`; do not merge or deploy them as part of learning.
