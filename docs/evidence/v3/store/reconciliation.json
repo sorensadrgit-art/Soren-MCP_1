@@ -1,5 +1,7 @@
 {
   "recordedAt": "2026-10-22T19:45:53.933Z",
+  "updatedAt": "2026-10-22T20:42:55Z",
+  "updateNote": "corrected the vercelPreviewEnv record: authoritative createdAt timestamps (the first revision hand-converted them incorrectly) and the two SOREN_GATEWAY_DB_KEY records created after the first observation. Store observations (publicProbes, structuralReconciliation, productionBaseline) are unchanged.",
   "store": {
     "name": "soren-mcp-v3-gateway-preview",
     "ref": "xoyefnfesvrqsohuppxe",
@@ -42,19 +44,22 @@
   },
   "vercelPreviewEnv": {
     "project": "soren-mcp-v3-preview",
-    "observedAt": "2026-10-22T19:41Z",
+    "observedAt": "2026-10-22T20:42Z (re-audited; unchanged since 19:58:07Z)",
     "createdBy": {"type": "user", "username": "sorensadr-5641", "userId": "38lhyUjt7muthM0pRzW4Dbs4"},
     "auditLogEndpoints": "v1 and v2 team events endpoints returned 404 on this API tier; the env records' createdBy field is the creator evidence",
-    "variables": [
-      {"key": "SUPABASE_URL", "target": ["preview", "production"], "createdAt": "2026-10-22T19:28:28.550Z", "value": "not recorded (encrypted)"},
-      {"key": "SOREN_WORKSPACE_ID", "target": ["preview", "production"], "createdAt": "2026-10-22T19:28:36.767Z", "value": "not recorded (encrypted)"},
-      {"key": "SOREN_CAPABILITY_MODE", "target": ["preview", "production"], "createdAt": "2026-10-22T19:28:44.334Z", "value": "not recorded (encrypted)"},
-      {"key": "SUPABASE_ANON_KEY", "target": ["production"], "createdAt": "2026-10-22T19:29:57.197Z", "value": "not recorded (encrypted)"},
-      {"key": "OREN_RATE_KEY", "target": ["production"], "createdAt": "2026-10-22T19:30:29.626Z", "value": "not recorded (encrypted)", "note": "typo for SOREN_RATE_KEY; lib/gateway.mjs reads SOREN_RATE_KEY and fails closed without it"}
+    "records": [
+      {"key": "SUPABASE_URL", "target": ["preview", "production"], "createdAt": "2026-10-22T19:21:48.550Z", "value": "not returned by the API"},
+      {"key": "SOREN_WORKSPACE_ID", "target": ["preview", "production"], "createdAt": "2026-10-22T19:21:56.767Z", "value": "not returned by the API"},
+      {"key": "SOREN_CAPABILITY_MODE", "target": ["preview", "production"], "createdAt": "2026-10-22T19:22:04.334Z", "value": "not returned by the API"},
+      {"key": "SUPABASE_ANON_KEY", "target": ["production"], "createdAt": "2026-10-22T19:23:17.197Z", "value": "not returned by the API"},
+      {"key": "OREN_RATE_KEY", "target": ["production"], "createdAt": "2026-10-22T19:23:49.626Z", "value": "not returned by the API", "note": "typo for SOREN_RATE_KEY; lib/gateway.mjs reads SOREN_RATE_KEY and fails closed without it"},
+      {"key": "SOREN_GATEWAY_DB_KEY", "target": ["production"], "createdAt": "2026-10-22T19:39:28.583Z", "value": "not returned by the API", "note": "sensitive secret targeting an environment that must never have a production deployment"},
+      {"key": "SOREN_GATEWAY_DB_KEY", "target": ["preview"], "createdAt": "2026-10-22T19:58:07.052Z", "value": "not returned by the API"}
     ],
     "typeSafePreviewVars": ["TYPESAFE_API_KEY", "TYPESAFE_JEV_ENABLED", "SOREN_TYPESAFE_TOOLS", "SOREN_V3_TOOLS"],
-    "impact": "SOREN_GATEWAY_DB_KEY is absent and the rate key name is typo'd, so no deployment of this project can use the store: lib/gateway.mjs fails closed with shared_provider_budget_unavailable. Fail-safe, non-functional.",
+    "impact": "No deployment can use the store as wired: Preview receives SUPABASE_URL, SOREN_WORKSPACE_ID, SOREN_CAPABILITY_MODE and SOREN_GATEWAY_DB_KEY but not SUPABASE_ANON_KEY or any correctly named SOREN_RATE_KEY; the Production target holds every gateway variable except a correctly named rate key, and no production deployment exists. Both paths fail closed (lib/gateway.mjs throws shared_provider_budget_unavailable without SOREN_RATE_KEY). Fail-safe, non-functional.",
     "redeployAfterChanges": "none (latest deployment dpl_pNoEunbeYbA4ymiYPY5VevdSrbLo, preview target, READY, 2026-10-22T16:14:38Z)",
+    "timestampCorrection": "the first revision of this file recorded the five initial variables as created 19:28:28-19:30:29Z (a hand-conversion error; the authoritative createdAt values are 19:21:48-19:23:49Z) and stated SOREN_GATEWAY_DB_KEY was absent (the first observation predated the 19:39:28Z and 19:58:07Z records); both are corrected here",
     "modifiedByThisWorkspace": false
   },
   "productionBaseline": {
@@ -67,6 +72,6 @@
     "Owner verifies ES256 key custody in the dashboard (creator, in_use status, private-JWK holder); approval-gated rotation plan in the runbook if unaccounted",
     "Owner supplies a short-lived workspace-bound soren_gateway JWT through an approved local file, plus the publishable anon key and probe identifiers",
     "verify:gateway-store 10/10 PASS with all three refusal negatives REFUSED",
-    "Owner-side correction of the preview env deviation before any redeploy"
+    "Owner-side correction of the preview env deviation before any redeploy: delete the production-targeted SOREN_GATEWAY_DB_KEY record, rename OREN_RATE_KEY to SOREN_RATE_KEY, and scope every gateway variable to Preview only"
   ]
 }

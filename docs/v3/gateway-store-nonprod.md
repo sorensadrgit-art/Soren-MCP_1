@@ -49,13 +49,13 @@ The provisioning — including the signing-key import — happened outside this 
 
 ## Vercel preview environment deviation (observed, not changed)
 
-On 2026-10-22 between 19:28:28 and 19:30:29 UTC, Vercel user `sorensadr-5641` (user principal — the account owner's user) created five store-related environment variables on `soren-mcp-v3-preview`: `SUPABASE_URL`, `SOREN_WORKSPACE_ID`, `SOREN_CAPABILITY_MODE` (each targeting Preview+Production) and `SUPABASE_ANON_KEY`, `OREN_RATE_KEY` (each targeting Production only). This workspace did not create or modify them, and no redeploy has occurred since. Issues:
+On 2026-10-22 between 19:21:48 and 19:58:07 UTC, Vercel user `sorensadr-5641` (user principal — the account owner's user) created seven gateway-related environment-variable records on `soren-mcp-v3-preview` (six distinct names; `SOREN_GATEWAY_DB_KEY` was created twice): `SUPABASE_URL`, `SOREN_WORKSPACE_ID`, `SOREN_CAPABILITY_MODE` (each targeting Preview+Production) at 19:21:48–19:22:04Z; `SUPABASE_ANON_KEY` and `OREN_RATE_KEY` (each targeting Production only) at 19:23:17–19:23:49Z; then `SOREN_GATEWAY_DB_KEY` twice — a Production-targeted record at 19:39:28Z and a Preview-targeted record at 19:58:07Z. This workspace did not create or modify any of them; a re-audit at 20:42Z found the state unchanged, and no redeploy has occurred (the latest deployment remains the preview `dpl_pNoEu`, 16:14:38Z). An earlier revision of this section mis-converted the creation timestamps to 19:28–19:30Z and stated `SOREN_GATEWAY_DB_KEY` was absent; both were wrong and are corrected here. Issues:
 
 - `OREN_RATE_KEY` is a typo for `SOREN_RATE_KEY`; `lib/gateway.mjs` reads `SOREN_RATE_KEY` and fails closed (`shared_provider_budget_unavailable`) without it.
-- `SOREN_GATEWAY_DB_KEY` is absent entirely, so no deployment of that project can use the store: every path fails closed. Fail-safe, but non-functional.
-- Two variables target **Production** of a project that must never have a production deployment (see the exposure-incident closure). Preview-only scoping per step 8 is the reviewed configuration.
+- No deployment of that project can use the store as wired: Preview receives `SOREN_GATEWAY_DB_KEY`, `SUPABASE_URL`, `SOREN_WORKSPACE_ID` and `SOREN_CAPABILITY_MODE` but not `SUPABASE_ANON_KEY` or any correctly named `SOREN_RATE_KEY`; the Production target holds every gateway variable except a correctly named rate key. Both paths fail closed. Fail-safe, but non-functional.
+- The Production target now carries a nearly complete gateway set — including a sensitive `SOREN_GATEWAY_DB_KEY` record — on a project that must never have a production deployment (see the exposure-incident closure). Preview-only scoping per step 8 is the reviewed configuration.
 
-Correction is owner-side, after review: rename to `SOREN_RATE_KEY`, scope all five to Preview only, add `SOREN_GATEWAY_DB_KEY` (the owner-minted short-lived JWT) only when the live probe is approved, and do not redeploy until then.
+Correction is owner-side, after review: delete the Production-targeted `SOREN_GATEWAY_DB_KEY` record, rename `OREN_RATE_KEY` to `SOREN_RATE_KEY`, scope every gateway variable to Preview only, and do not redeploy until the live probe is approved.
 
 ## Steps
 
