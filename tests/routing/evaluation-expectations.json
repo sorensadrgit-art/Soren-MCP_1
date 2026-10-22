@@ -11,7 +11,13 @@
       "frozen": {"bypass": true, "acceptableTopThree": []},
       "expected": {"bypass": false, "acceptableTopThree": ["gsap-motion"], "forbidden": ["motion-systems"]},
       "reason": "Contract 2.5.0 bundles gsap-motion, an approved GSAP skill. With motion-systems unavailable, recommending the remaining approved GSAP skill is the intended fallback, not a leak of the unavailable skill. Before 2.5.0 no alternative existed, so bypass was correct.",
-      "recordedAt": "2026-10-23",
+      "recordedAt": "2026-10-22",
+      "recordedAtCorrection": {
+        "incorrectValue": "2026-10-23",
+        "correctValue": "2026-10-22",
+        "correctedAt": "2026-10-22T17:41:56Z",
+        "reason": "The original value was written one day ahead of the actual UTC recording date: the revision and the owner approval below were both recorded on 2026-10-22 UTC. Nothing depends on this field, because expectations bind to the frozen fixture by SHA-256 and the approval timestamp is separate and unchanged. The correction is owner-instructed; the repository history holds the audit trail."
+      },
       "approval": {
         "status": "owner_approved",
         "approvedBy": "repository owner (sorensadrgit-art)",
