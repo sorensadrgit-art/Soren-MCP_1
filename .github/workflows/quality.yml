@@ -21,9 +21,25 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Knowledge content hashes (fails on drift)
+        run: npm run knowledge:hash
+      - name: Legacy routing evaluation (frozen fixture + versioned expectations)
+        run: npm run evaluate:routing
+      - name: V3 routing evaluation
+        run: npm run evaluate:v3-routing
       - run: npm test
       - run: npm audit
       - run: npm run build
+        env:
+          SOREN_CAPABILITY_MODE: public_only
+      - name: MCP contract over HTTP, SOREN_V3_TOOLS off (8 tools)
+        run: npm run verify:mcp-contract -- --flag off --port 3917
+        env:
+          SOREN_CAPABILITY_MODE: public_only
+      - name: MCP contract over HTTP, SOREN_V3_TOOLS on (14 tools)
+        run: npm run verify:mcp-contract -- --flag on --port 3918
         env:
           SOREN_CAPABILITY_MODE: public_only
       - run: npx playwright install --with-deps chromium

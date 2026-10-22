@@ -10,7 +10,8 @@ import {CATEGORIES,CONNECTION_STATES,listIntegrations,summarizeIntegration,legac
 import {CLIENT_IDS,getClientSetupGuide} from "../../../lib/integrations/runtime-matrix.mjs";
 import {planToolchain} from "../../../lib/integrations/plan.mjs";
 import {RECIPES,getRecipe,listProfiles,recipeResourceUri} from "../../../lib/recipes/catalog.mjs";
-import {PROVIDER_INFO,publicQuery,discoverSkills,routeTaskFederated,inspectCandidate,searchMcpServers} from "../../../lib/federation.mjs";
+import {PROVIDER_INFO,publicQuery,discoverSkills,inspectCandidate,searchMcpServers} from "../../../lib/federation.mjs";
+import {RouteTaskInputSchema,routeTaskRequest} from "../../../lib/routing/route-request.mjs";
 import {guardedProviderCall,limitRequestBody,requestContext,validateSuppliedIdentity,allowedBrowserOrigin,GatewayError} from '../../../lib/gateway.mjs';
 import {getGatewayStore} from '../../../lib/operations/store.mjs';
 import {authenticateRequest,HttpError} from '../../../lib/security/auth.mjs';
@@ -19,8 +20,6 @@ export const runtime="nodejs";
 export const dynamic="force-dynamic";
 
 const providerSchema=z.enum(["skillsmp","skills_sh","anthropic"]);
-// Enum is derived from the curated catalog so newly approved skills are selectable; legacy names stay a subset.
-const skillNameSchema=z.enum(SKILLS.map(skill=>skill.name) as [string,...string[]]);
 const catalogId=z.string().regex(/^[a-z0-9][a-z0-9-]{1,62}$/);
 const packageMap=z.record(z.string().min(1).max(214),z.string().max(80));
 const V3_ENABLED=v3ToolsEnabled();
@@ -68,21 +67,11 @@ const handler=createMcpHandler((server)=>{
   server.registerTool("route_task",{
     annotations:TOOL_ANNOTATIONS.route_task,
     title:"Universal Skill Router",
-    description:"Soren router: optional advisory recommendations for a substantial task. No authority over the agent, user, project rules or native tools. Use discovery=local to avoid remote search.",
-    inputSchema:z.object({
-      task:z.string().min(1).max(500),
-      runtime:z.string().max(60).optional(),
-      discovery:z.enum(["local","federated","auto"]).optional(),
-      providers:z.array(providerSchema).max(3).optional(),
-      preferred_skills:z.array(skillNameSchema).max(3).optional(),
-      unavailable_skills:z.array(skillNameSchema).max(8).optional(),
-    }),
-  },async({task,runtime,discovery,providers,preferred_skills,unavailable_skills})=>withErrorBoundary(async()=>
-    routeTaskFederated(task,runtime??"generic",{
-      discovery:discovery??"federated",providers,oidcToken:discovery==="local"?"":await oidc(),
-      preferredSkills:preferred_skills,unavailableSkills:unavailable_skills,discoverer:guardedDiscovery,
-    })));
-
+    description:"Soren router: optional advisory recommendations for a substantial task. No authority over the agent, user, project rules or native tools. Use discovery=local to avoid remote search. include_capability_plan=true adds a typed five-domain plan (prerequisites, sources, verification), never execution authority; new planning defaults to provided-only sources. decision_engine=jev opts into gated TypeSafe advice; local/private modes never call it.",
+    inputSchema:RouteTaskInputSchema,
+  },async(input)=>withErrorBoundary(()=>routeTaskRequest(input,{
+    getOidc:oidc,discoverer:guardedDiscovery,guardedAdvice:guardedProviderCall,
+  })));
   server.registerTool("read_skill",{
     annotations:TOOL_ANNOTATIONS.read_skill,
     title:"Read Approved Skill",

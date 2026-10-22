@@ -1,21 +1,26 @@
 {
-  "observedAt": "2026-10-22T13:18:26.856Z",
+  "observedAt": "2026-10-22T14:54:23.155Z",
   "fixtureSha256": "c36b95b64e49b99e6ea24ed57527d54c258049739e5bf73915a13c59b4ea1bcc",
   "labelReview": "developer_authored_human_review_pending",
+  "contract": "2.5.0",
+  "revisionsApplied": [
+    "ROUTE-056"
+  ],
+  "frozenLabelPassed": 59,
   "taskCount": 60,
-  "passed": 59,
-  "topThreePercent": 98.33333333333333,
+  "passed": 60,
+  "topThreePercent": 100,
   "explicitChoicesPreserved": true,
   "bypassCorrect": true,
   "localRoute": {
     "samples": 100,
-    "p50Ms": 0.126100000000001,
-    "p95Ms": 0.3054000000000059
+    "p50Ms": 0.12770000000000437,
+    "p95Ms": 0.2540000000000049
   },
   "bundledRead": {
     "samples": 100,
-    "p50Ms": 0.4217999999999904,
-    "p95Ms": 1.085099999999997
+    "p50Ms": 0.42969999999999686,
+    "p95Ms": 0.9806999999999988
   },
   "concurrentLocal": {
     "samples": 20,
@@ -33,7 +38,9 @@
       "selected": [
         "accessibility"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-002",
@@ -42,7 +49,9 @@
         "motion-systems",
         "gsap-motion"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-003",
@@ -50,7 +59,9 @@
       "selected": [
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-004",
@@ -58,7 +69,9 @@
       "selected": [
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-005",
@@ -66,7 +79,9 @@
       "selected": [
         "accessibility"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-006",
@@ -75,7 +90,9 @@
         "motion-systems",
         "shader-material-lab"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-007",
@@ -83,7 +100,9 @@
       "selected": [
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-008",
@@ -92,7 +111,9 @@
         "skill-orchestration",
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-009",
@@ -100,7 +121,9 @@
       "selected": [
         "accessibility"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-010",
@@ -109,7 +132,9 @@
         "motion-systems",
         "react-three-fiber"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-011",
@@ -118,7 +143,9 @@
         "motion-systems",
         "react-three-fiber"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-012",
@@ -128,7 +155,9 @@
         "motion-systems",
         "gsap-motion"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-013",
@@ -137,7 +166,9 @@
         "skill-orchestration",
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-014",
@@ -146,7 +177,9 @@
         "motion-systems",
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-015",
@@ -155,7 +188,9 @@
         "accessibility",
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-016",
@@ -164,7 +199,9 @@
         "mcp-integration",
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-017",
@@ -173,7 +210,9 @@
         "motion-systems",
         "accessibility"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-018",
@@ -182,7 +221,9 @@
         "skill-orchestration",
         "accessibility"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-019",
@@ -190,7 +231,9 @@
       "selected": [
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-020",
@@ -199,7 +242,9 @@
         "motion-systems",
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-021",
@@ -208,7 +253,9 @@
         "accessibility",
         "motion-systems"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-022",
@@ -217,7 +264,9 @@
         "mcp-integration",
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-023",
@@ -225,7 +274,9 @@
       "selected": [
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-024",
@@ -234,7 +285,9 @@
         "motion-systems",
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-025",
@@ -244,67 +297,89 @@
         "accessibility",
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-026",
       "category": "trivial",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-027",
       "category": "trivial",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-028",
       "category": "trivial",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-029",
       "category": "trivial",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-030",
       "category": "trivial",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-031",
       "category": "trivial",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-032",
       "category": "trivial",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-033",
       "category": "trivial",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-034",
       "category": "trivial",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-035",
       "category": "trivial",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-036",
@@ -312,7 +387,9 @@
       "selected": [
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-037",
@@ -320,7 +397,9 @@
       "selected": [
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-038",
@@ -328,7 +407,9 @@
       "selected": [
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-039",
@@ -337,7 +418,9 @@
         "mcp-integration",
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-040",
@@ -346,7 +429,9 @@
         "skill-orchestration",
         "accessibility"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-041",
@@ -356,7 +441,9 @@
         "motion-systems",
         "gsap-motion"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-042",
@@ -365,7 +452,9 @@
         "skill-orchestration",
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-043",
@@ -373,7 +462,9 @@
       "selected": [
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-044",
@@ -381,7 +472,9 @@
       "selected": [
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-045",
@@ -389,7 +482,9 @@
       "selected": [
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-046",
@@ -397,7 +492,9 @@
       "selected": [
         "accessibility"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-047",
@@ -405,7 +502,9 @@
       "selected": [
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-048",
@@ -414,7 +513,9 @@
         "skill-orchestration",
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-049",
@@ -423,7 +524,9 @@
         "skill-orchestration",
         "motion-systems"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-050",
@@ -432,7 +535,9 @@
         "mcp-integration",
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-051",
@@ -441,7 +546,9 @@
         "mcp-integration",
         "motion-systems"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-052",
@@ -450,7 +557,9 @@
         "accessibility",
         "skill-orchestration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-053",
@@ -459,7 +568,9 @@
         "motion-systems",
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-054",
@@ -468,7 +579,9 @@
         "skill-orchestration",
         "motion-systems"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-055",
@@ -477,7 +590,9 @@
         "accessibility",
         "mcp-integration"
       ],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-056",
@@ -485,31 +600,41 @@
       "selected": [
         "gsap-motion"
       ],
-      "passed": false
+      "passed": true,
+      "frozenLabelPassed": false,
+      "revised": true
     },
     {
       "id": "ROUTE-057",
       "category": "unavailable",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-058",
       "category": "unavailable",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-059",
       "category": "unavailable",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     },
     {
       "id": "ROUTE-060",
       "category": "unavailable",
       "selected": [],
-      "passed": true
+      "passed": true,
+      "frozenLabelPassed": true,
+      "revised": false
     }
   ]
 }

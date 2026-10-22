@@ -21,6 +21,8 @@
     "test:knowledge": "node --test tests/knowledge/*.test.mjs tests/integrations/*.test.mjs tests/recipes/*.test.mjs",
     "knowledge:hash": "node scripts/knowledge-hash.mjs",
     "evaluate:v3-routing": "node scripts/evaluate-v3-routing.mjs",
+    "verify:mcp-contract": "node scripts/ci-mcp-contract.mjs",
+    "verify:capability-plan": "node scripts/verify-capability-plan.mjs",
     "test:browser": "playwright test",
     "agents:inspect": "node scripts/setup-agents.mjs inspect --agents all",
     "agents:plan": "node scripts/setup-agents.mjs plan --agents all",
