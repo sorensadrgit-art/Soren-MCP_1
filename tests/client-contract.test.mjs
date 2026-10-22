@@ -63,7 +63,7 @@ test("Curated skills: the original four first and unchanged, then the reviewed V
   assert.deepEqual(SKILLS.map(s=>s.name).sort(),["21st-ui-components","accessibility","agent-capability-navigation","agentic-coding",
     "agentic-design-to-code","blender-to-r3f","gltf-asset-pipeline","graphics-performance-qa","gsap-motion","mcp-integration",
     "motion-systems","motionsites-design","nextjs-runtime-engineering","playwright-browser-qa","react-three-fiber",
-    "shader-material-lab","skill-orchestration","soren-universal-deployment","spline-to-web","superpowers-engineering",
+    "shader-material-lab","skill-orchestration","soren-learning-loop","soren-universal-deployment","spline-to-web","superpowers-engineering",
     "threejs-production","webgpu-progressive-rendering"]);
 });
 
