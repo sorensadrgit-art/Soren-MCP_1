@@ -1,6 +1,6 @@
 # Non-production gateway store: readiness and provisioning runbook
 
-Status: **prepared, not provisioned.** The one outstanding prerequisite is account access: an owner-held Supabase personal access token, which is never committed. Every step marked **Approval** also needs the owner's explicit go-ahead, because it creates an account resource, a credential or a cost.
+Status: **provisioned externally and reconciled read-only; live probe pending.** A non-production gateway store now exists and its structure matches the reviewed end-state on every checked point (see "Reconciliation status" below). It was created, migrated and seeded outside this workspace; this workspace has made no writes to it. The remaining gates are ES256 key custody, an owner-supplied short-lived gateway JWT, and the 10-check live probe. Every step marked **Approval** still needs the owner's explicit go-ahead, because it creates an account resource, a credential or a cost.
 
 The goal is one isolated Supabase project that acts as the shared gateway store for previews and tests: migrations 0001 to 0005, federation budgets and caches, and identity lookups, reachable only through the least-privilege `soren_gateway` role. It must never share a project, key or database with production.
 
@@ -25,6 +25,38 @@ The PostgREST stand-in maps the bearer JWT's `role` and claims onto the database
 - `SOREN_GATEWAY_DB_KEY` carries `role: soren_gateway` and an exact `workspace_id`, with a short expiry (7 days or less for testing).
 - Preview environment variables, if added, are scoped to the **Preview** environment of `soren-mcp-v3-preview`, never to Production and never to `soren-shared-mcp-skills`.
 
+## Reconciliation status (2026-10-22)
+
+The store was provisioned outside this workspace as project `soren-mcp-v3-gateway-preview` (ref `xoyefnfesvrqsohuppxe`, organization `ksyeoqwvjlyccqrdvzjh`, Free plan, `us-east-1`). Read-only verification:
+
+- **Structure matches the reviewed end-state on every checked point** (the owner's independent SQL inspection, cross-checked against the six reviewed migrations): 34 public tables, all with RLS; 21 RLS policies; 51 public functions; 14 `immutable_record` triggers; exactly the five executable gateway RPCs; `soren_gateway` cannot log in, inherit, bypass RLS, or hold any table privilege; one active workspace; one human and one agent principal; owner and reader memberships; exactly one live `skills:read` grant; gateway cache, budget, jobs, leases, operation events and release records empty; `custom_access_token_hook` absent (the bearer design stays not-enabled).
+- **An ES256 signing key is imported and advertised** by the project's public JWKS as its only asymmetric key: EC / P-256 / ES256, kid `6c2724fd-b61f-467b-8a9e-34fc8009d564` (observed 2026-10-22T19:25Z, unchanged at 19:45Z). JWKS advertisement is consistent with the key being current; dashboard confirmation of its status and **custody** is still required (below).
+- **No writes were made to the store by this workspace:** no migrations rerun, no seed, no probe. The live probe (step 7) is the first authorized write and is gated on the checks below. Evidence: `evidence/v3/store/reconciliation.json`.
+
+## ES256 key custody and rotation (approval-gated)
+
+The provisioning — including the signing-key import — happened outside this workspace. Before the store is used:
+
+1. **Dashboard verification (owner).** In the Supabase dashboard for `xoyefnfesvrqsohuppxe`, open the JWT signing-keys settings and the organization/project activity log. Confirm (a) who created the project and imported the key, (b) the key's status is `in_use`, and (c) the private JWK is held by an authorized owner. JWKS presence alone does not prove the dashboard status.
+2. **Custody rule.** The private JWK never enters any agent workspace or repository. An agent workspace only receives a **short-lived, workspace-bound `soren_gateway` JWT** minted by the owner (7 days or less), supplied through an approved local file, and verified against the public JWKS before use (kid, signature, `role`, `workspace_id`, expiry).
+3. **Rotation plan — execute only with explicit owner approval; do not rotate otherwise.**
+   - Generate a fresh ES256 (P-256) JWK owner-side (`supabase gen signing-key --algorithm ES256` or Node crypto) and keep it owner-held.
+   - Import it as standby: `POST /v1/projects/xoyefnfesvrqsohuppxe/config/auth/signing-keys` with `{algorithm: "ES256", status: "standby", private_jwk: <jwk>}`.
+   - After the 5-minute state-change guard, make it current: `PATCH /v1/projects/xoyefnfesvrqsohuppxe/config/auth/signing-keys/<new-key-id>` with `{status: "in_use"}`. The previously current key (kid `6c2724fd-…`) is demoted but stays valid until explicitly revoked.
+   - Confirm the new kid appears in the public JWKS (`GET https://xoyefnfesvrqsohuppxe.supabase.co/auth/v1/.well-known/jwks.json`) and the old one is demoted as expected.
+   - Mint a fresh gateway JWT with the new kid, re-verify it, and only then revoke the old key in the dashboard.
+   - Capture redacted evidence at each step (status codes, key ids, JWKS snapshots); no private material in evidence.
+
+## Vercel preview environment deviation (observed, not changed)
+
+On 2026-10-22 between 19:28:28 and 19:30:29 UTC, Vercel user `sorensadr-5641` (user principal — the account owner's user) created five store-related environment variables on `soren-mcp-v3-preview`: `SUPABASE_URL`, `SOREN_WORKSPACE_ID`, `SOREN_CAPABILITY_MODE` (each targeting Preview+Production) and `SUPABASE_ANON_KEY`, `OREN_RATE_KEY` (each targeting Production only). This workspace did not create or modify them, and no redeploy has occurred since. Issues:
+
+- `OREN_RATE_KEY` is a typo for `SOREN_RATE_KEY`; `lib/gateway.mjs` reads `SOREN_RATE_KEY` and fails closed (`shared_provider_budget_unavailable`) without it.
+- `SOREN_GATEWAY_DB_KEY` is absent entirely, so no deployment of that project can use the store: every path fails closed. Fail-safe, but non-functional.
+- Two variables target **Production** of a project that must never have a production deployment (see the exposure-incident closure). Preview-only scoping per step 8 is the reviewed configuration.
+
+Correction is owner-side, after review: rename to `SOREN_RATE_KEY`, scope all five to Preview only, add `SOREN_GATEWAY_DB_KEY` (the owner-minted short-lived JWT) only when the live probe is approved, and do not redeploy until then.
+
 ## Steps
 
 1. **Approval: create the project.** A new Supabase project in an organization that holds no production data. The Free plan is enough for this load; it allows two active projects and pauses inactive ones. Proceed only while the organization plan is Free and the active project count is below two; stop for billing confirmation otherwise. Create it with the Management API (`POST /v1/projects` with the name, the organization id, region `us-east-1` and an owner-generated database password) or the dashboard. Record the project ref and region.
@@ -45,10 +77,10 @@ The PostgREST stand-in maps the bearer JWT's `role` and claims onto the database
    If the first query is false, run `grant soren_gateway to authenticator;` as the owner.
 4. **Approval: create two Auth users** in the new project: one human owner and one agent identity (dashboard, or `POST /auth/v1/admin/users` with the owner service key). Record their user UUIDs. No passwords or tokens go into the repository. Give the agent the `app_metadata` `client_id` it will present (see the hook design).
 5. **Seed** with `supabase/nonprod/seed-gateway-test.sql`. The header shows the psql variables. The issuer is `https://<ref>.supabase.co/auth/v1`. The agent gets `skills:read` for 7 days.
-6. **Approval: credentials.** The chosen scheme is an **owner-controlled imported ES256 signing key** (asymmetric is also required for OpenID Connect ID tokens, and the OAuth 2.1 server recommends it):
-   - Generate an ES256 (P-256) JWK locally — `supabase gen signing-key --algorithm ES256` or Node's crypto — and keep the private JWK out of the repository, agent logs and deployment bundles (a gitignored local file is the minimum).
-   - Import it: `POST /v1/projects/<ref>/config/auth/signing-keys` with `{algorithm: "ES256", status: "standby", private_jwk: <jwk>}`, then rotate it current: `PATCH /v1/projects/<ref>/config/auth/signing-keys/<key-id>` with `{status: "in_use"}`. Both follow the [JWT signing keys guide](https://supabase.com/docs/guides/auth/signing-keys); allow for the 5-minute guard between signing-key state changes. The previously current key stays valid until explicitly revoked.
-   - `SOREN_GATEWAY_DB_KEY`: a JWT with header `{alg: "ES256", kid: "<key id>", typ: "JWT"}` and payload `{"role":"soren_gateway","workspace_id":"<SOREN_WORKSPACE_ID>","exp":<now + 7 days>}`. Never the service key; the activation preflight rejects that reuse.
+6. **Approval: credentials.** The chosen scheme is an **owner-controlled imported ES256 signing key** (asymmetric is also required for OpenID Connect ID tokens, and the OAuth 2.1 server recommends it). **Custody rule: the private JWK stays with the owner — it never enters any agent workspace, repository, log or deployment bundle.** An agent workspace receives only the minted, short-lived gateway JWT.
+   - Generate an ES256 (P-256) JWK owner-side — `supabase gen signing-key --algorithm ES256` or Node's crypto — and keep it owner-held.
+   - Import it: `POST /v1/projects/<ref>/config/auth/signing-keys` with `{algorithm: "ES256", status: "standby", private_jwk: <jwk>}`, then rotate it current: `PATCH /v1/projects/<ref>/config/auth/signing-keys/<key-id>` with `{status: "in_use"}`. Both follow the [JWT signing keys guide](https://supabase.com/docs/guides/auth/signing-keys); allow for the 5-minute guard between signing-key state changes. The previously current key stays valid until explicitly revoked. See "ES256 key custody and rotation" above for the current key's status and the approval-gated rotation plan.
+   - **Gateway JWT supply:** the owner mints `SOREN_GATEWAY_DB_KEY` — a JWT with header `{alg: "ES256", kid: "<key id>", typ: "JWT"}` and payload `{"role":"soren_gateway","workspace_id":"<SOREN_WORKSPACE_ID>","exp":<now + 7 days>}` — and supplies it through an approved local file. It is verified against the public JWKS (kid, signature, `role`, `workspace_id` claim, expiry) before any use. Never the service key; the activation preflight rejects that reuse.
    - `SOREN_RATE_KEY`: at least 32 random bytes, for example `node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"`, written straight into the secret store.
    - `SUPABASE_ANON_KEY`: the project's publishable (or legacy anon) key.
 7. **Probe the real store** from a shell that holds only the gateway variables (no service-role key):

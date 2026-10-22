@@ -1,0 +1,72 @@
+{
+  "recordedAt": "2026-10-22T19:45:53.933Z",
+  "store": {
+    "name": "soren-mcp-v3-gateway-preview",
+    "ref": "xoyefnfesvrqsohuppxe",
+    "organizationId": "ksyeoqwvjlyccqrdvzjh",
+    "plan": "free (owner-reported)",
+    "region": "us-east-1 (owner-reported)",
+    "provisionedBy": "outside the Factory Droid workspace; the database records no operator identity; owner dashboard verification pending",
+    "writesByThisWorkspace": "none"
+  },
+  "publicProbes": [
+    {
+      "at": "2026-10-22T19:25:51.842Z",
+      "restRoot": 401,
+      "authHealth": 401,
+      "authHealthNote": "No API key found in request (service up; newer Supabase requires an apikey header even for health)",
+      "jwks": [
+        {"kty": "EC", "crv": "P-256", "alg": "ES256", "kid": "6c2724fd-b61f-467b-8a9e-34fc8009d564", "use": "sig"}
+      ]
+    },
+    {
+      "at": "2026-10-22T19:45:53.933Z",
+      "restRoot": 401,
+      "authHealth": 401,
+      "jwksKidUnchanged": true
+    }
+  ],
+  "structuralReconciliation": {
+    "source": "owner's independent read-only SQL inspection, cross-checked against migrations 0001-0005 in this repository",
+    "publicTables": 34,
+    "rlsPolicies": 21,
+    "publicFunctions": 51,
+    "immutableRecordTriggers": 14,
+    "gatewayExecutableRpcs": 5,
+    "gatewayRoleNoLoginNoInheritNoBypassRls": true,
+    "gatewayRoleTablePrivileges": 0,
+    "seed": {"workspaces": 1, "principals": "1 human + 1 agent", "memberships": "owner + reader", "grants": "1 active skills:read"},
+    "operationalTablesEmpty": ["federation_cache", "federation_budget_buckets", "jobs", "leases", "operation_events", "release records"],
+    "customAccessTokenHook": "absent (bearer identity designed, not enabled)",
+    "verdict": "matches the reviewed end-state on every checked point"
+  },
+  "vercelPreviewEnv": {
+    "project": "soren-mcp-v3-preview",
+    "observedAt": "2026-10-22T19:41Z",
+    "createdBy": {"type": "user", "username": "sorensadr-5641", "userId": "38lhyUjt7muthM0pRzW4Dbs4"},
+    "auditLogEndpoints": "v1 and v2 team events endpoints returned 404 on this API tier; the env records' createdBy field is the creator evidence",
+    "variables": [
+      {"key": "SUPABASE_URL", "target": ["preview", "production"], "createdAt": "2026-10-22T19:28:28.550Z", "value": "not recorded (encrypted)"},
+      {"key": "SOREN_WORKSPACE_ID", "target": ["preview", "production"], "createdAt": "2026-10-22T19:28:36.767Z", "value": "not recorded (encrypted)"},
+      {"key": "SOREN_CAPABILITY_MODE", "target": ["preview", "production"], "createdAt": "2026-10-22T19:28:44.334Z", "value": "not recorded (encrypted)"},
+      {"key": "SUPABASE_ANON_KEY", "target": ["production"], "createdAt": "2026-10-22T19:29:57.197Z", "value": "not recorded (encrypted)"},
+      {"key": "OREN_RATE_KEY", "target": ["production"], "createdAt": "2026-10-22T19:30:29.626Z", "value": "not recorded (encrypted)", "note": "typo for SOREN_RATE_KEY; lib/gateway.mjs reads SOREN_RATE_KEY and fails closed without it"}
+    ],
+    "typeSafePreviewVars": ["TYPESAFE_API_KEY", "TYPESAFE_JEV_ENABLED", "SOREN_TYPESAFE_TOOLS", "SOREN_V3_TOOLS"],
+    "impact": "SOREN_GATEWAY_DB_KEY is absent and the rate key name is typo'd, so no deployment of this project can use the store: lib/gateway.mjs fails closed with shared_provider_budget_unavailable. Fail-safe, non-functional.",
+    "redeployAfterChanges": "none (latest deployment dpl_pNoEunbeYbA4ymiYPY5VevdSrbLo, preview target, READY, 2026-10-22T16:14:38Z)",
+    "modifiedByThisWorkspace": false
+  },
+  "productionBaseline": {
+    "project": "soren-shared-mcp-skills",
+    "latestDeployment": "dpl_Dvmp9LTVEQLdQeMVDGAfRxBoK51b (production, READY, 2026-10-22T11:14:02Z)",
+    "envVarCount": 0,
+    "unchanged": true
+  },
+  "remainingGates": [
+    "Owner verifies ES256 key custody in the dashboard (creator, in_use status, private-JWK holder); approval-gated rotation plan in the runbook if unaccounted",
+    "Owner supplies a short-lived workspace-bound soren_gateway JWT through an approved local file, plus the publishable anon key and probe identifiers",
+    "verify:gateway-store 10/10 PASS with all three refusal negatives REFUSED",
+    "Owner-side correction of the preview env deviation before any redeploy"
+  ]
+}
