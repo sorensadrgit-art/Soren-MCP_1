@@ -1,0 +1,44 @@
+{
+  "source": "Vercel REST API (vc api) and unauthenticated curl/fetch from the operator workstation; no secret values recorded",
+  "unusedProductionDeployment": {
+    "id": "dpl_v1aHX5zVu3cCY2Qx7YcHMP7wc73T",
+    "evidencePreservedBeforeDeletion": ["unused-production-deployment.json", "unused-production-deployment-build-events.txt", "cdn-request-records.json", "project-activity-timeline.json"],
+    "aliasesBeforeDeletion": [{"alias": "soren-mcp-v3-preview-sorensadr-gmailcoms-projects.vercel.app", "deploymentId": "dpl_v1aHX5zVu3cCY2Qx7YcHMP7wc73T", "createdAt": "2026-10-22T15:56:26.538Z"}],
+    "stateBeforeDeletion": "unique URL and team alias returned 503 (residual from the pause), short domain returned 404",
+    "deletedAt": "2026-10-22T16:59:29.252Z",
+    "deletedAtSource": "activity event deployment-delete",
+    "deleteResponse": {"uid": "dpl_v1aHX5zVu3cCY2Qx7YcHMP7wc73T", "state": "DELETED"}
+  },
+  "postDeletionChecks": {
+    "checkedAt": "2026-10-22T17:00Z (about 20 s after deletion)",
+    "unauthenticated": [
+      {"url": "https://soren-mcp-v3-preview-nttd8ate2-sorensadr-gmailcoms-projects.vercel.app/api/health", "status": 404, "body": "The deployment could not be found on Vercel."},
+      {"url": "https://soren-mcp-v3-preview-sorensadr-gmailcoms-projects.vercel.app/api/health", "status": 404, "body": "The deployment could not be found on Vercel."},
+      {"url": "https://soren-mcp-v3-preview.vercel.app/api/health", "status": 404, "body": "The deployment could not be found on Vercel."},
+      {"url": "https://soren-mcp-v3-preview-1ylrjyzfe-sorensadr-gmailcoms-projects.vercel.app/api/health", "status": 302, "body": "Protected by Vercel Authentication"},
+      {"url": "https://soren-mcp-v3-preview-5b1z89yay-sorensadr-gmailcoms-projects.vercel.app/api/health", "status": 302, "body": "Protected by Vercel Authentication"}
+    ],
+    "projectAliases": [],
+    "projectDomains": [],
+    "deployments": [
+      {"uid": "dpl_pNoEunbeYbA4ymiYPY5VevdSrbLo", "state": "READY", "target": "preview"},
+      {"uid": "dpl_6Vh95ZUr9VbR54v28LgmhWkixdTx", "state": "READY", "target": "preview"},
+      {"uid": "dpl_CgPF8BaC1qMA2KstpWBws3a2j3bj", "state": "BLOCKED", "target": "preview", "note": "never built, serves nothing"}
+    ],
+    "project": {"ssoProtection": {"deploymentType": "all_except_custom_domains"}, "productionTarget": null, "envVarCount": 0, "gitLink": null}
+  },
+  "automationBypassRevocation": {
+    "revokedAt": "2026-10-22T17:01:29.445Z",
+    "revokedAtSource": "activity event project-automation-bypass (removed)",
+    "secretCreatedAt": "2026-10-22T16:12:07.815Z",
+    "revokedSecretSha256Prefix": "c9c1737f",
+    "method": "PATCH /v1/projects/prj_n1PULnMPv3uCy1Df7qBCnKBRzNNp/protection-bypass {revoke:{regenerate:false}}",
+    "previewHealthLiveWithSecretBefore": [200, 200],
+    "previewHealthLiveWithoutSecretBefore": [302, 302],
+    "previewHealthLiveWithSecretAfter": [302, 302],
+    "secretCheckedAfterAt": "2026-10-22T17:01:40.818Z",
+    "projectBypassEntriesAfter": 0,
+    "persistedEnvironmentVariable": "VERCEL_PROTECTION_BYPASS not set at user or machine scope"
+  },
+  "productionProjectUntouched": "soren-shared-mcp-skills (prj_mJgbERJNKW1V96leE2yWOzsqxkpo) was not called by any write in this closure"
+}

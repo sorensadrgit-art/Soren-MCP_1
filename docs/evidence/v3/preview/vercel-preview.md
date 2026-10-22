@@ -11,7 +11,7 @@ The isolated preview for Gate 5. Source commit `850df17` (branch `feat/soren-uni
 | Preview project | `soren-mcp-v3-preview` (`prj_n1PULnMPv3uCy1Df7qBCnKBRzNNp`), new, framework Next.js, Node.js 22.x |
 | Project env vars | none (no gateway store, no `SOREN_RATE_KEY`, no TypeSafe key) |
 | Project domains | none (the auto-assigned `soren-mcp-v3-preview.vercel.app` was removed, see below) |
-| Deployment protection | Vercel Authentication, `all_except_custom_domains`; one protection-bypass-for-automation token, used only through `x-vercel-protection-bypass` and never printed or committed |
+| Deployment protection | Vercel Authentication, `all_except_custom_domains`. The protection-bypass-for-automation token used for validation (only through `x-vercel-protection-bypass`, never printed or committed) was **revoked on 2026-10-22 at 17:01:29**; the project has no bypass entries now |
 | Existing production project | `soren-shared-mcp-skills` (`prj_mJgbERJNKW1V96leE2yWOzsqxkpo`) not modified: same `updatedAt` (1792667661653), production deployment `dpl_Dvmp9LTVEQLdQeMVDGAfRxBoK51b`, zero env vars, live still reports 2.4.0 |
 
 ## Deployments in the preview project
@@ -20,10 +20,10 @@ The isolated preview for Gate 5. Source commit `850df17` (branch `feat/soren-uni
 |---|---|---|---|
 | `dpl_6Vh95ZUr9VbR54v28LgmhWkixdTx` (`soren-mcp-v3-preview-1ylrjyzfe-…vercel.app`) | preview | `SOREN_V3_TOOLS=1` (deployment-scoped `--env` and `--build-env`) | Flag-on validation |
 | `dpl_pNoEunbeYbA4ymiYPY5VevdSrbLo` (`soren-mcp-v3-preview-5b1z89yay-…vercel.app`) | preview | unset | Flag-off validation |
-| `dpl_v1aHX5zVu3cCY2Qx7YcHMP7wc73T` | production (of the new project only) | `SOREN_V3_TOOLS=1` | First attempt, not used for validation |
+| `dpl_v1aHX5zVu3cCY2Qx7YcHMP7wc73T` | production (of the new project only) | `SOREN_V3_TOOLS=1` | First attempt, not used for validation. **Deleted** at 16:59:29 after its evidence was preserved |
 | `dpl_CgPF8BaC1qMA2KstpWBws3a2j3bj` | preview | `SOREN_V3_TOOLS=1` | Blocked while the project was paused; never built |
 
-**Exposure note.** The first `vercel deploy --environment preview` on the new project was recorded as target `production` and aliased to `soren-mcp-v3-preview.vercel.app`. On a Hobby team, standard protection does not cover that production domain, so for about three minutes the flag-on read-only MCP surface (the same public tools as live, plus the six advisory V3 tools) was reachable without authentication. It was closed by pausing the new project, removing that domain from the new project, then unpausing. The domain now returns 404. All validation used the two preview-target deployments, which have no aliases and are protected.
+**Exposure note.** The first `vercel deploy --environment preview` on the new project was recorded as target `production` and aliased to `soren-mcp-v3-preview.vercel.app`. On a Hobby team, standard protection does not cover that production domain, so for about 77 seconds (15:56:26 to 15:57:43 UTC) the flag-on read-only MCP surface was reachable without authentication on that hostname. The surface was the same public tools as live, plus the six advisory V3 tools, with no secrets or store. It was closed by pausing the project and removing the domain. The deployment itself has since been deleted. The incident report, request records and closure checks are in [`incident/`](incident/README.md). All validation used the two preview-target deployments, which have no aliases and are protected.
 
 ## Protection checks (`protection-and-boundary-probes.jsonl`)
 
@@ -34,6 +34,7 @@ The isolated preview for Gate 5. Source commit `850df17` (branch `feat/soren-uni
 | Unauthenticated `/api/health/live` | 302 |
 | Wrong bypass secret | 401 |
 | Bypass: `/api/health/live`, `/api/health/ready` | 200 live; 200 ready, mode `public_only` |
+| Revoked bypass secret (after closure) | 302 on both previews |
 
 ## MCP protocol validation
 
