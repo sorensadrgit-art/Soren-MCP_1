@@ -1,0 +1,19 @@
+
+Running 14 tests using 1 worker
+
+  ok  1 [swiftshader] › tests\sandbox.spec.js:30:1 › loads the model with no console errors and renders frames (6.6s)
+  ok  2 [swiftshader] › tests\sandbox.spec.js:44:3 › responsive layout at 1440px has no horizontal overflow (6.1s)
+  ok  3 [swiftshader] › tests\sandbox.spec.js:44:3 › responsive layout at 768px has no horizontal overflow (3.8s)
+  ok  4 [swiftshader] › tests\sandbox.spec.js:44:3 › responsive layout at 390px has no horizontal overflow (2.8s)
+  ok  5 [swiftshader] › tests\sandbox.spec.js:64:1 › keyboard reaches finish controls with visible focus and changes the material (1.0s)
+  ok  6 [swiftshader] › tests\sandbox.spec.js:82:1 › skip link moves focus to the content (873ms)
+  ok  7 [swiftshader] › tests\sandbox.spec.js:90:1 › clicking the sculpture cycles the finish through raycasting (823ms)
+  ok  8 [swiftshader] › tests\sandbox.spec.js:101:1 › scroll drives the GSAP camera timeline across chapters (11.8s)
+  ok  9 [swiftshader] › tests\sandbox.spec.js:117:1 › reduced motion stops idle rotation and cuts the camera without tweening (8.1s)
+  ok 10 [swiftshader] › tests\sandbox.spec.js:134:1 › model load failure shows an error state without crashing the page (2.7s)
+  ok 11 [swiftshader] › tests\sandbox.spec.js:148:1 › unloading disposes GPU resources and reloading does not leak (5.5s)
+  ok 12 [swiftshader] › tests\sandbox.spec.js:188:1 › performance metrics @metrics (19.8s)
+  ok 13 [gpu] › tests\sandbox.spec.js:188:1 › performance metrics @metrics (9.1s)
+  ok 14 [no-webgl] › tests\sandbox.spec.js:174:1 › WebGL unavailable renders the accessible static fallback @fallback (646ms)
+
+  14 passed (1.5m)

@@ -169,6 +169,10 @@ Only one writer per property: if GSAP owns the camera position, disable `OrbitCo
 - [ ] Keyboard navigation reaches all content in pinned sections.
 - [ ] Tested at 1440, 768 and 390 px widths.
 
+## Sandbox field findings (2026-10-22)
+
+- With `gsap.matchMedia()` inside `useGSAP`, use a scrubbed timeline for `(prefers-reduced-motion: no-preference)`. Under `reduce`, create `ScrollTrigger`s whose `onToggle` cuts the camera to each section's pose with no tween. Playwright confirmed exact pose values and zero idle rotation under emulated reduced motion.
+- Tween plain objects (`cameraState.position`, `.target`, `.view`) and have an R3F `useFrame` copy them into the camera. Scrolling then causes no React re-renders.
 ## Related skills
 
 - `motion-systems` for motion design tokens and choreography.

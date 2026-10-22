@@ -142,6 +142,16 @@ Instancing. Repeated geometry with the same material belongs in `<instancedMesh>
 - [ ] Unmount and remount leave no growing geometry or texture counts.
 - [ ] Tested at 1440, 768 and 390 px widths.
 
+## Sandbox field findings (2026-10-22)
+
+Measured in the isolated SOREN V3 sandbox (R3F 9.8.2, drei 10.7.9, three 0.186.1, React 19.3.1). Evidence: `docs/evidence/v3-sandbox-validation.md`.
+
+- Drei `ContactShadows` (10.7.9) creates two `WebGLRenderTarget`s and a plane geometry in `useMemo` and never disposes them. Each unmount left +1 geometry and +2 textures. Keep it mounted for the Canvas lifetime, or use a `<shadowMaterial>` catcher plane that reuses the light's shadow map.
+- A single-owner cached GLTF can be released fully: traverse and dispose geometries, materials and textures, then call `useGLTF.clear(url)` in the unmount cleanup. Three unload/reload cycles returned to the same 20 geometries and 7 textures. Use `dispose={null}` instead when several components share the cached scene.
+- Call `useGLTF(url, false, true)` for meshopt-only assets so drei does not configure the CDN-hosted Draco decoder.
+- An error boundary inside the Canvas around `Suspense` keeps a failed GLB load contained, but the loader's rejected promise still surfaces once as an uncaught page error ("Could not load …"). Allowlist exactly that message in tests; fail on anything else.
+- Load the Canvas module with `React.lazy` behind a WebGL check. The no-WebGL path then never downloads the three/R3F/drei chunk (281.6 KB gzip transfer in the sandbox).
+- To keep the object opposite the copy without changing perspective, tween `camera.setViewOffset` per section. On portrait screens, use a vertical offset and a larger camera distance. For click tests, expose the projected focus point instead of clicking the viewport centre.
 ## Related skills
 
 - `threejs-production`, `gltf-asset-pipeline`, `blender-to-r3f`, `shader-material-lab`, `webgpu-progressive-rendering`.

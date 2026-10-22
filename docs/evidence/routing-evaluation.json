@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-22T12:40:31.810Z",
+  "observedAt": "2026-10-22T13:18:26.856Z",
   "fixtureSha256": "c36b95b64e49b99e6ea24ed57527d54c258049739e5bf73915a13c59b4ea1bcc",
   "labelReview": "developer_authored_human_review_pending",
   "taskCount": 60,
@@ -9,13 +9,13 @@
   "bypassCorrect": true,
   "localRoute": {
     "samples": 100,
-    "p50Ms": 0.10859999999999559,
-    "p95Ms": 0.210799999999999
+    "p50Ms": 0.126100000000001,
+    "p95Ms": 0.3054000000000059
   },
   "bundledRead": {
     "samples": 100,
-    "p50Ms": 0.041600000000002524,
-    "p95Ms": 0.1075000000000017
+    "p50Ms": 0.4217999999999904,
+    "p95Ms": 1.085099999999997
   },
   "concurrentLocal": {
     "samples": 20,

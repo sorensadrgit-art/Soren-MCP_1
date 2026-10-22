@@ -830,7 +830,7 @@
           "actor": "agent-client",
           "permission": "local-process",
           "requiresHumanApproval": false,
-          "verification": "Output written to a new file; size reduction recorded.",
+          "verification": "Output written to a new file; size reduction recorded; source or uncompressed copy validated, since the validator cannot inspect meshopt payloads.",
           "outputs": [
             "optimized GLB"
           ]
@@ -874,7 +874,7 @@
           "actor": "agent-client",
           "permission": "local-edit",
           "requiresHumanApproval": false,
-          "verification": "Scene loads; renderer.info.memory returns to baseline after unmount.",
+          "verification": "Scene loads; renderer.info.memory returns to the loaded baseline across repeated unmount/reload cycles, including helper render targets.",
           "outputs": [
             "loader component"
           ]

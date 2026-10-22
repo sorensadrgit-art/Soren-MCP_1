@@ -191,6 +191,13 @@
           "method": "documentation_review",
           "observedAt": "2026-10-22",
           "evidence": "Official README and npm metadata reviewed 2026-10-22"
+        },
+        {
+          "client": "local-stdio",
+          "state": "documented",
+          "method": "protocol_probe",
+          "observedAt": "2026-10-22",
+          "evidence": "next-devtools-mcp@0.4.0 started over stdio on Windows and listed 4 tools (docs/evidence/v3/stdio-probe.json); not a client connection"
         }
       ],
       "guidance": "Start next dev first, then connect the bridge; read runtime errors before editing code.",
@@ -261,6 +268,20 @@
           "method": "documentation_review",
           "observedAt": "2026-10-22",
           "evidence": "Official README reviewed 2026-10-22"
+        },
+        {
+          "client": "local-stdio",
+          "state": "documented",
+          "method": "protocol_probe",
+          "observedAt": "2026-10-22",
+          "evidence": "@playwright/mcp@0.0.83 started over stdio on Windows and listed 25 tools (docs/evidence/v3/stdio-probe.json); not a client connection"
+        },
+        {
+          "client": "factory",
+          "state": "verified",
+          "method": "native_tool_call",
+          "observedAt": "2026-10-22",
+          "evidence": "Factory Droid session: browser_navigate about:blank, browser_snapshot and browser_close succeeded"
         }
       ],
       "guidance": "Run locally in a reviewed agent MCP client. Browser automation and page access use that agent's permissions and browser context; do not run inside SOREN's public Vercel service.",
@@ -333,6 +354,20 @@
           "method": "documentation_review",
           "observedAt": "2026-10-22",
           "evidence": "Official README reviewed 2026-10-22"
+        },
+        {
+          "client": "local-stdio",
+          "state": "documented",
+          "method": "protocol_probe",
+          "observedAt": "2026-10-22",
+          "evidence": "chrome-devtools-mcp@1.11.0 started over stdio on Windows and listed 32 tools (docs/evidence/v3/stdio-probe.json); not a client connection"
+        },
+        {
+          "client": "factory",
+          "state": "verified",
+          "method": "native_tool_call",
+          "observedAt": "2026-10-22",
+          "evidence": "Factory Droid session: list_pages returned the open about:blank page"
         }
       ],
       "guidance": "Record a performance trace on a local preview, then analyse insights; label GPU versus software rendering.",

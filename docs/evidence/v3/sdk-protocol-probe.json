@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-22T12:41:49.067Z",
+  "observedAt": "2026-10-22T13:19:55.545Z",
   "client": "@modelcontextprotocol/client 2.3.1",
   "note": "Local next start on loopback, same machine; latency includes HTTP + JSON-RPC, not network to Vercel.",
   "flagOff": {
@@ -23,16 +23,16 @@
     "legacy": {
       "route_task": {
         "samples": 25,
-        "p50Ms": 13.72,
-        "p95Ms": 20.58,
-        "maxMs": 22.39,
+        "p50Ms": 6.17,
+        "p95Ms": 13.03,
+        "maxMs": 14.4,
         "last": "motion-systems"
       },
       "list_skills": {
         "samples": 25,
-        "p50Ms": 6.37,
-        "p95Ms": 15.75,
-        "maxMs": 17.52,
+        "p50Ms": 5.91,
+        "p95Ms": 15.41,
+        "maxMs": 18.72,
         "last": 22
       }
     },
@@ -67,25 +67,25 @@
     "legacy": {
       "route_task": {
         "samples": 25,
-        "p50Ms": 10.53,
-        "p95Ms": 17.89,
-        "maxMs": 21.85,
+        "p50Ms": 6.04,
+        "p95Ms": 17.37,
+        "maxMs": 19.42,
         "last": "motion-systems"
       },
       "list_skills": {
         "samples": 25,
-        "p50Ms": 6.12,
-        "p95Ms": 16.68,
-        "maxMs": 17.1,
+        "p50Ms": 5.79,
+        "p95Ms": 16.51,
+        "maxMs": 17.81,
         "last": 22
       }
     },
     "v3": {
       "plan_toolchain": {
         "samples": 25,
-        "p50Ms": 7.98,
-        "p95Ms": 16.41,
-        "maxMs": 16.99,
+        "p50Ms": 6.71,
+        "p95Ms": 16.04,
+        "maxMs": 18.83,
         "last": {
           "profile": "immersive-web",
           "steps": 9,
@@ -94,9 +94,9 @@
       },
       "search_knowledge": {
         "samples": 25,
-        "p50Ms": 6.16,
-        "p95Ms": 16.38,
-        "maxMs": 16.81,
+        "p50Ms": 6.31,
+        "p95Ms": 15.54,
+        "maxMs": 15.63,
         "last": {
           "primary": "r3f-performance",
           "results": 3
@@ -104,39 +104,39 @@
       },
       "list_integrations": {
         "samples": 25,
-        "p50Ms": 5.98,
-        "p95Ms": 15.87,
-        "maxMs": 19.05,
+        "p50Ms": 6.32,
+        "p95Ms": 15.76,
+        "maxMs": 16.73,
         "last": 13
       },
       "list_capability_profiles": {
         "samples": 25,
-        "p50Ms": 6,
-        "p95Ms": 17.97,
-        "maxMs": 19.08,
+        "p50Ms": 6.1,
+        "p95Ms": 13.34,
+        "maxMs": 15.83,
         "last": 8
       },
       "read_recipe": {
         "samples": 25,
-        "p50Ms": 6.25,
-        "p95Ms": 15.96,
-        "maxMs": 16.48,
+        "p50Ms": 5.94,
+        "p95Ms": 8.71,
+        "maxMs": 15.81,
         "last": 9
       },
       "get_client_setup_guide": {
         "samples": 25,
-        "p50Ms": 5.86,
-        "p95Ms": 15.15,
-        "maxMs": 18.1,
+        "p50Ms": 6.28,
+        "p95Ms": 15.94,
+        "maxMs": 16.57,
         "last": [
           "codex mcp add context7 --url https://mcp.context7.com/mcp --bearer-token-env-var CONTEXT7_API_KEY"
         ]
       },
       "resource_read": {
         "samples": 25,
-        "p50Ms": 6.19,
-        "p95Ms": 18.08,
-        "maxMs": 18.11,
+        "p50Ms": 6.29,
+        "p95Ms": 15.42,
+        "maxMs": 16.28,
         "last": "r3f-v9"
       }
     },

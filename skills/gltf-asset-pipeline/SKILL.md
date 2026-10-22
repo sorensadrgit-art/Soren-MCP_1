@@ -182,6 +182,17 @@ Fill every number from tools (`inspect`, validator, `renderer.info`); leave the 
 - [ ] License and provenance recorded for every shipped asset.
 - [ ] LOD switch distances checked by moving the camera across each threshold.
 
+## Sandbox field findings (2026-10-22)
+
+Measured with @gltf-transform/cli 4.5.1 on a procedural GLB (evidence: `docs/evidence/v3-sandbox-validation.md`).
+
+- `optimize` runs `palette`, `flatten` and `join` by default. These can merge materials and nodes that runtime code addresses by name. Pass `--palette false --flatten false --join false` when the app looks up nodes or materials by name.
+- `optimize` also runs `simplify` by default. The 65,536-triangle knot dropped to 50,002 (−24%). Review it visually, or pass `--simplify false` for hero assets.
+- The Khronos validator reports `UNSUPPORTED_EXTENSION` for `EXT_meshopt_compression` and cannot check the compressed payload. Validate the source or an uncompressed intermediate as well as the output.
+- WebP cut the packed metal/roughness texture from 801 KB (PNG) to 19.7 KB to download, but the estimated GPU memory stayed at 5.59 MB. Use KTX2 when VRAM is the constraint.
+- `optimize` fails with `ENOENT` if the output directory does not exist; create it first.
+- The validator flags `TEXCOORD_0` on untextured meshes as unused. Emit UVs only where a texture samples them.
+- Result: 3,058,144 → 337,980 bytes (−88.9%), 0 errors and 0 warnings on both files, loaded through drei's meshopt decoder with no console errors.
 ## Related skills
 
 blender-to-r3f, react-three-fiber, threejs-production, shader-material-lab, graphics-performance-qa, webgpu-progressive-rendering, playwright-browser-qa, spline-to-web, accessibility.

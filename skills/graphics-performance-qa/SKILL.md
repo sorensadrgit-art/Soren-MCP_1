@@ -191,6 +191,15 @@ const gpu = await page.evaluate(() => {
 - [ ] Budgets stated per tier and each marked pass, fail or unverified.
 - [ ] No numbers in the report that were not measured.
 
+## Sandbox field findings (2026-10-22)
+
+Measured with Playwright 1.64.1 / Chromium 156 on Windows (evidence: `docs/evidence/v3-sandbox-validation.md`).
+
+- Software WebGL in headless Chromium needs `--use-angle=swiftshader --enable-unsafe-swiftshader`. The same scene measured 15.4 fps idle and 5.4 fps while scrolling on SwiftShader, versus 165 fps (p95 6.2 ms) on the Intel UHD D3D11 path. Never set budgets from SwiftShader runs.
+- The GPU path in headless used `channel: 'chromium'` with `--use-angle=d3d11 --enable-gpu --ignore-gpu-blocklist`. Confirm it from the `UNMASKED_RENDERER_WEBGL` string rather than from the flags. The 165 fps figure is capped by display refresh, so report frame-time percentiles too.
+- `gl.info.memory.textures` includes environment (PMREM) and shadow-map textures, so "zero textures after unmount" is the wrong assertion. Assert that counts drop below the loaded baseline and return exactly to it after reload.
+- The `chromium` channel requests `/favicon.ico`; a missing icon logs a 404 console error that breaks zero-console-error gates. Add an icon link.
+- Measured repeated mount and unmount cycles caught a real drei `ContactShadows` render-target leak (see `react-three-fiber`).
 ## Related skills
 
 react-three-fiber, threejs-production, gltf-asset-pipeline, shader-material-lab, webgpu-progressive-rendering, blender-to-r3f, playwright-browser-qa, accessibility, nextjs-runtime-engineering, gsap-motion, motion-systems.
