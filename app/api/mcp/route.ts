@@ -3,8 +3,8 @@ import {getVercelOidcToken} from "@vercel/oidc";
 import {z} from "zod";
 import {SKILLS,searchSkills,readSkill} from "../../../lib/catalog.mjs";
 import {MCP_SERVER_NAME,MCP_VERSION,ROUTER_INSTRUCTIONS,TOOL_ANNOTATIONS} from "../../../lib/client-contract.mjs";
-import {PROVIDER_INFO,publicQuery,discoverSkills,routeTaskFederated,inspectCandidate,searchMcpServers} from "../../../lib/federation.mjs";
-import {classifyPublicTask,applyJevRouting} from "../../../lib/routing/typesafe.mjs";
+import {PROVIDER_INFO,publicQuery,discoverSkills,inspectCandidate,searchMcpServers} from "../../../lib/federation.mjs";
+import {RouteTaskInputSchema,routeTaskRequest} from "../../../lib/routing/route-request.mjs";
 import {guardedProviderCall,limitRequestBody,requestContext,validateSuppliedIdentity,allowedBrowserOrigin,GatewayError} from '../../../lib/gateway.mjs';
 import {getGatewayStore} from '../../../lib/operations/store.mjs';
 import {authenticateRequest,HttpError} from '../../../lib/security/auth.mjs';
@@ -57,40 +57,11 @@ const handler=createMcpHandler((server)=>{
   server.registerTool("route_task",{
     annotations:TOOL_ANNOTATIONS.route_task,
     title:"Universal Skill Router",
-    description:"Soren router: read-only skill recommendations. decision_engine=jev opts into confidence-gated TypeSafe advice using ONLY allowlisted public technology keywords; never sends full tasks. No automatic installs or overrides. Use discovery=local to avoid remote skill discovery.",
-    inputSchema:z.object({
-      task:z.string().min(1).max(500),
-      runtime:z.string().max(60).optional(),
-      discovery:z.enum(["local","federated","auto"]).optional(),
-      decision_engine:z.enum(["deterministic","jev"]).optional(),
-      providers:z.array(providerSchema).max(3).optional(),
-      preferred_skills:z.array(z.enum(['accessibility','motion-systems','mcp-integration','skill-orchestration'])).max(3).optional(),
-      unavailable_skills:z.array(z.enum(['accessibility','motion-systems','mcp-integration','skill-orchestration'])).max(4).optional(),
-    }),
-  },async({task,runtime,discovery,decision_engine,providers,preferred_skills,unavailable_skills})=>withErrorBoundary(async()=>{
-    const base=await routeTaskFederated(task,runtime??"generic",{
-      discovery:discovery??"federated",providers,oidcToken:discovery==="local"?"":await oidc(),
-      preferredSkills:preferred_skills,unavailableSkills:unavailable_skills,discoverer:guardedDiscovery,
-    });
-    // Default behavior is unchanged; no Jev calls without explicit tool opt-in.
-    if(decision_engine!=="jev")return base;
-    if(process.env.TYPESAFE_JEV_ENABLED!=="true")
-      return applyJevRouting(base,{status:"disabled"},{preferredSkills:preferred_skills});
-    if(!process.env.TYPESAFE_API_KEY)
-      return applyJevRouting(base,{status:"not_configured"},{preferredSkills:preferred_skills});
-    const publicKeywords=publicQuery(task); // STRICT privacy boundary: no raw task data reaches TypeSafe.
-    if(!publicKeywords)return applyJevRouting(base,{status:"no_public_terms"},{preferredSkills:preferred_skills});
-    try{
-      const answer=await guardedProviderCall("typesafe_jev",{keywords:publicKeywords,model:"jev-latest"},async()=>{
-        const outcome=await classifyPublicTask(publicKeywords);
-        if(outcome.status!=="ok")throw Error("jev_unavailable"); // Never cache provider errors.
-        return outcome;
-      });
-      return applyJevRouting(base,answer,{preferredSkills:preferred_skills});
-    }catch{
-      return applyJevRouting(base,{status:"unavailable_or_budget_limited"},{preferredSkills:preferred_skills});
-    }
-  }));
+    description:"Soren router: advisory skill recommendations. include_capability_plan=true adds a typed five-domain plan with prerequisites, sources and verification steps, not execution authority. New planning defaults to provided-only sources; set capability_context.source_scope=public to permit external discovery. decision_engine=jev opts into gated TypeSafe advice; local/private modes never call it.",
+    inputSchema:RouteTaskInputSchema,
+  },async(input)=>withErrorBoundary(()=>routeTaskRequest(input,{
+    getOidc:oidc,discoverer:guardedDiscovery,guardedAdvice:guardedProviderCall,
+  })));
 
   server.registerTool("read_skill",{
     annotations:TOOL_ANNOTATIONS.read_skill,

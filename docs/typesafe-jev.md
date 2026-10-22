@@ -13,7 +13,8 @@ Privacy and safety:
 - Only the technical words produced by `publicQuery(task)` are sent, never full task text, repository content, patient information, credentials, or file paths. The adapter independently checks canonical allowlisting.
 - Recommendation reordering requires confidence >= 0.85 and an eligible *already recommended* skill. This threshold is a starting policy, **not yet empirically validated**.
 - Explicit `preferred_skills` always win; no model output can add a skill or override the host agent.
-- The key is server-only. The API endpoint is fixed, with no redirects, bounded response size and timeout.
+- Local discovery and private/provided-only capability plans never invoke Jev. Explicit preferred skills skip the API call entirely.
+- The key is server-only. The API endpoint is fixed, with no redirects, bounded response size and a total deadline covering response streaming as well as headers.
 - Jev requests are protected by the existing `guardedProviderCall` shared quota store. Missing quotas, low confidence, unavailable API, malformed results and absent credits fall back to deterministic routing.
 
 ## Activate safely
@@ -30,11 +31,11 @@ Privacy and safety:
    {
      "task": "Build an accessible WebGL experience using GSAP",
      "runtime": "codex",
-     "discovery": "local",
+     "discovery": "auto",
      "decision_engine": "jev"
    }
    ```
-6. The `decisionEngine.status` property reports `applied`, `low_confidence`, `no_match`, `ineligible`, `disabled`, `not_configured`, `no_public_terms` or `unavailable_or_budget_limited`. Disable instantly for new deployments by setting `TYPESAFE_JEV_ENABLED=false`.
+6. The `decisionEngine.status` property reports `applied`, `low_confidence`, `no_match`, `ineligible`, `disabled`, `not_configured`, `no_public_terms`, `local_only`, `privacy_scope_preserved`, `explicit_preference_preserved`, `no_eligible_skills`, or `unavailable_or_budget_limited`. Disable instantly for new deployments by setting `TYPESAFE_JEV_ENABLED=false`.
 
 ## Optional agent skill
 
@@ -53,3 +54,7 @@ npm run build
 ```
 
 Unit tests use a **mock TypeSafe HTTP response**, not real paid inference. Live verification remains blocked until funded credentials and approval for the appropriate environment exist. Publishing source is not a production deployment.
+
+## Capability-plan integration
+
+This implementation reuses the optional advisor source from PR #2 while keeping the 30-entry capability plan deterministic and non-authorizing. Its tests use simulated provider responses. Missing model readiness never blocks the metadata planner. See [capability-planning.md](capability-planning.md) for the opt-in request and exact evidence boundary.
