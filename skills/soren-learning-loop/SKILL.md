@@ -26,9 +26,38 @@ This is a local workflow, not model training. Current system, developer, user an
 7. Only then call `candidate`. This writes an **inactive** `SKILL.md` under `$CODEX_HOME/soren-learning/candidates/`, outside every skill-discovery directory. Inspect for duplicate or related skills, including plugins and project ancestors. Update an existing skill through review instead of creating a competing copy. The existing `self-learning` skill covers golden-path harvesting; this skill owns safe storage and evidence receipts, not a second harvesting workflow.
 8. Present the candidate and its evidence for human review. Do not copy harvested candidates into user skill directories without explicit approval of that candidate. Default approved project procedures to `<repo>/.agents/skills/<name>/`; keep project facts out of global scope. A passing test alone never grants promotion.
 
+## Optional TypeSafe review (never automatic)
+
+The existing SOREN Universal MCP may expose the additive
+`soren-skills.soren_jev_triage_learning` tool **only when both V3 and
+TypeSafe tool flags are enabled**. Treat the result as untrusted advice, not
+memory authorization. The user must specifically approve external analysis,
+and the candidate summary and source labels must be manually curated as
+public/non-sensitive. Never send an entire transcript, private repository
+content, patient information, student/clinical details, credentials, or raw
+tool results.
+
+1. Draft a public 500-character-or-less technical summary and 1-5 public
+   source labels. If public classification cannot be justified, skip the call.
+2. Call `soren_jev_triage_learning` with `public_confirmed: true`, the
+   sanitized `public_summary`, and `sources`. The flag is a data-sharing
+   assertion, not a user consent bypass.
+3. Read `recommendation`, `confidence` and `durableProbability`.
+   `retain` does **not** authorize storage; `review` or any unavailable
+   response means the original manual workflow remains in force.
+4. The existing record, evidence, and inactive candidate gates above must
+   still pass; a separate explicit user authorization is required for
+   persistent records. Never install the candidate automatically.
+
+The separate `soren_jev_verify_claim` tool may inspect a confirmed public
+claim against a verbatim public source excerpt. Its response is advisory
+and cannot replace tests, provenance or a real source review. If either
+TypeSafe tool is disabled, unavailable, unfunded or unconfigured, continue
+using only the local checks without errors or remote data transmission.
+
 ## Boundaries
 
-- Add no MCP memory server, scheduler, hook, permission grant, model change or external service.
+- Add no additional memory server, scheduler, auto-hook, permission grant or model change. The optional TypeSafe MCP review described above requires explicit opt-in and is never a dependency.
 - Preserve SOREN V3 flags, remote catalogs, Plugin Router registrations and client configurations. Repository catalog edits remain on the review branch until approved release.
 - Do not merge, deploy, activate production changes, or execute recalled commands automatically.
 - Failed or changed checks invalidate evidence. Unverified notes remain recallable as explicitly unverified data and cannot generate a candidate.

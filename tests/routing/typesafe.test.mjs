@@ -113,3 +113,28 @@ test('no network call for a single unactionable signal',async()=>{
   assert.equal(decision.status,'no_public_terms');
   assert.equal(calls,0);
 });
+
+test('TypeSafe choices follow the current curated skill roster, not four hardcoded names',async()=>{
+  const decision=await classifyPublicTask('gsap',{
+    env:enabled,
+    candidates:[{name:'gsap-motion'},{name:'react-three-fiber'},{name:'unknown-unapproved'}],
+    fetcher:async(url,opts)=>{
+      const criteria=JSON.parse(opts.body).questions.skill.criteria;
+      assert.ok(Object.hasOwn(criteria,'gsap-motion'));
+      assert.ok(Object.hasOwn(criteria,'react-three-fiber'));
+      assert.ok(Object.hasOwn(criteria,'none'));
+      assert.equal(Object.hasOwn(criteria,'unknown-unapproved'),false);
+      return reply('gsap-motion',.96);
+    },
+  });
+  assert.deepEqual(decision,{status:'ok',choice:'gsap-motion',confidence:.96});
+});
+test('TypeSafe skips a caller-supplied roster with no approved candidates',async()=>{
+  let calls=0;
+  const decision=await classifyPublicTask('gsap',{
+    env:enabled,candidates:[{name:'unapproved'}],
+    fetcher:()=>{calls++;throw Error('should not call');},
+  });
+  assert.equal(decision.status,'no_eligible_skills');
+  assert.equal(calls,0);
+});
