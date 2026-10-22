@@ -15,6 +15,12 @@ test('a read hint cannot remove the approval gate of a remote write named in the
     assert.equal(plan.status,'NEEDS_APPROVAL');
   }
 });
+test('mixed read and write requests take the highest-risk operation they name',()=>{
+  const plan=buildCapabilityPlan('Inspect the repository, fix the failing test and push to GitHub',{domain:'development',source_scope:'public'});
+  assert.equal(plan.operation,'edit');
+  assert.equal(plan.status,'NEEDS_APPROVAL');
+  assert.equal(buildCapabilityPlan('Inspect the repository status',{domain:'development',source_scope:'public'}).operation,'read');
+});
 test('a hint can still raise the operation above what the text implies',()=>{
   const plan=buildCapabilityPlan('Look at the n8n workflow',{domain:'automation',source_scope:'public',operation:'execute'});
   assert.equal(plan.operation,'execute');assert.equal(plan.status,'NEEDS_APPROVAL');

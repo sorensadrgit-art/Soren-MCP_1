@@ -32,9 +32,27 @@ test('version-aware: stable R3F 9 is compatible, alpha 10 is warned and v9 docs 
 });
 
 test('React 18 projects get a version mismatch warning for R3F 9 guidance',()=>{
-  const r=searchKnowledge('react three fiber',{packages:{react:'18.3.1'},now:NOW});
-  const v9=r.results.find(x=>x.id==='r3f-v9');
+  const all=searchKnowledge('react three fiber',{packages:{react:'18.3.1'},now:NOW,limit:10});
+  const v9=all.results.find(x=>x.id==='r3f-v9');
   assert.equal(v9.compatibility.status,'incompatible');
+  const top=searchKnowledge('react three fiber',{packages:{react:'18.3.1'},now:NOW});
+  assert.ok(!top.results.some(x=>x.id==='r3f-v9'));
+  assert.ok(top.warnings.some(w=>/incompatible/.test(w)&&w.includes('r3f-v9')));
+});
+
+test('incompatible guidance never outranks compatible or unknown matches',()=>{
+  const r=searchKnowledge('react three fiber',{packages:{'@react-three/fiber':'10.0.0-alpha.6'},now:NOW});
+  assert.equal(r.primary.id,'r3f-v10-alpha');
+  const all=searchKnowledge('react three fiber',{packages:{react:'18.3.1'},now:NOW,limit:10});
+  const statuses=all.results.map(x=>x.compatibility.status);
+  assert.ok(statuses.indexOf('incompatible')>statuses.lastIndexOf('unknown'));
+});
+
+test('stale matches omitted by default are named in a warning',()=>{
+  const r=searchKnowledge('gsap scrolltrigger',{now:new Date('2029-01-01T00:00:00Z')});
+  assert.ok(r.omittedStale.includes('gsap-scrolltrigger'));
+  assert.ok(r.warnings.some(w=>/stale and omitted/.test(w)&&/include_stale/.test(w)));
+  assert.deepEqual(searchKnowledge('gsap scrolltrigger',{now:new Date('2029-01-01T00:00:00Z'),includeStale:true}).omittedStale,[]);
 });
 
 test('stale sources are excluded by default and returned only on request',()=>{
