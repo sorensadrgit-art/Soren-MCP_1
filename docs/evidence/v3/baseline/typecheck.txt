@@ -1,0 +1,2 @@
+npm notice run soren-shared-mcp-skills@1.0.0 typecheck
+npm notice run tsc --noEmit

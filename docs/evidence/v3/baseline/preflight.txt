@@ -1,0 +1,181 @@
+npm notice run soren-shared-mcp-skills@1.0.0 activation:preflight
+npm notice run node scripts/activation-preflight.mjs
+{
+  "scope": "configuration_only",
+  "status": "BLOCKED",
+  "capabilityMode": "public_only",
+  "applicationAvailability": "NOT_PROBED",
+  "hostedVerification": "NOT_RUN",
+  "productionModified": false,
+  "promotionAuthorized": false,
+  "updaterArmed": false,
+  "automaticPromotionSupported": false,
+  "probationCadenceConfigured": false,
+  "components": {
+    "privateIdentity": {
+      "requiredFields": [
+        "SUPABASE_URL",
+        "SUPABASE_ANON_KEY",
+        "SOREN_WORKSPACE_ID",
+        "SOREN_AUTH_AUDIENCE",
+        "SOREN_AUTH_RESOURCE",
+        "SOREN_AUTH_CLIENT_ID"
+      ],
+      "missing": [
+        "SUPABASE_URL",
+        "SUPABASE_ANON_KEY",
+        "SOREN_WORKSPACE_ID",
+        "SOREN_AUTH_AUDIENCE",
+        "SOREN_AUTH_RESOURCE",
+        "SOREN_AUTH_CLIENT_ID"
+      ],
+      "issues": [],
+      "configuration": "INCOMPLETE",
+      "verified": false
+    },
+    "management": {
+      "requiredFields": [
+        "SOREN_MANAGEMENT_CLIENT_ID",
+        "SOREN_ADMIN_ORIGIN",
+        "SOREN_OAUTH_AUTHORIZATION_URL",
+        "SOREN_OAUTH_TOKEN_URL",
+        "SOREN_SESSION_SECRET",
+        "SOREN_REVIEW_POLICY_SHA256",
+        "SUPABASE_SERVICE_ROLE_KEY"
+      ],
+      "missing": [
+        "SOREN_MANAGEMENT_CLIENT_ID",
+        "SOREN_ADMIN_ORIGIN",
+        "SOREN_OAUTH_AUTHORIZATION_URL",
+        "SOREN_OAUTH_TOKEN_URL",
+        "SOREN_SESSION_SECRET",
+        "SOREN_REVIEW_POLICY_SHA256",
+        "SUPABASE_SERVICE_ROLE_KEY"
+      ],
+      "issues": [],
+      "configuration": "INCOMPLETE",
+      "verified": false
+    },
+    "gatewayStore": {
+      "requiredFields": [
+        "SUPABASE_URL",
+        "SOREN_GATEWAY_DB_KEY",
+        "SOREN_WORKSPACE_ID",
+        "SOREN_RATE_KEY"
+      ],
+      "missing": [
+        "SUPABASE_URL",
+        "SOREN_GATEWAY_DB_KEY",
+        "SOREN_WORKSPACE_ID",
+        "SOREN_RATE_KEY"
+      ],
+      "issues": [],
+      "configuration": "INCOMPLETE",
+      "verified": false
+    },
+    "maintenance": {
+      "requiredFields": [
+        "SUPABASE_URL",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "SOREN_WORKSPACE_ID",
+        "SUPABASE_ANON_KEY",
+        "SOREN_AUTH_AUDIENCE",
+        "SOREN_AUTH_RESOURCE",
+        "SOREN_AUTH_CLIENT_ID",
+        "CRON_SECRET",
+        "SOREN_GATEWAY_ORIGIN",
+        "SOREN_AUTH_PROBE_TOKEN",
+        "SOREN_UPDATE_PROJECT_ID",
+        "SOREN_UPDATE_ENVIRONMENT"
+      ],
+      "missing": [
+        "SUPABASE_URL",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "SOREN_WORKSPACE_ID",
+        "SUPABASE_ANON_KEY",
+        "SOREN_AUTH_AUDIENCE",
+        "SOREN_AUTH_RESOURCE",
+        "SOREN_AUTH_CLIENT_ID",
+        "CRON_SECRET",
+        "SOREN_GATEWAY_ORIGIN",
+        "SOREN_AUTH_PROBE_TOKEN",
+        "SOREN_UPDATE_PROJECT_ID",
+        "SOREN_UPDATE_ENVIRONMENT"
+      ],
+      "issues": [],
+      "configuration": "INCOMPLETE",
+      "verified": false
+    },
+    "watcher": {
+      "requiredFields": [
+        "SOREN_WATCH_GATEWAY_URL",
+        "SOREN_WATCHER_ACCESS_TOKEN",
+        "SOREN_WATCHER_CLIENT_ID",
+        "SOREN_GATEWAY_FAILURE_DOMAIN",
+        "SOREN_WATCHER_FAILURE_DOMAIN"
+      ],
+      "missing": [
+        "SOREN_WATCH_GATEWAY_URL",
+        "SOREN_WATCHER_ACCESS_TOKEN",
+        "SOREN_WATCHER_CLIENT_ID",
+        "SOREN_GATEWAY_FAILURE_DOMAIN",
+        "SOREN_WATCHER_FAILURE_DOMAIN"
+      ],
+      "issues": [],
+      "configuration": "INCOMPLETE",
+      "verified": false
+    },
+    "releaseRunner": {
+      "requiredFields": [
+        "SUPABASE_URL",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "SOREN_WORKSPACE_ID",
+        "SOREN_RELEASE_PROJECT_ID",
+        "SOREN_RELEASE_TEAM_ID",
+        "SOREN_RELEASE_ENVIRONMENT",
+        "SOREN_RELEASE_TRUST_FILE",
+        "SOREN_PRODUCTION_DOMAINS",
+        "SOREN_VERCEL_CLI_PATH",
+        "SOREN_VERCEL_CLI_SHA256",
+        "VERCEL_TOKEN",
+        "SOREN_RELEASE_RUNNER_CLIENT_ID",
+        "SOREN_RELEASE_OBSERVER_CLIENT_ID"
+      ],
+      "missing": [
+        "SUPABASE_URL",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "SOREN_WORKSPACE_ID",
+        "SOREN_RELEASE_PROJECT_ID",
+        "SOREN_RELEASE_TEAM_ID",
+        "SOREN_RELEASE_ENVIRONMENT",
+        "SOREN_RELEASE_TRUST_FILE",
+        "SOREN_PRODUCTION_DOMAINS",
+        "SOREN_VERCEL_CLI_PATH",
+        "SOREN_VERCEL_CLI_SHA256",
+        "VERCEL_TOKEN",
+        "SOREN_RELEASE_RUNNER_CLIENT_ID",
+        "SOREN_RELEASE_OBSERVER_CLIENT_ID"
+      ],
+      "issues": [],
+      "configuration": "INCOMPLETE",
+      "verified": false
+    }
+  },
+  "issues": [],
+  "warnings": [
+    "watcher_receipt_delivery_not_enabled"
+  ],
+  "externalGates": [
+    "hosted_identity_and_database_evidence",
+    "deployment_secret_confinement",
+    "owner_scheduler_profile_and_actual_delivery",
+    "independent_watcher_receipt_and_failure_domain_evidence",
+    "owner_managed_signing_identity_and_authentic_verification",
+    "exact_staged_artifact_and_fresh_verification_evidence",
+    "owner_exact_artifact_release_authorization",
+    "six_native_client_invocations_on_target_release",
+    "vercel_atomic_parent_cas_unavailable",
+    "independent_probation_cadence_at_most_60_seconds"
+  ],
+  "note": "Inspect each component in its own authorized runtime. Never copy all credentials into a public gateway or treat configured values as live verification."
+}

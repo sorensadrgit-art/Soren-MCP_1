@@ -1,0 +1,2558 @@
+{
+  "schemaVersion": 1,
+  "note": "Reviewed public references. Edit, then re-review and run node scripts/knowledge-hash.mjs --write.",
+  "items": [
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "263212aba81420c3accba1fa8cef1b592a65652953c1925b1394a8fc09d2319b",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio",
+        "nextjs-debug"
+      ],
+      "linkedSkills": [
+        "react-three-fiber",
+        "nextjs-runtime-engineering"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "react": ">=19.0.0 <20.0.0",
+        "react-dom": ">=19.0.0 <20.0.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/reactjs/react.dev",
+      "kind": "official-doc",
+      "id": "react-19",
+      "title": "React 19 reference",
+      "topics": [
+        "react",
+        "react 19",
+        "hooks",
+        "actions",
+        "server components"
+      ],
+      "canonicalSource": {
+        "url": "https://react.dev/reference/react",
+        "publisher": "Meta / React team",
+        "official": true
+      },
+      "summary": "Official React 19 API reference covering hooks, Actions, useActionState, useOptimistic, the use() API and Server Components.",
+      "keyPoints": [
+        "React 19 adds Actions, useActionState, useOptimistic and the use() API.",
+        "Function components receive ref as a prop; forwardRef is not needed for new code.",
+        "Confirm installed react and react-dom versions in the lockfile before using 19-only APIs."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "52fa26f1c72b8635afb62f9c0512961a1e38bf6b8b58a6984fe3426a0cda0d77",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "nextjs-debug"
+      ],
+      "linkedSkills": [
+        "nextjs-runtime-engineering",
+        "soren-universal-deployment"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "next": ">=16.0.0 <17.0.0"
+      },
+      "frameworkVersions": {
+        "react": ">=19.0.0 <20.0.0"
+      },
+      "channel": "stable",
+      "context7LibraryId": "/vercel/next.js",
+      "kind": "official-doc",
+      "id": "nextjs-16",
+      "title": "Next.js 16 documentation",
+      "topics": [
+        "next.js",
+        "nextjs",
+        "app router",
+        "next.js 16",
+        "hydration",
+        "server components",
+        "caching",
+        "turbopack"
+      ],
+      "canonicalSource": {
+        "url": "https://nextjs.org/docs",
+        "publisher": "Vercel",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm next@16.4.2 (engines node >=20.9.0)",
+      "summary": "Official Next.js documentation for the App Router, Server Components, caching, routing and build tooling, matched to the Next.js 16 major line.",
+      "keyPoints": [
+        "Next.js 16 requires Node.js 20.9 or later.",
+        "Turbopack is the default bundler for next dev and next build in v16.",
+        "Request APIs such as cookies(), headers(), params and searchParams are async and must be awaited.",
+        "Version-matched docs ship inside node_modules/next/dist/docs/; prefer them over memory."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "b13e69b85267365fb1869eb27d997724195f57b0f24a2a85bcd9371013ee01ba",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "nextjs-debug"
+      ],
+      "linkedSkills": [
+        "nextjs-runtime-engineering"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "next": ">=16.0.0 <17.0.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/vercel/next.js",
+      "kind": "official-doc",
+      "id": "nextjs-16-upgrade",
+      "title": "Upgrading to Next.js 16",
+      "topics": [
+        "next.js",
+        "upgrade",
+        "next.js 16",
+        "migration",
+        "codemod"
+      ],
+      "canonicalSource": {
+        "url": "https://nextjs.org/docs/app/guides/upgrading/version-16",
+        "publisher": "Vercel",
+        "official": true
+      },
+      "summary": "Official upgrade guide from Next.js 15 to 16, listing breaking changes, codemods and removed or renamed APIs.",
+      "keyPoints": [
+        "Run the official upgrade codemod first, then fix remaining type and build errors.",
+        "middleware is superseded by proxy in v16; follow the guide before renaming files.",
+        "Re-run next build and the test suite after each breaking change."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "8b91a47409d243248c97ae4843b1d21d4b308c26a29632a09431219b17490961",
+      "trustLevel": "official",
+      "license": "MIT",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "nextjs-debug"
+      ],
+      "linkedSkills": [
+        "nextjs-runtime-engineering"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 90,
+        "invalidateOn": [
+          "package-minor",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "next-devtools-mcp": ">=0.4.0 <1.0.0"
+      },
+      "frameworkVersions": {
+        "next": ">=16.0.0 <17.0.0"
+      },
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "mcp-server-doc",
+      "id": "next-devtools-mcp",
+      "title": "next-devtools-mcp",
+      "topics": [
+        "next-devtools",
+        "next devtools",
+        "next.js",
+        "mcp",
+        "runtime diagnostics"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/vercel/next-devtools-mcp",
+        "publisher": "Vercel",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm next-devtools-mcp@0.4.0",
+      "summary": "Vercel MCP server that connects coding agents to a running Next.js 16+ dev server to read runtime errors, routes and build diagnostics.",
+      "keyPoints": [
+        "Next.js 16+ dev servers expose an MCP endpoint at /_next/mcp; next-devtools-mcp bridges agents to it.",
+        "Use against a local dev server only; never point it at production.",
+        "Pin the package version in shared client configs."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "4caec2c1c8f795921f27f301b67fba6bf2c56970d7ab9c0cde944cee59ebc369",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "threejs-production",
+        "react-three-fiber"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "three": ">=0.170.0 <0.200.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/mrdoob/three.js",
+      "kind": "official-doc",
+      "id": "threejs-manual",
+      "title": "three.js manual",
+      "topics": [
+        "three.js",
+        "threejs",
+        "webgl",
+        "renderer",
+        "scene graph",
+        "pbr"
+      ],
+      "canonicalSource": {
+        "url": "https://threejs.org/manual/",
+        "publisher": "three.js authors",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm three@0.186.1",
+      "summary": "Official three.js manual covering renderers, scene graph, cameras, lights, materials, textures and loading for the current r17x-r18x releases.",
+      "keyPoints": [
+        "Import addons from three/addons/ and keep one three version across core and addons.",
+        "Each mesh with its own geometry or material is usually one draw call; merge or instance repeated meshes.",
+        "Cap renderer pixel ratio (for example Math.min(devicePixelRatio, 2)) to bound fill-rate cost."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "43c573d1d8c91d2d2e994399ba0d78634a6d3d4ee30e26f251caac5c29272ac1",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "shader-material-lab",
+        "threejs-production"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "three": ">=0.152.0 <0.200.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/mrdoob/three.js",
+      "kind": "official-doc",
+      "id": "threejs-color-management",
+      "title": "three.js color management",
+      "topics": [
+        "three.js",
+        "color management",
+        "tone mapping",
+        "srgb",
+        "pbr"
+      ],
+      "canonicalSource": {
+        "url": "https://threejs.org/manual/#en/color-management",
+        "publisher": "three.js authors",
+        "official": true
+      },
+      "summary": "Official guidance on linear workflow, output color space, texture color spaces and tone mapping for physically based rendering in three.js.",
+      "keyPoints": [
+        "renderer.outputColorSpace defaults to SRGBColorSpace since r152; set texture.colorSpace = SRGBColorSpace on color maps.",
+        "Normal, roughness and metalness maps stay linear (NoColorSpace).",
+        "Pick one tone mapping (ACESFilmic, AgX or Neutral) and tune toneMappingExposure deliberately."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "a2eebe7e1b02305f25c7e5728b644246be00621d2f049b6c0d2fe3ebab5b32a0",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "debug-3d-performance",
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "graphics-performance-qa",
+        "threejs-production"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "three": ">=0.170.0 <0.200.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/mrdoob/three.js",
+      "kind": "official-doc",
+      "id": "threejs-disposal",
+      "title": "three.js: how to dispose of objects",
+      "topics": [
+        "three.js",
+        "dispose",
+        "memory leak",
+        "gpu memory",
+        "cleanup"
+      ],
+      "canonicalSource": {
+        "url": "https://threejs.org/manual/#en/how-to-dispose-of-objects",
+        "publisher": "three.js authors",
+        "official": true
+      },
+      "summary": "Official explanation of which three.js objects hold GPU resources and how to free geometries, materials, textures and render targets.",
+      "keyPoints": [
+        "Removing an object from the scene does not free GPU memory; call dispose() on geometries, materials, textures and render targets.",
+        "renderer.info.memory reports live geometries and textures for leak checks.",
+        "React Three Fiber disposes declaratively created objects on unmount; objects passed through primitive are not disposed automatically."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "7dec50f7ec36fb3d348895ca3db4bbff90ff1f4fb7732b5d5ddb1c03c42d35d9",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "webgpu-progressive-rendering",
+        "shader-material-lab"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "three": ">=0.170.0 <0.200.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/mrdoob/three.js",
+      "kind": "official-doc",
+      "id": "threejs-tsl",
+      "title": "Three.js Shading Language (TSL)",
+      "topics": [
+        "tsl",
+        "webgpu",
+        "shader",
+        "node material",
+        "three.js"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/mrdoob/three.js/wiki/Three.js-Shading-Language",
+        "publisher": "three.js authors",
+        "official": true
+      },
+      "summary": "Official TSL wiki: write node materials in JavaScript that compile to WGSL for WebGPU or GLSL for the WebGL2 fallback.",
+      "keyPoints": [
+        "Import from three/webgpu and three/tsl; node materials run on WebGPURenderer.",
+        "WebGPURenderer can fall back to a WebGL2 backend, and TSL materials follow it.",
+        "Raw GLSL ShaderMaterial does not run on WebGPURenderer; port to TSL or stay on WebGLRenderer."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "45add3001f7eae8d3d16b5c82dfa8b383f19ace6654eeb9e3c832da18524f3f3",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio",
+        "blender-glb-pipeline"
+      ],
+      "linkedSkills": [
+        "threejs-production",
+        "webgpu-progressive-rendering",
+        "gltf-asset-pipeline"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "three": ">=0.170.0 <0.200.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/mrdoob/three.js",
+      "kind": "api-reference",
+      "id": "threejs-docs",
+      "title": "three.js API reference",
+      "topics": [
+        "three.js",
+        "webgpu",
+        "webgpurenderer",
+        "api reference",
+        "webgl2 fallback",
+        "loaders"
+      ],
+      "canonicalSource": {
+        "url": "https://threejs.org/docs/",
+        "publisher": "three.js authors",
+        "official": true
+      },
+      "summary": "Official three.js class reference for renderers (WebGLRenderer, WebGPURenderer), loaders, materials and addons.",
+      "keyPoints": [
+        "WebGPURenderer comes from three/webgpu and must finish async initialisation (await renderer.init() or setAnimationLoop) before rendering.",
+        "WebGPURenderer falls back to WebGL2 when navigator.gpu is unavailable; forceWebGL tests the fallback.",
+        "GLTFLoader needs DRACOLoader, KTX2Loader or MeshoptDecoder registered for compressed assets."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "6db0798e37c0fa3106bfe6ccc4df1ea0edc50be6088e4a5d6c83ff65010a4efd",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "react-three-fiber",
+        "graphics-performance-qa"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "@react-three/fiber": ">=9.0.0 <10.0.0"
+      },
+      "frameworkVersions": {
+        "react": ">=19.0.0 <20.0.0",
+        "three": ">=0.156.0"
+      },
+      "channel": "stable",
+      "context7LibraryId": "/pmndrs/react-three-fiber",
+      "kind": "official-doc",
+      "id": "r3f-v9",
+      "title": "React Three Fiber v9",
+      "topics": [
+        "react three fiber",
+        "r3f",
+        "@react-three/fiber",
+        "canvas",
+        "useframe"
+      ],
+      "canonicalSource": {
+        "url": "https://r3f.docs.pmnd.rs/getting-started/introduction",
+        "publisher": "Poimandres (pmndrs)",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm @react-three/fiber@9.8.2 (peer react >=19 <19.4, three >=0.156)",
+      "summary": "Official React Three Fiber v9 documentation: the stable React 19 renderer for three.js with Canvas, hooks (useFrame, useThree) and events.",
+      "keyPoints": [
+        "R3F 9 is the stable line for React 19 (peer react >=19 <19.4, three >=0.156).",
+        "Each mesh is a draw call; keep scenes to a few hundred and well under 1000.",
+        "Use frameloop=\"demand\" with invalidate() for mostly static scenes.",
+        "Mutate refs inside useFrame; never call setState there."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "272f8775d62cd72a50db3fc583b80fe891f691da43236421a5b2080f110d03a6",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "react-three-fiber"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "@react-three/fiber": ">=9.0.0 <10.0.0"
+      },
+      "frameworkVersions": {
+        "react": ">=19.0.0 <20.0.0"
+      },
+      "channel": "stable",
+      "context7LibraryId": "/pmndrs/react-three-fiber",
+      "kind": "official-doc",
+      "id": "r3f-v9-migration",
+      "title": "React Three Fiber v9 migration guide",
+      "topics": [
+        "react three fiber",
+        "r3f",
+        "migration",
+        "react 19",
+        "upgrade"
+      ],
+      "canonicalSource": {
+        "url": "https://r3f.docs.pmnd.rs/tutorials/v9-migration-guide",
+        "publisher": "Poimandres (pmndrs)",
+        "official": true
+      },
+      "summary": "Official guide for moving from R3F 8 (React 18) to R3F 9 (React 19), including typing and API changes.",
+      "keyPoints": [
+        "Upgrade react, react-dom, @react-three/fiber and @react-three/drei together.",
+        "R3F 8 pairs with React 18; R3F 9 requires React 19.",
+        "Re-test StrictMode double-mounting of loaders, controls and effects after the upgrade."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "1477690c5c9af528dfbd7b542f189b0dc5af427a75839167b101071c159230d8",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "debug-3d-performance",
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "graphics-performance-qa",
+        "react-three-fiber"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "@react-three/fiber": ">=9.0.0 <10.0.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/pmndrs/react-three-fiber",
+      "kind": "official-doc",
+      "id": "r3f-performance",
+      "title": "React Three Fiber: scaling performance",
+      "topics": [
+        "react three fiber",
+        "r3f",
+        "performance",
+        "draw calls",
+        "instancing",
+        "on demand",
+        "frameloop",
+        "canvas"
+      ],
+      "canonicalSource": {
+        "url": "https://r3f.docs.pmnd.rs/advanced/scaling-performance",
+        "publisher": "Poimandres (pmndrs)",
+        "official": true
+      },
+      "summary": "Official R3F performance guide: on-demand rendering, reusing geometries and materials, instancing, level of detail and adaptive resolution.",
+      "keyPoints": [
+        "frameloop=\"demand\" renders only when invalidate() is called or props change.",
+        "Share geometries and materials; use instancing for repeated objects.",
+        "Lower resolution under load with PerformanceMonitor and AdaptiveDpr from Drei.",
+        "Aim for a few hundred draw calls; each mesh costs one."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "30d80ca2314da56551af73bed6f08fb68663aea210516c6e95b46ef5be53e12d",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "debug-3d-performance"
+      ],
+      "linkedSkills": [
+        "react-three-fiber",
+        "graphics-performance-qa"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "@react-three/fiber": ">=9.0.0 <10.0.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/pmndrs/react-three-fiber",
+      "kind": "official-doc",
+      "id": "r3f-pitfalls",
+      "title": "React Three Fiber: performance pitfalls",
+      "topics": [
+        "react three fiber",
+        "r3f",
+        "pitfalls",
+        "useframe",
+        "performance"
+      ],
+      "canonicalSource": {
+        "url": "https://r3f.docs.pmnd.rs/advanced/pitfalls",
+        "publisher": "Poimandres (pmndrs)",
+        "official": true
+      },
+      "summary": "Official list of common R3F mistakes: re-renders in the frame loop, object creation per frame, and unbounded loading.",
+      "keyPoints": [
+        "Do not create vectors, materials or geometries inside useFrame; reuse them.",
+        "Never setState in useFrame; mutate refs and scale by delta.",
+        "Wrap heavy loaders in Suspense and use startTransition for expensive updates."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "33f78f69150a589677bcff2b5dad2c0b47b497476517b14cfff8bea7f588a6bb",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [],
+      "linkedSkills": [
+        "react-three-fiber",
+        "webgpu-progressive-rendering"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 30,
+        "invalidateOn": [
+          "upstream-release",
+          "package-minor"
+        ]
+      },
+      "warnings": [
+        "Alpha release: APIs may change without notice. Do not adopt in production without pinning and regression tests.",
+        "Drei 10 declares a peer range of @react-three/fiber ^9; expect peer conflicts with v10 alpha."
+      ],
+      "packageRange": {
+        "@react-three/fiber": ">=10.0.0-alpha.0 <11.0.0"
+      },
+      "frameworkVersions": {
+        "three": ">=0.185.0"
+      },
+      "channel": "alpha",
+      "context7LibraryId": "/pmndrs/react-three-fiber",
+      "kind": "release-notes",
+      "id": "r3f-v10-alpha",
+      "title": "React Three Fiber v10 alpha releases",
+      "topics": [
+        "react three fiber",
+        "r3f",
+        "webgpu",
+        "alpha",
+        "r3f v10"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/pmndrs/react-three-fiber/releases",
+        "publisher": "Poimandres (pmndrs)",
+        "official": true
+      },
+      "sourceRevision": "GitHub releases page fetched 2026-10-22; npm @react-three/fiber@10.0.0-alpha.6",
+      "summary": "Release notes for the R3F v10 alpha line (10.0.0-alpha.6 observed): WebGPU-first renderer by default, WebGL through the /legacy entry, and three >=0.185.",
+      "keyPoints": [
+        "v10 is alpha; the stable production line is v9.",
+        "WebGPU is the default renderer; WebGL is available through the /legacy entry.",
+        "Requires three >=0.185."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "f3b7fd1dbd1b57db0dca3a9956cd105e7a02c6a1c79240b933e2aae553686e50",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "react-three-fiber"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "@react-three/drei": ">=10.0.0 <11.0.0"
+      },
+      "frameworkVersions": {
+        "@react-three/fiber": ">=9.0.0 <10.0.0",
+        "three": ">=0.159.0"
+      },
+      "channel": "stable",
+      "context7LibraryId": "/pmndrs/drei",
+      "kind": "official-doc",
+      "id": "drei-10",
+      "title": "Drei 10 helpers for React Three Fiber",
+      "topics": [
+        "drei",
+        "@react-three/drei",
+        "react three fiber",
+        "environment",
+        "orbit controls",
+        "usegltf",
+        "helpers"
+      ],
+      "canonicalSource": {
+        "url": "https://drei.docs.pmnd.rs/getting-started/introduction",
+        "publisher": "Poimandres (pmndrs)",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm @react-three/drei@10.7.9 (peer fiber ^9, three >=0.159)",
+      "summary": "Official Drei documentation: production helpers for R3F such as Environment, OrbitControls, useGLTF, Instances, ContactShadows and performance utilities.",
+      "keyPoints": [
+        "Drei 10 requires @react-three/fiber ^9 and three >=0.159.",
+        "useGLTF caches assets, supports Draco and Meshopt decoders, and preloads with useGLTF.preload.",
+        "Environment, ContactShadows, OrbitControls, Instances and Bvh cover most portfolio scenes."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "ad047fd0b0e2b00c8b19e68d45980aaea22cca0be2fb96636742107e37b909eb",
+      "trustLevel": "official",
+      "license": "CC-BY-SA 2.5",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [],
+      "linkedSkills": [
+        "webgpu-progressive-rendering",
+        "threejs-production"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 365,
+        "invalidateOn": [
+          "manual"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "standard",
+      "id": "webgl-api",
+      "title": "MDN WebGL API",
+      "topics": [
+        "webgl",
+        "webgl2",
+        "context loss",
+        "gpu",
+        "canvas"
+      ],
+      "canonicalSource": {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API",
+        "publisher": "MDN Web Docs",
+        "official": true
+      },
+      "summary": "MDN reference for WebGL and WebGL2 contexts, capability detection and context loss handling in browsers.",
+      "keyPoints": [
+        "Feature-detect with canvas.getContext(\"webgl2\") and show a static fallback when it returns null.",
+        "Handle webglcontextlost and webglcontextrestored and recreate GPU resources."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "7741ee670319c5cd979ceced59c8e651a8e44598a80703161a05f7090c120212",
+      "trustLevel": "official",
+      "license": "CC-BY-SA 2.5",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "debug-3d-performance"
+      ],
+      "linkedSkills": [
+        "graphics-performance-qa"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 365,
+        "invalidateOn": [
+          "manual"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "standard",
+      "id": "webgl-best-practices",
+      "title": "MDN WebGL best practices",
+      "topics": [
+        "webgl",
+        "performance",
+        "best practices",
+        "draw calls",
+        "texture compression"
+      ],
+      "canonicalSource": {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/WebGL_best_practices",
+        "publisher": "MDN Web Docs",
+        "official": true
+      },
+      "summary": "MDN guidance on WebGL performance: batching draw calls, avoiding synchronous GPU queries and using compressed textures.",
+      "keyPoints": [
+        "Minimise draw calls and state changes; batch or instance geometry.",
+        "Avoid getError, readPixels and other synchronous calls in the render loop.",
+        "Use compressed texture formats to reduce GPU memory and upload time."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "048645dca55549a5f185c7546881102ace61bacae65df5a39c75127aa2e40df1",
+      "trustLevel": "official",
+      "license": "CC-BY-SA 2.5",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [],
+      "linkedSkills": [
+        "webgpu-progressive-rendering"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 365,
+        "invalidateOn": [
+          "manual"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "standard",
+      "id": "webgpu-api",
+      "title": "MDN WebGPU API",
+      "topics": [
+        "webgpu",
+        "navigator.gpu",
+        "device lost",
+        "gpu",
+        "fallback"
+      ],
+      "canonicalSource": {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebGPU_API",
+        "publisher": "MDN Web Docs",
+        "official": true
+      },
+      "summary": "MDN reference for WebGPU adapters, devices, pipelines and error handling, including availability and secure-context requirements.",
+      "keyPoints": [
+        "Detect support with navigator.gpu and requestAdapter(); a null adapter means no WebGPU.",
+        "Handle device.lost by recreating the device and its resources.",
+        "WebGPU requires a secure context (HTTPS or localhost)."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "73bb7f99df65e90e5722bb01cda6d1b0f8f839c04b78b067b814b06ffc8db68d",
+      "trustLevel": "official",
+      "license": "W3C Document License",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [],
+      "linkedSkills": [
+        "webgpu-progressive-rendering"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 365,
+        "invalidateOn": [
+          "manual"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "standard",
+      "id": "webgpu-spec",
+      "title": "W3C WebGPU specification",
+      "topics": [
+        "webgpu",
+        "specification",
+        "wgsl",
+        "limits"
+      ],
+      "canonicalSource": {
+        "url": "https://www.w3.org/TR/webgpu/",
+        "publisher": "W3C GPU for the Web Working Group",
+        "official": true
+      },
+      "summary": "Normative W3C WebGPU specification defining adapters, devices, limits, features, pipelines and device loss semantics.",
+      "keyPoints": [
+        "Adapter limits and features vary by device; request only what the scene needs.",
+        "Device loss is a normal event that applications must recover from."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "0c46fa485754b1a5d0c19498c9bdeec34d0cf8316201e8b8685c51398d8d1a7f",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "gsap-motion",
+        "motion-systems"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "gsap": ">=3.12.0 <4.0.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/greensock/gsap",
+      "kind": "official-doc",
+      "id": "gsap-core",
+      "title": "GSAP 3 documentation",
+      "topics": [
+        "gsap",
+        "timeline",
+        "tween",
+        "animation",
+        "matchmedia"
+      ],
+      "canonicalSource": {
+        "url": "https://gsap.com/docs/v3/",
+        "publisher": "GreenSock (Webflow)",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm gsap@3.15.0",
+      "summary": "Official GSAP 3 documentation for tweens, timelines, easing, utilities and gsap.matchMedia().",
+      "keyPoints": [
+        "Since 3.13 GSAP and all its plugins are free to use, including former Club plugins.",
+        "Timelines sequence tweens with position parameters; share easing and duration through defaults.",
+        "gsap.matchMedia() scopes responsive and reduced-motion variants and reverts them automatically."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "fc8fbc67123ca7583e44f98ac959a810b0cd62ee89dbe7634bf3373ae54d9f15",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "gsap-motion",
+        "motion-systems"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "gsap": ">=3.12.0 <4.0.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/greensock/gsap",
+      "kind": "official-doc",
+      "id": "gsap-scrolltrigger",
+      "title": "GSAP ScrollTrigger",
+      "topics": [
+        "gsap",
+        "scrolltrigger",
+        "scroll",
+        "pinning",
+        "scrub"
+      ],
+      "canonicalSource": {
+        "url": "https://gsap.com/docs/v3/Plugins/ScrollTrigger/",
+        "publisher": "GreenSock (Webflow)",
+        "official": true
+      },
+      "summary": "Official ScrollTrigger plugin documentation for scroll-linked animation, pinning, scrubbing and snapping.",
+      "keyPoints": [
+        "Register once with gsap.registerPlugin(ScrollTrigger).",
+        "Use scrub, pin and snap; call ScrollTrigger.refresh() after layout or asset changes.",
+        "Kill or revert triggers on unmount to prevent leaks and stale pins."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "5f7ab0db360b83dc9099a9341c6c721d057a2f75f8d55741d80e2216c76cd23f",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "gsap-motion"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "@gsap/react": ">=2.1.0 <3.0.0",
+        "gsap": ">=3.12.0 <4.0.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/greensock/gsap",
+      "kind": "official-doc",
+      "id": "gsap-react",
+      "title": "GSAP with React (useGSAP)",
+      "topics": [
+        "gsap",
+        "usegsap",
+        "@gsap/react",
+        "react",
+        "cleanup"
+      ],
+      "canonicalSource": {
+        "url": "https://gsap.com/resources/React/",
+        "publisher": "GreenSock (Webflow)",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm @gsap/react@2.1.2",
+      "summary": "Official guide to GSAP in React: the useGSAP hook, scoped selectors, contextSafe callbacks and automatic cleanup.",
+      "keyPoints": [
+        "useGSAP() from @gsap/react scopes selectors to a container and reverts animations on unmount.",
+        "Wrap event-driven animations in contextSafe() so they are cleaned up too.",
+        "Register useGSAP with gsap.registerPlugin(useGSAP) alongside other plugins."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "fb8c3a1d43e304553009133d8a4a44db15873b4f6e25f47295ee16c2e66048a7",
+      "trustLevel": "official",
+      "license": "Apache-2.0",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "blender-glb-pipeline",
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "blender-to-r3f"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "tooling-doc",
+      "id": "blender-gltf-io",
+      "title": "Khronos glTF-Blender-IO exporter",
+      "topics": [
+        "blender",
+        "gltf",
+        "glb",
+        "export",
+        "baking"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/KhronosGroup/glTF-Blender-IO",
+        "publisher": "Khronos Group",
+        "official": true
+      },
+      "summary": "The Khronos glTF 2.0 importer/exporter bundled with Blender, documenting material, animation and transform mapping to glTF.",
+      "keyPoints": [
+        "The add-on ships with Blender and powers File > Export > glTF 2.0.",
+        "Principled BSDF maps to glTF metallic-roughness; procedural node setups must be baked to textures.",
+        "Apply transforms and export GLB with +Y up for single-file web delivery.",
+        "Scripted exports call bpy.ops.export_scene.gltf."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "f3435dfd6b03c8e5c479438c46e0987440a80ba1af7867e0c1740679e6c7f128",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "blender-glb-pipeline"
+      ],
+      "linkedSkills": [
+        "blender-to-r3f"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/websites/blender_api_current",
+      "kind": "api-reference",
+      "id": "blender-python-api",
+      "title": "Blender Python API",
+      "topics": [
+        "blender",
+        "bpy",
+        "python",
+        "automation",
+        "headless"
+      ],
+      "canonicalSource": {
+        "url": "https://docs.blender.org/api/current/",
+        "publisher": "Blender Foundation",
+        "official": true
+      },
+      "summary": "Official Blender Python (bpy) API reference used for scripted, reproducible scene preparation and glTF export.",
+      "keyPoints": [
+        "bpy.ops.export_scene.gltf exposes exporter options for scripted exports.",
+        "blender --background --python script.py runs reproducible batch exports without the UI."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "46ad8f05b1544d54707ba5485af834b114340db948cc8913a46801d77243f321",
+      "trustLevel": "official",
+      "license": "GPL (Blender Lab project)",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [
+        "isolated-vm",
+        "local-process"
+      ],
+      "risk": "high",
+      "dependencies": [],
+      "linkedRecipes": [
+        "blender-glb-pipeline"
+      ],
+      "linkedSkills": [
+        "blender-to-r3f"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 60,
+        "invalidateOn": [
+          "upstream-release",
+          "manual"
+        ]
+      },
+      "warnings": [
+        "Blender Lab security warning: generated code can delete data or send it to remote locations. Never run against personal files or production assets."
+      ],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "mcp-server-doc",
+      "id": "blender-lab-mcp",
+      "title": "Blender Lab MCP server",
+      "topics": [
+        "blender",
+        "blender lab",
+        "mcp",
+        "python",
+        "isolated vm"
+      ],
+      "canonicalSource": {
+        "url": "https://www.blender.org/lab/mcp-server/",
+        "publisher": "Blender Foundation (Blender Lab)",
+        "official": true
+      },
+      "sourceRevision": "Blender Lab page and projects.blender.org/lab/blender_mcp observed 2026-10-22 (v1.0.3)",
+      "summary": "Official Blender Lab MCP server: a Blender add-on plus a separate MCP process that relays agent requests over a local TCP socket into a running Blender session.",
+      "keyPoints": [
+        "Executes LLM-generated Python inside Blender without guards; run only in an isolated VM or disposable machine.",
+        "Install the add-on from the Blender Lab repository, then start its server manually in Blender before connecting a client.",
+        "Requires Blender 5.1 or newer (v1.0.3 observed)."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "d5032883e31060599e91f2c193ed2706d04a1d4f63fdf297037938ae2727575c",
+      "trustLevel": "official",
+      "license": "Khronos specification license",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "blender-glb-pipeline"
+      ],
+      "linkedSkills": [
+        "gltf-asset-pipeline"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 365,
+        "invalidateOn": [
+          "manual"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "standard",
+      "id": "gltf-spec",
+      "title": "glTF 2.0 specification",
+      "topics": [
+        "gltf",
+        "glb",
+        "khronos",
+        "specification",
+        "pbr"
+      ],
+      "canonicalSource": {
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+        "publisher": "Khronos Group",
+        "official": true
+      },
+      "summary": "Normative Khronos glTF 2.0 specification for scenes, meshes, metallic-roughness PBR materials, animation and the binary GLB container.",
+      "keyPoints": [
+        "glTF 2.0 uses metallic-roughness PBR; KHR extensions add clearcoat, transmission and more.",
+        "GLB packs JSON and binary buffers into one file."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "48c62a81ca67dce8409a256e9a6a9b3e51203673552970bd2cc25dafe4e7a1d3",
+      "trustLevel": "official",
+      "license": "MIT",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "blender-glb-pipeline",
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "gltf-asset-pipeline",
+        "blender-to-r3f"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "@gltf-transform/core": ">=4.0.0 <5.0.0",
+        "@gltf-transform/cli": ">=4.0.0 <5.0.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/donmccurdy/gltf-transform",
+      "kind": "tooling-doc",
+      "id": "gltf-transform",
+      "title": "glTF Transform",
+      "topics": [
+        "gltf",
+        "gltf-transform",
+        "glb",
+        "meshopt",
+        "draco",
+        "compression",
+        "simplify",
+        "lod",
+        "optimize",
+        "webp"
+      ],
+      "canonicalSource": {
+        "url": "https://gltf-transform.dev/",
+        "publisher": "Don McCurdy",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm @gltf-transform/*@4.5.1",
+      "summary": "glTF Transform SDK and CLI for inspecting, optimizing, compressing and simplifying glTF/GLB assets in build pipelines.",
+      "keyPoints": [
+        "CLI commands include inspect, validate, optimize, meshopt, draco, simplify, resize, webp and ktx2 conversion.",
+        "optimize combines dedup, prune, weld, simplify and compression; confirm results with inspect.",
+        "Meshopt or Draco output needs the matching decoder registered on GLTFLoader or useGLTF."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "befda89d73f6ade2d90bce2575325dc5a1b7447365b0a668e5258579be4ce61f",
+      "trustLevel": "official",
+      "license": "Apache-2.0",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "blender-glb-pipeline"
+      ],
+      "linkedSkills": [
+        "gltf-asset-pipeline"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "tooling-doc",
+      "id": "gltf-validator",
+      "title": "Khronos glTF-Validator",
+      "topics": [
+        "gltf",
+        "validator",
+        "validate",
+        "khronos"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/KhronosGroup/glTF-Validator",
+        "publisher": "Khronos Group",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm gltf-validator@2.0.0-dev.3.10",
+      "summary": "Official Khronos validator that reports errors, warnings and info for glTF 2.0 assets against the specification.",
+      "keyPoints": [
+        "Gate asset pipelines on zero validator errors.",
+        "Review warnings such as unused objects or non-normalised attributes before shipping."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "8ed82aa253a047dbf6bb760192693372d76650e200bb956fc7321c9b1bbe2d64",
+      "trustLevel": "official",
+      "license": "Apache-2.0",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "blender-glb-pipeline"
+      ],
+      "linkedSkills": [
+        "gltf-asset-pipeline"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "tooling-doc",
+      "id": "ktx2-basis",
+      "title": "KTX 2.0 and Basis Universal textures",
+      "topics": [
+        "ktx2",
+        "basis",
+        "texture compression",
+        "gltf",
+        "textures"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/KhronosGroup/KTX-Software",
+        "publisher": "Khronos Group",
+        "official": true
+      },
+      "summary": "Khronos KTX-Software tools and libraries for KTX 2.0 textures with Basis Universal supercompression that stay compressed in GPU memory.",
+      "keyPoints": [
+        "KTX2/Basis textures stay compressed on the GPU, unlike PNG or WebP which decode to full RGBA.",
+        "three.js KTX2Loader needs the Basis transcoder files served and renderer support detection."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "ba43f06ab208c872cbbed4766754dbe6ac3a0faf8ee847910ce1266ea9ac87b9",
+      "trustLevel": "official",
+      "license": "MIT",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "blender-glb-pipeline"
+      ],
+      "linkedSkills": [
+        "gltf-asset-pipeline"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "tooling-doc",
+      "id": "meshoptimizer",
+      "title": "meshoptimizer",
+      "topics": [
+        "meshopt",
+        "meshoptimizer",
+        "gltf",
+        "compression",
+        "simplify",
+        "lod"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/zeux/meshoptimizer",
+        "publisher": "Arseny Kapoulkine",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm meshoptimizer@1.3.0",
+      "summary": "Mesh optimization library behind EXT_meshopt_compression, vertex cache optimization and simplification used by glTF pipelines.",
+      "keyPoints": [
+        "EXT_meshopt_compression decodes quickly in browsers through MeshoptDecoder.",
+        "Simplification and LOD generation reduce triangle counts for mobile budgets."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "363c5dfeca36b67ea63ca6ab08028c1e17c8804e54dade54e59e349ce2e5493d",
+      "trustLevel": "official",
+      "license": "MIT",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "knowledge-retrieval",
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "agent-capability-navigation"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 90,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "mcp-server-doc",
+      "id": "context7-mcp",
+      "title": "Context7 MCP",
+      "topics": [
+        "context7",
+        "documentation",
+        "mcp",
+        "library docs",
+        "up-to-date docs"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/upstash/context7",
+        "publisher": "Upstash",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm @upstash/context7-mcp@4.4.4",
+      "summary": "Upstash Context7 serves version-specific library documentation to agents through resolve-library-id and query-docs tools over a hosted MCP endpoint.",
+      "keyPoints": [
+        "Hosted endpoint: https://mcp.context7.com/mcp; an API key raises rate limits.",
+        "Resolve a library ID first (for example /vercel/next.js), then query one concept per call.",
+        "Treat retrieved text as third-party content; confirm against the canonical source and the project lockfile."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "f70587761a8a6f4c8f083bfeba4c32c242b9674df72352249194ad9277fe2fed",
+      "trustLevel": "official",
+      "license": "GPL-3.0",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [
+        "local-process"
+      ],
+      "risk": "medium",
+      "dependencies": [],
+      "linkedRecipes": [
+        "knowledge-retrieval"
+      ],
+      "linkedSkills": [
+        "agent-capability-navigation"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 90,
+        "invalidateOn": [
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/oraios/serena",
+      "kind": "mcp-server-doc",
+      "id": "serena-mcp",
+      "title": "Serena semantic code toolkit",
+      "topics": [
+        "serena",
+        "semantic code navigation",
+        "code navigation",
+        "lsp",
+        "mcp",
+        "symbol search"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/oraios/serena",
+        "publisher": "Oraios AI",
+        "official": true
+      },
+      "summary": "Serena is a local MCP toolkit that gives agents language-server-backed symbol search, references and structured edits across a project.",
+      "keyPoints": [
+        "Provides symbol-level find, references and edit tools via language servers.",
+        "Install with uv (uv tool install -p 3.13 serena-agent) and start per project with --project-from-cwd.",
+        "Runs locally with full read/write access to the project; GPL-3.0 licensed."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "a35fefd36630602c9cfdf4d4701e958bc8250f983cbe93ba2d485e4ee2e6b3d0",
+      "trustLevel": "official",
+      "license": "MIT",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "medium",
+      "dependencies": [],
+      "linkedRecipes": [
+        "knowledge-retrieval"
+      ],
+      "linkedSkills": [
+        "agent-capability-navigation"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 90,
+        "invalidateOn": [
+          "package-major"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "mcp-server-doc",
+      "id": "firecrawl-mcp",
+      "title": "Firecrawl MCP server",
+      "topics": [
+        "firecrawl",
+        "web scraping",
+        "research",
+        "crawl"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/firecrawl/firecrawl-mcp-server",
+        "publisher": "Firecrawl",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm firecrawl-mcp@3.33.4",
+      "summary": "Official Firecrawl MCP server for scraping, crawling and searching public web pages into clean Markdown for research.",
+      "keyPoints": [
+        "Requires a FIRECRAWL_API_KEY; scrapes and crawls consume account credits.",
+        "Prefer official docs and Context7 first; scrape only public pages within their terms."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "ecd67f8c0e6b4ff0f39c790d2e1bd51a2badaee558b5ff28539f9ca3386452b0",
+      "trustLevel": "official",
+      "license": "Apache-2.0",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "web-qa-pass",
+        "graphics-qa-pass",
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "playwright-browser-qa"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 60,
+        "invalidateOn": [
+          "package-minor",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "@playwright/mcp": ">=0.0.80 <0.1.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/microsoft/playwright-mcp",
+      "kind": "mcp-server-doc",
+      "id": "playwright-mcp",
+      "title": "Microsoft Playwright MCP",
+      "topics": [
+        "playwright",
+        "browser qa",
+        "accessibility snapshots",
+        "mcp",
+        "e2e"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/microsoft/playwright-mcp",
+        "publisher": "Microsoft",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm @playwright/mcp@0.0.83",
+      "summary": "Microsoft Playwright MCP drives a real browser through accessibility-tree snapshots for deterministic agent interaction and verification.",
+      "keyPoints": [
+        "Interacts through accessibility snapshots rather than pixel coordinates.",
+        "Use --isolated or a dedicated --user-data-dir so personal browser profiles are never touched.",
+        "Pin the version in shared configs instead of @latest."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "f9d6df710471bc75fbcc60f400aff765b334599b6f57f06bac5d420d78766c4b",
+      "trustLevel": "official",
+      "license": "Apache-2.0",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "debug-3d-performance",
+        "graphics-qa-pass",
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "graphics-performance-qa",
+        "playwright-browser-qa"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 60,
+        "invalidateOn": [
+          "package-minor",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "chrome-devtools-mcp": ">=1.0.0 <2.0.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/chromedevtools/chrome-devtools-mcp",
+      "kind": "mcp-server-doc",
+      "id": "chrome-devtools-mcp",
+      "title": "Chrome DevTools MCP",
+      "topics": [
+        "chrome devtools",
+        "performance trace",
+        "browser performance",
+        "lighthouse",
+        "mcp"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "publisher": "Google Chrome DevTools",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm chrome-devtools-mcp@1.11.0",
+      "summary": "Chrome DevTools MCP exposes performance traces, network and console inspection, heap snapshots and Lighthouse audits from a real Chrome.",
+      "keyPoints": [
+        "Use for performance traces, Core Web Vitals, network and console evidence.",
+        "--isolated, --no-usage-statistics and --no-performance-crux limit profile reuse and data sharing.",
+        "Headless runs may use software rendering (SwiftShader); label GPU versus software results."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "e3f65acba9d47eead04bb838631c4aeaf8c2e17910e4175722ed78b3ebacf636",
+      "trustLevel": "official",
+      "license": "MIT",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "spline-embed"
+      ],
+      "linkedSkills": [
+        "spline-to-web"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 180,
+        "invalidateOn": [
+          "package-major",
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {
+        "@splinetool/react-spline": ">=4.0.0 <5.0.0"
+      },
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": "/splinetool/react-spline",
+      "kind": "tooling-doc",
+      "id": "spline-react",
+      "title": "@splinetool/react-spline",
+      "topics": [
+        "spline",
+        "@splinetool/react-spline",
+        "react",
+        "embed",
+        "3d scene"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/splinetool/react-spline",
+        "publisher": "Spline",
+        "official": true
+      },
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22; npm @splinetool/react-spline@4.1.0, @splinetool/runtime@2.0.105",
+      "summary": "Official React component for embedding exported Spline scenes, with load callbacks and runtime access to scene objects.",
+      "keyPoints": [
+        "<Spline scene=\"...\"> loads a hosted .splinecode file; lazy-load it so it does not block first paint.",
+        "onLoad exposes the runtime Application, for example findObjectByName.",
+        "Ship a static poster fallback and honour prefers-reduced-motion."
+      ]
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "d7ecb42c5dfab738b32678ea6d1d945bcef15878f5e08ea06ca97498ec04bb10",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [
+        "oauth"
+      ],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "spline-embed"
+      ],
+      "linkedSkills": [
+        "spline-to-web"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 60,
+        "invalidateOn": [
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "mcp-server-doc",
+      "id": "spline-mcp",
+      "title": "Spline MCP server",
+      "topics": [
+        "spline",
+        "spline mcp",
+        "mcp",
+        "3d design"
+      ],
+      "canonicalSource": {
+        "url": "https://docs.spline.design/generate/spline-mcp-server",
+        "publisher": "Spline",
+        "official": true
+      },
+      "summary": "Spline hosted MCP server that lets agents create and edit Spline 3D scenes in a cloud editor after OAuth sign-in with a Spline account.",
+      "keyPoints": [
+        "Hosted at https://mcp.spline.design/mcp over streamable HTTP with OAuth.",
+        "Codex setup: codex mcp add spline --url https://mcp.spline.design/mcp, then codex mcp login spline.",
+        "It produces editable Spline files, not application code."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "0fe05c79921b575f9212f2c4df77163cfdfe09d2fe171f35aa5ac3b875cd17d8",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [
+        "oauth"
+      ],
+      "risk": "medium",
+      "dependencies": [],
+      "linkedRecipes": [
+        "nextjs-debug",
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "soren-universal-deployment"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 90,
+        "invalidateOn": [
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "mcp-server-doc",
+      "id": "vercel-mcp",
+      "title": "Vercel MCP server",
+      "topics": [
+        "vercel",
+        "deployment",
+        "mcp",
+        "preview",
+        "logs"
+      ],
+      "canonicalSource": {
+        "url": "https://vercel.com/docs/agent-resources/vercel-mcp",
+        "publisher": "Vercel",
+        "official": true
+      },
+      "summary": "Vercel hosted MCP server at https://mcp.vercel.com for project, deployment and log access through OAuth in supported agent clients.",
+      "keyPoints": [
+        "OAuth-only hosted endpoint; supported clients include Claude Code, Codex CLI and OpenCode.",
+        "Use for deployment status and build logs; promoting to production needs explicit human approval."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "00eefdfdce2b5101a1d72591cd1e386160d1a30bde8b780bbdae4e9c3d52f597",
+      "trustLevel": "official",
+      "license": "MIT",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [
+        "oauth"
+      ],
+      "risk": "medium",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "agentic-coding"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 90,
+        "invalidateOn": [
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "mcp-server-doc",
+      "id": "github-mcp",
+      "title": "GitHub MCP server",
+      "topics": [
+        "github",
+        "pull request",
+        "repository",
+        "mcp",
+        "issues"
+      ],
+      "canonicalSource": {
+        "url": "https://github.com/github/github-mcp-server",
+        "publisher": "GitHub",
+        "official": true
+      },
+      "summary": "GitHub official MCP server (hosted or local) for repositories, issues, pull requests and Actions with OAuth or fine-grained tokens.",
+      "keyPoints": [
+        "Hosted endpoint https://api.githubcopilot.com/mcp/ supports OAuth or a fine-grained personal access token.",
+        "Limit toolsets and prefer read-only mode; opening pull requests or pushing are repo-write actions."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "b350e3168fc60055606b4d05ca0a0d43b8dc888855e59688fced6d4cf6492486",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "knowledge-retrieval"
+      ],
+      "linkedSkills": [
+        "mcp-integration",
+        "agent-capability-navigation"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 365,
+        "invalidateOn": [
+          "manual"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "standard",
+      "id": "mcp-spec",
+      "title": "Model Context Protocol specification (2025-06-18)",
+      "topics": [
+        "mcp",
+        "model context protocol",
+        "streamable http",
+        "specification"
+      ],
+      "canonicalSource": {
+        "url": "https://modelcontextprotocol.io/specification/2025-06-18",
+        "publisher": "Model Context Protocol project",
+        "official": true
+      },
+      "summary": "The MCP specification covering lifecycle, Streamable HTTP transport, tools, resources, prompts and authorization.",
+      "keyPoints": [
+        "Streamable HTTP is the standard remote transport.",
+        "Tool annotations such as readOnlyHint and destructiveHint are hints, not security guarantees."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "fb524d42b4d7ba7e29e0b7c19803e4a79eb60e1be557626806c19d7e568fbd09",
+      "trustLevel": "official",
+      "license": "W3C Document License",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "web-qa-pass",
+        "cinematic-portfolio"
+      ],
+      "linkedSkills": [
+        "accessibility"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 365,
+        "invalidateOn": [
+          "manual"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "standard",
+      "id": "wcag-22",
+      "title": "WCAG 2.2",
+      "topics": [
+        "accessibility",
+        "wcag",
+        "keyboard",
+        "focus",
+        "contrast"
+      ],
+      "canonicalSource": {
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "publisher": "W3C",
+        "official": true
+      },
+      "summary": "W3C Web Content Accessibility Guidelines 2.2, the normative success criteria for keyboard access, focus visibility, contrast and motion.",
+      "keyPoints": [
+        "Level AA includes focus not obscured (2.4.11) and target size minimum (2.5.8).",
+        "Every interactive 3D control needs a keyboard path and an accessible name."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "06f84c85187323c2d76806063fcabc2c68defa4bf36a6843878b12066cf76c46",
+      "trustLevel": "official",
+      "license": "CC-BY-SA 2.5",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "cinematic-portfolio",
+        "web-qa-pass"
+      ],
+      "linkedSkills": [
+        "accessibility",
+        "gsap-motion",
+        "motion-systems"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 365,
+        "invalidateOn": [
+          "manual"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "standard",
+      "id": "reduced-motion",
+      "title": "MDN prefers-reduced-motion",
+      "topics": [
+        "accessibility",
+        "reduced motion",
+        "prefers-reduced-motion",
+        "animation"
+      ],
+      "canonicalSource": {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion",
+        "publisher": "MDN Web Docs",
+        "official": true
+      },
+      "summary": "MDN reference for the prefers-reduced-motion media feature used to provide calmer alternatives to animation.",
+      "keyPoints": [
+        "Detect with matchMedia(\"(prefers-reduced-motion: reduce)\") and listen for changes.",
+        "Replace large camera moves and parallax with fades or static states rather than removing content."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "ac6242a5c9caf560961c8e39d20640eb8702449d017f86cbf95a3eb84d736b54",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [
+        "oauth"
+      ],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [
+        "web-qa-pass"
+      ],
+      "linkedSkills": [
+        "21st-ui-components"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 90,
+        "invalidateOn": [
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "mcp-server-doc",
+      "id": "21st-mcp",
+      "title": "21st.dev MCP",
+      "topics": [
+        "21st",
+        "ui components",
+        "mcp",
+        "component catalog"
+      ],
+      "canonicalSource": {
+        "url": "https://21st.dev/mcp",
+        "publisher": "21st.dev",
+        "official": true
+      },
+      "summary": "21st.dev hosted MCP for searching UI components, themes and templates and retrieving their code for adaptation.",
+      "keyPoints": [
+        "Search metadata first; retrieval may consume quota and hosted generation needs separate entitlement.",
+        "Connect with the agent client OAuth or the user API key; SOREN never proxies the account."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    },
+    {
+      "retrievedAt": "2026-10-22",
+      "lastVerifiedAt": "2026-10-22",
+      "contentSha256": "00d57aaafa521805a8580feed3315ae734e11cf9f57fb0808c4a1f7348ac31ae",
+      "trustLevel": "official",
+      "license": "Documentation per publisher terms",
+      "reviewer": "soren-v3-maintainer (agent source check 2026-10-22; human review pending)",
+      "approved": true,
+      "runtimeScopes": [
+        "public-router"
+      ],
+      "requiredPermissions": [
+        "oauth"
+      ],
+      "risk": "low",
+      "dependencies": [],
+      "linkedRecipes": [],
+      "linkedSkills": [
+        "motionsites-design"
+      ],
+      "observedTests": [],
+      "expiryPolicy": {
+        "maxAgeDays": 90,
+        "invalidateOn": [
+          "upstream-release"
+        ]
+      },
+      "warnings": [],
+      "packageRange": {},
+      "frameworkVersions": {},
+      "channel": "stable",
+      "context7LibraryId": null,
+      "kind": "mcp-server-doc",
+      "id": "motionsites-mcp",
+      "title": "MotionSites MCP",
+      "topics": [
+        "motionsites",
+        "design prompts",
+        "cinematic landing page",
+        "mcp"
+      ],
+      "canonicalSource": {
+        "url": "https://motionsites.ai/",
+        "publisher": "MotionSites",
+        "official": true
+      },
+      "summary": "MotionSites hosted MCP for premium cinematic website design prompts and related references through user OAuth.",
+      "keyPoints": [
+        "Check whether a prompt is free or paid before retrieving it.",
+        "Translate references into an original design; do not clone sites."
+      ],
+      "sourceRevision": "Canonical page fetched HTTP 200 on 2026-10-22"
+    }
+  ]
+}

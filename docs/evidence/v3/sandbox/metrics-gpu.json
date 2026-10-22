@@ -1,0 +1,71 @@
+{
+  "project": "gpu",
+  "measuredAt": "2026-10-22T13:10:21.609Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "renderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x0000A788) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "webglVersion": 2,
+  "renderInfo": {
+    "calls": 9,
+    "triangles": 135680,
+    "geometries": 20,
+    "textures": 7,
+    "programs": 8,
+    "pixelRatio": 1
+  },
+  "idle": {
+    "frames": 496,
+    "fps": 165,
+    "p50FrameMs": 6.1,
+    "p95FrameMs": 6.2,
+    "maxFrameMs": 6.2
+  },
+  "scrolling": {
+    "frames": 496,
+    "fps": 165,
+    "p50FrameMs": 6.1,
+    "p95FrameMs": 6.2,
+    "maxFrameMs": 7.4
+  },
+  "timing": {
+    "domContentLoadedMs": 43,
+    "loadEventMs": 44,
+    "firstFrameMs": 500,
+    "modelReadyMs": 542,
+    "resources": [
+      {
+        "file": "/assets/index-DHKyc7FT.js",
+        "transferBytes": 115838,
+        "decodedBytes": 342544,
+        "durationMs": 16
+      },
+      {
+        "file": "/assets/index-DS5ywwra.css",
+        "transferBytes": 1921,
+        "decodedBytes": 3866,
+        "durationMs": 6
+      },
+      {
+        "file": "/assets/Experience-B3rAl8AD.js",
+        "transferBytes": 281776,
+        "decodedBytes": 1043513,
+        "durationMs": 31
+      },
+      {
+        "file": "/models/sculpture.glb",
+        "transferBytes": 338280,
+        "decodedBytes": 337980,
+        "durationMs": 3
+      }
+    ]
+  },
+  "memory": {
+    "jsHeapUsedBytes": 8017976,
+    "jsHeapTotalBytes": 9125888,
+    "domNodes": 84,
+    "note": "JS heap after forced GC; excludes GPU memory."
+  },
+  "consoleErrors": []
+}

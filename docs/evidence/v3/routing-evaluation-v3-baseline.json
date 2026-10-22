@@ -1,0 +1,920 @@
+{
+  "observedAt": "2026-10-22T12:11:57.509Z",
+  "fixtureSha256": "7026ef33c8310c5a3ed3a806981c998aede7db66a43d290148f9fbaf81f4a2fb",
+  "labelReview": "developer_authored_human_review_pending",
+  "taskCount": 46,
+  "plannerAvailable": false,
+  "skillTop1Percent": 23.9,
+  "skillTop3Percent": 23.9,
+  "profileTop1Percent": null,
+  "bypassCorrect": true,
+  "categories": {
+    "graphics": {
+      "tasks": 6,
+      "top1": 4,
+      "top3": 4,
+      "profile": 0
+    },
+    "perf": {
+      "tasks": 4,
+      "top1": 0,
+      "top3": 0,
+      "profile": 0
+    },
+    "shader": {
+      "tasks": 4,
+      "top1": 0,
+      "top3": 0,
+      "profile": 0
+    },
+    "webgpu": {
+      "tasks": 2,
+      "top1": 0,
+      "top3": 0,
+      "profile": 0
+    },
+    "asset": {
+      "tasks": 6,
+      "top1": 0,
+      "top3": 0,
+      "profile": 0
+    },
+    "spline": {
+      "tasks": 2,
+      "top1": 0,
+      "top3": 0,
+      "profile": 0
+    },
+    "nextjs-debug": {
+      "tasks": 4,
+      "top1": 0,
+      "top3": 0,
+      "profile": 0
+    },
+    "static-ui": {
+      "tasks": 3,
+      "top1": 0,
+      "top3": 0,
+      "profile": 0
+    },
+    "a11y": {
+      "tasks": 2,
+      "top1": 2,
+      "top3": 2,
+      "profile": 0
+    },
+    "browser-qa": {
+      "tasks": 2,
+      "top1": 0,
+      "top3": 0,
+      "profile": 0
+    },
+    "deploy": {
+      "tasks": 3,
+      "top1": 0,
+      "top3": 0,
+      "profile": 0
+    },
+    "knowledge": {
+      "tasks": 4,
+      "top1": 2,
+      "top3": 2,
+      "profile": 0
+    },
+    "engineering": {
+      "tasks": 2,
+      "top1": 1,
+      "top3": 1,
+      "profile": 0
+    },
+    "trivial": {
+      "tasks": 2,
+      "top1": 2,
+      "top3": 2,
+      "profile": 0
+    }
+  },
+  "failures": [
+    {
+      "id": "V3-002",
+      "category": "graphics",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-003",
+      "category": "graphics",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-004",
+      "category": "perf",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-007",
+      "category": "shader",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-008",
+      "category": "shader",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-009",
+      "category": "shader",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-010",
+      "category": "shader",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-011",
+      "category": "webgpu",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-012",
+      "category": "webgpu",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-013",
+      "category": "asset",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-014",
+      "category": "asset",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-015",
+      "category": "asset",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-016",
+      "category": "asset",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-017",
+      "category": "asset",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-018",
+      "category": "asset",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-019",
+      "category": "spline",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-020",
+      "category": "spline",
+      "selected": [
+        "mcp-integration",
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-021",
+      "category": "perf",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-022",
+      "category": "perf",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-023",
+      "category": "perf",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-024",
+      "category": "nextjs-debug",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-025",
+      "category": "nextjs-debug",
+      "selected": [
+        "mcp-integration"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-026",
+      "category": "nextjs-debug",
+      "selected": [
+        "skill-orchestration"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-027",
+      "category": "nextjs-debug",
+      "selected": [
+        "mcp-integration"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-028",
+      "category": "static-ui",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-029",
+      "category": "static-ui",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-030",
+      "category": "static-ui",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-032",
+      "category": "browser-qa",
+      "selected": [
+        "accessibility"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-033",
+      "category": "browser-qa",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-034",
+      "category": "deploy",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-035",
+      "category": "deploy",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-036",
+      "category": "deploy",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-037",
+      "category": "knowledge",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-039",
+      "category": "knowledge",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-041",
+      "category": "engineering",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    }
+  ],
+  "results": [
+    {
+      "id": "V3-001",
+      "category": "graphics",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    },
+    {
+      "id": "V3-002",
+      "category": "graphics",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-003",
+      "category": "graphics",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-004",
+      "category": "perf",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-005",
+      "category": "graphics",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    },
+    {
+      "id": "V3-006",
+      "category": "graphics",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    },
+    {
+      "id": "V3-007",
+      "category": "shader",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-008",
+      "category": "shader",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-009",
+      "category": "shader",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-010",
+      "category": "shader",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-011",
+      "category": "webgpu",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-012",
+      "category": "webgpu",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-013",
+      "category": "asset",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-014",
+      "category": "asset",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-015",
+      "category": "asset",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-016",
+      "category": "asset",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-017",
+      "category": "asset",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-018",
+      "category": "asset",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-019",
+      "category": "spline",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-020",
+      "category": "spline",
+      "selected": [
+        "mcp-integration",
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-021",
+      "category": "perf",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-022",
+      "category": "perf",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-023",
+      "category": "perf",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-024",
+      "category": "nextjs-debug",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-025",
+      "category": "nextjs-debug",
+      "selected": [
+        "mcp-integration"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-026",
+      "category": "nextjs-debug",
+      "selected": [
+        "skill-orchestration"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-027",
+      "category": "nextjs-debug",
+      "selected": [
+        "mcp-integration"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-028",
+      "category": "static-ui",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-029",
+      "category": "static-ui",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-030",
+      "category": "static-ui",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-031",
+      "category": "a11y",
+      "selected": [
+        "accessibility"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    },
+    {
+      "id": "V3-032",
+      "category": "browser-qa",
+      "selected": [
+        "accessibility"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-033",
+      "category": "browser-qa",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-034",
+      "category": "deploy",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-035",
+      "category": "deploy",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-036",
+      "category": "deploy",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-037",
+      "category": "knowledge",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-038",
+      "category": "knowledge",
+      "selected": [
+        "mcp-integration"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    },
+    {
+      "id": "V3-039",
+      "category": "knowledge",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-040",
+      "category": "knowledge",
+      "selected": [
+        "mcp-integration"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    },
+    {
+      "id": "V3-041",
+      "category": "engineering",
+      "selected": [],
+      "profile": null,
+      "top1": false,
+      "top3": false,
+      "profileOk": null
+    },
+    {
+      "id": "V3-042",
+      "category": "engineering",
+      "selected": [
+        "skill-orchestration",
+        "mcp-integration"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    },
+    {
+      "id": "V3-043",
+      "category": "trivial",
+      "selected": [],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    },
+    {
+      "id": "V3-044",
+      "category": "trivial",
+      "selected": [],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    },
+    {
+      "id": "V3-045",
+      "category": "graphics",
+      "selected": [
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    },
+    {
+      "id": "V3-046",
+      "category": "a11y",
+      "selected": [
+        "accessibility",
+        "motion-systems"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": null
+    }
+  ]
+}

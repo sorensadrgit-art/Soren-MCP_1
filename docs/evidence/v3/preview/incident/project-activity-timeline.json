@@ -1,0 +1,83 @@
+{
+  "source": "vercel activity --project prj_n1PULnMPv3uCy1Df7qBCnKBRzNNp (emails, token and session IDs omitted)",
+  "events": [
+    {
+      "at": "2026-10-22T15:55:25.208Z",
+      "type": "project-created",
+      "text": "You created project soren-mcp-v3-preview [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T15:55:25.962Z",
+      "type": "project-node-version-updated",
+      "text": "You updated Node.js version from 24.x to 22.x on project soren-mcp-v3-preview [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T15:55:25.962Z",
+      "type": "project-framework-updated",
+      "text": "You updated framework on project soren-mcp-v3-preview from Default to nextjs [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T15:55:45.120Z",
+      "type": "env-variable-read:unknown-source",
+      "text": "You accessed all Development environment variables in Project soren-mcp-v3-preview [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T15:55:50.431Z",
+      "type": "deployment",
+      "text": "You deployed soren-mcp-v3-preview to production [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T15:56:26.635Z",
+      "type": "aliases-assigned",
+      "text": "You assigned 2 aliases to soren-mcp-v3-preview-nttd8ate2-sorensadr-gmailcoms-projects.vercel.app",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T15:57:43.421Z",
+      "type": "project-paused",
+      "text": "You paused project soren-mcp-v3-preview using the REST API [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T15:58:09.477Z",
+      "type": "deployment",
+      "text": "You deployed soren-mcp-v3-preview to soren-mcp-v3-preview-8chwr2hss-sorensadr-gmailcoms-projects.vercel.app [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T16:09:07.228Z",
+      "type": "project-domain-deleted",
+      "text": "You deleted domain soren-mcp-v3-preview.vercel.app from project soren-mcp-v3-preview [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T16:09:20.848Z",
+      "type": "project-unpaused",
+      "text": "You resumed project soren-mcp-v3-preview using the Vercel Dashboard or REST API [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T16:09:47.013Z",
+      "type": "deployment",
+      "text": "You deployed soren-mcp-v3-preview to soren-mcp-v3-preview-1ylrjyzfe-sorensadr-gmailcoms-projects.vercel.app [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T16:12:07.817Z",
+      "type": "project-automation-bypass",
+      "text": "You added a Deployment Protection Automation Bypass secret for soren-mcp-v3-preview. [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    },
+    {
+      "at": "2026-10-22T16:14:39.000Z",
+      "type": "deployment",
+      "text": "You deployed soren-mcp-v3-preview to soren-mcp-v3-preview-5b1z89yay-sorensadr-gmailcoms-projects.vercel.app [Vercel CLI]",
+      "actor": "sorensadr-5641"
+    }
+  ]
+}

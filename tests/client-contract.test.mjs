@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {SKILLS} from "../lib/catalog.mjs";
 import {MCP_SERVER_NAME,MCP_VERSION,TOOL_ANNOTATIONS,ROUTER_INSTRUCTIONS,ENDPOINT,CLIENT_SNIPPETS,
-  getClientSnippet,TOOL_NAMES} from "../lib/client-contract.mjs";
+  getClientSnippet,TOOL_NAMES,V3_TOOL_NAMES,V3_TOOL_ANNOTATIONS} from "../lib/client-contract.mjs";
 
 test("Server advertises a distinct Soren identity and stable tool identities",()=>{
   assert.equal(MCP_SERVER_NAME,"soren-universal-skill-router");
@@ -58,6 +58,17 @@ test("Every client has a correct native configuration with a single endpoint and
   assert.throws(()=>getClientSnippet("unknown"),/Unsupported/);
 });
 
-test("Approved curated skills remain unchanged",()=>{
-  assert.deepEqual(SKILLS.map(s=>s.name).sort(),["accessibility","mcp-integration","motion-systems","skill-orchestration"].sort());
+test("Curated skills: the original four first and unchanged, then the reviewed V3 catalog",()=>{
+  assert.deepEqual(SKILLS.slice(0,4).map(s=>s.name),["accessibility","motion-systems","mcp-integration","skill-orchestration"]);
+  assert.deepEqual(SKILLS.map(s=>s.name).sort(),["21st-ui-components","accessibility","agent-capability-navigation","agentic-coding",
+    "agentic-design-to-code","blender-to-r3f","gltf-asset-pipeline","graphics-performance-qa","gsap-motion","mcp-integration",
+    "motion-systems","motionsites-design","nextjs-runtime-engineering","playwright-browser-qa","react-three-fiber",
+    "shader-material-lab","skill-orchestration","soren-learning-loop","soren-universal-deployment","spline-to-web","superpowers-engineering",
+    "threejs-production","webgpu-progressive-rendering"]);
+});
+
+test("V3 tools are distinct from legacy tools and annotated local read-only",()=>{
+  assert.equal(new Set([...TOOL_NAMES,...V3_TOOL_NAMES]).size,14);
+  for(const name of V3_TOOL_NAMES)assert.deepEqual(V3_TOOL_ANNOTATIONS[name],{readOnlyHint:true,destructiveHint:false,idempotentHint:true,openWorldHint:false});
+  assert.equal(MCP_VERSION,"2.5.0");
 });

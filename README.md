@@ -27,7 +27,8 @@ Public bundled skills and local routing work without cloud credentials. External
 - [Read-only activation preflight](docs/activation-preflight.md) and [release-gate progress](docs/release-gates-progress-20261020.md)
 - [Update policy](docs/update-policy.md) and [rollback](docs/rollback.md)
 - [Current verification results](docs/verification-results.md)
-- [Current 65-requirement acceptance ledger](docs/acceptance-matrix.csv)
+- [Current acceptance ledger](docs/acceptance-matrix.csv) (65 original requirements plus V3 rows)
+- [V3 capabilities](docs/v3/capabilities.md), [knowledge governance](docs/v3/knowledge-governance.md), [MCP install profiles](docs/v3/mcp-install-profiles.md), [client attachment plan](docs/v3/client-attachment-plan.md), [production activation plan](docs/v3/production-activation.md) and [graphics sandbox validation](docs/evidence/v3-sandbox-validation.md)
 - [Original handoff index](docs/handoff-index.md) and [complete implementation specification](docs/implementation/00_START_HERE.md)
 
 The original 25-file handoff remains unchanged under `docs/implementation/`. Verify its 24 manifest-listed payload files with `python docs/implementation/verify_package.py`. Its initial NOT_RUN matrix is preserved as source material; current execution evidence lives under `docs/`.
@@ -38,12 +39,15 @@ The original 25-file handoff remains unchanged under `docs/implementation/`. Ver
 Endpoint: https://soren-shared-mcp-skills.vercel.app/api/mcp
 Alias: soren-skills
 MCP identity: soren-universal-skill-router
-MCP contract: 2.2.0
+MCP contract: 2.4.0 (live); this branch: 2.5.0
 Package: 1.0.0
 ```
 
-The eight tool names and four bundled skill resources remain stable. Public tools are read-only. Curated instructions are optional reference material; external candidates require exact-version review. Router advice never overrides the host agent's permissions or project instructions.
+This branch implements contract 2.5.0 (V3). The live endpoint runs 2.4.0 (see `docs/v3/drift-reconciliation.md`). The eight legacy tool names remain stable, and 22 skills are bundled. Six advisory V3 tools register only when `SOREN_V3_TOOLS=1`; the flag is off by default and is not enabled in production. Public tools are read-only. Curated instructions are optional reference material; external candidates require exact-version review. Router advice never overrides the host agent's permissions or project instructions.
 
+## Opt-in typed capability planning (ported from PR #4)
+
+`route_task` accepts `include_capability_plan: true`, backed by the reviewed 30-entry, five-domain catalog under `docs/research/capability-catalog-20261020/`. It returns a bounded `capabilityPlan` with missing connection, runtime, review and approval requirements; it never installs or executes capabilities. Requests without the flag keep their exact previous response. New planning defaults to provided-only sources, and private or provided-only plans force local discovery. Optional TypeSafe advice (`decision_engine: "jev"`) stays off until the caller opts in, the server sets `TYPESAFE_JEV_ENABLED=true` with a server-only key, and the shared budget store is available. This works the same with `SOREN_V3_TOOLS` on or off. See [the request guide](docs/capability-planning.md) and [TypeSafe activation](docs/typesafe-jev.md).
 Open Discover at `/`, client guidance at `/connect`, approved skills at `/registry`, and private management at `/reviews`, `/health`, `/updates`, or `/manage`. Configuration, protocol connection, native invocation, fresh health, and approved execution authority are distinct states.
 
 ## Verification and installer commands

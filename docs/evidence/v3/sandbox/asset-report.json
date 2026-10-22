@@ -1,0 +1,173 @@
+{
+  "generatedAt": "2026-10-22T12:53:07.570Z",
+  "tool": "@gltf-transform 4.5.1",
+  "files": {
+    "source": {
+      "path": "assets/source/sculpture.glb",
+      "bytes": 3058144,
+      "sha256": "7a24eb65b19c8d75d34aae052ff5fd7c2710150a5092dec925eee97e42cba019",
+      "extensionsUsed": [
+        "KHR_materials_clearcoat"
+      ],
+      "meshes": [
+        {
+          "name": "KnotMesh",
+          "vertices": 33345,
+          "glPrimitives": 65536,
+          "size": 1853472,
+          "attributes": [
+            "NORMAL:f32",
+            "POSITION:f32",
+            "TEXCOORD_0:f32"
+          ]
+        },
+        {
+          "name": "OrbMesh",
+          "vertices": 6305,
+          "glPrimitives": 12096,
+          "size": 223896,
+          "attributes": [
+            "NORMAL:f32",
+            "POSITION:f32"
+          ]
+        },
+        {
+          "name": "HaloMesh",
+          "vertices": 4369,
+          "glPrimitives": 8192,
+          "size": 154008,
+          "attributes": [
+            "NORMAL:f32",
+            "POSITION:f32"
+          ]
+        },
+        {
+          "name": "PedestalMesh",
+          "vertices": 772,
+          "glPrimitives": 512,
+          "size": 21600,
+          "attributes": [
+            "NORMAL:f32",
+            "POSITION:f32"
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "name": "BrushedGold",
+          "textures": [
+            "metallicRoughnessTexture"
+          ]
+        },
+        {
+          "name": "GlazedCeramic",
+          "textures": []
+        },
+        {
+          "name": "PolishedObsidian",
+          "textures": []
+        },
+        {
+          "name": "HaloBrass",
+          "textures": []
+        }
+      ],
+      "textures": [
+        {
+          "name": "BrushedMetalRoughness",
+          "mimeType": "image/png",
+          "resolution": "1024x1024",
+          "size": 801101,
+          "gpuSize": 5592404
+        }
+      ]
+    },
+    "optimized": {
+      "path": "public/models/sculpture.glb",
+      "bytes": 337980,
+      "sha256": "f5046a0b8aef06036dd4ffbb34136a1db7d44a615849eb34ce34272b53c84e89",
+      "extensionsUsed": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_clearcoat",
+        "KHR_mesh_quantization"
+      ],
+      "meshes": [
+        {
+          "name": "KnotMesh",
+          "vertices": 25485,
+          "glPrimitives": 50002,
+          "size": 631317,
+          "attributes": [
+            "NORMAL:i8_norm",
+            "POSITION:i16_norm",
+            "TEXCOORD_0:u16_norm"
+          ]
+        },
+        {
+          "name": "OrbMesh",
+          "vertices": 5667,
+          "glPrimitives": 11192,
+          "size": 118155,
+          "attributes": [
+            "NORMAL:i8_norm",
+            "POSITION:i16_norm"
+          ]
+        },
+        {
+          "name": "HaloMesh",
+          "vertices": 3307,
+          "glPrimitives": 6133,
+          "size": 66561,
+          "attributes": [
+            "NORMAL:i8_norm",
+            "POSITION:i16_norm"
+          ]
+        },
+        {
+          "name": "PedestalMesh",
+          "vertices": 518,
+          "glPrimitives": 512,
+          "size": 7734,
+          "attributes": [
+            "NORMAL:i8_norm",
+            "POSITION:i16_norm"
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "name": "BrushedGold",
+          "textures": [
+            "metallicRoughnessTexture"
+          ]
+        },
+        {
+          "name": "GlazedCeramic",
+          "textures": []
+        },
+        {
+          "name": "PolishedObsidian",
+          "textures": []
+        },
+        {
+          "name": "HaloBrass",
+          "textures": []
+        }
+      ],
+      "textures": [
+        {
+          "name": "BrushedMetalRoughness",
+          "mimeType": "image/webp",
+          "resolution": "1024x1024",
+          "size": 19660,
+          "gpuSize": 5592404
+        }
+      ]
+    }
+  },
+  "reduction": {
+    "bytes": 2720164,
+    "percent": 88.9
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://soren-shared-mcp-skills.vercel.app/schemas/integration.schema.json",
+  "title": "SOREN agent-native integration reference (never proxied)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "vendor",
+    "category",
+    "kind",
+    "transport",
+    "endpoint",
+    "package",
+    "sourceUrl",
+    "docsUrl",
+    "license",
+    "runtime",
+    "capabilities",
+    "auth",
+    "executionRisk",
+    "requiresLocalExecution",
+    "proxiedBySoren",
+    "automaticallyConnected",
+    "status",
+    "observations",
+    "requirements",
+    "cautions",
+    "skill",
+    "knowledgeIds",
+    "guidance",
+    "legacy",
+    "setup"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+    },
+    "name": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "vendor": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "category": {
+      "enum": [
+        "documentation",
+        "code_navigation",
+        "framework_runtime",
+        "browser_qa",
+        "browser_performance",
+        "design_3d",
+        "design_components",
+        "design_references",
+        "deployment",
+        "repository",
+        "asset_pipeline",
+        "research"
+      ]
+    },
+    "kind": {
+      "enum": [
+        "remote-mcp",
+        "local-mcp",
+        "remote-or-desktop-mcp",
+        "isolated-mcp",
+        "cli_not_mcp",
+        "remote-connector"
+      ]
+    },
+    "transport": {
+      "enum": [
+        "streamable-http",
+        "stdio",
+        "stdio-or-http",
+        "cli"
+      ]
+    },
+    "endpoint": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        }
+      ]
+    },
+    "package": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "version"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^\\d+\\.\\d+\\.\\d+"
+            }
+          }
+        }
+      ]
+    },
+    "sourceUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "docsUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "license": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "runtime": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "capabilities": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 60
+      },
+      "minItems": 1
+    },
+    "auth": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "executionRisk": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "requiresLocalExecution": {
+      "type": "boolean"
+    },
+    "proxiedBySoren": {
+      "const": false
+    },
+    "automaticallyConnected": {
+      "const": false
+    },
+    "status": {
+      "enum": [
+        "suggested",
+        "documented",
+        "configured",
+        "authenticated",
+        "verified",
+        "blocked"
+      ]
+    },
+    "observations": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "client",
+          "state",
+          "method",
+          "observedAt",
+          "evidence"
+        ],
+        "properties": {
+          "client": {
+            "type": "string",
+            "maxLength": 40
+          },
+          "state": {
+            "enum": [
+              "suggested",
+              "documented",
+              "configured",
+              "authenticated",
+              "verified",
+              "blocked"
+            ]
+          },
+          "method": {
+            "enum": [
+              "native_tool_call",
+              "config_inspection",
+              "documentation_review",
+              "protocol_probe"
+            ]
+          },
+          "observedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "evidence": {
+            "type": "string",
+            "maxLength": 200
+          }
+        }
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "cautions": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+      }
+    },
+    "skill": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+        }
+      ]
+    },
+    "knowledgeIds": {
+      "type": "array",
+      "maxItems": 40,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+      }
+    },
+    "guidance": {
+      "type": "string",
+      "maxLength": 400
+    },
+    "legacy": {
+      "type": "boolean"
+    },
+    "setup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "remote",
+            "stdio",
+            "isolated",
+            "cli"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "command": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "args": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          }
+        },
+        "oauth": {
+          "type": "boolean"
+        },
+        "apiKeyEnv": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]{2,40}$"
+        },
+        "supportedClients": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "codex",
+              "factory",
+              "antigravity",
+              "opencode",
+              "claude",
+              "qwen"
+            ]
+          }
+        },
+        "unsupportedReason": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "installHint": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "verifyHint": {
+          "type": "string",
+          "maxLength": 300
+        }
+      }
+    }
+  }
+}

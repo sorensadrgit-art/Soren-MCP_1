@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "fixture": "tests/routing/evaluation.json",
+  "fixtureSha256": "c36b95b64e49b99e6ea24ed57527d54c258049739e5bf73915a13c59b4ea1bcc",
+  "note": "The 60-case fixture stays frozen. Each revision supersedes one frozen label from a stated contract version onward and records why. Each revision carries its own approval record; the frozen fixture's labels remain developer-authored and independent label review of them is still pending.",
+  "labelReview": "developer_authored_human_review_pending",
+  "revisions": [
+    {
+      "id": "ROUTE-056",
+      "sinceContract": "2.5.0",
+      "frozen": {"bypass": true, "acceptableTopThree": []},
+      "expected": {"bypass": false, "acceptableTopThree": ["gsap-motion"], "forbidden": ["motion-systems"]},
+      "reason": "Contract 2.5.0 bundles gsap-motion, an approved GSAP skill. With motion-systems unavailable, recommending the remaining approved GSAP skill is the intended fallback, not a leak of the unavailable skill. Before 2.5.0 no alternative existed, so bypass was correct.",
+      "recordedAt": "2026-10-23",
+      "approval": {
+        "status": "owner_approved",
+        "approvedBy": "repository owner (sorensadrgit-art)",
+        "approvedAt": "2026-10-22T17:05:00Z",
+        "scope": "gsap-motion is the accepted ROUTE-056 fallback when motion-systems is unavailable, from contract 2.5.0 onward. The frozen bypass label stays the expectation for earlier contracts and is still reported as frozenLabelPassed."
+      }
+    }
+  ]
+}

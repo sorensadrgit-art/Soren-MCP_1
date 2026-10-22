@@ -1,0 +1,42 @@
+PASS Responsive web dashboard and connection navigator
+PASS Legacy 2025 handshake and branded server identity
+PASS Native 2026-07 discovery
+PASS Legacy eight tool schemas first (plus exactly six V3 tools when enabled) with safety annotations
+PASS All 22 curated SKILL.md resources listed and readable
+PASS Tool list_skills
+PASS Tool search_skills
+PASS Tool read_skill
+PASS Tool list_providers
+PASS Tool route_task
+PASS V3 tool list_capability_profiles
+PASS V3 tool plan_toolchain
+PASS V3 tool list_integrations
+PASS V3 tool search_knowledge
+PASS V3 tool read_recipe
+PASS V3 tool get_client_setup_guide
+PASS V3 recipe and knowledge resources readable
+PASS V3 rejects recipe traversal
+PASS Federated routing returns review-only candidates
+WARN SkillsMP external discovery
+WARN Skills.sh authenticated discovery and inspection
+WARN Official MCP registry discovery
+PASS Reject non-curated SKILL.md path traversal
+PASS Reject invalid external candidate path
+PASS Reject malformed route arguments
+PASS Four simultaneous agent requests do not cross-contaminate
+PASS Cross-origin browser request rejected
+PASS Reject supplied malformed identity even for a bundled public read
+PASS Reject oversized streaming request body
+{
+  "endpoint": "https://soren-mcp-v3-preview-1ylrjyzfe-sorensadr-gmailcoms-projects.vercel.app/api/mcp",
+  "protectedTarget": true,
+  "requests": 30,
+  "checks": 29,
+  "passed": 26,
+  "failed": [],
+  "warnings": [
+    "SkillsMP external discovery",
+    "Skills.sh authenticated discovery and inspection",
+    "Official MCP registry discovery"
+  ]
+}

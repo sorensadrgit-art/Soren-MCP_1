@@ -1,0 +1,34 @@
+{
+  "id": "dpl_v1aHX5zVu3cCY2Qx7YcHMP7wc73T",
+  "url": "soren-mcp-v3-preview-nttd8ate2-sorensadr-gmailcoms-projects.vercel.app",
+  "name": "soren-mcp-v3-preview",
+  "target": "production",
+  "readyState": "READY",
+  "readySubstate": "PROMOTED",
+  "projectId": "prj_n1PULnMPv3uCy1Df7qBCnKBRzNNp",
+  "alias": [
+    "soren-mcp-v3-preview.vercel.app",
+    "soren-mcp-v3-preview-sorensadr-gmailcoms-projects.vercel.app"
+  ],
+  "aliasAssigned": true,
+  "aliasAssignedAt": 1792684586638,
+  "createdAt": 1792684550084,
+  "buildingAt": 1792684551756,
+  "ready": 1792684586424,
+  "regions": [
+    "iad1"
+  ],
+  "meta": {
+    "gitCommitSha": "850df17b77ee9a59df5eb3bc2fb691b960fb0f99",
+    "purpose": "v3-isolated-preview",
+    "lambdaRuntimeStats": "{\"nodejs\":3}",
+    "bundler": "turbopack"
+  },
+  "plan": "hobby",
+  "public": false,
+  "source": "cli",
+  "type": "LAMBDAS",
+  "version": 2,
+  "bootedAt": 1792684550084,
+  "routes": null
+}

@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://soren-shared-mcp-skills.vercel.app/schemas/knowledge-item.schema.json",
+  "title": "SOREN reviewed knowledge item",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "title",
+    "summary",
+    "keyPoints",
+    "topics",
+    "canonicalSource",
+    "sourceRevision",
+    "packageRange",
+    "frameworkVersions",
+    "channel",
+    "context7LibraryId",
+    "retrievedAt",
+    "lastVerifiedAt",
+    "contentSha256",
+    "trustLevel",
+    "license",
+    "reviewer",
+    "approved",
+    "runtimeScopes",
+    "requiredPermissions",
+    "risk",
+    "dependencies",
+    "linkedRecipes",
+    "linkedSkills",
+    "observedTests",
+    "expiryPolicy",
+    "warnings"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+    },
+    "kind": {
+      "enum": [
+        "official-doc",
+        "api-reference",
+        "release-notes",
+        "mcp-server-doc",
+        "standard",
+        "tooling-doc"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 40,
+      "maxLength": 700
+    },
+    "keyPoints": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 280
+      },
+      "minItems": 2
+    },
+    "topics": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 40
+      },
+      "minItems": 1
+    },
+    "canonicalSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "publisher",
+        "official"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "publisher": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "official": {
+          "type": "boolean"
+        }
+      }
+    },
+    "sourceRevision": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "packageRange": {
+      "type": "object",
+      "maxProperties": 12,
+      "propertyNames": {
+        "pattern": "^(@[a-z0-9-~][a-z0-9-._~]*/)?[a-z0-9-~][a-z0-9-._~]*$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      }
+    },
+    "frameworkVersions": {
+      "type": "object",
+      "maxProperties": 12,
+      "propertyNames": {
+        "pattern": "^(@[a-z0-9-~][a-z0-9-._~]*/)?[a-z0-9-~][a-z0-9-._~]*$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      }
+    },
+    "channel": {
+      "enum": [
+        "stable",
+        "alpha",
+        "beta",
+        "deprecated"
+      ]
+    },
+    "context7LibraryId": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^/[A-Za-z0-9._-]+/[A-Za-z0-9._/-]+$"
+        }
+      ]
+    },
+    "retrievedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "lastVerifiedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "contentSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "trustLevel": {
+      "enum": [
+        "official",
+        "reviewed-internal",
+        "community-non-normative"
+      ]
+    },
+    "license": {
+      "type": "string",
+      "maxLength": 160
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 120
+    },
+    "approved": {
+      "type": "boolean"
+    },
+    "runtimeScopes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "public-router",
+          "project-local",
+          "private-workspace"
+        ]
+      },
+      "minItems": 1
+    },
+    "requiredPermissions": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      }
+    },
+    "risk": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "dependencies": {
+      "type": "array",
+      "maxItems": 40,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+      }
+    },
+    "linkedRecipes": {
+      "type": "array",
+      "maxItems": 40,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+      }
+    },
+    "linkedSkills": {
+      "type": "array",
+      "maxItems": 40,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+      }
+    },
+    "observedTests": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    },
+    "expiryPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxAgeDays",
+        "invalidateOn"
+      ],
+      "properties": {
+        "maxAgeDays": {
+          "type": "integer",
+          "minimum": 7,
+          "maximum": 730
+        },
+        "invalidateOn": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "package-major",
+              "package-minor",
+              "upstream-release",
+              "manual"
+            ]
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+      }
+    }
+  }
+}

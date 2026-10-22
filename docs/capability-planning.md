@@ -2,7 +2,7 @@
 
 ## Scope and architecture decision
 
-The user approved implementing the researched capability catalog on October 21, 2026. This change adds an opt-in planning projection to the existing `route_task` tool. It does not add a ninth tool, change the four bundled resources, install any candidate library, register a connector, modify client configurations, or deploy the service.
+The user approved implementing the researched capability catalog on October 21, 2026. This change adds an opt-in planning projection to the existing `route_task` tool. It does not add a new tool, change the bundled skill resources, install any candidate library, register a connector, modify client configurations, or deploy the service.
 
 The catalog and workflow recipes remain the reviewed source files under `docs/research/capability-catalog-20261020/`. The planner imports those immutable repository bytes, validates identities/references/DAGs, deep-freezes its internal data, and projects only relevant metadata. `catalogRevision` is a digest of the catalog, recipes and sources; it proves consistency, not trusted release signing.
 
@@ -73,6 +73,29 @@ The 24 research scenarios assumed named target capabilities were connected and a
 
 Scenario E22 names only a mirrored skill, not its publisher. The research fixture suggested Firecrawl; the implementation intentionally returns review-required with no invented publisher. The historical fixture is unchanged, and this ruling is explicit in the executed scenario tests. These tests are not a measured live routing-accuracy benchmark.
 
+## V3 integration notes
+
+This planner was ported onto the V3 branch (contract 2.5.0) without replacing the V3 toolchain planner. The two answer different questions:
+
+- `route_task` with `include_capability_plan` projects the PR #4 five-domain catalog (assistance, research, data, development, automation) into a typed plan. It is available whether `SOREN_V3_TOOLS` is on or off.
+- `plan_toolchain` (V3, flag-gated) plans skills, MCP integrations, version-matched knowledge and recipes from the V3 catalogs.
+
+Differences from the PR #4 branch:
+
+- `preferred_skills` and `unavailable_skills` accept every curated V3 skill name (22 at the time of porting), not just the four legacy names. `unavailable_skills` keeps the V3 limit of 8.
+- The TypeSafe advisor's choice list is unchanged: it can only reorder among the four legacy skills (`accessibility`, `motion-systems`, `mcp-integration`, `skill-orchestration`) when they are already eligible. Widening it would change the reviewed privacy and cost boundary and needs its own review.
+- `scripts/verify-capability-plan.mjs` accepts both the flag-off tool list (8 tools) and the flag-on list (8 legacy tools followed by the 6 V3 tools), and checks the skill resource count against the bundled catalog instead of a fixed 4.
+- Without a gateway store (`SUPABASE_*`, `SOREN_GATEWAY_DB_KEY`, `SOREN_WORKSPACE_ID`) and `SOREN_RATE_KEY`, the shared budget guard denies every TypeSafe call, so the advisor reports `unavailable_or_budget_limited` and deterministic routing is kept.
+
+Review fixes applied after porting (independent review, 2026-10-22):
+
+- An `operation` hint can raise the operation derived from the task text but never lower it, so a `read` hint cannot hide the approval gate of a commit, push or deploy.
+- Approval is derived from capability effects (`write_remote`, `possible_remote_write`, `execute_workflow`, `schedule`) for edit, execute and schedule operations. If any recommendation needs approval, the plan status is `NEEDS_APPROVAL`.
+- Outside public scope, every capability whose only data access is a public network read is ineligible (discovery catalogs, Exa, Firecrawl, Context7, Crawl4AI, public reference corpora). Capabilities that act on the caller's own authorized data, such as the user's browser profile, stay eligible.
+
+Known asymmetry, kept for legacy compatibility: without `include_capability_plan`, privacy wording in the task text (for example "do not browse") suppresses TypeSafe but does not switch federated discovery to local. Only `publicQuery` technology keywords leave the server in that case. Callers that need a hard boundary must send `discovery: "local"` or a structured `capability_context.source_scope`.
+
+Regression coverage for this port lives in `tests/routing/capability-v3-compat.test.mjs` and `tests/routing/capability-gates.test.mjs`.
 ## Files and ownership
 
 - `lib/capabilities/planner.mjs`: typed metadata selection, bounded workflow projection and explicit prerequisites.

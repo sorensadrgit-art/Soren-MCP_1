@@ -1,0 +1,748 @@
+{
+  "schemaVersion": 1,
+  "labelReview": "developer_authored_human_review_pending",
+  "frozenAt": "2026-10-22",
+  "note": "Labels frozen before V3 implementation. acceptablePrimary scores top-1, acceptableTopThree scores top-3, acceptableProfiles scores plan_toolchain (null = no profile). Not represented as human approval.",
+  "tasks": [
+    {
+      "id": "V3-001",
+      "category": "graphics",
+      "task": "Create an ultra-realistic interactive 3D portfolio",
+      "acceptablePrimary": [
+        "react-three-fiber",
+        "motion-systems"
+      ],
+      "acceptableTopThree": [
+        "react-three-fiber",
+        "motion-systems",
+        "threejs-production"
+      ],
+      "acceptableProfiles": [
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-002",
+      "category": "graphics",
+      "task": "Build a React Three Fiber scene with Drei environment lighting and orbit controls",
+      "acceptablePrimary": [
+        "react-three-fiber"
+      ],
+      "acceptableTopThree": [
+        "react-three-fiber"
+      ],
+      "acceptableProfiles": [
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-003",
+      "category": "graphics",
+      "task": "Set up a Three.js renderer with PBR materials and tone mapping",
+      "acceptablePrimary": [
+        "threejs-production",
+        "shader-material-lab"
+      ],
+      "acceptableTopThree": [
+        "threejs-production",
+        "shader-material-lab"
+      ],
+      "acceptableProfiles": [
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-004",
+      "category": "perf",
+      "task": "Optimize the r3f canvas so it only renders on demand",
+      "acceptablePrimary": [
+        "react-three-fiber",
+        "graphics-performance-qa"
+      ],
+      "acceptableTopThree": [
+        "react-three-fiber",
+        "graphics-performance-qa"
+      ],
+      "acceptableProfiles": [
+        "debug-3d-performance",
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-005",
+      "category": "graphics",
+      "task": "Add GSAP ScrollTrigger camera choreography to a WebGL hero",
+      "acceptablePrimary": [
+        "gsap-motion",
+        "motion-systems"
+      ],
+      "acceptableTopThree": [
+        "gsap-motion",
+        "motion-systems"
+      ],
+      "acceptableProfiles": [
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-006",
+      "category": "graphics",
+      "task": "Animate a 3D product configurator with React Three Fiber and GSAP timelines",
+      "acceptablePrimary": [
+        "react-three-fiber",
+        "gsap-motion",
+        "motion-systems"
+      ],
+      "acceptableTopThree": [
+        "react-three-fiber",
+        "gsap-motion",
+        "motion-systems"
+      ],
+      "acceptableProfiles": [
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-007",
+      "category": "shader",
+      "task": "Write a custom GLSL fragment shader for a holographic material",
+      "acceptablePrimary": [
+        "shader-material-lab"
+      ],
+      "acceptableTopThree": [
+        "shader-material-lab"
+      ],
+      "acceptableProfiles": [
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-008",
+      "category": "shader",
+      "task": "Fix shader compile errors caused by mobile WebGL precision",
+      "acceptablePrimary": [
+        "shader-material-lab"
+      ],
+      "acceptableTopThree": [
+        "shader-material-lab",
+        "graphics-performance-qa"
+      ],
+      "acceptableProfiles": [
+        "immersive-web",
+        "debug-3d-performance"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-009",
+      "category": "shader",
+      "task": "Create photorealistic PBR car paint with clearcoat and environment reflections",
+      "acceptablePrimary": [
+        "shader-material-lab",
+        "threejs-production"
+      ],
+      "acceptableTopThree": [
+        "shader-material-lab",
+        "threejs-production"
+      ],
+      "acceptableProfiles": [
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-010",
+      "category": "shader",
+      "task": "Port a ShaderMaterial to a TSL node material for WebGPU",
+      "acceptablePrimary": [
+        "webgpu-progressive-rendering",
+        "shader-material-lab"
+      ],
+      "acceptableTopThree": [
+        "webgpu-progressive-rendering",
+        "shader-material-lab"
+      ],
+      "acceptableProfiles": [
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-011",
+      "category": "webgpu",
+      "task": "Add WebGPU rendering with a WebGL2 fallback",
+      "acceptablePrimary": [
+        "webgpu-progressive-rendering"
+      ],
+      "acceptableTopThree": [
+        "webgpu-progressive-rendering"
+      ],
+      "acceptableProfiles": [
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-012",
+      "category": "webgpu",
+      "task": "Detect WebGPU support and degrade gracefully to a static poster",
+      "acceptablePrimary": [
+        "webgpu-progressive-rendering"
+      ],
+      "acceptableTopThree": [
+        "webgpu-progressive-rendering"
+      ],
+      "acceptableProfiles": [
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-013",
+      "category": "asset",
+      "task": "Compress a GLB with meshopt and convert textures to webp",
+      "acceptablePrimary": [
+        "gltf-asset-pipeline"
+      ],
+      "acceptableTopThree": [
+        "gltf-asset-pipeline"
+      ],
+      "acceptableProfiles": [
+        "blender-to-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-014",
+      "category": "asset",
+      "task": "Validate a glTF file and inspect its draw calls and texture sizes",
+      "acceptablePrimary": [
+        "gltf-asset-pipeline"
+      ],
+      "acceptableTopThree": [
+        "gltf-asset-pipeline",
+        "graphics-performance-qa"
+      ],
+      "acceptableProfiles": [
+        "blender-to-web",
+        "debug-3d-performance"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-015",
+      "category": "asset",
+      "task": "Export a Blender model to GLB and load it in React Three Fiber",
+      "acceptablePrimary": [
+        "blender-to-r3f"
+      ],
+      "acceptableTopThree": [
+        "blender-to-r3f",
+        "gltf-asset-pipeline"
+      ],
+      "acceptableProfiles": [
+        "blender-to-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-016",
+      "category": "asset",
+      "task": "Generate LODs and simplify a heavy glTF mesh",
+      "acceptablePrimary": [
+        "gltf-asset-pipeline"
+      ],
+      "acceptableTopThree": [
+        "gltf-asset-pipeline"
+      ],
+      "acceptableProfiles": [
+        "blender-to-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-017",
+      "category": "asset",
+      "task": "Bake Blender procedural materials to textures for web export",
+      "acceptablePrimary": [
+        "blender-to-r3f"
+      ],
+      "acceptableTopThree": [
+        "blender-to-r3f"
+      ],
+      "acceptableProfiles": [
+        "blender-to-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-018",
+      "category": "asset",
+      "task": "Set up KTX2 texture compression and the transcoder for GLTFLoader",
+      "acceptablePrimary": [
+        "gltf-asset-pipeline"
+      ],
+      "acceptableTopThree": [
+        "gltf-asset-pipeline"
+      ],
+      "acceptableProfiles": [
+        "blender-to-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-019",
+      "category": "spline",
+      "task": "Embed an interactive Spline scene in a Next.js landing page",
+      "acceptablePrimary": [
+        "spline-to-web"
+      ],
+      "acceptableTopThree": [
+        "spline-to-web"
+      ],
+      "acceptableProfiles": [
+        "spline-to-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-020",
+      "category": "spline",
+      "task": "Use the Spline MCP server to build a 3D scene",
+      "acceptablePrimary": [
+        "spline-to-web"
+      ],
+      "acceptableTopThree": [
+        "spline-to-web"
+      ],
+      "acceptableProfiles": [
+        "spline-to-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-021",
+      "category": "perf",
+      "task": "Profile WebGL frame rate, draw calls and GPU memory leaks",
+      "acceptablePrimary": [
+        "graphics-performance-qa"
+      ],
+      "acceptableTopThree": [
+        "graphics-performance-qa"
+      ],
+      "acceptableProfiles": [
+        "debug-3d-performance"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-022",
+      "category": "perf",
+      "task": "My three.js scene leaks textures after route changes, find the memory leak",
+      "acceptablePrimary": [
+        "graphics-performance-qa",
+        "threejs-production"
+      ],
+      "acceptableTopThree": [
+        "graphics-performance-qa",
+        "threejs-production"
+      ],
+      "acceptableProfiles": [
+        "debug-3d-performance"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-023",
+      "category": "perf",
+      "task": "Reduce draw calls with instancing in a React Three Fiber scene",
+      "acceptablePrimary": [
+        "graphics-performance-qa",
+        "react-three-fiber"
+      ],
+      "acceptableTopThree": [
+        "graphics-performance-qa",
+        "react-three-fiber"
+      ],
+      "acceptableProfiles": [
+        "debug-3d-performance"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-024",
+      "category": "nextjs-debug",
+      "task": "Debug a broken Next.js 16 app with runtime hydration errors",
+      "acceptablePrimary": [
+        "nextjs-runtime-engineering"
+      ],
+      "acceptableTopThree": [
+        "nextjs-runtime-engineering"
+      ],
+      "acceptableProfiles": [
+        "next-app"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-025",
+      "category": "nextjs-debug",
+      "task": "Connect next-devtools-mcp to the running Next.js dev server",
+      "acceptablePrimary": [
+        "nextjs-runtime-engineering"
+      ],
+      "acceptableTopThree": [
+        "nextjs-runtime-engineering"
+      ],
+      "acceptableProfiles": [
+        "next-app"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-026",
+      "category": "nextjs-debug",
+      "task": "Fix Next.js App Router build errors after upgrading to version 16",
+      "acceptablePrimary": [
+        "nextjs-runtime-engineering"
+      ],
+      "acceptableTopThree": [
+        "nextjs-runtime-engineering"
+      ],
+      "acceptableProfiles": [
+        "next-app"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-027",
+      "category": "nextjs-debug",
+      "task": "Diagnose slow Next.js server components and caching",
+      "acceptablePrimary": [
+        "nextjs-runtime-engineering"
+      ],
+      "acceptableTopThree": [
+        "nextjs-runtime-engineering"
+      ],
+      "acceptableProfiles": [
+        "next-app"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-028",
+      "category": "static-ui",
+      "task": "Build a responsive pricing section with shadcn ui components",
+      "acceptablePrimary": [
+        "21st-ui-components",
+        "agentic-design-to-code"
+      ],
+      "acceptableTopThree": [
+        "21st-ui-components",
+        "agentic-design-to-code"
+      ],
+      "acceptableProfiles": [
+        "web-qa",
+        null
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-029",
+      "category": "static-ui",
+      "task": "Turn design references into tested React components",
+      "acceptablePrimary": [
+        "agentic-design-to-code"
+      ],
+      "acceptableTopThree": [
+        "agentic-design-to-code"
+      ],
+      "acceptableProfiles": [
+        "web-qa",
+        null
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-030",
+      "category": "static-ui",
+      "task": "Find cinematic landing page design prompts on MotionSites",
+      "acceptablePrimary": [
+        "motionsites-design"
+      ],
+      "acceptableTopThree": [
+        "motionsites-design"
+      ],
+      "acceptableProfiles": [
+        null,
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-031",
+      "category": "a11y",
+      "task": "Audit WCAG keyboard focus and ARIA labels on a dashboard",
+      "acceptablePrimary": [
+        "accessibility"
+      ],
+      "acceptableTopThree": [
+        "accessibility"
+      ],
+      "acceptableProfiles": [
+        "web-qa"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-032",
+      "category": "browser-qa",
+      "task": "Run Playwright end-to-end browser QA with accessibility snapshots",
+      "acceptablePrimary": [
+        "playwright-browser-qa"
+      ],
+      "acceptableTopThree": [
+        "playwright-browser-qa"
+      ],
+      "acceptableProfiles": [
+        "web-qa",
+        "graphics-qa"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-033",
+      "category": "browser-qa",
+      "task": "Capture real Chromium screenshots of the WebGL scene at mobile and desktop sizes",
+      "acceptablePrimary": [
+        "playwright-browser-qa",
+        "graphics-performance-qa"
+      ],
+      "acceptableTopThree": [
+        "playwright-browser-qa",
+        "graphics-performance-qa"
+      ],
+      "acceptableProfiles": [
+        "graphics-qa",
+        "debug-3d-performance"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-034",
+      "category": "deploy",
+      "task": "Deploy the Next.js app to a Vercel preview and check build logs",
+      "acceptablePrimary": [
+        "soren-universal-deployment"
+      ],
+      "acceptableTopThree": [
+        "soren-universal-deployment",
+        "nextjs-runtime-engineering"
+      ],
+      "acceptableProfiles": [
+        "next-app"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-035",
+      "category": "deploy",
+      "task": "Fix a failing Vercel deployment caused by the install command",
+      "acceptablePrimary": [
+        "soren-universal-deployment"
+      ],
+      "acceptableTopThree": [
+        "soren-universal-deployment"
+      ],
+      "acceptableProfiles": [
+        "next-app",
+        null
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-036",
+      "category": "deploy",
+      "task": "Roll back a broken production release",
+      "acceptablePrimary": [
+        "soren-universal-deployment"
+      ],
+      "acceptableTopThree": [
+        "soren-universal-deployment"
+      ],
+      "acceptableProfiles": [
+        null,
+        "next-app"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-037",
+      "category": "knowledge",
+      "task": "Find version-matched official docs for React Three Fiber v9",
+      "acceptablePrimary": [
+        "react-three-fiber",
+        "agent-capability-navigation"
+      ],
+      "acceptableTopThree": [
+        "react-three-fiber",
+        "agent-capability-navigation"
+      ],
+      "acceptableProfiles": [
+        "knowledge",
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-038",
+      "category": "knowledge",
+      "task": "Which MCP servers should my agent connect for semantic code navigation",
+      "acceptablePrimary": [
+        "agent-capability-navigation",
+        "mcp-integration"
+      ],
+      "acceptableTopThree": [
+        "agent-capability-navigation",
+        "mcp-integration"
+      ],
+      "acceptableProfiles": [
+        "knowledge"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-039",
+      "category": "knowledge",
+      "task": "Use Context7 to retrieve up-to-date library documentation",
+      "acceptablePrimary": [
+        "agent-capability-navigation"
+      ],
+      "acceptableTopThree": [
+        "agent-capability-navigation"
+      ],
+      "acceptableProfiles": [
+        "knowledge"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-040",
+      "category": "knowledge",
+      "task": "Configure Codex and Factory Droid MCP clients over streamable HTTP",
+      "acceptablePrimary": [
+        "mcp-integration"
+      ],
+      "acceptableTopThree": [
+        "mcp-integration"
+      ],
+      "acceptableProfiles": [
+        null,
+        "knowledge"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-041",
+      "category": "engineering",
+      "task": "Plan a test-driven refactor with red green refactor",
+      "acceptablePrimary": [
+        "superpowers-engineering",
+        "agentic-coding"
+      ],
+      "acceptableTopThree": [
+        "superpowers-engineering",
+        "agentic-coding"
+      ],
+      "acceptableProfiles": [
+        null
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-042",
+      "category": "engineering",
+      "task": "Rank and select approved skill catalog entries for a multi-agent team",
+      "acceptablePrimary": [
+        "skill-orchestration"
+      ],
+      "acceptableTopThree": [
+        "skill-orchestration"
+      ],
+      "acceptableProfiles": [
+        null,
+        "knowledge"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-043",
+      "category": "trivial",
+      "task": "hello",
+      "acceptablePrimary": [],
+      "acceptableTopThree": [],
+      "acceptableProfiles": [
+        null
+      ],
+      "bypass": true
+    },
+    {
+      "id": "V3-044",
+      "category": "trivial",
+      "task": "what time is it",
+      "acceptablePrimary": [],
+      "acceptableTopThree": [],
+      "acceptableProfiles": [
+        null
+      ],
+      "bypass": true
+    },
+    {
+      "id": "V3-045",
+      "category": "graphics",
+      "task": "Create a cinematic scroll-driven 3D website with Blender assets",
+      "acceptablePrimary": [
+        "blender-to-r3f",
+        "motion-systems",
+        "react-three-fiber"
+      ],
+      "acceptableTopThree": [
+        "blender-to-r3f",
+        "motion-systems",
+        "react-three-fiber"
+      ],
+      "acceptableProfiles": [
+        "blender-to-web",
+        "immersive-web"
+      ],
+      "bypass": false
+    },
+    {
+      "id": "V3-046",
+      "category": "a11y",
+      "task": "Make the 3D hero respect prefers-reduced-motion and keyboard navigation",
+      "acceptablePrimary": [
+        "accessibility",
+        "motion-systems",
+        "react-three-fiber"
+      ],
+      "acceptableTopThree": [
+        "accessibility",
+        "motion-systems",
+        "react-three-fiber"
+      ],
+      "acceptableProfiles": [
+        "immersive-web",
+        "web-qa"
+      ],
+      "bypass": false
+    }
+  ]
+}

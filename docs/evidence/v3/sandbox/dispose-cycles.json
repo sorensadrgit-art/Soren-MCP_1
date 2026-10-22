@@ -1,0 +1,66 @@
+{
+  "loaded": {
+    "calls": 9,
+    "triangles": 135680,
+    "geometries": 20,
+    "textures": 7,
+    "programs": 8,
+    "pixelRatio": 1
+  },
+  "cycles": [
+    {
+      "unloaded": {
+        "calls": 1,
+        "triangles": 2,
+        "geometries": 16,
+        "textures": 6,
+        "programs": 5,
+        "pixelRatio": 1
+      },
+      "reloaded": {
+        "calls": 9,
+        "triangles": 135680,
+        "geometries": 20,
+        "textures": 7,
+        "programs": 8,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "unloaded": {
+        "calls": 1,
+        "triangles": 2,
+        "geometries": 16,
+        "textures": 6,
+        "programs": 5,
+        "pixelRatio": 1
+      },
+      "reloaded": {
+        "calls": 6,
+        "triangles": 67853,
+        "geometries": 20,
+        "textures": 7,
+        "programs": 8,
+        "pixelRatio": 1
+      }
+    },
+    {
+      "unloaded": {
+        "calls": 3,
+        "triangles": 132,
+        "geometries": 16,
+        "textures": 6,
+        "programs": 5,
+        "pixelRatio": 1
+      },
+      "reloaded": {
+        "calls": 6,
+        "triangles": 67853,
+        "geometries": 20,
+        "textures": 7,
+        "programs": 8,
+        "pixelRatio": 1
+      }
+    }
+  ]
+}

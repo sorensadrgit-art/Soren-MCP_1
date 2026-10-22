@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "prerequisites": [
+        "Read the project lockfile to know installed versions."
+      ],
+      "permissionBoundaries": [
+        "SOREN only plans; every step runs in the agent client under its own approvals and permissions.",
+        "Firecrawl spends paid credits; ask before crawling."
+      ],
+      "id": "knowledge",
+      "title": "Knowledge and capability lookup",
+      "description": "Find version-matched official documentation, choose MCP servers and navigate large codebases before implementation.",
+      "triggers": [
+        "context7",
+        "official docs",
+        "documentation",
+        "library documentation",
+        "up-to-date",
+        "version-matched",
+        "docs",
+        "serena",
+        "semantic code navigation",
+        "code navigation",
+        "mcp servers",
+        "which mcp",
+        "knowledge",
+        "firecrawl"
+      ],
+      "capabilities": [
+        "docs-retrieval",
+        "code-navigation",
+        "capability-selection"
+      ],
+      "primarySkill": "agent-capability-navigation",
+      "complementarySkills": [
+        "mcp-integration"
+      ],
+      "requiredIntegrations": [
+        "context7"
+      ],
+      "optionalIntegrations": [
+        "serena",
+        "firecrawl"
+      ],
+      "knowledgeIds": [
+        "context7-mcp",
+        "serena-mcp",
+        "mcp-spec",
+        "firecrawl-mcp"
+      ],
+      "recipeId": "knowledge-retrieval",
+      "priority": 40
+    },
+    {
+      "prerequisites": [
+        "Node.js 20.9+ for Next.js 16.",
+        "A local dev server for next-devtools."
+      ],
+      "permissionBoundaries": [
+        "SOREN only plans; every step runs in the agent client under its own approvals and permissions.",
+        "Production deploys and environment changes need explicit human approval."
+      ],
+      "id": "next-app",
+      "title": "Next.js application engineering",
+      "description": "Debug, upgrade and ship Next.js 16+ App Router applications with runtime diagnostics and gated deployments.",
+      "triggers": [
+        "next.js",
+        "nextjs",
+        "next.js 16",
+        "app router",
+        "hydration",
+        "server components",
+        "next-devtools",
+        "next-devtools-mcp",
+        "turbopack",
+        "vercel",
+        "vercel preview",
+        "vercel deployment",
+        "build logs",
+        "install command",
+        "dev server"
+      ],
+      "capabilities": [
+        "framework-runtime",
+        "build-diagnostics",
+        "deployment-preview"
+      ],
+      "primarySkill": "nextjs-runtime-engineering",
+      "complementarySkills": [
+        "soren-universal-deployment",
+        "playwright-browser-qa"
+      ],
+      "requiredIntegrations": [
+        "next-devtools"
+      ],
+      "optionalIntegrations": [
+        "context7",
+        "vercel",
+        "playwright",
+        "chrome-devtools",
+        "github",
+        "serena"
+      ],
+      "knowledgeIds": [
+        "nextjs-16",
+        "nextjs-16-upgrade",
+        "next-devtools-mcp",
+        "react-19",
+        "vercel-mcp"
+      ],
+      "recipeId": "nextjs-debug",
+      "priority": 50
+    },
+    {
+      "prerequisites": [
+        "A local or preview URL to test."
+      ],
+      "permissionBoundaries": [
+        "SOREN only plans; every step runs in the agent client under its own approvals and permissions.",
+        "Use an isolated browser profile; never a personal one."
+      ],
+      "id": "web-qa",
+      "title": "Web UI and accessibility QA",
+      "description": "Verify UI flows, accessibility and responsive layouts in a real browser and adapt reviewed components.",
+      "triggers": [
+        "playwright",
+        "browser qa",
+        "e2e",
+        "end-to-end",
+        "wcag",
+        "aria",
+        "keyboard",
+        "accessibility",
+        "screen reader",
+        "focus",
+        "lighthouse",
+        "shadcn",
+        "ui components",
+        "react components",
+        "responsive",
+        "design references"
+      ],
+      "capabilities": [
+        "browser-qa",
+        "accessibility-audit",
+        "ui-implementation"
+      ],
+      "primarySkill": "playwright-browser-qa",
+      "complementarySkills": [
+        "accessibility",
+        "agentic-design-to-code"
+      ],
+      "requiredIntegrations": [
+        "playwright"
+      ],
+      "optionalIntegrations": [
+        "chrome-devtools",
+        "21st",
+        "context7"
+      ],
+      "knowledgeIds": [
+        "playwright-mcp",
+        "wcag-22",
+        "reduced-motion",
+        "chrome-devtools-mcp"
+      ],
+      "recipeId": "web-qa-pass",
+      "priority": 30
+    },
+    {
+      "prerequisites": [
+        "A running local preview of the scene."
+      ],
+      "permissionBoundaries": [
+        "SOREN only plans; every step runs in the agent client under its own approvals and permissions.",
+        "Label SwiftShader (software) versus GPU results; never present them as device benchmarks."
+      ],
+      "id": "graphics-qa",
+      "title": "3D graphics browser QA",
+      "description": "Capture real-browser screenshots, interactions and console evidence for WebGL/WebGPU scenes at several viewports.",
+      "triggers": [
+        "screenshots",
+        "screenshot",
+        "visual regression",
+        "chromium",
+        "webgl scene",
+        "canvas screenshot",
+        "3d qa",
+        "mobile and desktop"
+      ],
+      "capabilities": [
+        "browser-qa",
+        "visual-evidence",
+        "graphics-metrics"
+      ],
+      "primarySkill": "graphics-performance-qa",
+      "complementarySkills": [
+        "playwright-browser-qa"
+      ],
+      "requiredIntegrations": [
+        "playwright"
+      ],
+      "optionalIntegrations": [
+        "chrome-devtools"
+      ],
+      "knowledgeIds": [
+        "playwright-mcp",
+        "chrome-devtools-mcp",
+        "r3f-performance"
+      ],
+      "recipeId": "graphics-qa-pass",
+      "priority": 55
+    },
+    {
+      "prerequisites": [
+        "Confirm react, @react-three/fiber, @react-three/drei and three versions from the lockfile.",
+        "Licensed or self-authored 3D assets only."
+      ],
+      "permissionBoundaries": [
+        "SOREN only plans; every step runs in the agent client under its own approvals and permissions.",
+        "Blender Lab runs only in an isolated VM.",
+        "Pull requests are drafts; deploys and merges need explicit human approval."
+      ],
+      "id": "immersive-web",
+      "title": "Immersive 3D web experience",
+      "description": "Plan and build interactive React Three Fiber / three.js experiences with PBR materials, GSAP choreography, WebGPU fallbacks and browser verification.",
+      "triggers": [
+        "3d",
+        "portfolio",
+        "three.js",
+        "threejs",
+        "react three fiber",
+        "r3f",
+        "drei",
+        "webgl",
+        "webgpu",
+        "gsap",
+        "scrolltrigger",
+        "shader",
+        "glsl",
+        "pbr",
+        "tsl",
+        "cinematic",
+        "hero",
+        "configurator",
+        "camera",
+        "immersive",
+        "photorealistic",
+        "car paint",
+        "tone mapping",
+        "reduced-motion"
+      ],
+      "capabilities": [
+        "3d-rendering",
+        "motion-choreography",
+        "asset-integration",
+        "browser-verification",
+        "performance-budget"
+      ],
+      "primarySkill": "react-three-fiber",
+      "complementarySkills": [
+        "threejs-production",
+        "gsap-motion",
+        "motion-systems"
+      ],
+      "requiredIntegrations": [
+        "context7",
+        "playwright"
+      ],
+      "optionalIntegrations": [
+        "chrome-devtools",
+        "next-devtools",
+        "github",
+        "vercel",
+        "serena",
+        "spline",
+        "blender-lab",
+        "gltf-transform-cli"
+      ],
+      "knowledgeIds": [
+        "r3f-v9",
+        "drei-10",
+        "threejs-manual",
+        "threejs-color-management",
+        "gsap-scrolltrigger",
+        "gsap-react",
+        "r3f-performance",
+        "threejs-disposal",
+        "webgpu-api"
+      ],
+      "recipeId": "cinematic-portfolio",
+      "priority": 60
+    },
+    {
+      "prerequisites": [
+        "Source .blend or GLB with known license."
+      ],
+      "permissionBoundaries": [
+        "SOREN only plans; every step runs in the agent client under its own approvals and permissions.",
+        "Write optimized assets to new files; never overwrite source assets.",
+        "Blender Lab MCP only inside an isolated VM."
+      ],
+      "id": "blender-to-web",
+      "title": "Blender to web asset pipeline",
+      "description": "Export, optimize, validate and load Blender-authored GLB assets in React Three Fiber.",
+      "triggers": [
+        "blender",
+        "glb",
+        "gltf",
+        "meshopt",
+        "draco",
+        "ktx2",
+        "lod",
+        "lods",
+        "bake",
+        "export",
+        "texture compression",
+        "simplify",
+        "gltf-transform",
+        "photoreal",
+        "gltfloader",
+        "glb pipeline"
+      ],
+      "capabilities": [
+        "asset-export",
+        "asset-optimization",
+        "asset-validation",
+        "asset-loading"
+      ],
+      "primarySkill": "blender-to-r3f",
+      "complementarySkills": [
+        "gltf-asset-pipeline",
+        "react-three-fiber"
+      ],
+      "requiredIntegrations": [
+        "gltf-transform-cli"
+      ],
+      "optionalIntegrations": [
+        "blender-lab",
+        "context7",
+        "playwright"
+      ],
+      "knowledgeIds": [
+        "blender-gltf-io",
+        "blender-python-api",
+        "gltf-transform",
+        "gltf-validator",
+        "meshoptimizer",
+        "ktx2-basis",
+        "gltf-spec"
+      ],
+      "recipeId": "blender-glb-pipeline",
+      "priority": 70
+    },
+    {
+      "prerequisites": [
+        "Spline account for MCP edits."
+      ],
+      "permissionBoundaries": [
+        "SOREN only plans; every step runs in the agent client under its own approvals and permissions.",
+        "Spline OAuth grants file edit access; confirm the target file before edits."
+      ],
+      "id": "spline-to-web",
+      "title": "Spline to web",
+      "description": "Design or edit Spline scenes and embed them with lazy loading and accessible fallbacks, or export GLB for R3F.",
+      "triggers": [
+        "spline",
+        "spline scene",
+        "spline mcp",
+        "splinecode",
+        "@splinetool/react-spline",
+        "react-spline"
+      ],
+      "capabilities": [
+        "3d-design",
+        "scene-embedding",
+        "fallbacks"
+      ],
+      "primarySkill": "spline-to-web",
+      "complementarySkills": [
+        "react-three-fiber",
+        "accessibility"
+      ],
+      "requiredIntegrations": [
+        "spline"
+      ],
+      "optionalIntegrations": [
+        "playwright",
+        "gltf-transform-cli",
+        "context7"
+      ],
+      "knowledgeIds": [
+        "spline-mcp",
+        "spline-react",
+        "reduced-motion"
+      ],
+      "recipeId": "spline-embed",
+      "priority": 80
+    },
+    {
+      "prerequisites": [
+        "A reproducible local scene and a fixed camera path."
+      ],
+      "permissionBoundaries": [
+        "SOREN only plans; every step runs in the agent client under its own approvals and permissions.",
+        "Report only measured values with renderer labels."
+      ],
+      "id": "debug-3d-performance",
+      "title": "Debug 3D performance",
+      "description": "Measure and fix frame time, draw calls, GPU memory and leaks in WebGL/WebGPU scenes with real-browser traces.",
+      "triggers": [
+        "frame rate",
+        "fps",
+        "draw calls",
+        "gpu memory",
+        "memory leak",
+        "leaks",
+        "leak",
+        "profile",
+        "performance",
+        "on demand",
+        "instancing",
+        "renderer.info",
+        "stutter",
+        "jank",
+        "precision"
+      ],
+      "capabilities": [
+        "performance-profiling",
+        "leak-detection",
+        "render-optimization"
+      ],
+      "primarySkill": "graphics-performance-qa",
+      "complementarySkills": [
+        "react-three-fiber",
+        "threejs-production"
+      ],
+      "requiredIntegrations": [
+        "chrome-devtools"
+      ],
+      "optionalIntegrations": [
+        "playwright",
+        "context7"
+      ],
+      "knowledgeIds": [
+        "r3f-performance",
+        "r3f-pitfalls",
+        "threejs-disposal",
+        "webgl-best-practices"
+      ],
+      "recipeId": "debug-3d-performance",
+      "priority": 65
+    }
+  ]
+}

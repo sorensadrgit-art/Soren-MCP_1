@@ -1,0 +1,45 @@
+npm notice run soren-shared-mcp-skills@1.0.0 test:installer
+npm notice run node --test --test-concurrency=1 tests/installer/*.test.mjs
+✔ version detection accepts native v prefixes and never hides prerelease or build identity (1.1011ms)
+✔ OpenCode desktop bundled CLI is detected when its directory is absent from PATH (6.6953ms)
+✔ factory: BOM, CRLF, Unicode, comments and unrelated values survive install/remove (48.5726ms)
+✔ codex: BOM, CRLF, Unicode, comments and unrelated values survive install/remove (8.1021ms)
+✔ antigravity: BOM, CRLF, Unicode, comments and unrelated values survive install/remove (6.4609ms)
+✔ opencode: BOM, CRLF, Unicode, comments and unrelated values survive install/remove (4.4179ms)
+✔ claude: BOM, CRLF, Unicode, comments and unrelated values survive install/remove (5.1067ms)
+✔ qwen: BOM, CRLF, Unicode, comments and unrelated values survive install/remove (5.3107ms)
+✔ six-client transaction is idempotent, journal is secret-free, and later unrelated user edits survive removal (12462.7229ms)
+✔ unknown version and missing executable produce no-write plans (25.5799ms)
+✔ checksum drift is rejected and preserved; expiry and caller identity refuse writes (866.6608ms)
+✔ duplicates, project overrides, plugin ownership, malformed configs and edited guide refuse plans (59.6363ms)
+✔ symlink or junction, outside-home target and read-only config fail safely (16.0899ms)
+✔ atomic writer refuses concurrent edit before rename and leaves no sibling temporary (259.9595ms)
+✔ interrupted two-file install reconciles observed state and can remove only completed owned entry (2370.618ms)
+✔ edited owned entry or block is preserved and requires manual reconciliation (2632.677ms)
+✔ guide update has one exact boundary and preserves outside text (0.4931ms)
+✔ TOML quoted/inline owned tables are refused instead of rewriting unrelated syntax (0.3892ms)
+✔ existing empty TOML parent table survives owned entry removal (0.4577ms)
+✔ duplicate JSON properties are refused rather than silently adopting the last alias (0.1969ms)
+✔ existing transaction lock is never stolen or deleted (296.9874ms)
+✔ active Windows file-sharing lock fails without changing bytes (315.3935ms)
+✔ denied Windows directory DACL refuses atomic temporary-file creation and preserves original bytes (1192.0804ms)
+✔ actual CODEX_HOME outside the default home is the only additional writable scope (278.9693ms)
+✔ tampered semantic no-op plan cannot add an entry (869.799ms)
+✔ new comments inside owned JSONC or TOML section survive attempted removal (5451.0112ms)
+npm warn Unknown env config "global-ignore-file". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "global-ignore-file". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "global-ignore-file". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+npm warn Unknown env config "global-ignore-file". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+✔ actual npm tarball installs with an empty offline cache and inspects six isolated clients (23468.1813ms)
+ℹ Archive 3171267 bytes; 15 locked runtime packages; producer had verified tarball content only, consumer cache was empty.
+✔ real SDK transport proves contract and harmless local-mode call without claiming native client (35.4834ms)
+✔ tool contract mismatch fails without serializing returned content (1.7276ms)
+✔ invalid token rejection never becomes anonymous fallback (0.9648ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 51248.0476

@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 /** Read-only wire checks for the candidate deployment. No provider or paid model calls. */
 import assert from 'node:assert/strict';
-import {verificationEndpoint} from '../lib/contracts/endpoint.mjs';
-import {TOOL_NAMES} from '../lib/client-contract.mjs';
+import {verificationEndpoint,protectionBypassHeaders} from '../lib/contracts/endpoint.mjs';
+import {TOOL_NAMES,V3_TOOL_NAMES} from '../lib/client-contract.mjs';
+import {SKILLS} from '../lib/catalog.mjs';
 import {CapabilityPlanSchema} from '../lib/capabilities/planner.mjs';
 if(!process.argv[2])throw Error('Usage: node scripts/verify-capability-plan.mjs <explicit HTTPS or loopback MCP endpoint>');
-const endpoint=verificationEndpoint(process.argv[2]),checks=[];
+const endpoint=verificationEndpoint(process.argv[2]),checks=[],bypass=protectionBypassHeaders(endpoint);
 let sequence=0;
 async function rpc(method,params={}){
   const id=++sequence;
-  const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json, text/event-stream','MCP-Protocol-Version':'2025-06-18'},body:JSON.stringify({jsonrpc:'2.0',id,method,params}),signal:AbortSignal.timeout(12000)});
+  const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json, text/event-stream','MCP-Protocol-Version':'2025-06-18',...bypass},body:JSON.stringify({jsonrpc:'2.0',id,method,params}),signal:AbortSignal.timeout(12000)});
   const raw=await r.text();assert.equal(r.status,200,`HTTP ${r.status}`);
   let response;
   if(r.headers.get('content-type')?.includes('text/event-stream')){
@@ -34,14 +35,16 @@ async function check(name,run){
 await check('real MCP initialization',async()=>{
   const r=await rpc('initialize',{protocolVersion:'2025-06-18',capabilities:{},clientInfo:{name:'soren-capability-wire-verifier',version:'1'}});assert.ok(r.result?.serverInfo);
 });
-await check('eight tools unchanged, new fields advertised only on route_task',async()=>{
+await check('legacy eight tools first (plus exactly six V3 tools when flagged), new fields advertised only on route_task',async()=>{
   const r=await rpc('tools/list');const tools=r.result.tools;
-  assert.deepEqual(tools.map(t=>t.name),TOOL_NAMES);
+  assert.deepEqual(tools.slice(0,TOOL_NAMES.length).map(t=>t.name),TOOL_NAMES);
+  const extra=tools.slice(TOOL_NAMES.length).map(t=>t.name);assert.ok(extra.length===0||JSON.stringify(extra)===JSON.stringify(V3_TOOL_NAMES),extra.join(','));
+  for(const t of tools.filter(t=>t.name!=='route_task'))assert.ok(!t.inputSchema?.properties?.include_capability_plan,t.name);
   const schema=tools.find(t=>t.name==='route_task').inputSchema;
   assert.equal(schema.properties.include_capability_plan.type,'boolean');assert.ok(schema.properties.capability_context);assert.ok(schema.properties.decision_engine);
 });
-await check('four curated resources unchanged',async()=>{
-  const r=await rpc('resources/list');assert.equal(r.result.resources.length,4);
+await check('all curated skill resources listed',async()=>{
+  const r=await rpc('resources/list');assert.equal(r.result.resources.filter(x=>x.uri.startsWith('skill://')).length,SKILLS.length);
 });
 let original;
 await check('default route response has no capability plan',async()=>{

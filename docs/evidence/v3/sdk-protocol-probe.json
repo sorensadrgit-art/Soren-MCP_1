@@ -1,0 +1,147 @@
+{
+  "observedAt": "2026-10-22T13:19:55.545Z",
+  "client": "@modelcontextprotocol/client 2.3.1",
+  "note": "Local next start on loopback, same machine; latency includes HTTP + JSON-RPC, not network to Vercel.",
+  "flagOff": {
+    "server": {
+      "name": "soren-universal-skill-router",
+      "version": "2.5.0"
+    },
+    "tools": [
+      "list_skills",
+      "search_skills",
+      "route_task",
+      "read_skill",
+      "list_providers",
+      "discover_skills",
+      "inspect_candidate",
+      "search_mcp_servers"
+    ],
+    "resourceCount": 22,
+    "knowledgeResources": 0,
+    "recipeResources": 0,
+    "legacy": {
+      "route_task": {
+        "samples": 25,
+        "p50Ms": 6.17,
+        "p95Ms": 13.03,
+        "maxMs": 14.4,
+        "last": "motion-systems"
+      },
+      "list_skills": {
+        "samples": 25,
+        "p50Ms": 5.91,
+        "p95Ms": 15.41,
+        "maxMs": 18.72,
+        "last": 22
+      }
+    },
+    "v3CallWithoutFlag": {
+      "rejected": "Tool plan_toolchain not found"
+    }
+  },
+  "flagOn": {
+    "server": {
+      "name": "soren-universal-skill-router",
+      "version": "2.5.0"
+    },
+    "tools": [
+      "list_skills",
+      "search_skills",
+      "route_task",
+      "read_skill",
+      "list_providers",
+      "discover_skills",
+      "inspect_candidate",
+      "search_mcp_servers",
+      "list_capability_profiles",
+      "plan_toolchain",
+      "list_integrations",
+      "search_knowledge",
+      "read_recipe",
+      "get_client_setup_guide"
+    ],
+    "resourceCount": 74,
+    "knowledgeResources": 44,
+    "recipeResources": 8,
+    "legacy": {
+      "route_task": {
+        "samples": 25,
+        "p50Ms": 6.04,
+        "p95Ms": 17.37,
+        "maxMs": 19.42,
+        "last": "motion-systems"
+      },
+      "list_skills": {
+        "samples": 25,
+        "p50Ms": 5.79,
+        "p95Ms": 16.51,
+        "maxMs": 17.81,
+        "last": 22
+      }
+    },
+    "v3": {
+      "plan_toolchain": {
+        "samples": 25,
+        "p50Ms": 6.71,
+        "p95Ms": 16.04,
+        "maxMs": 18.83,
+        "last": {
+          "profile": "immersive-web",
+          "steps": 9,
+          "verified": 0
+        }
+      },
+      "search_knowledge": {
+        "samples": 25,
+        "p50Ms": 6.31,
+        "p95Ms": 15.54,
+        "maxMs": 15.63,
+        "last": {
+          "primary": "r3f-performance",
+          "results": 3
+        }
+      },
+      "list_integrations": {
+        "samples": 25,
+        "p50Ms": 6.32,
+        "p95Ms": 15.76,
+        "maxMs": 16.73,
+        "last": 13
+      },
+      "list_capability_profiles": {
+        "samples": 25,
+        "p50Ms": 6.1,
+        "p95Ms": 13.34,
+        "maxMs": 15.83,
+        "last": 8
+      },
+      "read_recipe": {
+        "samples": 25,
+        "p50Ms": 5.94,
+        "p95Ms": 8.71,
+        "maxMs": 15.81,
+        "last": 9
+      },
+      "get_client_setup_guide": {
+        "samples": 25,
+        "p50Ms": 6.28,
+        "p95Ms": 15.94,
+        "maxMs": 16.57,
+        "last": [
+          "codex mcp add context7 --url https://mcp.context7.com/mcp --bearer-token-env-var CONTEXT7_API_KEY"
+        ]
+      },
+      "resource_read": {
+        "samples": 25,
+        "p50Ms": 6.29,
+        "p95Ms": 15.42,
+        "maxMs": 16.28,
+        "last": "r3f-v9"
+      }
+    },
+    "traversalRejected": {
+      "isError": true
+    }
+  }
+}

@@ -1,0 +1,912 @@
+{
+  "schemaVersion": 1,
+  "note": "Agent-native integrations. SOREN documents them; it never proxies, installs or connects them.",
+  "items": [
+    {
+      "endpoint": "https://mcp.context7.com/mcp",
+      "package": {
+        "name": "@upstash/context7-mcp",
+        "version": "4.4.4"
+      },
+      "license": "MIT",
+      "requiresLocalExecution": false,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "Network access to mcp.context7.com",
+        "Optional CONTEXT7_API_KEY for higher rate limits"
+      ],
+      "cautions": [
+        "Retrieved docs are third-party content; verify against canonical sources and the lockfile."
+      ],
+      "skill": "agent-capability-navigation",
+      "knowledgeIds": [
+        "context7-mcp"
+      ],
+      "legacy": false,
+      "id": "context7",
+      "name": "Context7 documentation MCP",
+      "vendor": "Upstash",
+      "category": "documentation",
+      "kind": "remote-mcp",
+      "transport": "streamable-http",
+      "sourceUrl": "https://github.com/upstash/context7",
+      "docsUrl": "https://github.com/upstash/context7",
+      "runtime": "remote_hosted",
+      "capabilities": [
+        "resolve-library-id",
+        "query-docs",
+        "version-specific docs"
+      ],
+      "auth": "optional_api_key",
+      "executionRisk": "low_read_only",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Official README reviewed 2026-10-22"
+        },
+        {
+          "client": "factory",
+          "state": "verified",
+          "method": "native_tool_call",
+          "observedAt": "2026-10-22",
+          "evidence": "Factory Droid session: resolve-library-id and query-docs returned library IDs such as /vercel/next.js and /pmndrs/react-three-fiber"
+        }
+      ],
+      "guidance": "Resolve the library ID, then query one concept per call. Prefer version-pinned IDs that match the project lockfile.",
+      "setup": {
+        "mode": "remote",
+        "url": "https://mcp.context7.com/mcp",
+        "oauth": false,
+        "apiKeyEnv": "CONTEXT7_API_KEY",
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "Call resolve-library-id for \"Next.js\" and confirm /vercel/next.js is returned."
+      }
+    },
+    {
+      "endpoint": null,
+      "package": null,
+      "license": "GPL-3.0",
+      "requiresLocalExecution": true,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "uv (Python 3.13 via uv tool install -p 3.13 serena-agent)",
+        "Language servers for the project languages"
+      ],
+      "cautions": [
+        "Runs locally with read/write access to the project; review edit tools before enabling.",
+        "GPL-3.0 licensed tool; it is not bundled into SOREN."
+      ],
+      "skill": "agent-capability-navigation",
+      "knowledgeIds": [
+        "serena-mcp"
+      ],
+      "legacy": false,
+      "id": "serena",
+      "name": "Serena semantic code toolkit",
+      "vendor": "Oraios AI",
+      "category": "code_navigation",
+      "kind": "local-mcp",
+      "transport": "stdio",
+      "sourceUrl": "https://github.com/oraios/serena",
+      "docsUrl": "https://github.com/oraios/serena",
+      "runtime": "local_python_uv",
+      "capabilities": [
+        "symbol search",
+        "find references",
+        "structured edits",
+        "project memory"
+      ],
+      "auth": "none_local",
+      "executionRisk": "local_read_write",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Official README reviewed 2026-10-22"
+        }
+      ],
+      "guidance": "Start per project with --project-from-cwd and the client-specific context. Use for symbol-level navigation on large codebases.",
+      "setup": {
+        "mode": "stdio",
+        "command": "serena",
+        "args": [
+          "start-mcp-server",
+          "--context",
+          "{context}",
+          "--project-from-cwd"
+        ],
+        "installHint": "uv tool install -p 3.13 serena-agent",
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "Ask the client to list Serena tools, then run a read-only symbol search."
+      }
+    },
+    {
+      "endpoint": null,
+      "package": {
+        "name": "next-devtools-mcp",
+        "version": "0.4.0"
+      },
+      "license": "MIT",
+      "requiresLocalExecution": true,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "Node.js 20.9+",
+        "A running Next.js 16+ dev server (exposes /_next/mcp)"
+      ],
+      "cautions": [
+        "Connect only to local dev servers, never production."
+      ],
+      "skill": "nextjs-runtime-engineering",
+      "knowledgeIds": [
+        "next-devtools-mcp",
+        "nextjs-16"
+      ],
+      "legacy": false,
+      "id": "next-devtools",
+      "name": "Next DevTools MCP",
+      "vendor": "Vercel",
+      "category": "framework_runtime",
+      "kind": "local-mcp",
+      "transport": "stdio",
+      "sourceUrl": "https://github.com/vercel/next-devtools-mcp",
+      "docsUrl": "https://github.com/vercel/next-devtools-mcp",
+      "runtime": "local_node",
+      "capabilities": [
+        "runtime errors",
+        "route inspection",
+        "build diagnostics",
+        "next.js docs"
+      ],
+      "auth": "none_local",
+      "executionRisk": "local_dev_server",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Official README and npm metadata reviewed 2026-10-22"
+        },
+        {
+          "client": "local-stdio",
+          "state": "documented",
+          "method": "protocol_probe",
+          "observedAt": "2026-10-22",
+          "evidence": "next-devtools-mcp@0.4.0 started over stdio on Windows and listed 4 tools (docs/evidence/v3/stdio-probe.json); not a client connection"
+        }
+      ],
+      "guidance": "Start next dev first, then connect the bridge; read runtime errors before editing code.",
+      "setup": {
+        "mode": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "next-devtools-mcp@0.4.0"
+        ],
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "With next dev running, request current runtime errors and confirm a structured response."
+      }
+    },
+    {
+      "endpoint": null,
+      "package": {
+        "name": "@playwright/mcp",
+        "version": "0.0.83"
+      },
+      "license": "Apache-2.0",
+      "requiresLocalExecution": true,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "Node.js 18+",
+        "Playwright browsers installed or downloaded on first run"
+      ],
+      "cautions": [
+        "Use --isolated or a dedicated --user-data-dir; never attach to a personal browser profile.",
+        "Browser access uses the agent permissions; do not run inside SOREN public service."
+      ],
+      "skill": "playwright-browser-qa",
+      "knowledgeIds": [
+        "playwright-mcp"
+      ],
+      "legacy": true,
+      "id": "playwright",
+      "name": "Microsoft Playwright MCP",
+      "vendor": "Microsoft",
+      "category": "browser_qa",
+      "kind": "local-mcp",
+      "transport": "stdio",
+      "sourceUrl": "https://github.com/microsoft/playwright-mcp",
+      "docsUrl": "https://github.com/microsoft/playwright-mcp",
+      "runtime": "local_browser",
+      "capabilities": [
+        "accessibility snapshots",
+        "navigation",
+        "interaction",
+        "screenshots",
+        "console messages"
+      ],
+      "auth": "client_local_browser",
+      "executionRisk": "local_browser",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Official README reviewed 2026-10-22"
+        },
+        {
+          "client": "local-stdio",
+          "state": "documented",
+          "method": "protocol_probe",
+          "observedAt": "2026-10-22",
+          "evidence": "@playwright/mcp@0.0.83 started over stdio on Windows and listed 25 tools (docs/evidence/v3/stdio-probe.json); not a client connection"
+        },
+        {
+          "client": "factory",
+          "state": "verified",
+          "method": "native_tool_call",
+          "observedAt": "2026-10-22",
+          "evidence": "Factory Droid session: browser_navigate about:blank, browser_snapshot and browser_close succeeded"
+        }
+      ],
+      "guidance": "Run locally in a reviewed agent MCP client. Browser automation and page access use that agent's permissions and browser context; do not run inside SOREN's public Vercel service.",
+      "setup": {
+        "mode": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@playwright/mcp@0.0.83",
+          "--isolated"
+        ],
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "Navigate to about:blank or a local preview and take an accessibility snapshot."
+      }
+    },
+    {
+      "endpoint": null,
+      "package": {
+        "name": "chrome-devtools-mcp",
+        "version": "1.11.0"
+      },
+      "license": "Apache-2.0",
+      "requiresLocalExecution": true,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "Node.js 20+",
+        "Chrome stable installed"
+      ],
+      "cautions": [
+        "Use --isolated so a temporary profile is used.",
+        "--no-usage-statistics and --no-performance-crux stop usage reporting and CrUX lookups.",
+        "Headless traces may be software rendered; label results."
+      ],
+      "skill": "graphics-performance-qa",
+      "knowledgeIds": [
+        "chrome-devtools-mcp"
+      ],
+      "legacy": false,
+      "id": "chrome-devtools",
+      "name": "Chrome DevTools MCP",
+      "vendor": "Google Chrome DevTools",
+      "category": "browser_performance",
+      "kind": "local-mcp",
+      "transport": "stdio",
+      "sourceUrl": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "docsUrl": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "runtime": "local_browser",
+      "capabilities": [
+        "performance traces",
+        "network inspection",
+        "console",
+        "heap snapshots",
+        "lighthouse"
+      ],
+      "auth": "client_local_browser",
+      "executionRisk": "local_browser",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Official README reviewed 2026-10-22"
+        },
+        {
+          "client": "local-stdio",
+          "state": "documented",
+          "method": "protocol_probe",
+          "observedAt": "2026-10-22",
+          "evidence": "chrome-devtools-mcp@1.11.0 started over stdio on Windows and listed 32 tools (docs/evidence/v3/stdio-probe.json); not a client connection"
+        },
+        {
+          "client": "factory",
+          "state": "verified",
+          "method": "native_tool_call",
+          "observedAt": "2026-10-22",
+          "evidence": "Factory Droid session: list_pages returned the open about:blank page"
+        }
+      ],
+      "guidance": "Record a performance trace on a local preview, then analyse insights; label GPU versus software rendering.",
+      "setup": {
+        "mode": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "chrome-devtools-mcp@1.11.0",
+          "--isolated",
+          "--no-usage-statistics",
+          "--no-performance-crux"
+        ],
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "Open a new page on a local preview and list console messages."
+      }
+    },
+    {
+      "endpoint": "https://mcp.spline.design/mcp",
+      "package": null,
+      "license": "Proprietary service",
+      "requiresLocalExecution": false,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "Spline account",
+        "Client with streamable HTTP and OAuth support"
+      ],
+      "cautions": [
+        "OAuth grants the agent edit access to Spline files; use a project-scoped account where possible.",
+        "Exports and embeds are public by URL unless restricted in Spline."
+      ],
+      "skill": "spline-to-web",
+      "knowledgeIds": [
+        "spline-mcp",
+        "spline-react"
+      ],
+      "legacy": false,
+      "id": "spline",
+      "name": "Spline MCP server",
+      "vendor": "Spline",
+      "category": "design_3d",
+      "kind": "remote-or-desktop-mcp",
+      "transport": "streamable-http",
+      "sourceUrl": "https://docs.spline.design/generate/spline-mcp-server",
+      "docsUrl": "https://docs.spline.design/generate/spline-mcp-server",
+      "runtime": "remote_hosted_or_desktop",
+      "capabilities": [
+        "create scenes",
+        "edit scenes",
+        "generate 3d models",
+        "export"
+      ],
+      "auth": "oauth_spline_account",
+      "executionRisk": "remote_account_write",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Spline MCP documentation reviewed 2026-10-22"
+        }
+      ],
+      "guidance": "Use for designer-driven scenes; embed via @splinetool/react-spline with a poster fallback, or export GLB for R3F when performance matters.",
+      "setup": {
+        "mode": "remote",
+        "url": "https://mcp.spline.design/mcp",
+        "oauth": true,
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "After OAuth, list Spline files read-only before any edit."
+      }
+    },
+    {
+      "endpoint": "https://mcp.vercel.com",
+      "package": null,
+      "license": "Proprietary service",
+      "requiresLocalExecution": false,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "Vercel account with access to the target team",
+        "A client on Vercel supported-client list"
+      ],
+      "cautions": [
+        "Production promotion or environment changes require explicit human approval.",
+        "OAuth scope is the signed-in user; prefer preview deployments."
+      ],
+      "skill": "soren-universal-deployment",
+      "knowledgeIds": [
+        "vercel-mcp"
+      ],
+      "legacy": false,
+      "id": "vercel",
+      "name": "Vercel MCP server",
+      "vendor": "Vercel",
+      "category": "deployment",
+      "kind": "remote-mcp",
+      "transport": "streamable-http",
+      "sourceUrl": "https://vercel.com/docs/agent-resources/vercel-mcp",
+      "docsUrl": "https://vercel.com/docs/agent-resources/vercel-mcp",
+      "runtime": "remote_hosted",
+      "capabilities": [
+        "projects",
+        "deployments",
+        "build logs",
+        "documentation search"
+      ],
+      "auth": "oauth_vercel_account",
+      "executionRisk": "remote_account_read_write",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Vercel MCP documentation reviewed 2026-10-22"
+        }
+      ],
+      "guidance": "Read deployment status and build logs; never promote or change production settings without approval.",
+      "setup": {
+        "mode": "remote",
+        "url": "https://mcp.vercel.com",
+        "oauth": true,
+        "supportedClients": [
+          "codex",
+          "claude",
+          "opencode"
+        ],
+        "unsupportedReason": "Not on Vercel documented supported-client list as of 2026-10-22; a generic OAuth remote MCP client may work but is unverified.",
+        "verifyHint": "List projects read-only after OAuth."
+      }
+    },
+    {
+      "endpoint": "https://api.githubcopilot.com/mcp/",
+      "package": null,
+      "license": "MIT",
+      "requiresLocalExecution": false,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "GitHub account",
+        "OAuth-capable client or a fine-grained PAT in GITHUB_PAT_TOKEN"
+      ],
+      "cautions": [
+        "Prefer read-only toolsets; pushes, merges and PR creation are repo-write actions requiring approval.",
+        "Never paste tokens into chat or commit them."
+      ],
+      "skill": "agentic-coding",
+      "knowledgeIds": [
+        "github-mcp"
+      ],
+      "legacy": false,
+      "id": "github",
+      "name": "GitHub MCP server",
+      "vendor": "GitHub",
+      "category": "repository",
+      "kind": "remote-mcp",
+      "transport": "streamable-http",
+      "sourceUrl": "https://github.com/github/github-mcp-server",
+      "docsUrl": "https://github.com/github/github-mcp-server",
+      "runtime": "remote_hosted",
+      "capabilities": [
+        "repositories",
+        "issues",
+        "pull requests",
+        "actions"
+      ],
+      "auth": "oauth_or_fine_grained_pat",
+      "executionRisk": "remote_repo_write",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Official README reviewed 2026-10-22"
+        }
+      ],
+      "guidance": "Use read-only toolsets for review; open draft pull requests only after local tests pass and the user approves.",
+      "setup": {
+        "mode": "remote",
+        "url": "https://api.githubcopilot.com/mcp/",
+        "oauth": true,
+        "apiKeyEnv": "GITHUB_PAT_TOKEN",
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "Call get_me or list a repository read-only."
+      }
+    },
+    {
+      "endpoint": null,
+      "package": null,
+      "license": "See projects.blender.org/lab/blender_mcp",
+      "requiresLocalExecution": true,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "Blender 5.1 or newer",
+        "A disposable VM or isolated machine with no personal files",
+        "Manual start of the add-on server inside Blender"
+      ],
+      "cautions": [
+        "Executes LLM-generated Python inside Blender without guards; it can delete data or send it to remote locations.",
+        "Never connect from a workstation holding personal or production files.",
+        "Start the add-on server manually for each session and stop it afterwards."
+      ],
+      "skill": "blender-to-r3f",
+      "knowledgeIds": [
+        "blender-lab-mcp",
+        "blender-python-api"
+      ],
+      "legacy": false,
+      "id": "blender-lab",
+      "name": "Blender Lab MCP server",
+      "vendor": "Blender Foundation (Blender Lab)",
+      "category": "design_3d",
+      "kind": "isolated-mcp",
+      "transport": "stdio",
+      "sourceUrl": "https://projects.blender.org/lab/blender_mcp",
+      "docsUrl": "https://www.blender.org/lab/mcp-server/",
+      "runtime": "isolated_vm_manual_start",
+      "capabilities": [
+        "scene inspection",
+        "bpy scripting",
+        "documentation lookup"
+      ],
+      "auth": "none_local_socket",
+      "executionRisk": "arbitrary_python_execution",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Blender Lab page and repository README reviewed 2026-10-22 (v1.0.3)"
+        }
+      ],
+      "guidance": "Optional and isolated only. Prefer scripted bpy exports reviewed by a human; use the MCP only inside a disposable VM.",
+      "setup": {
+        "mode": "isolated",
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "installHint": "Inside the isolated VM: install the add-on from the Blender Lab repository (https://www.blender.org/lab/mcp-server/), then register the blender-mcp stdio entry point in that VM agent client.",
+        "verifyHint": "Inside the VM only: request a read-only scene summary."
+      }
+    },
+    {
+      "endpoint": null,
+      "package": {
+        "name": "@gltf-transform/cli",
+        "version": "4.5.1"
+      },
+      "license": "MIT",
+      "requiresLocalExecution": true,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "Node.js 20+",
+        "Write access to an asset output folder"
+      ],
+      "cautions": [
+        "Not an MCP server; run it as a build or CI step.",
+        "Write outputs to a new file; never overwrite licensed source assets."
+      ],
+      "skill": "gltf-asset-pipeline",
+      "knowledgeIds": [
+        "gltf-transform",
+        "gltf-validator",
+        "meshoptimizer"
+      ],
+      "legacy": false,
+      "id": "gltf-transform-cli",
+      "name": "glTF Transform CLI",
+      "vendor": "Don McCurdy",
+      "category": "asset_pipeline",
+      "kind": "cli_not_mcp",
+      "transport": "cli",
+      "sourceUrl": "https://github.com/donmccurdy/glTF-Transform",
+      "docsUrl": "https://gltf-transform.dev/",
+      "runtime": "build_time_cli",
+      "capabilities": [
+        "inspect",
+        "validate",
+        "optimize",
+        "meshopt",
+        "draco",
+        "texture compression"
+      ],
+      "auth": "none",
+      "executionRisk": "local_file_write",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Official docs and npm metadata reviewed 2026-10-22"
+        }
+      ],
+      "guidance": "Inspect, optimize to a new file, validate, then compare before/after sizes and draw calls.",
+      "setup": {
+        "mode": "cli",
+        "command": "npx",
+        "args": [
+          "-y",
+          "@gltf-transform/cli@4.5.1"
+        ],
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "Run inspect on the GLB and record the report."
+      }
+    },
+    {
+      "endpoint": "https://21st.dev/api/mcp",
+      "package": null,
+      "license": "Proprietary service",
+      "requiresLocalExecution": false,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "21st.dev account"
+      ],
+      "cautions": [
+        "Retrieval may consume quota; hosted generation requires separate entitlement."
+      ],
+      "skill": "21st-ui-components",
+      "knowledgeIds": [
+        "21st-mcp"
+      ],
+      "legacy": true,
+      "id": "21st",
+      "name": "21st.dev unified MCP",
+      "vendor": "21st.dev",
+      "category": "design_components",
+      "kind": "remote-mcp",
+      "transport": "streamable-http",
+      "sourceUrl": "https://21st.dev/mcp",
+      "docsUrl": "https://21st.dev/mcp",
+      "runtime": "remote_hosted",
+      "capabilities": [
+        "component search",
+        "themes",
+        "templates",
+        "component code"
+      ],
+      "auth": "oauth_or_user_api_key",
+      "executionRisk": "remote_quota",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "21st MCP page reviewed 2026-10-22"
+        }
+      ],
+      "guidance": "Search component/theme/template metadata first; retrieval may consume quota. Hosted AI generation requires separate entitlement. Connect with the agent's own OAuth or credential settings.",
+      "setup": {
+        "mode": "remote",
+        "url": "https://21st.dev/api/mcp",
+        "oauth": true,
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "Run a component search and confirm metadata results."
+      }
+    },
+    {
+      "endpoint": "https://xgdzyqfalbibzelpdpvr.supabase.co/functions/v1/mcp",
+      "package": null,
+      "license": "Proprietary service",
+      "requiresLocalExecution": false,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "MotionSites account"
+      ],
+      "cautions": [
+        "Some prompts are paid; check before retrieval."
+      ],
+      "skill": "motionsites-design",
+      "knowledgeIds": [
+        "motionsites-mcp"
+      ],
+      "legacy": true,
+      "id": "motionsites",
+      "name": "MotionSites design prompts",
+      "vendor": "MotionSites",
+      "category": "design_references",
+      "kind": "remote-mcp",
+      "transport": "streamable-http",
+      "sourceUrl": "https://motionsites.ai/mcp",
+      "docsUrl": "https://motionsites.ai/",
+      "runtime": "remote_hosted",
+      "capabilities": [
+        "prompt search",
+        "prompt retrieval",
+        "related prompts"
+      ],
+      "auth": "user_oauth",
+      "executionRisk": "remote_quota",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "MotionSites site reviewed 2026-10-22"
+        }
+      ],
+      "guidance": "Use user-approved OAuth and the prompt library; check whether requested prompts are free or paid before retrieval. SOREN never proxies its account.",
+      "setup": {
+        "mode": "remote",
+        "url": "https://xgdzyqfalbibzelpdpvr.supabase.co/functions/v1/mcp",
+        "oauth": true,
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "Search prompts and confirm results."
+      }
+    },
+    {
+      "endpoint": null,
+      "package": {
+        "name": "firecrawl-mcp",
+        "version": "3.33.4"
+      },
+      "license": "MIT",
+      "requiresLocalExecution": true,
+      "proxiedBySoren": false,
+      "automaticallyConnected": false,
+      "status": "documented",
+      "requirements": [
+        "FIRECRAWL_API_KEY"
+      ],
+      "cautions": [
+        "Scrapes and crawls consume paid credits.",
+        "Scrape only public pages within their terms; prefer official docs or Context7 first."
+      ],
+      "skill": "agent-capability-navigation",
+      "knowledgeIds": [
+        "firecrawl-mcp"
+      ],
+      "legacy": false,
+      "id": "firecrawl",
+      "name": "Firecrawl MCP server",
+      "vendor": "Firecrawl",
+      "category": "research",
+      "kind": "local-mcp",
+      "transport": "stdio",
+      "sourceUrl": "https://github.com/firecrawl/firecrawl-mcp-server",
+      "docsUrl": "https://github.com/firecrawl/firecrawl-mcp-server",
+      "runtime": "local_node",
+      "capabilities": [
+        "scrape",
+        "crawl",
+        "search",
+        "extract"
+      ],
+      "auth": "api_key",
+      "executionRisk": "remote_credit_spend",
+      "observations": [
+        {
+          "client": "catalog",
+          "state": "documented",
+          "method": "documentation_review",
+          "observedAt": "2026-10-22",
+          "evidence": "Official README and npm metadata reviewed 2026-10-22"
+        }
+      ],
+      "guidance": "Optional research fallback when official docs and Context7 lack coverage.",
+      "setup": {
+        "mode": "stdio",
+        "command": "npx",
+        "args": [
+          "-y",
+          "firecrawl-mcp@3.33.4"
+        ],
+        "apiKeyEnv": "FIRECRAWL_API_KEY",
+        "supportedClients": [
+          "codex",
+          "factory",
+          "antigravity",
+          "opencode",
+          "claude",
+          "qwen"
+        ],
+        "verifyHint": "Scrape one public documentation page and confirm Markdown output."
+      }
+    }
+  ]
+}
