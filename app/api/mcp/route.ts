@@ -1,6 +1,7 @@
 import {createMcpHandler} from "mcp-handler";
 import {getVercelOidcToken} from "@vercel/oidc";
 import {z} from "zod";
+import {createHash} from 'node:crypto';
 import {SKILLS,searchSkills,readSkill} from "../../../lib/catalog.mjs";
 import {MCP_SERVER_NAME,MCP_VERSION,ROUTER_INSTRUCTIONS,TOOL_ANNOTATIONS,V3_TOOL_ANNOTATIONS,V3_INSTRUCTIONS} from "../../../lib/client-contract.mjs";
 import {v3ToolsEnabled} from "../../../lib/v3/flags.mjs";
@@ -12,6 +13,7 @@ import {planToolchain} from "../../../lib/integrations/plan.mjs";
 import {RECIPES,getRecipe,listProfiles,recipeResourceUri} from "../../../lib/recipes/catalog.mjs";
 import {PROVIDER_INFO,publicQuery,discoverSkills,inspectCandidate,searchMcpServers} from "../../../lib/federation.mjs";
 import {RouteTaskInputSchema,routeTaskRequest} from "../../../lib/routing/route-request.mjs";
+import {adviseSpecialist,triageLearning,verifyAgentClaim,typesafeToolsEnabled} from '../../../lib/typesafe/advisory.mjs';
 import {guardedProviderCall,limitRequestBody,requestContext,validateSuppliedIdentity,allowedBrowserOrigin,GatewayError} from '../../../lib/gateway.mjs';
 import {getGatewayStore} from '../../../lib/operations/store.mjs';
 import {authenticateRequest,HttpError} from '../../../lib/security/auth.mjs';
@@ -23,6 +25,9 @@ const providerSchema=z.enum(["skillsmp","skills_sh","anthropic"]);
 const catalogId=z.string().regex(/^[a-z0-9][a-z0-9-]{1,62}$/);
 const packageMap=z.record(z.string().min(1).max(214),z.string().max(80));
 const V3_ENABLED=v3ToolsEnabled();
+const TYPESAFE_TOOLS_ENABLED=typesafeToolsEnabled();
+const adviceDigest=(data:unknown)=>createHash('sha256').update(JSON.stringify(data)).digest('hex');
+const adviceAnnotations={readOnlyHint:true,destructiveHint:false,idempotentHint:true,openWorldHint:true};
 const asToolResult=(value:unknown)=>({content:[{type:"text" as const,text:JSON.stringify(value)}]});
 const withErrorBoundary=async(callback:()=>Promise<unknown>)=>{
   try{return asToolResult(await callback());}
@@ -41,6 +46,17 @@ async function guardedDiscovery(query:string,options:any={}){
   catch(error){
     if(!(error instanceof GatewayError)||error.status===401||error.status===403)throw error;
     return {query:safeQuery,results:[],count:0,providers:Object.fromEntries(providers.map((provider:string)=>[provider,{status:'unavailable',count:0,reason:error.message}])),warning:error.message};
+  }
+}
+
+async function guardedJev(kind:string,publicArguments:unknown,run:()=>Promise<unknown>){
+  if(process.env.TYPESAFE_JEV_ENABLED!=='true')return {status:'disabled'};
+  if(!process.env.TYPESAFE_API_KEY)return {status:'not_configured'};
+  try{
+    return await guardedProviderCall(kind,{digest:adviceDigest(publicArguments),model:'jev-latest'},run);
+  }catch(error){
+    if(error instanceof GatewayError&&(error.status===401||error.status===403))throw error;
+    return {status:'unavailable_or_budget_limited'};
   }
 }
 
@@ -213,6 +229,53 @@ const handler=createMcpHandler((server)=>{
   for(const recipe of RECIPES.filter(entry=>entry.approved===true)){
     server.registerResource("recipe-"+recipe.id,recipeResourceUri(recipe.id),{title:recipe.title,description:recipe.summary,mimeType:"application/json"},
       async(resource)=>({contents:[{uri:resource.href,mimeType:"application/json",text:JSON.stringify(recipe,null,2)}]}));
+  }
+
+  // Separate opt-in from SOREN V3: all three public-content judgment tools
+  // require SOREN_TYPESAFE_TOOLS=1 and a credited server-side API key.
+  if(TYPESAFE_TOOLS_ENABLED){
+    server.registerTool("soren_jev_suggest_specialist",{
+      annotations:adviceAnnotations,
+      title:"Suggest Specialist Agent (TypeSafe Advisory)",
+      description:"Read-only choice among supplied agent candidates; public summary and candidate metadata are sent to TypeSafe when configured and may incur charges. No availability assertion, connection or execution.",
+      inputSchema:z.object({
+        public_summary:z.string().min(3).max(500),
+        candidates:z.array(z.object({
+          id:z.string().regex(/^[a-z][a-z0-9-]{1,62}$/),
+          description:z.string().min(5).max(220),
+        })).min(1).max(24),
+        public_confirmed:z.literal(true),
+      }),
+    },async({public_summary,candidates,public_confirmed})=>withErrorBoundary(()=>
+      guardedJev("typesafe_agent_suggest",{public_summary,candidates},()=>
+        adviseSpecialist(public_summary,candidates,{publicConfirmed:public_confirmed}))));
+
+    server.registerTool("soren_jev_triage_learning",{
+      annotations:adviceAnnotations,
+      title:"Triage Public Learning Candidate (TypeSafe Advisory)",
+      description:"Assess whether a human-curated, public learning candidate is lasting or temporary. Requires evidence provenance. No memory is written and no skill is promoted. Public summary and provenance go to TypeSafe when enabled.",
+      inputSchema:z.object({
+        public_summary:z.string().min(3).max(500),
+        sources:z.array(z.string().min(2).max(120)).min(1).max(5),
+        public_confirmed:z.literal(true),
+      }),
+    },async({public_summary,sources,public_confirmed})=>withErrorBoundary(()=>
+      guardedJev("typesafe_learning_triage",{public_summary,sources},()=>
+        triageLearning(public_summary,sources,{publicConfirmed:public_confirmed}))));
+
+    server.registerTool("soren_jev_verify_claim",{
+      annotations:adviceAnnotations,
+      title:"Evaluate Public Claim Evidence (TypeSafe Advisory)",
+      description:"Exact-quote check followed by a TypeSafe evidence-support judgment. Only confirmed public claim and source excerpt may be submitted. Cannot certify security, source authenticity or factual truth.",
+      inputSchema:z.object({
+        claim:z.string().min(3).max(500),
+        source_excerpt:z.string().min(3).max(3000),
+        quote:z.string().min(3).max(500),
+        public_confirmed:z.literal(true),
+      }),
+    },async({claim,source_excerpt,quote,public_confirmed})=>withErrorBoundary(()=>
+      guardedJev("typesafe_claim_evidence",{claim,source_excerpt,quote},()=>
+        verifyAgentClaim(claim,source_excerpt,quote,{publicConfirmed:public_confirmed}))));
   }
 },{
   serverInfo:{name:MCP_SERVER_NAME,version:MCP_VERSION},
