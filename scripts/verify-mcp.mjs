@@ -1,9 +1,11 @@
 import assert from "node:assert/strict";
 import {ENDPOINT,TOOL_NAMES,V3_TOOL_NAMES,MCP_SERVER_NAME} from "../lib/client-contract.mjs";
 import {SKILLS} from "../lib/catalog.mjs";
-import {verificationEndpoint} from '../lib/contracts/endpoint.mjs';
+import {verificationEndpoint,protectionBypassHeaders} from '../lib/contracts/endpoint.mjs';
 
 const endpoint=verificationEndpoint((process.argv[2]||ENDPOINT).trim());
+// Optional VERCEL_PROTECTION_BYPASS lets checks reach a protected preview; it is never logged.
+const bypass=protectionBypassHeaders(endpoint);
 const checks=[]; let requests=0;
 function check(label,success,detail="",optional=false){
   checks.push({label,success,optional});
@@ -12,7 +14,7 @@ function check(label,success,detail="",optional=false){
 async function rpc(method,params={},modern=false){
   requests++;
   const headers={"Content-Type":"application/json","Accept":"application/json, text/event-stream",
-    "MCP-Protocol-Version":modern?"2026-07-28":"2025-06-18"};
+    "MCP-Protocol-Version":modern?"2026-07-28":"2025-06-18",...bypass};
   if(modern){
     headers["Mcp-Method"]=method;
     if(method==="tools/call")headers["Mcp-Name"]=params.name;
@@ -49,7 +51,7 @@ async function guarded(label,run,optional=false){
   catch(e){check(label,false,String(e?.message||e).slice(0,135),optional);}
 }
 await guarded("Responsive web dashboard and connection navigator",async()=>{
-  const r=await fetch(new URL(endpoint).origin,{signal:AbortSignal.timeout(12000)});
+  const r=await fetch(new URL(endpoint).origin,{headers:bypass,signal:AbortSignal.timeout(12000)});
   const html=await r.text();
   return r.status===200&&html.includes("Connect without conflicts.")&&['Factory Droid','Codex Desktop','Antigravity','OpenCode','Claude Code','Qwen Code'].every(name=>html.includes(name));
 });
@@ -149,19 +151,19 @@ await guarded("Four simultaneous agent requests do not cross-contaminate",async(
 });
 await guarded("Cross-origin browser request rejected",async()=>{
   const r=await fetch(endpoint,{method:"POST",headers:{"Origin":"https://untrusted.invalid",
-    "Content-Type":"application/json"},body:"{}",signal:AbortSignal.timeout(8000)});
+    "Content-Type":"application/json",...bypass},body:"{}",signal:AbortSignal.timeout(8000)});
   return r.status===403;
 });
 await guarded('Reject supplied malformed identity even for a bundled public read',async()=>{
-  const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Basic invalid',Accept:'application/json, text/event-stream'},body:JSON.stringify({jsonrpc:'2.0',id:900,method:'tools/call',params:{name:'list_skills',arguments:{}}}),signal:AbortSignal.timeout(8000)});
+  const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Basic invalid',Accept:'application/json, text/event-stream',...bypass},body:JSON.stringify({jsonrpc:'2.0',id:900,method:'tools/call',params:{name:'list_skills',arguments:{}}}),signal:AbortSignal.timeout(8000)});
   return r.status===401;
 });
 await guarded('Reject oversized streaming request body',async()=>{
-  const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:901,method:'tools/call',params:{name:'route_task',arguments:{task:'x'.repeat(17000)}}}),signal:AbortSignal.timeout(8000)});
+  const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',...bypass},body:JSON.stringify({jsonrpc:'2.0',id:901,method:'tools/call',params:{name:'route_task',arguments:{task:'x'.repeat(17000)}}}),signal:AbortSignal.timeout(8000)});
   return r.status===413;
 });
 const failing=checks.filter(x=>!x.success&&!x.optional);
 const warnings=checks.filter(x=>!x.success&&x.optional);
-console.log(JSON.stringify({endpoint,requests,checks:checks.length,passed:checks.filter(x=>x.success).length,
+console.log(JSON.stringify({endpoint,protectedTarget:Object.keys(bypass).length>0,requests,checks:checks.length,passed:checks.filter(x=>x.success).length,
   failed:failing.map(x=>x.label),warnings:warnings.map(x=>x.label)},null,2));
 if(failing.length)process.exitCode=1;

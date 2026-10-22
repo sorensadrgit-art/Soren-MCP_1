@@ -1,0 +1,15 @@
+{"label":"no auth: GET / redirects to Vercel SSO","status":302,"ok":true,"detail":"Protected by Vercel Authentication To access this deployment with an authenticat"}
+{"label":"no auth: MCP initialize blocked by Vercel","status":401,"ok":true,"detail":"{\"message\":\"Protected deployment\",\"code\":\"401\"}"}
+{"label":"no auth: health/live blocked","status":302,"ok":true,"detail":"Protected by Vercel Authentication To access this deployment with an authenticat"}
+{"label":"wrong bypass secret blocked","status":401,"ok":true,"detail":"{\"code\":\"401\",\"message\":\"Protected deployment\"}"}
+{"label":"bypass: health/live","status":200,"ok":true,"detail":"{\"status\":\"live\",\"revision\":\"unknown\"}"}
+{"label":"bypass: health/ready","status":200,"ok":true,"detail":"{\"ready\":true,\"mode\":\"public_only\",\"status\":\"HEALTHY\",\"observedAt\":null,\"freshness\":\"unknown\"}"}
+{"label":"bypass: initialize","status":200,"ok":true,"detail":"{\"result\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{\"tools\":{\"listChanged\":true},\"resources\":{\"listChanged\":true}},\"serverInfo\":{\"name\":\"soren-universal-s"}
+{"label":"bypass: bearer identity without store fails closed (503)","status":503,"ok":true,"detail":"\"private_identity_unavailable\""}
+{"label":"bypass: malformed identity rejected (401)","status":401,"ok":true,"detail":"\"invalid_authorization\""}
+{"label":"bypass: oversized body rejected (413)","status":413,"ok":true,"detail":"\"request_body_too_large\""}
+{"label":"bypass: cross-origin rejected (403)","status":403,"ok":true,"detail":"Forbidden origin"}
+{"label":"bypass: discover_skills external discovery without store","status":200,"ok":true,"detail":"{\"query\":\"gsap animation\",\"results\":[],\"count\":0,\"providers\":{\"skillsmp\":{\"status\":\"unavailable\",\"count\":0,\"reason\":\"shared_provider_budget_unavailable\"},\"skill"}
+{"label":"bypass: search_mcp_servers external discovery without store","status":200,"ok":true,"detail":"shared_provider_budget_unavailable"}
+{"label":"bypass: route_task external discovery without store","status":200,"ok":true,"detail":"{\"task\":\"GSAP WebGL React Three.js\",\"runtime\":\"codex\",\"primary\":{\"name\":\"motion-systems\",\"description\":\"Architect cinematic motion-first WebGL, React Three Fibe"}
+{"label":"bypass: unknown V3-like tool not found","status":200,"ok":true,"detail":"{\"code\":-32602,\"message\":\"Tool nonexistent_tool not found\"}"}

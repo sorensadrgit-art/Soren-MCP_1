@@ -1,0 +1,758 @@
+{
+  "generatedAt": "2026-10-22T16:13:44.998Z",
+  "endpoints": {
+    "baseline": "https://soren-shared-mcp-skills.vercel.app/api/mcp",
+    "candidate": "https://soren-mcp-v3-preview-1ylrjyzfe-sorensadr-gmailcoms-projects.vercel.app/api/mcp"
+  },
+  "protectedCandidate": true,
+  "sections": {
+    "initialize": {
+      "baseline": {
+        "status": 200,
+        "server": {
+          "name": "soren-universal-skill-router",
+          "version": "2.4.0"
+        }
+      },
+      "candidate": {
+        "status": 200,
+        "server": {
+          "name": "soren-universal-skill-router",
+          "version": "2.5.0"
+        }
+      },
+      "instructionsSame": false
+    },
+    "tools": {
+      "baselineNames": [
+        "list_skills",
+        "search_skills",
+        "route_task",
+        "read_skill",
+        "list_providers",
+        "discover_skills",
+        "inspect_candidate",
+        "search_mcp_servers"
+      ],
+      "candidateNames": [
+        "list_skills",
+        "search_skills",
+        "route_task",
+        "read_skill",
+        "list_providers",
+        "discover_skills",
+        "inspect_candidate",
+        "search_mcp_servers",
+        "list_capability_profiles",
+        "plan_toolchain",
+        "list_integrations",
+        "search_knowledge",
+        "read_recipe",
+        "get_client_setup_guide"
+      ],
+      "legacyOrderPreserved": true,
+      "perTool": [
+        {
+          "name": "list_skills",
+          "annotationsSame": true,
+          "schemaSame": true,
+          "requiredSame": true,
+          "removedProperties": [],
+          "addedProperties": [],
+          "descriptionSame": true
+        },
+        {
+          "name": "search_skills",
+          "annotationsSame": true,
+          "schemaSame": true,
+          "requiredSame": true,
+          "removedProperties": [],
+          "addedProperties": [],
+          "descriptionSame": true
+        },
+        {
+          "name": "route_task",
+          "annotationsSame": true,
+          "schemaSame": false,
+          "requiredSame": true,
+          "removedProperties": [],
+          "addedProperties": [
+            "preferred_skills",
+            "unavailable_skills",
+            "include_capability_plan",
+            "capability_context",
+            "decision_engine"
+          ],
+          "descriptionSame": false
+        },
+        {
+          "name": "read_skill",
+          "annotationsSame": true,
+          "schemaSame": false,
+          "requiredSame": true,
+          "removedProperties": [],
+          "addedProperties": [
+            "privateVersion"
+          ],
+          "descriptionSame": true
+        },
+        {
+          "name": "list_providers",
+          "annotationsSame": true,
+          "schemaSame": true,
+          "requiredSame": true,
+          "removedProperties": [],
+          "addedProperties": [],
+          "descriptionSame": true
+        },
+        {
+          "name": "discover_skills",
+          "annotationsSame": true,
+          "schemaSame": true,
+          "requiredSame": true,
+          "removedProperties": [],
+          "addedProperties": [],
+          "descriptionSame": true
+        },
+        {
+          "name": "inspect_candidate",
+          "annotationsSame": true,
+          "schemaSame": true,
+          "requiredSame": true,
+          "removedProperties": [],
+          "addedProperties": [],
+          "descriptionSame": true
+        },
+        {
+          "name": "search_mcp_servers",
+          "annotationsSame": true,
+          "schemaSame": true,
+          "requiredSame": true,
+          "removedProperties": [],
+          "addedProperties": [],
+          "descriptionSame": true
+        }
+      ]
+    },
+    "resources": {
+      "baselineCount": 14,
+      "candidateCount": 74,
+      "skillBaseline": 14,
+      "skillCandidate": 22,
+      "missingInCandidate": [],
+      "addedInCandidate": [
+        "skill://shader-material-lab/SKILL.md",
+        "skill://webgpu-progressive-rendering/SKILL.md",
+        "skill://gltf-asset-pipeline/SKILL.md",
+        "skill://blender-to-r3f/SKILL.md",
+        "skill://graphics-performance-qa/SKILL.md",
+        "skill://nextjs-runtime-engineering/SKILL.md",
+        "skill://spline-to-web/SKILL.md",
+        "skill://agent-capability-navigation/SKILL.md"
+      ],
+      "v3ResourcesInCandidate": 52
+    },
+    "list_skills": {
+      "baseline": 14,
+      "candidate": 22,
+      "onlyBaseline": [],
+      "onlyCandidate": [
+        "shader-material-lab",
+        "webgpu-progressive-rendering",
+        "gltf-asset-pipeline",
+        "blender-to-r3f",
+        "graphics-performance-qa",
+        "nextjs-runtime-engineering",
+        "spline-to-web",
+        "agent-capability-navigation"
+      ]
+    },
+    "read_skill": {
+      "compared": 14,
+      "identical": [
+        "accessibility",
+        "motion-systems",
+        "mcp-integration",
+        "skill-orchestration",
+        "soren-universal-deployment",
+        "21st-ui-components",
+        "motionsites-design",
+        "playwright-browser-qa",
+        "superpowers-engineering",
+        "agentic-design-to-code",
+        "agentic-coding"
+      ],
+      "changed": [
+        {
+          "name": "react-three-fiber",
+          "same": false,
+          "baselineSha": "8f37dedc4e21b1fc",
+          "candidateSha": "d7a2ddfc6cada9d4"
+        },
+        {
+          "name": "threejs-production",
+          "same": false,
+          "baselineSha": "e3294fda030ad5d3",
+          "candidateSha": "55bb9e6b37a6c9e5"
+        },
+        {
+          "name": "gsap-motion",
+          "same": false,
+          "baselineSha": "2785a694a5f3b356",
+          "candidateSha": "ae065d9eb0d0c8bf"
+        }
+      ]
+    },
+    "search_skills_local": {
+      "baseline": [
+        "accessibility"
+      ],
+      "candidate": [
+        "accessibility"
+      ]
+    },
+    "route_task_local": [
+      {
+        "task": "GSAP Three.js WebGL website",
+        "baseline": {
+          "primary": "motion-systems",
+          "top3": [
+            "motion-systems",
+            "threejs-production",
+            "gsap-motion"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "candidate": {
+          "primary": "motion-systems",
+          "top3": [
+            "motion-systems",
+            "gsap-motion"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "samePrimary": true,
+        "sameKeys": true
+      },
+      {
+        "task": "Audit WCAG keyboard focus",
+        "baseline": {
+          "primary": "accessibility",
+          "top3": [
+            "accessibility"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "candidate": {
+          "primary": "accessibility",
+          "top3": [
+            "accessibility"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "samePrimary": true,
+        "sameKeys": true
+      },
+      {
+        "task": "Connect an MCP server to Codex",
+        "baseline": {
+          "primary": "mcp-integration",
+          "top3": [
+            "mcp-integration",
+            "21st-ui-components",
+            "agentic-design-to-code"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "candidate": {
+          "primary": "mcp-integration",
+          "top3": [
+            "mcp-integration"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "samePrimary": true,
+        "sameKeys": true
+      },
+      {
+        "task": "React Three Fiber scene with drei and GLB",
+        "baseline": {
+          "primary": "react-three-fiber",
+          "top3": [
+            "react-three-fiber",
+            "motion-systems",
+            "threejs-production"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "candidate": {
+          "primary": "react-three-fiber",
+          "top3": [
+            "react-three-fiber",
+            "motion-systems",
+            "gltf-asset-pipeline"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "samePrimary": true,
+        "sameKeys": true
+      },
+      {
+        "task": "Deploy a Next.js app to Vercel",
+        "baseline": {
+          "primary": "soren-universal-deployment",
+          "top3": [
+            "soren-universal-deployment",
+            "agentic-design-to-code"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "candidate": {
+          "primary": "soren-universal-deployment",
+          "top3": [
+            "soren-universal-deployment",
+            "nextjs-runtime-engineering"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "samePrimary": true,
+        "sameKeys": true
+      },
+      {
+        "task": "Optimize a glTF model with Draco",
+        "baseline": {
+          "primary": "mcp-integration",
+          "top3": [
+            "mcp-integration"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "candidate": {
+          "primary": "gltf-asset-pipeline",
+          "top3": [
+            "gltf-asset-pipeline"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "samePrimary": false,
+        "sameKeys": true
+      },
+      {
+        "task": "Playwright browser QA for a landing page",
+        "baseline": {
+          "primary": "playwright-browser-qa",
+          "top3": [
+            "playwright-browser-qa",
+            "motionsites-design"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "candidate": {
+          "primary": "playwright-browser-qa",
+          "top3": [
+            "playwright-browser-qa"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "samePrimary": true,
+        "sameKeys": true
+      },
+      {
+        "task": "Build a shader material with TSL",
+        "baseline": {
+          "primary": "threejs-production",
+          "top3": [
+            "threejs-production"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "candidate": {
+          "primary": "shader-material-lab",
+          "top3": [
+            "shader-material-lab",
+            "threejs-production",
+            "webgpu-progressive-rendering"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "samePrimary": false,
+        "sameKeys": true
+      },
+      {
+        "task": "Organize agent skills and routing",
+        "baseline": {
+          "primary": "skill-orchestration",
+          "top3": [
+            "skill-orchestration",
+            "mcp-integration",
+            "agentic-coding"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "candidate": {
+          "primary": "skill-orchestration",
+          "top3": [
+            "skill-orchestration",
+            "mcp-integration"
+          ],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "samePrimary": true,
+        "sameKeys": true
+      },
+      {
+        "task": "Explain what a for loop is",
+        "baseline": {
+          "primary": null,
+          "top3": [],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "candidate": {
+          "primary": null,
+          "top3": [],
+          "keys": [
+            "discoveredCandidates",
+            "discoveryMode",
+            "nextAction",
+            "policy",
+            "primary",
+            "providerStatus",
+            "recommendations",
+            "runtime",
+            "task"
+          ]
+        },
+        "samePrimary": true,
+        "sameKeys": true
+      }
+    ],
+    "route_task_federated": {
+      "baseline": {
+        "isError": false,
+        "discoveryMode": "federated",
+        "providerStatus": {
+          "anthropic": {
+            "status": "ok",
+            "reason": null,
+            "count": 0
+          },
+          "skills_sh": {
+            "status": "ok",
+            "reason": null,
+            "count": 8
+          },
+          "skillsmp": {
+            "status": "unavailable",
+            "reason": "UPSTREAM_TIMEOUT",
+            "count": 0
+          }
+        },
+        "candidates": 8,
+        "ms": 4277
+      },
+      "candidate": {
+        "isError": false,
+        "discoveryMode": "federated",
+        "providerStatus": {
+          "skillsmp": {
+            "status": "unavailable",
+            "reason": "shared_provider_budget_unavailable",
+            "count": 0
+          },
+          "skills_sh": {
+            "status": "unavailable",
+            "reason": "shared_provider_budget_unavailable",
+            "count": 0
+          },
+          "anthropic": {
+            "status": "unavailable",
+            "reason": "shared_provider_budget_unavailable",
+            "count": 0
+          }
+        },
+        "candidates": 0,
+        "ms": 59
+      }
+    },
+    "list_providers": {
+      "baseline": {
+        "providers": [
+          "skillsmp:true",
+          "skills_sh:true",
+          "anthropic:true",
+          "mcp_registry:true"
+        ],
+        "agentMcpIntegrations": [
+          "21st",
+          "motionsites",
+          "playwright"
+        ]
+      },
+      "candidate": {
+        "providers": [
+          "skillsmp:true",
+          "skills_sh:true",
+          "anthropic:true",
+          "mcp_registry:true"
+        ],
+        "agentMcpIntegrations": [
+          "playwright",
+          "21st",
+          "motionsites",
+          "context7",
+          "serena",
+          "next-devtools",
+          "chrome-devtools",
+          "spline",
+          "vercel",
+          "github",
+          "blender-lab",
+          "gltf-transform-cli",
+          "firecrawl"
+        ]
+      }
+    },
+    "discover_skills": {
+      "baseline": {
+        "isError": false,
+        "status": "ok",
+        "reason": null,
+        "count": 3
+      },
+      "candidate": {
+        "isError": false,
+        "status": "unavailable",
+        "reason": "shared_provider_budget_unavailable",
+        "count": 0
+      }
+    },
+    "search_mcp_servers": {
+      "baseline": {
+        "isError": false,
+        "count": 2,
+        "detail": null
+      },
+      "candidate": {
+        "isError": true,
+        "count": null,
+        "detail": "shared_provider_budget_unavailable"
+      }
+    },
+    "inspect_candidate_traversal": {
+      "baseline": true,
+      "candidate": true
+    },
+    "read_skill_traversal": {
+      "baseline": true,
+      "candidate": true
+    },
+    "boundaries": {
+      "malformedAuthorization": {
+        "baseline": 200,
+        "candidate": 401
+      },
+      "wellFormedBearerWithoutStore": {
+        "baseline": 200,
+        "candidate": 503
+      },
+      "crossOrigin": {
+        "baseline": 403,
+        "candidate": 403
+      },
+      "oversizedBody": {
+        "baseline": 200,
+        "candidate": 413
+      }
+    }
+  }
+}

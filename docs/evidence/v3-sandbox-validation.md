@@ -2,7 +2,7 @@
 
 Date: 2026-10-22. Host: Windows, Node 24.19.0, Chromium 156.0.8078.4 (Playwright 1.64.1).
 
-The sandbox lives at `C:\Users\soren\Projects\soren-v3-graphics-sandbox`. It is a separate project with its own local Git repository and no remote, and it is not part of any portfolio or production site. Its files are staged but not committed, because this machine has no Git author identity configured (see Blockers). Raw evidence is copied to `docs/evidence/v3/sandbox/`.
+The sandbox lives at `C:\Users\soren\Projects\soren-v3-graphics-sandbox`. It is a separate project with its own local Git repository and no remote, and it is not part of any portfolio or production site. It is committed locally as `d48839ed8ea3a7d197da39b31494d8248c2e6782` (branch `master`), authored with the owner's repo-local noreply identity, and is not published. Raw evidence is copied to `docs/evidence/v3/sandbox/`.
 
 ## Stack
 
@@ -109,4 +109,13 @@ Loaded baseline: 20 geometries, 7 textures, 8 programs. After unload: 16 geometr
 
 ## Blockers
 
-- The sandbox Git commit failed with `Author identity unknown`. The files are staged in the sandbox's local repository. I did not set an identity, per policy. To finish: configure your identity, then run `git -C C:\Users\soren\Projects\soren-v3-graphics-sandbox commit`.
+- Resolved 2026-10-22: the owner configured a repo-local identity and the sandbox was committed as `d48839e`.
+
+## Reproducibility check (2026-10-22)
+
+A clean clone of `d48839e` in a temporary directory ran `npm ci`, `npm run asset:pipeline` and `npm run test:e2e`:
+
+- `npm ci` installed 257 packages from the committed lockfile.
+- The asset pipeline regenerated `assets/source/sculpture.glb` and `public/models/sculpture.glb` byte-identically to the committed files (optimized SHA-256 `F5046A0B8AEF06036DD4FFBB34136A1DB7D44A615849EB34CE34272B53C84E89`, 337,980 bytes, 88.9% smaller than the 3,058,144-byte source).
+- Playwright passed 14/14 (SwiftShader, GPU and no-WebGL projects).
+- Only timestamped or measured report files differed (`asset-report.json` `generatedAt`, metrics, dispose cycles and Playwright results).

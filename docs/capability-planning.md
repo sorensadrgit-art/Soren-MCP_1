@@ -87,7 +87,15 @@ Differences from the PR #4 branch:
 - `scripts/verify-capability-plan.mjs` accepts both the flag-off tool list (8 tools) and the flag-on list (8 legacy tools followed by the 6 V3 tools), and checks the skill resource count against the bundled catalog instead of a fixed 4.
 - Without a gateway store (`SUPABASE_*`, `SOREN_GATEWAY_DB_KEY`, `SOREN_WORKSPACE_ID`) and `SOREN_RATE_KEY`, the shared budget guard denies every TypeSafe call, so the advisor reports `unavailable_or_budget_limited` and deterministic routing is kept.
 
-Regression coverage for this port lives in `tests/routing/capability-v3-compat.test.mjs`.
+Review fixes applied after porting (independent review, 2026-10-22):
+
+- An `operation` hint can raise the operation derived from the task text but never lower it, so a `read` hint cannot hide the approval gate of a commit, push or deploy.
+- Approval is derived from capability effects (`write_remote`, `possible_remote_write`, `execute_workflow`, `schedule`) for edit, execute and schedule operations. If any recommendation needs approval, the plan status is `NEEDS_APPROVAL`.
+- Outside public scope, every capability whose only data access is a public network read is ineligible (discovery catalogs, Exa, Firecrawl, Context7, Crawl4AI, public reference corpora). Capabilities that act on the caller's own authorized data, such as the user's browser profile, stay eligible.
+
+Known asymmetry, kept for legacy compatibility: without `include_capability_plan`, privacy wording in the task text (for example "do not browse") suppresses TypeSafe but does not switch federated discovery to local. Only `publicQuery` technology keywords leave the server in that case. Callers that need a hard boundary must send `discovery: "local"` or a structured `capability_context.source_scope`.
+
+Regression coverage for this port lives in `tests/routing/capability-v3-compat.test.mjs` and `tests/routing/capability-gates.test.mjs`.
 ## Files and ownership
 
 - `lib/capabilities/planner.mjs`: typed metadata selection, bounded workflow projection and explicit prerequisites.

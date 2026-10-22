@@ -52,8 +52,10 @@ Profiles: `knowledge`, `next-app`, `web-qa`, `graphics-qa`, `immersive-web`, `bl
 Example call shape:
 
 ```json
-{ "tool": "plan_toolchain", "arguments": { "task": "Fix hydration error on R3F hero in Next.js 16", "profile": "immersive-web" } }
+{ "tool": "plan_toolchain", "arguments": { "task": "Fix hydration error on R3F hero in Next.js 16", "runtime": "codex", "project_packages": { "next": "16.4.2", "@react-three/fiber": "9.8.2" } } }
 ```
+
+`plan_toolchain` has no `profile` argument. It selects the profile (here `immersive-web`) from the task text and reports it in `profile.matchedTriggers`; use `list_capability_profiles` to see the available profiles.
 
 If V3 tools are not listed by the server, do not invent them: use `route_task` and `read_skill` and continue.
 

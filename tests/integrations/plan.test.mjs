@@ -9,7 +9,7 @@ const PORTFOLIO='Create an ultra-realistic interactive 3D portfolio';
 test('portfolio brief produces the nine-step immersive workflow with all planner outputs',()=>{
   const p=planToolchain(PORTFOLIO,{runtime:'codex',now:NOW});
   assert.equal(p.profile.id,'immersive-web');
-  for(const key of ['requiredCapabilities','selectedSkills','suggestedMcpServers','availableVerifiedConnections','clientReportedConnections','missingConnectionSteps','docsVersions','permissionBoundaries','estimatedCost','executionPlan','verificationPlan','fallbacks','sources','confidence'])assert.ok(key in p,key);
+  for(const key of ['requiredCapabilities','selectedSkills','suggestedMcpServers','suggestedTools','availableVerifiedConnections','clientReportedConnections','missingConnectionSteps','docsVersions','permissionBoundaries','estimatedCost','executionPlan','verificationPlan','fallbacks','sources','confidence'])assert.ok(key in p,key);
   assert.equal(p.executionPlan.length,9);
   assert.match(p.executionPlan[0].title,/architecture|dependencies/i);
   assert.match(p.executionPlan[2].title,/Blender|Spline/);
@@ -29,6 +29,28 @@ test('connections claimed by the caller are client_reported, never verified',()=
   const bare=planToolchain(PORTFOLIO,{runtime:'codex',now:NOW});
   assert.ok(bare.missingConnectionSteps.some(s=>s.integration==='playwright'));
   assert.ok(bare.missingConnectionSteps.every(s=>s.guideTool==='get_client_setup_guide'));
+});
+
+test('unknown runtimes get a setup-guide template instead of arguments the guide would reject',()=>{
+  const p=planToolchain(PORTFOLIO,{runtime:'cursor',now:NOW});
+  assert.ok(p.missingConnectionSteps.length>0);
+  for(const s of p.missingConnectionSteps){
+    assert.equal(s.guideArgs,null);
+    assert.equal(s.guideArgsTemplate.integration,s.integration);
+    assert.ok(s.supportedClients.includes('codex'));
+  }
+  const known=planToolchain(PORTFOLIO,{runtime:'codex',now:NOW});
+  assert.ok(known.missingConnectionSteps.every(s=>s.guideArgs?.client==='codex'&&!('guideArgsTemplate' in s)));
+});
+
+test('CLI tools are listed as tools, never as MCP servers to connect',()=>{
+  const p=planToolchain('Export a photoreal hero model from Blender to GLB for React Three Fiber',{runtime:'codex',now:NOW});
+  assert.ok(!p.suggestedMcpServers.some(s=>s.id==='gltf-transform-cli'));
+  assert.ok(p.suggestedTools.some(s=>s.id==='gltf-transform-cli'&&s.kind==='cli_not_mcp'));
+  const step=p.missingConnectionSteps.find(s=>s.integration==='gltf-transform-cli');
+  assert.equal(step.action,'install_or_invoke_tool');
+  assert.match(step.note,/Not an MCP server/);
+  assert.ok(p.missingConnectionSteps.filter(s=>s.integration!=='gltf-transform-cli').every(s=>s.action==='connect_mcp_server'));
 });
 
 test('asset route chooses Blender for photoreal assets and Spline for designer-driven scenes',()=>{

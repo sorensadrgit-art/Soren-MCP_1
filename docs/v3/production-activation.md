@@ -19,12 +19,12 @@ The live runtime and this repository are different codebases (`docs/v3/drift-rec
 
 1. **Contract and inventory.** `serverInfo.version` goes from 2.4.0 to 2.5.0. Skill resources go from 14 to 22. Three existing skills (`gsap-motion`, `react-three-fiber`, `threejs-production`) have new content with unchanged frontmatter. The eight tool names, order and annotations stay the same.
 2. **Tool schemas (additive).** `route_task` gains `discovery: "auto"`, `preferred_skills`, `unavailable_skills` (any of the 22 skill names), `include_capability_plan`, `capability_context` and `decision_engine`. `read_skill` gains optional `privateVersion`. Existing calls stay valid. Requests without the new fields return the legacy response shape.
-3. **Ranking.** Tag matching requires every word of a tag (live matches any word), and the expanded skills add tags. Some tasks route to a different primary skill, for example ROUTE-056 now routes to `gsap-motion` (see `tests/routing/evaluation-expectations.json`).
+3. **Ranking.** Tag matching requires every word of a tag (live matches any word), and the expanded skills add tags. Some tasks route to a different primary skill, for example ROUTE-056 now routes to `gsap-motion`, a fallback the owner approved on 2026-10-22 (see `tests/routing/evaluation-expectations.json`).
 4. **External discovery needs the shared gateway store.** Federated `route_task` (the default discovery mode), `search_skills` with `scope: "all"`, `discover_skills`, `inspect_candidate` and `search_mcp_servers` all go through `guardedProviderCall`. Without the store and `SOREN_RATE_KEY`, they fail closed with `shared_provider_budget_unavailable`: route_task and discovery return local results with every provider marked unavailable, and `inspect_candidate` and `search_mcp_servers` return a tool error. Live 2.4.0 calls providers directly, so **without a store this is a visible regression for external discovery.**
 5. **Bearer identity needs the store.** Any request carrying an `Authorization` header is validated. A malformed header returns HTTP 401. A well-formed bearer token without a configured store returns HTTP 503 `private_identity_unavailable`. Clients that send a bearer token today would stop working until the store and identity configuration exist.
 6. **Request bounds.** Cross-origin browser requests return 403. Bodies over 16 KiB return 413.
 
-The isolated preview comparison against live production belongs in `docs/evidence/v3/preview/`. Until that evidence exists, precondition 4 below is not met.
+A local production build of the candidate (`docs/evidence/v3/preview/live-vs-candidate.md`) and the isolated Vercel preview of `850df17` (`docs/evidence/v3/preview/vercel-preview.md`) were compared with live production; both confirm items 1 to 6. Precondition 4 below is met for `850df17` and must be repeated if the merge commit differs.
 
 ## Shared gateway store requirements
 
@@ -34,7 +34,7 @@ External discovery and bearer identity need one store shared by every serverless
 - Production environment variables: `SUPABASE_URL` (an `https://` origin with no path or credentials), `SUPABASE_ANON_KEY`, `SOREN_GATEWAY_DB_KEY` (gateway-role key, never the service-role key), `SOREN_WORKSPACE_ID` (UUID), `SOREN_RATE_KEY` (at least 32 random characters) and `SOREN_CAPABILITY_MODE=public_only`.
 - Optional TypeSafe advice stays off: leave `TYPESAFE_JEV_ENABLED` unset unless separately approved (`docs/typesafe-jev.md`).
 
-Previews and local tests must never point at the production store. Without these variables the runtime is still safe (fail closed), but item 4 and item 5 above apply. The owner must choose one of two options before step A:
+Previews and local tests must never point at the production store. A separate non-production store is prepared in `docs/v3/gateway-store-nonprod.md` (not provisioned). Without these variables the runtime is still safe (fail closed), but item 4 and item 5 above apply. The owner must choose one of two options before step A:
 
 - **Provision the store first** (recommended). External discovery and bearer identity keep working.
 - **Accept degraded external discovery.** Record that decision, and confirm with client owners that no client sends a bearer token.
