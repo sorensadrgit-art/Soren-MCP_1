@@ -1,0 +1,1104 @@
+{
+  "schemaVersion": 1,
+  "note": "Approved workflow recipes. Steps are advisory; SOREN executes nothing.",
+  "items": [
+    {
+      "version": "1.0.0",
+      "approved": true,
+      "reviewer": "soren-v3-maintainer (agent-authored 2026-10-22; human review pending)",
+      "observedTests": [],
+      "appliesTo": {
+        "react": ">=19.0.0 <20.0.0",
+        "@react-three/fiber": ">=9.0.0 <10.0.0",
+        "@react-three/drei": ">=10.0.0 <11.0.0",
+        "three": ">=0.170.0 <0.200.0"
+      },
+      "id": "cinematic-portfolio",
+      "title": "Cinematic interactive 3D portfolio",
+      "profile": "immersive-web",
+      "summary": "Nine-step workflow from dependency audit to draft pull request for a React Three Fiber portfolio with PBR assets, GSAP choreography and browser-verified performance.",
+      "steps": [
+        {
+          "id": "architecture",
+          "title": "Inspect architecture, dependencies and installed versions",
+          "capability": "repo-analysis",
+          "skills": [
+            "agent-capability-navigation"
+          ],
+          "integrations": [
+            "serena"
+          ],
+          "knowledgeIds": [
+            "r3f-v9",
+            "nextjs-16",
+            "react-19"
+          ],
+          "actor": "agent-client",
+          "permission": "read",
+          "requiresHumanApproval": false,
+          "verification": "Lockfile versions for react, three, fiber, drei and gsap recorded; incompatible pairs flagged.",
+          "outputs": [
+            "dependency report",
+            "version matrix"
+          ]
+        },
+        {
+          "id": "docs",
+          "title": "Retrieve version-matched documentation",
+          "capability": "docs-retrieval",
+          "skills": [
+            "react-three-fiber"
+          ],
+          "integrations": [
+            "context7"
+          ],
+          "knowledgeIds": [
+            "r3f-v9",
+            "drei-10",
+            "gsap-react",
+            "threejs-manual"
+          ],
+          "actor": "agent-client",
+          "permission": "read",
+          "requiresHumanApproval": false,
+          "verification": "Every API used is cited from docs matching the installed major version.",
+          "outputs": [
+            "cited doc list"
+          ]
+        },
+        {
+          "id": "assets",
+          "title": "Author or source 3D assets in Blender or Spline",
+          "capability": "asset-authoring",
+          "skills": [
+            "blender-to-r3f",
+            "spline-to-web"
+          ],
+          "integrations": [
+            "blender-lab",
+            "spline"
+          ],
+          "knowledgeIds": [
+            "blender-gltf-io",
+            "spline-mcp",
+            "blender-lab-mcp"
+          ],
+          "actor": "agent-client-with-human-review",
+          "permission": "isolated-vm",
+          "requiresHumanApproval": true,
+          "verification": "Asset license recorded; Blender Lab used only in an isolated VM; Spline edits confirmed by a human.",
+          "outputs": [
+            "source asset",
+            "license note"
+          ]
+        },
+        {
+          "id": "optimize",
+          "title": "Optimize and validate GLB assets",
+          "capability": "asset-optimization",
+          "skills": [
+            "gltf-asset-pipeline"
+          ],
+          "integrations": [
+            "gltf-transform-cli"
+          ],
+          "knowledgeIds": [
+            "gltf-transform",
+            "gltf-validator",
+            "meshoptimizer",
+            "ktx2-basis"
+          ],
+          "actor": "agent-client",
+          "permission": "local-process",
+          "requiresHumanApproval": false,
+          "verification": "glTF-Validator reports zero errors; before/after size and draw-call counts recorded.",
+          "outputs": [
+            "optimized GLB",
+            "validator report",
+            "size table"
+          ]
+        },
+        {
+          "id": "scene",
+          "title": "Build the R3F scene, PBR materials and lighting",
+          "capability": "3d-rendering",
+          "skills": [
+            "react-three-fiber",
+            "shader-material-lab",
+            "threejs-production"
+          ],
+          "integrations": [],
+          "knowledgeIds": [
+            "r3f-v9",
+            "drei-10",
+            "threejs-color-management"
+          ],
+          "actor": "agent-client",
+          "permission": "local-edit",
+          "requiresHumanApproval": false,
+          "verification": "Scene renders without console errors; color spaces and tone mapping set deliberately; resources disposed on unmount.",
+          "outputs": [
+            "scene components"
+          ]
+        },
+        {
+          "id": "motion",
+          "title": "Choreograph GSAP ScrollTrigger motion with reduced-motion variants",
+          "capability": "motion-choreography",
+          "skills": [
+            "gsap-motion",
+            "motion-systems",
+            "accessibility"
+          ],
+          "integrations": [],
+          "knowledgeIds": [
+            "gsap-scrolltrigger",
+            "gsap-react",
+            "reduced-motion"
+          ],
+          "actor": "agent-client",
+          "permission": "local-edit",
+          "requiresHumanApproval": false,
+          "verification": "Timelines revert on unmount; prefers-reduced-motion path verified; keyboard path to every control.",
+          "outputs": [
+            "motion timeline",
+            "reduced-motion variant"
+          ]
+        },
+        {
+          "id": "browser",
+          "title": "Verify in a real browser: screenshots, interactions, console and accessibility",
+          "capability": "browser-verification",
+          "skills": [
+            "playwright-browser-qa",
+            "graphics-performance-qa"
+          ],
+          "integrations": [
+            "playwright",
+            "chrome-devtools"
+          ],
+          "knowledgeIds": [
+            "playwright-mcp",
+            "chrome-devtools-mcp",
+            "wcag-22"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Screenshots at 1440, 768 and 390 px; zero console errors; WebGL fallback and keyboard checks pass.",
+          "outputs": [
+            "screenshots",
+            "console log",
+            "a11y report"
+          ]
+        },
+        {
+          "id": "performance",
+          "title": "Measure performance budgets and fix regressions",
+          "capability": "performance-budget",
+          "skills": [
+            "graphics-performance-qa"
+          ],
+          "integrations": [
+            "chrome-devtools"
+          ],
+          "knowledgeIds": [
+            "r3f-performance",
+            "threejs-disposal",
+            "webgl-best-practices"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "FPS, draw calls, triangles, GPU memory and load timing measured and labeled GPU or SwiftShader.",
+          "outputs": [
+            "metrics table",
+            "trace"
+          ]
+        },
+        {
+          "id": "pull-request",
+          "title": "Open a draft pull request with evidence; preview deploy only after approval",
+          "capability": "delivery",
+          "skills": [
+            "agentic-coding",
+            "soren-universal-deployment"
+          ],
+          "integrations": [
+            "github",
+            "vercel"
+          ],
+          "knowledgeIds": [
+            "github-mcp",
+            "vercel-mcp"
+          ],
+          "actor": "agent-client-with-human-review",
+          "permission": "repo-write",
+          "requiresHumanApproval": true,
+          "verification": "Draft PR lists tests, metrics and rollback; no merge or production deploy without explicit approval.",
+          "outputs": [
+            "draft pull request",
+            "rollback note"
+          ]
+        }
+      ],
+      "verificationPlan": [
+        "Typecheck and unit tests pass.",
+        "glTF-Validator: zero errors on shipped assets.",
+        "Playwright screenshots at 1440/768/390 px with zero console errors.",
+        "Reduced-motion and keyboard navigation verified.",
+        "WebGL-unavailable fallback renders a static poster.",
+        "Performance metrics recorded with renderer label."
+      ],
+      "fallbacks": [
+        "No Blender: use licensed GLB assets or procedural geometry.",
+        "No Spline account: skip Spline and use R3F primitives.",
+        "No WebGPU: WebGL2 renderer; no WebGL: static poster.",
+        "No Chrome DevTools MCP: Playwright plus in-page renderer.info sampling."
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "approved": true,
+      "reviewer": "soren-v3-maintainer (agent-authored 2026-10-22; human review pending)",
+      "observedTests": [],
+      "appliesTo": {},
+      "id": "knowledge-retrieval",
+      "title": "Version-matched knowledge retrieval",
+      "profile": "knowledge",
+      "summary": "Resolve installed versions, search SOREN reviewed references, then fetch exact APIs from Context7 or canonical docs with provenance.",
+      "steps": [
+        {
+          "id": "versions",
+          "title": "Read installed versions from the lockfile",
+          "capability": "repo-analysis",
+          "skills": [
+            "agent-capability-navigation"
+          ],
+          "integrations": [],
+          "knowledgeIds": [],
+          "actor": "agent-client",
+          "permission": "read",
+          "requiresHumanApproval": false,
+          "verification": "Each relevant package has a concrete installed version.",
+          "outputs": [
+            "version list"
+          ]
+        },
+        {
+          "id": "catalog",
+          "title": "Search SOREN reviewed knowledge for primary and complementary sources",
+          "capability": "docs-retrieval",
+          "skills": [
+            "agent-capability-navigation"
+          ],
+          "integrations": [],
+          "knowledgeIds": [
+            "context7-mcp",
+            "mcp-spec"
+          ],
+          "actor": "agent-client",
+          "permission": "read",
+          "requiresHumanApproval": false,
+          "verification": "At most three sources returned with URL, hash and freshness.",
+          "outputs": [
+            "source shortlist"
+          ]
+        },
+        {
+          "id": "exact-api",
+          "title": "Fetch exact APIs from Context7 or the canonical source",
+          "capability": "docs-retrieval",
+          "skills": [
+            "agent-capability-navigation"
+          ],
+          "integrations": [
+            "context7"
+          ],
+          "knowledgeIds": [
+            "context7-mcp"
+          ],
+          "actor": "agent-client",
+          "permission": "read",
+          "requiresHumanApproval": false,
+          "verification": "Retrieved snippet matches the installed major version.",
+          "outputs": [
+            "cited snippets"
+          ]
+        },
+        {
+          "id": "navigate",
+          "title": "Navigate the codebase semantically when it is large",
+          "capability": "code-navigation",
+          "skills": [
+            "agent-capability-navigation"
+          ],
+          "integrations": [
+            "serena"
+          ],
+          "knowledgeIds": [
+            "serena-mcp"
+          ],
+          "actor": "agent-client",
+          "permission": "local-process",
+          "requiresHumanApproval": false,
+          "verification": "Symbols located with references before edits.",
+          "outputs": [
+            "symbol map"
+          ]
+        },
+        {
+          "id": "fallback-research",
+          "title": "Research uncovered topics on public pages only if needed",
+          "capability": "research",
+          "skills": [
+            "agent-capability-navigation"
+          ],
+          "integrations": [
+            "firecrawl"
+          ],
+          "knowledgeIds": [
+            "firecrawl-mcp"
+          ],
+          "actor": "agent-client",
+          "permission": "read",
+          "requiresHumanApproval": false,
+          "verification": "Only public pages; credits approved by the user.",
+          "outputs": [
+            "research notes"
+          ]
+        }
+      ],
+      "verificationPlan": [
+        "Every cited source has an https URL and verification date.",
+        "Installed versions satisfy each source range or the mismatch is reported."
+      ],
+      "fallbacks": [
+        "No Context7: read bundled docs (for example node_modules/next/dist/docs) or the canonical URL.",
+        "No Serena: ripgrep plus the editor language server."
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "approved": true,
+      "reviewer": "soren-v3-maintainer (agent-authored 2026-10-22; human review pending)",
+      "observedTests": [],
+      "appliesTo": {
+        "next": ">=16.0.0 <17.0.0",
+        "react": ">=19.0.0 <20.0.0"
+      },
+      "id": "nextjs-debug",
+      "title": "Next.js 16 runtime debugging",
+      "profile": "next-app",
+      "summary": "Reproduce, diagnose and fix Next.js 16 runtime or build errors with the dev server MCP endpoint and version-matched docs, then verify in a browser and a preview build.",
+      "steps": [
+        {
+          "id": "reproduce",
+          "title": "Reproduce with next dev and capture the error",
+          "capability": "framework-runtime",
+          "skills": [
+            "nextjs-runtime-engineering"
+          ],
+          "integrations": [
+            "next-devtools"
+          ],
+          "knowledgeIds": [
+            "next-devtools-mcp",
+            "nextjs-16"
+          ],
+          "actor": "agent-client",
+          "permission": "local-process",
+          "requiresHumanApproval": false,
+          "verification": "Error reproduced and captured from the dev server.",
+          "outputs": [
+            "error report"
+          ]
+        },
+        {
+          "id": "docs",
+          "title": "Read version-matched Next.js docs for the failing API",
+          "capability": "docs-retrieval",
+          "skills": [
+            "nextjs-runtime-engineering"
+          ],
+          "integrations": [
+            "context7"
+          ],
+          "knowledgeIds": [
+            "nextjs-16",
+            "nextjs-16-upgrade"
+          ],
+          "actor": "agent-client",
+          "permission": "read",
+          "requiresHumanApproval": false,
+          "verification": "Fix references docs for the installed Next.js major.",
+          "outputs": [
+            "cited docs"
+          ]
+        },
+        {
+          "id": "fix",
+          "title": "Apply the smallest fix with a regression test",
+          "capability": "build-diagnostics",
+          "skills": [
+            "nextjs-runtime-engineering",
+            "agentic-coding"
+          ],
+          "integrations": [
+            "serena"
+          ],
+          "knowledgeIds": [
+            "nextjs-16"
+          ],
+          "actor": "agent-client",
+          "permission": "local-edit",
+          "requiresHumanApproval": false,
+          "verification": "Regression test fails before and passes after the fix.",
+          "outputs": [
+            "patch",
+            "test"
+          ]
+        },
+        {
+          "id": "browser",
+          "title": "Verify the route in a real browser",
+          "capability": "browser-qa",
+          "skills": [
+            "playwright-browser-qa"
+          ],
+          "integrations": [
+            "playwright"
+          ],
+          "knowledgeIds": [
+            "playwright-mcp"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "No hydration or console errors on the affected routes.",
+          "outputs": [
+            "screenshots",
+            "console log"
+          ]
+        },
+        {
+          "id": "build",
+          "title": "Run next build and a preview deployment only after approval",
+          "capability": "deployment-preview",
+          "skills": [
+            "soren-universal-deployment"
+          ],
+          "integrations": [
+            "vercel"
+          ],
+          "knowledgeIds": [
+            "vercel-mcp"
+          ],
+          "actor": "agent-client-with-human-review",
+          "permission": "publish",
+          "requiresHumanApproval": true,
+          "verification": "Build passes locally; preview deploy approved by a human; production untouched.",
+          "outputs": [
+            "build log",
+            "preview URL"
+          ]
+        }
+      ],
+      "verificationPlan": [
+        "next build passes.",
+        "Affected routes render without hydration errors.",
+        "Regression test added."
+      ],
+      "fallbacks": [
+        "No next-devtools: read terminal output and the browser console.",
+        "No Vercel MCP: use the Vercel dashboard or CLI with human approval."
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "approved": true,
+      "reviewer": "soren-v3-maintainer (agent-authored 2026-10-22; human review pending)",
+      "observedTests": [],
+      "appliesTo": {},
+      "id": "web-qa-pass",
+      "title": "Web UI and accessibility QA pass",
+      "profile": "web-qa",
+      "summary": "Exercise key flows in an isolated browser, audit WCAG 2.2 AA basics and record evidence at three viewports.",
+      "steps": [
+        {
+          "id": "flows",
+          "title": "List critical user flows and states",
+          "capability": "qa-planning",
+          "skills": [
+            "playwright-browser-qa"
+          ],
+          "integrations": [],
+          "knowledgeIds": [
+            "playwright-mcp"
+          ],
+          "actor": "agent-client",
+          "permission": "read",
+          "requiresHumanApproval": false,
+          "verification": "Flows include loading, empty, error and success states.",
+          "outputs": [
+            "flow list"
+          ]
+        },
+        {
+          "id": "drive",
+          "title": "Drive flows with accessibility snapshots",
+          "capability": "browser-qa",
+          "skills": [
+            "playwright-browser-qa"
+          ],
+          "integrations": [
+            "playwright"
+          ],
+          "knowledgeIds": [
+            "playwright-mcp"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Each flow completes using roles and names, not coordinates.",
+          "outputs": [
+            "snapshots"
+          ]
+        },
+        {
+          "id": "a11y",
+          "title": "Audit keyboard, focus, names and contrast",
+          "capability": "accessibility-audit",
+          "skills": [
+            "accessibility"
+          ],
+          "integrations": [
+            "playwright"
+          ],
+          "knowledgeIds": [
+            "wcag-22",
+            "reduced-motion"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Keyboard reaches every control with visible focus; no unlabeled controls.",
+          "outputs": [
+            "a11y findings"
+          ]
+        },
+        {
+          "id": "responsive",
+          "title": "Capture 1440, 768 and 390 px screenshots",
+          "capability": "visual-evidence",
+          "skills": [
+            "playwright-browser-qa"
+          ],
+          "integrations": [
+            "playwright"
+          ],
+          "knowledgeIds": [],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "No horizontal overflow at any viewport.",
+          "outputs": [
+            "screenshots"
+          ]
+        },
+        {
+          "id": "report",
+          "title": "Report findings with evidence and fixes",
+          "capability": "reporting",
+          "skills": [
+            "agentic-design-to-code"
+          ],
+          "integrations": [],
+          "knowledgeIds": [],
+          "actor": "agent-client",
+          "permission": "read",
+          "requiresHumanApproval": false,
+          "verification": "Every finding cites a screenshot, snapshot or console line.",
+          "outputs": [
+            "QA report"
+          ]
+        }
+      ],
+      "verificationPlan": [
+        "Zero console errors on tested pages.",
+        "WCAG 2.2 AA keyboard and focus checks pass."
+      ],
+      "fallbacks": [
+        "No Playwright MCP: run @playwright/test locally."
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "approved": true,
+      "reviewer": "soren-v3-maintainer (agent-authored 2026-10-22; human review pending)",
+      "observedTests": [],
+      "appliesTo": {},
+      "id": "graphics-qa-pass",
+      "title": "3D scene browser QA",
+      "profile": "graphics-qa",
+      "summary": "Load a WebGL/WebGPU scene in Chromium, verify rendering, interactions, fallbacks and console output, and capture labeled screenshots.",
+      "steps": [
+        {
+          "id": "serve",
+          "title": "Serve a production build locally",
+          "capability": "local-preview",
+          "skills": [
+            "graphics-performance-qa"
+          ],
+          "integrations": [],
+          "knowledgeIds": [],
+          "actor": "agent-client",
+          "permission": "local-process",
+          "requiresHumanApproval": false,
+          "verification": "Production build served on localhost.",
+          "outputs": [
+            "preview URL"
+          ]
+        },
+        {
+          "id": "render",
+          "title": "Confirm the canvas renders and record renderer info",
+          "capability": "graphics-metrics",
+          "skills": [
+            "graphics-performance-qa"
+          ],
+          "integrations": [
+            "playwright"
+          ],
+          "knowledgeIds": [
+            "r3f-performance"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Non-blank canvas pixels and GPU/SwiftShader renderer string recorded.",
+          "outputs": [
+            "renderer label"
+          ]
+        },
+        {
+          "id": "interact",
+          "title": "Exercise pointer, keyboard and scroll interactions",
+          "capability": "browser-qa",
+          "skills": [
+            "playwright-browser-qa"
+          ],
+          "integrations": [
+            "playwright"
+          ],
+          "knowledgeIds": [
+            "playwright-mcp"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Interactions update the scene; keyboard path works.",
+          "outputs": [
+            "interaction log"
+          ]
+        },
+        {
+          "id": "fallback",
+          "title": "Verify WebGL-unavailable and reduced-motion paths",
+          "capability": "fallbacks",
+          "skills": [
+            "graphics-performance-qa"
+          ],
+          "integrations": [
+            "playwright"
+          ],
+          "knowledgeIds": [
+            "reduced-motion",
+            "webgl-api"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Fallback poster shows when WebGL is disabled; reduced motion stops camera moves.",
+          "outputs": [
+            "fallback screenshots"
+          ]
+        },
+        {
+          "id": "evidence",
+          "title": "Capture screenshots at three viewports and the console log",
+          "capability": "visual-evidence",
+          "skills": [
+            "playwright-browser-qa"
+          ],
+          "integrations": [
+            "playwright",
+            "chrome-devtools"
+          ],
+          "knowledgeIds": [
+            "chrome-devtools-mcp"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Screenshots and zero console errors recorded.",
+          "outputs": [
+            "screenshots",
+            "console log"
+          ]
+        }
+      ],
+      "verificationPlan": [
+        "Canvas renders non-blank pixels.",
+        "Fallback and reduced-motion paths verified.",
+        "Zero console errors."
+      ],
+      "fallbacks": [
+        "Headless without GPU: label SwiftShader and avoid absolute FPS claims."
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "approved": true,
+      "reviewer": "soren-v3-maintainer (agent-authored 2026-10-22; human review pending)",
+      "observedTests": [],
+      "appliesTo": {
+        "@gltf-transform/core": ">=4.0.0 <5.0.0"
+      },
+      "id": "blender-glb-pipeline",
+      "title": "Blender to GLB to R3F pipeline",
+      "profile": "blender-to-web",
+      "summary": "Prepare and export a Blender asset, optimize and validate the GLB, then load it in R3F with decoders and disposal.",
+      "steps": [
+        {
+          "id": "prepare",
+          "title": "Prepare scale, transforms and materials in Blender",
+          "capability": "asset-authoring",
+          "skills": [
+            "blender-to-r3f"
+          ],
+          "integrations": [],
+          "knowledgeIds": [
+            "blender-gltf-io"
+          ],
+          "actor": "agent-client",
+          "permission": "local-edit",
+          "requiresHumanApproval": false,
+          "verification": "Transforms applied; materials use Principled BSDF or baked textures.",
+          "outputs": [
+            "prepared .blend"
+          ]
+        },
+        {
+          "id": "export",
+          "title": "Export GLB with the Khronos exporter (scripted or isolated MCP)",
+          "capability": "asset-export",
+          "skills": [
+            "blender-to-r3f"
+          ],
+          "integrations": [
+            "blender-lab"
+          ],
+          "knowledgeIds": [
+            "blender-gltf-io",
+            "blender-python-api",
+            "blender-lab-mcp"
+          ],
+          "actor": "agent-client-with-human-review",
+          "permission": "isolated-vm",
+          "requiresHumanApproval": true,
+          "verification": "GLB exported; MCP use limited to an isolated VM with human review.",
+          "outputs": [
+            "source GLB"
+          ]
+        },
+        {
+          "id": "optimize",
+          "title": "Optimize to a new file with glTF Transform",
+          "capability": "asset-optimization",
+          "skills": [
+            "gltf-asset-pipeline"
+          ],
+          "integrations": [
+            "gltf-transform-cli"
+          ],
+          "knowledgeIds": [
+            "gltf-transform",
+            "meshoptimizer",
+            "ktx2-basis"
+          ],
+          "actor": "agent-client",
+          "permission": "local-process",
+          "requiresHumanApproval": false,
+          "verification": "Output written to a new file; size reduction recorded.",
+          "outputs": [
+            "optimized GLB"
+          ]
+        },
+        {
+          "id": "validate",
+          "title": "Validate with Khronos glTF-Validator",
+          "capability": "asset-validation",
+          "skills": [
+            "gltf-asset-pipeline"
+          ],
+          "integrations": [
+            "gltf-transform-cli"
+          ],
+          "knowledgeIds": [
+            "gltf-validator",
+            "gltf-spec"
+          ],
+          "actor": "agent-client",
+          "permission": "local-process",
+          "requiresHumanApproval": false,
+          "verification": "Zero validator errors.",
+          "outputs": [
+            "validator report"
+          ]
+        },
+        {
+          "id": "load",
+          "title": "Load in R3F with decoders and dispose on unmount",
+          "capability": "asset-loading",
+          "skills": [
+            "react-three-fiber",
+            "gltf-asset-pipeline"
+          ],
+          "integrations": [],
+          "knowledgeIds": [
+            "drei-10",
+            "threejs-docs",
+            "threejs-disposal"
+          ],
+          "actor": "agent-client",
+          "permission": "local-edit",
+          "requiresHumanApproval": false,
+          "verification": "Scene loads; renderer.info.memory returns to baseline after unmount.",
+          "outputs": [
+            "loader component"
+          ]
+        }
+      ],
+      "verificationPlan": [
+        "Validator zero errors.",
+        "Before/after size and draw-call table recorded.",
+        "Memory returns to baseline after unmount."
+      ],
+      "fallbacks": [
+        "No Blender: generate or source a licensed GLB.",
+        "No KTX2 tooling: WebP textures with a size budget."
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "approved": true,
+      "reviewer": "soren-v3-maintainer (agent-authored 2026-10-22; human review pending)",
+      "observedTests": [],
+      "appliesTo": {
+        "@splinetool/react-spline": ">=4.0.0 <5.0.0"
+      },
+      "id": "spline-embed",
+      "title": "Spline scene embed",
+      "profile": "spline-to-web",
+      "summary": "Create or edit a Spline scene, embed it lazily with a poster fallback and reduced-motion handling, or export GLB for R3F.",
+      "steps": [
+        {
+          "id": "design",
+          "title": "Create or edit the scene with the Spline MCP after OAuth",
+          "capability": "3d-design",
+          "skills": [
+            "spline-to-web"
+          ],
+          "integrations": [
+            "spline"
+          ],
+          "knowledgeIds": [
+            "spline-mcp"
+          ],
+          "actor": "agent-client-with-human-review",
+          "permission": "oauth",
+          "requiresHumanApproval": true,
+          "verification": "Target Spline file confirmed by a human before edits.",
+          "outputs": [
+            "Spline file"
+          ]
+        },
+        {
+          "id": "embed",
+          "title": "Embed with @splinetool/react-spline, lazy loaded",
+          "capability": "scene-embedding",
+          "skills": [
+            "spline-to-web"
+          ],
+          "integrations": [],
+          "knowledgeIds": [
+            "spline-react"
+          ],
+          "actor": "agent-client",
+          "permission": "local-edit",
+          "requiresHumanApproval": false,
+          "verification": "Scene loads after first paint without blocking interaction.",
+          "outputs": [
+            "embed component"
+          ]
+        },
+        {
+          "id": "fallback",
+          "title": "Add poster fallback and reduced-motion handling",
+          "capability": "fallbacks",
+          "skills": [
+            "spline-to-web",
+            "accessibility"
+          ],
+          "integrations": [],
+          "knowledgeIds": [
+            "reduced-motion"
+          ],
+          "actor": "agent-client",
+          "permission": "local-edit",
+          "requiresHumanApproval": false,
+          "verification": "Poster shows on failure; reduced motion pauses animation.",
+          "outputs": [
+            "fallback"
+          ]
+        },
+        {
+          "id": "verify",
+          "title": "Verify in a browser at three viewports",
+          "capability": "browser-qa",
+          "skills": [
+            "playwright-browser-qa"
+          ],
+          "integrations": [
+            "playwright"
+          ],
+          "knowledgeIds": [
+            "playwright-mcp"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Screenshots and zero console errors at 1440/768/390 px.",
+          "outputs": [
+            "screenshots"
+          ]
+        }
+      ],
+      "verificationPlan": [
+        "Lazy load verified.",
+        "Fallback and reduced-motion verified."
+      ],
+      "fallbacks": [
+        "Heavy scene: export GLB from Spline and render with R3F instead."
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "approved": true,
+      "reviewer": "soren-v3-maintainer (agent-authored 2026-10-22; human review pending)",
+      "observedTests": [],
+      "appliesTo": {},
+      "id": "debug-3d-performance",
+      "title": "Debug 3D rendering performance",
+      "profile": "debug-3d-performance",
+      "summary": "Reproduce a slow or leaking scene, measure with traces and renderer.info, fix the top cost, and re-measure under the same conditions.",
+      "steps": [
+        {
+          "id": "baseline",
+          "title": "Record a baseline on a fixed camera path",
+          "capability": "performance-profiling",
+          "skills": [
+            "graphics-performance-qa"
+          ],
+          "integrations": [
+            "chrome-devtools"
+          ],
+          "knowledgeIds": [
+            "chrome-devtools-mcp"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Baseline FPS, frame time, draw calls and memory recorded with renderer label.",
+          "outputs": [
+            "baseline metrics"
+          ]
+        },
+        {
+          "id": "diagnose",
+          "title": "Identify the top cost: draw calls, overdraw, shaders or leaks",
+          "capability": "performance-profiling",
+          "skills": [
+            "graphics-performance-qa",
+            "threejs-production"
+          ],
+          "integrations": [
+            "chrome-devtools"
+          ],
+          "knowledgeIds": [
+            "r3f-pitfalls",
+            "webgl-best-practices"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Top cost identified from a trace, not a guess.",
+          "outputs": [
+            "diagnosis"
+          ]
+        },
+        {
+          "id": "fix",
+          "title": "Apply a targeted fix (instancing, on-demand frameloop, disposal)",
+          "capability": "render-optimization",
+          "skills": [
+            "react-three-fiber",
+            "threejs-production"
+          ],
+          "integrations": [],
+          "knowledgeIds": [
+            "r3f-performance",
+            "threejs-disposal"
+          ],
+          "actor": "agent-client",
+          "permission": "local-edit",
+          "requiresHumanApproval": false,
+          "verification": "Fix limited to the identified cost.",
+          "outputs": [
+            "patch"
+          ]
+        },
+        {
+          "id": "remeasure",
+          "title": "Re-measure under identical conditions",
+          "capability": "performance-profiling",
+          "skills": [
+            "graphics-performance-qa"
+          ],
+          "integrations": [
+            "chrome-devtools",
+            "playwright"
+          ],
+          "knowledgeIds": [
+            "r3f-performance"
+          ],
+          "actor": "agent-client",
+          "permission": "browser",
+          "requiresHumanApproval": false,
+          "verification": "Improvement shown against the baseline with the same renderer label.",
+          "outputs": [
+            "comparison table"
+          ]
+        }
+      ],
+      "verificationPlan": [
+        "Same camera path and viewport for before/after.",
+        "Renderer label recorded on every measurement."
+      ],
+      "fallbacks": [
+        "No Chrome DevTools MCP: in-page requestAnimationFrame sampling plus renderer.info."
+      ]
+    }
+  ]
+}

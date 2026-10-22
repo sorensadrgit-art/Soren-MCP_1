@@ -1,0 +1,248 @@
+file:///C:/Users/soren/Projects/Soren-MCP_1-v3/tests/contracts/v3-legacy-golden.test.mjs:5
+import {V3_TOOL_NAMES} from '../../lib/client-contract.mjs';
+        ^^^^^^^^^^^^^
+SyntaxError: The requested module '../../lib/client-contract.mjs' does not provide an export named 'V3_TOOL_NAMES'
+    at #asyncInstantiate (node:internal/modules/esm/module_job:327:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:431:5)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.19.0
+✖ tests\contracts\v3-legacy-golden.test.mjs (127.5018ms)
+✖ every V3 tool answers over the real MCP route (0.8578ms)
+✖ V3 resources are readable JSON with provenance (0.1046ms)
+✔ V3 tools reject traversal, unknown clients, empty tasks and oversized limits (0.1341ms)
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\soren\Projects\Soren-MCP_1-v3\lib\integrations\catalog.mjs' imported from C:\Users\soren\Projects\Soren-MCP_1-v3\tests\integrations\catalog.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/soren/Projects/Soren-MCP_1-v3/lib/integrations/catalog.mjs'
+}
+
+Node.js v24.19.0
+✖ tests\integrations\catalog.test.mjs (105.7459ms)
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\soren\Projects\Soren-MCP_1-v3\lib\integrations\plan.mjs' imported from C:\Users\soren\Projects\Soren-MCP_1-v3\tests\integrations\plan.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/soren/Projects/Soren-MCP_1-v3/lib/integrations/plan.mjs'
+}
+
+Node.js v24.19.0
+✖ tests\integrations\plan.test.mjs (95.7073ms)
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\soren\Projects\Soren-MCP_1-v3\lib\knowledge\catalog.mjs' imported from C:\Users\soren\Projects\Soren-MCP_1-v3\tests\knowledge\catalog.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/soren/Projects/Soren-MCP_1-v3/lib/knowledge/catalog.mjs'
+}
+
+Node.js v24.19.0
+✖ tests\knowledge\catalog.test.mjs (89.9295ms)
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\soren\Projects\Soren-MCP_1-v3\lib\knowledge\search.mjs' imported from C:\Users\soren\Projects\Soren-MCP_1-v3\tests\knowledge\search.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/soren/Projects/Soren-MCP_1-v3/lib/knowledge/search.mjs'
+}
+
+Node.js v24.19.0
+✖ tests\knowledge\search.test.mjs (93.5119ms)
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\soren\Projects\Soren-MCP_1-v3\lib\v3\semver.mjs' imported from C:\Users\soren\Projects\Soren-MCP_1-v3\tests\knowledge\semver.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/soren/Projects/Soren-MCP_1-v3/lib/v3/semver.mjs'
+}
+
+Node.js v24.19.0
+✖ tests\knowledge\semver.test.mjs (98.814ms)
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\soren\Projects\Soren-MCP_1-v3\lib\recipes\catalog.mjs' imported from C:\Users\soren\Projects\Soren-MCP_1-v3\tests\recipes\catalog.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/soren/Projects/Soren-MCP_1-v3/lib/recipes/catalog.mjs'
+}
+
+Node.js v24.19.0
+✖ tests\recipes\catalog.test.mjs (104.7434ms)
+✖ frozen V3 gold set: >=90% primary skill, >=95% top-3, >=90% profile, trivial bypass (21.4261ms)
+node:internal/modules/esm/resolve:271
+    throw new ERR_MODULE_NOT_FOUND(
+          ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'C:\Users\soren\Projects\Soren-MCP_1-v3\lib\v3\flags.mjs' imported from C:\Users\soren\Projects\Soren-MCP_1-v3\tests\security\v3-public-bounds.test.mjs
+    at finalizeResolution (node:internal/modules/esm/resolve:271:11)
+    at moduleResolve (node:internal/modules/esm/resolve:865:10)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:701:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:721:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:759:56)
+    at #resolve (node:internal/modules/esm/loader:683:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:603:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33)
+    at ModuleJob.link (node:internal/modules/esm/module_job:253:17) {
+  code: 'ERR_MODULE_NOT_FOUND',
+  url: 'file:///C:/Users/soren/Projects/Soren-MCP_1-v3/lib/v3/flags.mjs'
+}
+
+Node.js v24.19.0
+✖ tests\security\v3-public-bounds.test.mjs (92.0307ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 1
+ℹ fail 11
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 641.6103
+
+✖ failing tests:
+
+test at tests\contracts\v3-legacy-golden.test.mjs:1:1
+✖ tests\contracts\v3-legacy-golden.test.mjs (127.5018ms)
+  'test failed'
+
+test at tests\contracts\v3-tools.test.mjs:21:1
+✖ every V3 tool answers over the real MCP route (0.8578ms)
+  AssertionError [ERR_ASSERTION]: {"jsonrpc":"2.0","id":2,"error":{"code":-32602,"message":"Tool list_capability_profiles not found"}}
+      at TestContext.<anonymous> (file:///C:/Users/soren/Projects/Soren-MCP_1-v3/tests/contracts/v3-tools.test.mjs:24:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\contracts\v3-tools.test.mjs:45:1
+✖ V3 resources are readable JSON with provenance (0.1046ms)
+  TypeError: Cannot read properties of undefined (reading 'contents')
+      at TestContext.<anonymous> (file:///C:/Users/soren/Projects/Soren-MCP_1-v3/tests/contracts/v3-tools.test.mjs:46:46)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests\integrations\catalog.test.mjs:1:1
+✖ tests\integrations\catalog.test.mjs (105.7459ms)
+  'test failed'
+
+test at tests\integrations\plan.test.mjs:1:1
+✖ tests\integrations\plan.test.mjs (95.7073ms)
+  'test failed'
+
+test at tests\knowledge\catalog.test.mjs:1:1
+✖ tests\knowledge\catalog.test.mjs (89.9295ms)
+  'test failed'
+
+test at tests\knowledge\search.test.mjs:1:1
+✖ tests\knowledge\search.test.mjs (93.5119ms)
+  'test failed'
+
+test at tests\knowledge\semver.test.mjs:1:1
+✖ tests\knowledge\semver.test.mjs (98.814ms)
+  'test failed'
+
+test at tests\recipes\catalog.test.mjs:1:1
+✖ tests\recipes\catalog.test.mjs (104.7434ms)
+  'test failed'
+
+test at tests\routing\evaluation-v3.test.mjs:5:1
+✖ frozen V3 gold set: >=90% primary skill, >=95% top-3, >=90% profile, trivial bypass (21.4261ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(r.plannerAvailable)
+  
+      at TestContext.<anonymous> (file:///C:/Users/soren/Projects/Soren-MCP_1-v3/tests/routing/evaluation-v3.test.mjs:8:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\security\v3-public-bounds.test.mjs:1:1
+✖ tests\security\v3-public-bounds.test.mjs (92.0307ms)
+  'test failed'

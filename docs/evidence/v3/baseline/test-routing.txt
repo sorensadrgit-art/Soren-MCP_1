@@ -1,0 +1,25 @@
+npm notice run soren-shared-mcp-skills@1.0.0 test:routing
+npm notice run node --test tests/routing/*.test.mjs
+✔ frozen 60-case routing regression preserves choices, bypasses and concurrency (92.8536ms)
+✔ same-origin browser calls use the preserved Host through Next URL normalization (1.5955ms)
+✔ request size enforcement handles declared and streaming bodies (2.8571ms)
+✔ a missing durable budget cannot trigger provider traffic (0.3879ms)
+✔ shared quota rejects after cache lookup and coalesces identical concurrent public queries (14.7852ms)
+✔ invalid supplied authorization cannot fall back to anonymous or cached results (0.6246ms)
+✔ 401 provider outcomes are never cached (0.207ms)
+✔ a durable unexpired cache value uses its actual SQL RPC shape without claiming quota (0.1511ms)
+✔ MCP boundary validates supplied identity even for bundled or keyword-free calls (0.3924ms)
+✔ anonymous quota identity never trusts a caller supplied generic forwarding header (0.3393ms)
+✔ canonical identity binds repository, nested path, exact commit and bytes (1.0879ms)
+✔ unresolved equal names remain separate provisional identities (0.1693ms)
+✔ provider timeouts, oversized chunked responses, malformed metadata and redirects stay isolated (47.5094ms)
+✔ instruction streams enforce 60000 bytes before buffering (1.1276ms)
+✔ opt-in auto avoids remote calls for strong approved coverage and honors explicit choices (7.9933ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 174.6452

@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://soren-shared-mcp-skills.vercel.app/schemas/recipe.schema.json",
+  "title": "SOREN approved workflow recipe",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "version",
+    "profile",
+    "summary",
+    "appliesTo",
+    "steps",
+    "verificationPlan",
+    "fallbacks",
+    "approved",
+    "reviewer",
+    "observedTests"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "profile": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "appliesTo": {
+      "type": "object",
+      "maxProperties": 12,
+      "propertyNames": {
+        "pattern": "^(@[a-z0-9-~][a-z0-9-._~]*/)?[a-z0-9-~][a-z0-9-._~]*$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 80
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "capability",
+          "skills",
+          "integrations",
+          "knowledgeIds",
+          "actor",
+          "permission",
+          "requiresHumanApproval",
+          "verification",
+          "outputs"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "capability": {
+            "type": "string",
+            "maxLength": 60
+          },
+          "skills": {
+            "type": "array",
+            "maxItems": 4,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+            }
+          },
+          "integrations": {
+            "type": "array",
+            "maxItems": 6,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+            }
+          },
+          "knowledgeIds": {
+            "type": "array",
+            "maxItems": 8,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+            }
+          },
+          "actor": {
+            "enum": [
+              "agent-client",
+              "human",
+              "agent-client-with-human-review"
+            ]
+          },
+          "permission": {
+            "enum": [
+              "read",
+              "local-edit",
+              "browser",
+              "local-process",
+              "isolated-vm",
+              "oauth",
+              "repo-write",
+              "publish",
+              "production-write"
+            ]
+          },
+          "requiresHumanApproval": {
+            "type": "boolean"
+          },
+          "verification": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 400
+          },
+          "outputs": {
+            "type": "array",
+            "maxItems": 6,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            }
+          }
+        }
+      }
+    },
+    "verificationPlan": {
+      "type": "array",
+      "maxItems": 14,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+      },
+      "minItems": 2
+    },
+    "fallbacks": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+      }
+    },
+    "approved": {
+      "type": "boolean"
+    },
+    "reviewer": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "observedTests": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      }
+    }
+  }
+}

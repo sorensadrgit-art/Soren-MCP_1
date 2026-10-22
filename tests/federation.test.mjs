@@ -100,7 +100,8 @@ test("federated routing retains locally approved primary and marks remote skills
   assert.ok(answer.discoveredCandidates.every(c=>c.activationAllowed===false));
   assert.equal(answer.runtime,"codex");
   const local=await routeTaskFederated("Build GSAP timeline","codex",{discovery:"local",fetcher:async()=>{throw Error("should not fetch")}});
-  assert.equal(local.primary.name,"motion-systems");
+  // The curated catalog now includes the GSAP specialist, which outranks the broader motion-systems skill for timeline work.
+  assert.equal(local.primary.name,"gsap-motion");
   assert.equal(local.discoveredCandidates.length,0);
 });
 

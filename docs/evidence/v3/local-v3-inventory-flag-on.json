@@ -1,0 +1,1033 @@
+{
+  "capturedAt": "2026-10-22T12:41:07.084Z",
+  "endpoint": "http://127.0.0.1:3918/api/mcp",
+  "serverInfo": {
+    "name": "soren-universal-skill-router",
+    "version": "2.5.0"
+  },
+  "protocolVersion": "2025-06-18",
+  "instructionsSha256": "1d50a981349985e855863b1d135b6d4f3cb864d3f5ab92c3105ecbc5d7d8ae8e",
+  "status": {
+    "initialize": 200,
+    "tools": 200,
+    "resources": 200,
+    "prompts": 200
+  },
+  "tools": [
+    {
+      "name": "list_skills",
+      "title": "List Curated Skills",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "inputSchemaSha256": "b2781d24c456a1b00cec63831664f6bd0726bfa309501325828891f50dff77e4",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {}
+      }
+    },
+    {
+      "name": "search_skills",
+      "title": "Search Skills",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "inputSchemaSha256": "26c179c1fcde5a62fd8f9e6d0609a883e9dfda2f5fbf6b872ebb402076015cda",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 25
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "local",
+              "all"
+            ]
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "route_task",
+      "title": "Universal Skill Router",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "inputSchemaSha256": "06e3b6eae98f057fca9a8b5e35b9aa0ce6666a0cb25a59cbaba0d04dc180791e",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "task": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "runtime": {
+            "type": "string",
+            "maxLength": 60
+          },
+          "discovery": {
+            "type": "string",
+            "enum": [
+              "local",
+              "federated",
+              "auto"
+            ]
+          },
+          "providers": {
+            "maxItems": 3,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "skillsmp",
+                "skills_sh",
+                "anthropic"
+              ]
+            }
+          },
+          "preferred_skills": {
+            "maxItems": 3,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "accessibility",
+                "motion-systems",
+                "mcp-integration",
+                "skill-orchestration",
+                "soren-universal-deployment",
+                "21st-ui-components",
+                "motionsites-design",
+                "playwright-browser-qa",
+                "superpowers-engineering",
+                "react-three-fiber",
+                "threejs-production",
+                "gsap-motion",
+                "agentic-design-to-code",
+                "agentic-coding",
+                "shader-material-lab",
+                "webgpu-progressive-rendering",
+                "gltf-asset-pipeline",
+                "blender-to-r3f",
+                "graphics-performance-qa",
+                "nextjs-runtime-engineering",
+                "spline-to-web",
+                "agent-capability-navigation"
+              ]
+            }
+          },
+          "unavailable_skills": {
+            "maxItems": 8,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "accessibility",
+                "motion-systems",
+                "mcp-integration",
+                "skill-orchestration",
+                "soren-universal-deployment",
+                "21st-ui-components",
+                "motionsites-design",
+                "playwright-browser-qa",
+                "superpowers-engineering",
+                "react-three-fiber",
+                "threejs-production",
+                "gsap-motion",
+                "agentic-design-to-code",
+                "agentic-coding",
+                "shader-material-lab",
+                "webgpu-progressive-rendering",
+                "gltf-asset-pipeline",
+                "blender-to-r3f",
+                "graphics-performance-qa",
+                "nextjs-runtime-engineering",
+                "spline-to-web",
+                "agent-capability-navigation"
+              ]
+            }
+          }
+        },
+        "required": [
+          "task"
+        ]
+      }
+    },
+    {
+      "name": "read_skill",
+      "title": "Read Approved Skill",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "inputSchemaSha256": "56f8ebdd4655ddd53912b48b930e9a6022796733daf5538a74056aafd8aa5746",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "privateVersion": {
+            "type": "object",
+            "properties": {
+              "versionId": {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+              },
+              "manifestSha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              }
+            },
+            "required": [
+              "versionId",
+              "manifestSha256"
+            ]
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    },
+    {
+      "name": "list_providers",
+      "title": "Federation Provider Status",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "inputSchemaSha256": "b2781d24c456a1b00cec63831664f6bd0726bfa309501325828891f50dff77e4",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {}
+      }
+    },
+    {
+      "name": "discover_skills",
+      "title": "Discover External Agent Skills",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "inputSchemaSha256": "c2070579c911b775dfed8798ecd8737ec2b149f771ca11d21758b8f4e746aba5",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 25
+          },
+          "providers": {
+            "minItems": 1,
+            "maxItems": 3,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "skillsmp",
+                "skills_sh",
+                "anthropic"
+              ]
+            }
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "inspect_candidate",
+      "title": "Inspect Unreviewed External Skill",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "inputSchemaSha256": "0bad4966274f32b70dc72b200421f5560468614e8a90ce74511df1fa70836ff4",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "provider": {
+            "type": "string",
+            "enum": [
+              "skillsmp",
+              "skills_sh",
+              "anthropic"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 230
+          }
+        },
+        "required": [
+          "provider",
+          "id"
+        ]
+      }
+    },
+    {
+      "name": "search_mcp_servers",
+      "title": "Search Official MCP Registry",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "inputSchemaSha256": "47995de0c7b2e3e271632f563ad221e6b50d715b17bb34fd30b697a9399952dc",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "list_capability_profiles",
+      "title": "List Capability Profiles",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "inputSchemaSha256": "b2781d24c456a1b00cec63831664f6bd0726bfa309501325828891f50dff77e4",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {}
+      }
+    },
+    {
+      "name": "plan_toolchain",
+      "title": "Plan Toolchain",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "inputSchemaSha256": "5a79ca3d5e998efbeeadaf199afe6e93be2b0d3c01e6f8eb307e7e95a2dcd674",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "task": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "runtime": {
+            "type": "string",
+            "maxLength": 60
+          },
+          "project_packages": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 214
+            },
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 80
+            }
+          },
+          "available_connections": {
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+            }
+          },
+          "exclude_integrations": {
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+            }
+          }
+        },
+        "required": [
+          "task"
+        ]
+      }
+    },
+    {
+      "name": "list_integrations",
+      "title": "List Agent Integrations",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "inputSchemaSha256": "7c17639244e4d310e2da407410aa97342a9bfa7c571685a1ba3f26f1e5d5801d",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": [
+              "asset_pipeline",
+              "browser_performance",
+              "browser_qa",
+              "code_navigation",
+              "deployment",
+              "design_3d",
+              "design_components",
+              "design_references",
+              "documentation",
+              "framework_runtime",
+              "repository",
+              "research"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "search_knowledge",
+      "title": "Search Reviewed Knowledge",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "inputSchemaSha256": "d94616174d4e131010d40d87b4133604831d959c7c332e9e6f5195f36d72697b",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "query": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "packages": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 214
+            },
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 80
+            }
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "include_stale": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "read_recipe",
+      "title": "Read Approved Recipe",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "inputSchemaSha256": "8f9db4e0c2851bb322b4de3bd07b20238fd6a4367bdcc902bad5eeed7da5d406",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    },
+    {
+      "name": "get_client_setup_guide",
+      "title": "Client Setup Guide (Dry Run)",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "inputSchemaSha256": "c9ab2ccfaa0d0be9d430c5dae86accfecf52c1079c43f6131cf7a500c17bbdd3",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "client": {
+            "type": "string",
+            "enum": [
+              "codex",
+              "factory",
+              "antigravity",
+              "opencode",
+              "claude",
+              "qwen"
+            ]
+          },
+          "integration": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]{1,62}$"
+          }
+        },
+        "required": [
+          "client",
+          "integration"
+        ]
+      }
+    }
+  ],
+  "toolNames": [
+    "list_skills",
+    "search_skills",
+    "route_task",
+    "read_skill",
+    "list_providers",
+    "discover_skills",
+    "inspect_candidate",
+    "search_mcp_servers",
+    "list_capability_profiles",
+    "plan_toolchain",
+    "list_integrations",
+    "search_knowledge",
+    "read_recipe",
+    "get_client_setup_guide"
+  ],
+  "toolsSha256": "45e82b433d6091d12457d0e27217f335ba06625b8831e6e64bd8e8f96e04ab17",
+  "resources": [
+    {
+      "uri": "skill://accessibility/SKILL.md",
+      "name": "accessibility",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://motion-systems/SKILL.md",
+      "name": "motion-systems",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://mcp-integration/SKILL.md",
+      "name": "mcp-integration",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://skill-orchestration/SKILL.md",
+      "name": "skill-orchestration",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://soren-universal-deployment/SKILL.md",
+      "name": "soren-universal-deployment",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://21st-ui-components/SKILL.md",
+      "name": "21st-ui-components",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://motionsites-design/SKILL.md",
+      "name": "motionsites-design",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://playwright-browser-qa/SKILL.md",
+      "name": "playwright-browser-qa",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://superpowers-engineering/SKILL.md",
+      "name": "superpowers-engineering",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://react-three-fiber/SKILL.md",
+      "name": "react-three-fiber",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://threejs-production/SKILL.md",
+      "name": "threejs-production",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://gsap-motion/SKILL.md",
+      "name": "gsap-motion",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://agentic-design-to-code/SKILL.md",
+      "name": "agentic-design-to-code",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://agentic-coding/SKILL.md",
+      "name": "agentic-coding",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://shader-material-lab/SKILL.md",
+      "name": "shader-material-lab",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://webgpu-progressive-rendering/SKILL.md",
+      "name": "webgpu-progressive-rendering",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://gltf-asset-pipeline/SKILL.md",
+      "name": "gltf-asset-pipeline",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://blender-to-r3f/SKILL.md",
+      "name": "blender-to-r3f",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://graphics-performance-qa/SKILL.md",
+      "name": "graphics-performance-qa",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://nextjs-runtime-engineering/SKILL.md",
+      "name": "nextjs-runtime-engineering",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://spline-to-web/SKILL.md",
+      "name": "spline-to-web",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "skill://agent-capability-navigation/SKILL.md",
+      "name": "agent-capability-navigation",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "soren://knowledge/react-19",
+      "name": "knowledge-react-19",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/nextjs-16",
+      "name": "knowledge-nextjs-16",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/nextjs-16-upgrade",
+      "name": "knowledge-nextjs-16-upgrade",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/next-devtools-mcp",
+      "name": "knowledge-next-devtools-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/threejs-manual",
+      "name": "knowledge-threejs-manual",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/threejs-color-management",
+      "name": "knowledge-threejs-color-management",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/threejs-disposal",
+      "name": "knowledge-threejs-disposal",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/threejs-tsl",
+      "name": "knowledge-threejs-tsl",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/threejs-docs",
+      "name": "knowledge-threejs-docs",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/r3f-v9",
+      "name": "knowledge-r3f-v9",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/r3f-v9-migration",
+      "name": "knowledge-r3f-v9-migration",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/r3f-performance",
+      "name": "knowledge-r3f-performance",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/r3f-pitfalls",
+      "name": "knowledge-r3f-pitfalls",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/r3f-v10-alpha",
+      "name": "knowledge-r3f-v10-alpha",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/drei-10",
+      "name": "knowledge-drei-10",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/webgl-api",
+      "name": "knowledge-webgl-api",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/webgl-best-practices",
+      "name": "knowledge-webgl-best-practices",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/webgpu-api",
+      "name": "knowledge-webgpu-api",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/webgpu-spec",
+      "name": "knowledge-webgpu-spec",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/gsap-core",
+      "name": "knowledge-gsap-core",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/gsap-scrolltrigger",
+      "name": "knowledge-gsap-scrolltrigger",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/gsap-react",
+      "name": "knowledge-gsap-react",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/blender-gltf-io",
+      "name": "knowledge-blender-gltf-io",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/blender-python-api",
+      "name": "knowledge-blender-python-api",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/blender-lab-mcp",
+      "name": "knowledge-blender-lab-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/gltf-spec",
+      "name": "knowledge-gltf-spec",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/gltf-transform",
+      "name": "knowledge-gltf-transform",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/gltf-validator",
+      "name": "knowledge-gltf-validator",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/ktx2-basis",
+      "name": "knowledge-ktx2-basis",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/meshoptimizer",
+      "name": "knowledge-meshoptimizer",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/context7-mcp",
+      "name": "knowledge-context7-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/serena-mcp",
+      "name": "knowledge-serena-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/firecrawl-mcp",
+      "name": "knowledge-firecrawl-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/playwright-mcp",
+      "name": "knowledge-playwright-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/chrome-devtools-mcp",
+      "name": "knowledge-chrome-devtools-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/spline-react",
+      "name": "knowledge-spline-react",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/spline-mcp",
+      "name": "knowledge-spline-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/vercel-mcp",
+      "name": "knowledge-vercel-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/github-mcp",
+      "name": "knowledge-github-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/mcp-spec",
+      "name": "knowledge-mcp-spec",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/wcag-22",
+      "name": "knowledge-wcag-22",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/reduced-motion",
+      "name": "knowledge-reduced-motion",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/21st-mcp",
+      "name": "knowledge-21st-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://knowledge/motionsites-mcp",
+      "name": "knowledge-motionsites-mcp",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://recipe/cinematic-portfolio",
+      "name": "recipe-cinematic-portfolio",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://recipe/knowledge-retrieval",
+      "name": "recipe-knowledge-retrieval",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://recipe/nextjs-debug",
+      "name": "recipe-nextjs-debug",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://recipe/web-qa-pass",
+      "name": "recipe-web-qa-pass",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://recipe/graphics-qa-pass",
+      "name": "recipe-graphics-qa-pass",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://recipe/blender-glb-pipeline",
+      "name": "recipe-blender-glb-pipeline",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://recipe/spline-embed",
+      "name": "recipe-spline-embed",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "soren://recipe/debug-3d-performance",
+      "name": "recipe-debug-3d-performance",
+      "mimeType": "application/json"
+    }
+  ],
+  "resourceUris": [
+    "skill://accessibility/SKILL.md",
+    "skill://motion-systems/SKILL.md",
+    "skill://mcp-integration/SKILL.md",
+    "skill://skill-orchestration/SKILL.md",
+    "skill://soren-universal-deployment/SKILL.md",
+    "skill://21st-ui-components/SKILL.md",
+    "skill://motionsites-design/SKILL.md",
+    "skill://playwright-browser-qa/SKILL.md",
+    "skill://superpowers-engineering/SKILL.md",
+    "skill://react-three-fiber/SKILL.md",
+    "skill://threejs-production/SKILL.md",
+    "skill://gsap-motion/SKILL.md",
+    "skill://agentic-design-to-code/SKILL.md",
+    "skill://agentic-coding/SKILL.md",
+    "skill://shader-material-lab/SKILL.md",
+    "skill://webgpu-progressive-rendering/SKILL.md",
+    "skill://gltf-asset-pipeline/SKILL.md",
+    "skill://blender-to-r3f/SKILL.md",
+    "skill://graphics-performance-qa/SKILL.md",
+    "skill://nextjs-runtime-engineering/SKILL.md",
+    "skill://spline-to-web/SKILL.md",
+    "skill://agent-capability-navigation/SKILL.md",
+    "soren://knowledge/react-19",
+    "soren://knowledge/nextjs-16",
+    "soren://knowledge/nextjs-16-upgrade",
+    "soren://knowledge/next-devtools-mcp",
+    "soren://knowledge/threejs-manual",
+    "soren://knowledge/threejs-color-management",
+    "soren://knowledge/threejs-disposal",
+    "soren://knowledge/threejs-tsl",
+    "soren://knowledge/threejs-docs",
+    "soren://knowledge/r3f-v9",
+    "soren://knowledge/r3f-v9-migration",
+    "soren://knowledge/r3f-performance",
+    "soren://knowledge/r3f-pitfalls",
+    "soren://knowledge/r3f-v10-alpha",
+    "soren://knowledge/drei-10",
+    "soren://knowledge/webgl-api",
+    "soren://knowledge/webgl-best-practices",
+    "soren://knowledge/webgpu-api",
+    "soren://knowledge/webgpu-spec",
+    "soren://knowledge/gsap-core",
+    "soren://knowledge/gsap-scrolltrigger",
+    "soren://knowledge/gsap-react",
+    "soren://knowledge/blender-gltf-io",
+    "soren://knowledge/blender-python-api",
+    "soren://knowledge/blender-lab-mcp",
+    "soren://knowledge/gltf-spec",
+    "soren://knowledge/gltf-transform",
+    "soren://knowledge/gltf-validator",
+    "soren://knowledge/ktx2-basis",
+    "soren://knowledge/meshoptimizer",
+    "soren://knowledge/context7-mcp",
+    "soren://knowledge/serena-mcp",
+    "soren://knowledge/firecrawl-mcp",
+    "soren://knowledge/playwright-mcp",
+    "soren://knowledge/chrome-devtools-mcp",
+    "soren://knowledge/spline-react",
+    "soren://knowledge/spline-mcp",
+    "soren://knowledge/vercel-mcp",
+    "soren://knowledge/github-mcp",
+    "soren://knowledge/mcp-spec",
+    "soren://knowledge/wcag-22",
+    "soren://knowledge/reduced-motion",
+    "soren://knowledge/21st-mcp",
+    "soren://knowledge/motionsites-mcp",
+    "soren://recipe/cinematic-portfolio",
+    "soren://recipe/knowledge-retrieval",
+    "soren://recipe/nextjs-debug",
+    "soren://recipe/web-qa-pass",
+    "soren://recipe/graphics-qa-pass",
+    "soren://recipe/blender-glb-pipeline",
+    "soren://recipe/spline-embed",
+    "soren://recipe/debug-3d-performance"
+  ],
+  "resourcesSha256": "edb4f11bc1de11f217dafd5e0e04847f3beeedeb7498dda156dd68bd0e35dcb9",
+  "prompts": [],
+  "promptsError": "Method not found"
+}

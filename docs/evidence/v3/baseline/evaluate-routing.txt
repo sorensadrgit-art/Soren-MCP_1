@@ -1,0 +1,3 @@
+npm notice run soren-shared-mcp-skills@1.0.0 evaluate:routing
+npm notice run node scripts/evaluate-routing.mjs
+{"tasks":60,"passed":60,"topThreePercent":100,"labelReview":"developer_authored_human_review_pending","routeP95":0.11549999999999727,"readP95":0.7380999999999958}

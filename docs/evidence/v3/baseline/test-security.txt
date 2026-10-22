@@ -1,0 +1,31 @@
+npm notice run soren-shared-mcp-skills@1.0.0 test:security
+npm notice run node --test tests/security/*.test.mjs tests/registry/*.test.mjs
+✔ canonical repository/path identity distinguishes nested paths and rejects mutable branch URLs (1.9534ms)
+✔ file and repository paths reject encoded traversal, absolute paths, backslashes and alternate streams (0.2448ms)
+✔ changed instruction or supporting bytes change exact manifest identity (10.9007ms)
+✔ private retrieval verifies exact immutable manifest and individual declared file integrity (0.8188ms)
+✔ managed auth validates remotely before enforcing issuer audience resource expiry and client binding (24.5606ms)
+✔ invalid explicit tokens and revoked grants never become anonymous reads (1.144ms)
+✔ agent grants do not confer human approval or owner authority; recent authentication and CSRF bind writes (2.2588ms)
+✔ identity and database outages fail closed with redacted errors (0.8886ms)
+✔ chunked Auth responses stop at the byte limit before buffering their remaining body (1.0891ms)
+✔ scheduler authentication is constant-time and refuses missing/short configured secrets (0.4861ms)
+✔ JSON trust boundary caps actual streaming bytes and rejects invalid bodies (1.7563ms)
+✔ verified identity still rejects malformed nbf (nonnumeric string) before grant lookup (0.3559ms)
+✔ verified identity still rejects malformed nbf (numeric string) before grant lookup (0.2528ms)
+✔ verified identity still rejects malformed nbf (null) before grant lookup (0.2886ms)
+✔ verified identity still rejects malformed nbf (false) before grant lookup (0.2137ms)
+✔ verified identity still rejects malformed nbf (object) before grant lookup (0.1716ms)
+✔ verified identity still rejects malformed nbf (array) before grant lookup (0.1904ms)
+✔ malformed claims payload is a redacted authorization denial, not an internal exception (0.7067ms)
+✔ absent and finite numeric not-before claims retain valid boundary behavior (0.4745ms)
+✔ management session is authenticated encrypted bounded and expires (21.6247ms)
+✔ OAuth requires HTTPS configured origin and PKCE state before exchanging code (4.5429ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 149.8845

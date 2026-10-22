@@ -1,0 +1,645 @@
+{
+  "observedAt": "2026-10-22T12:40:31.779Z",
+  "fixtureSha256": "7026ef33c8310c5a3ed3a806981c998aede7db66a43d290148f9fbaf81f4a2fb",
+  "labelReview": "developer_authored_human_review_pending",
+  "taskCount": 46,
+  "plannerAvailable": true,
+  "skillTop1Percent": 100,
+  "skillTop3Percent": 100,
+  "profileTop1Percent": 100,
+  "bypassCorrect": true,
+  "categories": {
+    "graphics": {
+      "tasks": 6,
+      "top1": 6,
+      "top3": 6,
+      "profile": 6
+    },
+    "perf": {
+      "tasks": 4,
+      "top1": 4,
+      "top3": 4,
+      "profile": 4
+    },
+    "shader": {
+      "tasks": 4,
+      "top1": 4,
+      "top3": 4,
+      "profile": 4
+    },
+    "webgpu": {
+      "tasks": 2,
+      "top1": 2,
+      "top3": 2,
+      "profile": 2
+    },
+    "asset": {
+      "tasks": 6,
+      "top1": 6,
+      "top3": 6,
+      "profile": 6
+    },
+    "spline": {
+      "tasks": 2,
+      "top1": 2,
+      "top3": 2,
+      "profile": 2
+    },
+    "nextjs-debug": {
+      "tasks": 4,
+      "top1": 4,
+      "top3": 4,
+      "profile": 4
+    },
+    "static-ui": {
+      "tasks": 3,
+      "top1": 3,
+      "top3": 3,
+      "profile": 3
+    },
+    "a11y": {
+      "tasks": 2,
+      "top1": 2,
+      "top3": 2,
+      "profile": 2
+    },
+    "browser-qa": {
+      "tasks": 2,
+      "top1": 2,
+      "top3": 2,
+      "profile": 2
+    },
+    "deploy": {
+      "tasks": 3,
+      "top1": 3,
+      "top3": 3,
+      "profile": 3
+    },
+    "knowledge": {
+      "tasks": 4,
+      "top1": 4,
+      "top3": 4,
+      "profile": 4
+    },
+    "engineering": {
+      "tasks": 2,
+      "top1": 2,
+      "top3": 2,
+      "profile": 2
+    },
+    "trivial": {
+      "tasks": 2,
+      "top1": 2,
+      "top3": 2,
+      "profile": 2
+    }
+  },
+  "failures": [],
+  "results": [
+    {
+      "id": "V3-001",
+      "category": "graphics",
+      "selected": [
+        "react-three-fiber",
+        "motion-systems"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-002",
+      "category": "graphics",
+      "selected": [
+        "react-three-fiber",
+        "motion-systems"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-003",
+      "category": "graphics",
+      "selected": [
+        "threejs-production",
+        "shader-material-lab",
+        "motion-systems"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-004",
+      "category": "perf",
+      "selected": [
+        "graphics-performance-qa",
+        "react-three-fiber",
+        "motion-systems"
+      ],
+      "profile": "debug-3d-performance",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-005",
+      "category": "graphics",
+      "selected": [
+        "motion-systems",
+        "gsap-motion"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-006",
+      "category": "graphics",
+      "selected": [
+        "motion-systems",
+        "gsap-motion",
+        "react-three-fiber"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-007",
+      "category": "shader",
+      "selected": [
+        "shader-material-lab",
+        "threejs-production"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-008",
+      "category": "shader",
+      "selected": [
+        "shader-material-lab",
+        "motion-systems"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-009",
+      "category": "shader",
+      "selected": [
+        "shader-material-lab"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-010",
+      "category": "shader",
+      "selected": [
+        "shader-material-lab",
+        "webgpu-progressive-rendering"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-011",
+      "category": "webgpu",
+      "selected": [
+        "webgpu-progressive-rendering",
+        "motion-systems"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-012",
+      "category": "webgpu",
+      "selected": [
+        "webgpu-progressive-rendering"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-013",
+      "category": "asset",
+      "selected": [
+        "gltf-asset-pipeline"
+      ],
+      "profile": "blender-to-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-014",
+      "category": "asset",
+      "selected": [
+        "gltf-asset-pipeline",
+        "graphics-performance-qa"
+      ],
+      "profile": "blender-to-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-015",
+      "category": "asset",
+      "selected": [
+        "blender-to-r3f",
+        "motion-systems",
+        "react-three-fiber"
+      ],
+      "profile": "blender-to-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-016",
+      "category": "asset",
+      "selected": [
+        "gltf-asset-pipeline"
+      ],
+      "profile": "blender-to-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-017",
+      "category": "asset",
+      "selected": [
+        "blender-to-r3f"
+      ],
+      "profile": "blender-to-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-018",
+      "category": "asset",
+      "selected": [
+        "gltf-asset-pipeline"
+      ],
+      "profile": "blender-to-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-019",
+      "category": "spline",
+      "selected": [
+        "spline-to-web",
+        "nextjs-runtime-engineering",
+        "soren-universal-deployment"
+      ],
+      "profile": "spline-to-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-020",
+      "category": "spline",
+      "selected": [
+        "spline-to-web",
+        "mcp-integration",
+        "motion-systems"
+      ],
+      "profile": "spline-to-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-021",
+      "category": "perf",
+      "selected": [
+        "graphics-performance-qa",
+        "motion-systems"
+      ],
+      "profile": "debug-3d-performance",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-022",
+      "category": "perf",
+      "selected": [
+        "graphics-performance-qa",
+        "motion-systems",
+        "threejs-production"
+      ],
+      "profile": "debug-3d-performance",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-023",
+      "category": "perf",
+      "selected": [
+        "graphics-performance-qa",
+        "motion-systems",
+        "react-three-fiber"
+      ],
+      "profile": "debug-3d-performance",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-024",
+      "category": "nextjs-debug",
+      "selected": [
+        "nextjs-runtime-engineering",
+        "soren-universal-deployment"
+      ],
+      "profile": "next-app",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-025",
+      "category": "nextjs-debug",
+      "selected": [
+        "nextjs-runtime-engineering",
+        "mcp-integration",
+        "soren-universal-deployment"
+      ],
+      "profile": "next-app",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-026",
+      "category": "nextjs-debug",
+      "selected": [
+        "nextjs-runtime-engineering",
+        "skill-orchestration",
+        "soren-universal-deployment"
+      ],
+      "profile": "next-app",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-027",
+      "category": "nextjs-debug",
+      "selected": [
+        "nextjs-runtime-engineering",
+        "mcp-integration",
+        "soren-universal-deployment"
+      ],
+      "profile": "next-app",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-028",
+      "category": "static-ui",
+      "selected": [
+        "21st-ui-components"
+      ],
+      "profile": "web-qa",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-029",
+      "category": "static-ui",
+      "selected": [
+        "agentic-design-to-code"
+      ],
+      "profile": "web-qa",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-030",
+      "category": "static-ui",
+      "selected": [
+        "motionsites-design",
+        "motion-systems"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-031",
+      "category": "a11y",
+      "selected": [
+        "accessibility"
+      ],
+      "profile": "web-qa",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-032",
+      "category": "browser-qa",
+      "selected": [
+        "playwright-browser-qa",
+        "accessibility"
+      ],
+      "profile": "web-qa",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-033",
+      "category": "browser-qa",
+      "selected": [
+        "graphics-performance-qa",
+        "motion-systems"
+      ],
+      "profile": "graphics-qa",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-034",
+      "category": "deploy",
+      "selected": [
+        "soren-universal-deployment",
+        "nextjs-runtime-engineering"
+      ],
+      "profile": "next-app",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-035",
+      "category": "deploy",
+      "selected": [
+        "soren-universal-deployment"
+      ],
+      "profile": "next-app",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-036",
+      "category": "deploy",
+      "selected": [
+        "soren-universal-deployment"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-037",
+      "category": "knowledge",
+      "selected": [
+        "agent-capability-navigation",
+        "motion-systems",
+        "react-three-fiber"
+      ],
+      "profile": "knowledge",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-038",
+      "category": "knowledge",
+      "selected": [
+        "agent-capability-navigation",
+        "mcp-integration"
+      ],
+      "profile": "knowledge",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-039",
+      "category": "knowledge",
+      "selected": [
+        "agent-capability-navigation"
+      ],
+      "profile": "knowledge",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-040",
+      "category": "knowledge",
+      "selected": [
+        "mcp-integration"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-041",
+      "category": "engineering",
+      "selected": [
+        "agentic-coding",
+        "superpowers-engineering"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-042",
+      "category": "engineering",
+      "selected": [
+        "skill-orchestration",
+        "mcp-integration"
+      ],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-043",
+      "category": "trivial",
+      "selected": [],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-044",
+      "category": "trivial",
+      "selected": [],
+      "profile": null,
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-045",
+      "category": "graphics",
+      "selected": [
+        "blender-to-r3f",
+        "motion-systems"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    },
+    {
+      "id": "V3-046",
+      "category": "a11y",
+      "selected": [
+        "accessibility",
+        "motion-systems"
+      ],
+      "profile": "immersive-web",
+      "top1": true,
+      "top3": true,
+      "profileOk": true
+    }
+  ]
+}

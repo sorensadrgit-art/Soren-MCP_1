@@ -1,0 +1,18 @@
+npm notice run soren-shared-mcp-skills@1.0.0 test:contracts
+npm notice run node --test tests/contracts/*.test.mjs tests/client-contract.test.mjs
+✔ Server advertises a distinct Soren identity and stable tool identities (0.8386ms)
+✔ All tools advertise a non-destructive read-only intent, with accurate open-world exposure (0.6781ms)
+✔ Router instructions cannot overrule host agent, user, or project instructions (0.2642ms)
+✔ Every client has a correct native configuration with a single endpoint and consistent alias (0.4508ms)
+✔ Approved curated skills remain unchanged (0.1119ms)
+✔ verification permits explicit loopback only for insecure development transport (0.6972ms)
+✔ evidence requires execution identity, clock, observation and references for PASS (1.8355ms)
+✔ unexecuted or blocked evidence never becomes PASS (0.2084ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 182.3303

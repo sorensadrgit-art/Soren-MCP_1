@@ -2,7 +2,14 @@ import {createMcpHandler} from "mcp-handler";
 import {getVercelOidcToken} from "@vercel/oidc";
 import {z} from "zod";
 import {SKILLS,searchSkills,readSkill} from "../../../lib/catalog.mjs";
-import {MCP_SERVER_NAME,MCP_VERSION,ROUTER_INSTRUCTIONS,TOOL_ANNOTATIONS} from "../../../lib/client-contract.mjs";
+import {MCP_SERVER_NAME,MCP_VERSION,ROUTER_INSTRUCTIONS,TOOL_ANNOTATIONS,V3_TOOL_ANNOTATIONS,V3_INSTRUCTIONS} from "../../../lib/client-contract.mjs";
+import {v3ToolsEnabled} from "../../../lib/v3/flags.mjs";
+import {KNOWLEDGE_ITEMS,knowledgeResourceUri} from "../../../lib/knowledge/catalog.mjs";
+import {searchKnowledge} from "../../../lib/knowledge/search.mjs";
+import {CATEGORIES,CONNECTION_STATES,listIntegrations,summarizeIntegration,legacyAgentIntegrations} from "../../../lib/integrations/catalog.mjs";
+import {CLIENT_IDS,getClientSetupGuide} from "../../../lib/integrations/runtime-matrix.mjs";
+import {planToolchain} from "../../../lib/integrations/plan.mjs";
+import {RECIPES,getRecipe,listProfiles,recipeResourceUri} from "../../../lib/recipes/catalog.mjs";
 import {PROVIDER_INFO,publicQuery,discoverSkills,routeTaskFederated,inspectCandidate,searchMcpServers} from "../../../lib/federation.mjs";
 import {guardedProviderCall,limitRequestBody,requestContext,validateSuppliedIdentity,allowedBrowserOrigin,GatewayError} from '../../../lib/gateway.mjs';
 import {getGatewayStore} from '../../../lib/operations/store.mjs';
@@ -12,6 +19,11 @@ export const runtime="nodejs";
 export const dynamic="force-dynamic";
 
 const providerSchema=z.enum(["skillsmp","skills_sh","anthropic"]);
+// Enum is derived from the curated catalog so newly approved skills are selectable; legacy names stay a subset.
+const skillNameSchema=z.enum(SKILLS.map(skill=>skill.name) as [string,...string[]]);
+const catalogId=z.string().regex(/^[a-z0-9][a-z0-9-]{1,62}$/);
+const packageMap=z.record(z.string().min(1).max(214),z.string().max(80));
+const V3_ENABLED=v3ToolsEnabled();
 const asToolResult=(value:unknown)=>({content:[{type:"text" as const,text:JSON.stringify(value)}]});
 const withErrorBoundary=async(callback:()=>Promise<unknown>)=>{
   try{return asToolResult(await callback());}
@@ -62,8 +74,8 @@ const handler=createMcpHandler((server)=>{
       runtime:z.string().max(60).optional(),
       discovery:z.enum(["local","federated","auto"]).optional(),
       providers:z.array(providerSchema).max(3).optional(),
-      preferred_skills:z.array(z.enum(['accessibility','motion-systems','mcp-integration','skill-orchestration'])).max(3).optional(),
-      unavailable_skills:z.array(z.enum(['accessibility','motion-systems','mcp-integration','skill-orchestration'])).max(4).optional(),
+      preferred_skills:z.array(skillNameSchema).max(3).optional(),
+      unavailable_skills:z.array(skillNameSchema).max(8).optional(),
     }),
   },async({task,runtime,discovery,providers,preferred_skills,unavailable_skills})=>withErrorBoundary(async()=>
     routeTaskFederated(task,runtime??"generic",{
@@ -96,7 +108,8 @@ const handler=createMcpHandler((server)=>{
     const available=Boolean(await oidc());
     return {providers:Object.entries(PROVIDER_INFO).map(([id,info])=>({
       id,...info,configured:id!=="skills_sh"||available,
-    })),policy:"No unreviewed skill activation, external installs or code execution."};
+    })),agentMcpIntegrations:legacyAgentIntegrations(),
+    policy:"References are advisory; agent-native MCPs must be connected and authorized separately. No unreviewed skill activation, external installs or code execution."};
   }));
 
   server.registerTool("discover_skills",{
@@ -137,9 +150,84 @@ const handler=createMcpHandler((server)=>{
       title:skill.name,description:skill.description,mimeType:"text/markdown",
     },async(uri)=>({contents:[{uri:uri.href,mimeType:"text/markdown",text:readSkill(skill.name)??""}]}));
   }
+
+  if(!V3_ENABLED)return;
+
+  server.registerTool("list_capability_profiles",{
+    annotations:V3_TOOL_ANNOTATIONS.list_capability_profiles,
+    title:"List Capability Profiles",
+    description:"Soren V3: list capability profiles (skills, integrations, recipes) for task families. Bundled reviewed data only.",
+    inputSchema:z.object({}),
+  },async()=>withErrorBoundary(async()=>({profiles:listProfiles(),
+    recipes:RECIPES.map(r=>({id:r.id,title:r.title,profile:r.profile,uri:recipeResourceUri(r.id)})),
+    policy:"Profiles are advisory groupings; they never grant permissions or connect tools."})));
+
+  server.registerTool("plan_toolchain",{
+    annotations:V3_TOOL_ANNOTATIONS.plan_toolchain,
+    title:"Plan Toolchain",
+    description:"Soren V3: advisory plan of skills, MCP servers, version-matched docs, steps, approvals and verification for a task. Reported connections stay client_reported.",
+    inputSchema:z.object({
+      task:z.string().min(1).max(2000),
+      runtime:z.string().max(60).optional(),
+      project_packages:packageMap.optional(),
+      available_connections:z.array(catalogId).max(20).optional(),
+      exclude_integrations:z.array(catalogId).max(20).optional(),
+    }),
+  },async({task,runtime,project_packages,available_connections,exclude_integrations})=>withErrorBoundary(async()=>
+    planToolchain(task,{runtime:runtime??null,projectPackages:project_packages,availableConnections:available_connections,excludeIntegrations:exclude_integrations})));
+
+  server.registerTool("list_integrations",{
+    annotations:V3_TOOL_ANNOTATIONS.list_integrations,
+    title:"List Agent Integrations",
+    description:"Soren V3: catalog of agent-native MCP servers and CLIs with auth, risk and observed connection evidence. SOREN never proxies or connects them.",
+    inputSchema:z.object({category:z.enum(CATEGORIES as [string,...string[]]).optional()}),
+  },async({category})=>withErrorBoundary(async()=>({integrations:listIntegrations({category}).map(summarizeIntegration),
+    connectionStates:CONNECTION_STATES,callerReportedState:"client_reported",
+    policy:"Catalog references only. Connect and authorize in your own client; verify with a native tool call."})));
+
+  server.registerTool("search_knowledge",{
+    annotations:V3_TOOL_ANNOTATIONS.search_knowledge,
+    title:"Search Reviewed Knowledge",
+    description:"Soren V3: version-aware search of reviewed official documentation references with provenance, hashes and freshness. Returns a primary plus up to two complementary sources.",
+    inputSchema:z.object({
+      query:z.string().min(1).max(500),
+      packages:packageMap.optional(),
+      limit:z.number().int().min(1).max(10).optional(),
+      include_stale:z.boolean().optional(),
+    }),
+  },async({query,packages,limit,include_stale})=>withErrorBoundary(async()=>
+    searchKnowledge(query,{packages,limit:limit??3,includeStale:include_stale??false})));
+
+  server.registerTool("read_recipe",{
+    annotations:V3_TOOL_ANNOTATIONS.read_recipe,
+    title:"Read Approved Recipe",
+    description:"Soren V3: read an approved workflow recipe (steps, permissions, verification, fallbacks) as reference material.",
+    inputSchema:z.object({id:catalogId}),
+  },async({id})=>withErrorBoundary(async()=>{
+    const recipe=getRecipe(id);
+    if(!recipe)throw new Error("Unknown or unapproved recipe.");
+    return {...recipe,resourceUri:recipeResourceUri(recipe.id)};
+  }));
+
+  server.registerTool("get_client_setup_guide",{
+    annotations:V3_TOOL_ANNOTATIONS.get_client_setup_guide,
+    title:"Client Setup Guide (Dry Run)",
+    description:"Soren V3: dry-run setup, preflight, verification and rollback text for connecting an integration in a specific agent client. Never executed by SOREN.",
+    inputSchema:z.object({client:z.enum(CLIENT_IDS as unknown as [string,...string[]]),integration:catalogId}),
+  },async({client,integration})=>withErrorBoundary(async()=>getClientSetupGuide(client,integration)));
+
+  for(const item of KNOWLEDGE_ITEMS){
+    const uri=knowledgeResourceUri(item.id);
+    server.registerResource("knowledge-"+item.id,uri,{title:item.title,description:item.summary,mimeType:"application/json"},
+      async(resource)=>({contents:[{uri:resource.href,mimeType:"application/json",text:JSON.stringify(item,null,2)}]}));
+  }
+  for(const recipe of RECIPES){
+    server.registerResource("recipe-"+recipe.id,recipeResourceUri(recipe.id),{title:recipe.title,description:recipe.summary,mimeType:"application/json"},
+      async(resource)=>({contents:[{uri:resource.href,mimeType:"application/json",text:JSON.stringify(recipe,null,2)}]}));
+  }
 },{
   serverInfo:{name:MCP_SERVER_NAME,version:MCP_VERSION},
-  instructions:ROUTER_INSTRUCTIONS,
+  instructions:V3_ENABLED?ROUTER_INSTRUCTIONS+" "+V3_INSTRUCTIONS:ROUTER_INSTRUCTIONS,
 });
 
 async function safeHandler(request:Request){

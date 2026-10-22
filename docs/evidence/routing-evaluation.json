@@ -1,21 +1,21 @@
 {
-  "observedAt": "2026-10-20T12:16:11.992Z",
+  "observedAt": "2026-10-22T12:40:31.810Z",
   "fixtureSha256": "c36b95b64e49b99e6ea24ed57527d54c258049739e5bf73915a13c59b4ea1bcc",
   "labelReview": "developer_authored_human_review_pending",
   "taskCount": 60,
-  "passed": 60,
-  "topThreePercent": 100,
+  "passed": 59,
+  "topThreePercent": 98.33333333333333,
   "explicitChoicesPreserved": true,
   "bypassCorrect": true,
   "localRoute": {
     "samples": 100,
-    "p50Ms": 0.03629999999999711,
-    "p95Ms": 0.1477000000000004
+    "p50Ms": 0.10859999999999559,
+    "p95Ms": 0.210799999999999
   },
   "bundledRead": {
     "samples": 100,
-    "p50Ms": 0.48559999999999803,
-    "p95Ms": 0.9814999999999969
+    "p50Ms": 0.041600000000002524,
+    "p95Ms": 0.1075000000000017
   },
   "concurrentLocal": {
     "samples": 20,
@@ -39,7 +39,8 @@
       "id": "ROUTE-002",
       "category": "direct",
       "selected": [
-        "motion-systems"
+        "motion-systems",
+        "gsap-motion"
       ],
       "passed": true
     },
@@ -71,7 +72,8 @@
       "id": "ROUTE-006",
       "category": "direct",
       "selected": [
-        "motion-systems"
+        "motion-systems",
+        "shader-material-lab"
       ],
       "passed": true
     },
@@ -104,7 +106,8 @@
       "id": "ROUTE-010",
       "category": "direct",
       "selected": [
-        "motion-systems"
+        "motion-systems",
+        "react-three-fiber"
       ],
       "passed": true
     },
@@ -112,7 +115,8 @@
       "id": "ROUTE-011",
       "category": "mixed",
       "selected": [
-        "motion-systems"
+        "motion-systems",
+        "react-three-fiber"
       ],
       "passed": true
     },
@@ -121,7 +125,8 @@
       "category": "mixed",
       "selected": [
         "accessibility",
-        "motion-systems"
+        "motion-systems",
+        "gsap-motion"
       ],
       "passed": true
     },
@@ -348,7 +353,8 @@
       "category": "provider",
       "selected": [
         "skill-orchestration",
-        "motion-systems"
+        "motion-systems",
+        "gsap-motion"
       ],
       "passed": true
     },
@@ -476,8 +482,10 @@
     {
       "id": "ROUTE-056",
       "category": "unavailable",
-      "selected": [],
-      "passed": true
+      "selected": [
+        "gsap-motion"
+      ],
+      "passed": false
     },
     {
       "id": "ROUTE-057",
