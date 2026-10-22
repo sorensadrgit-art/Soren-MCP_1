@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 /** Read-only wire checks for the candidate deployment. No provider or paid model calls. */
 import assert from 'node:assert/strict';
-import {verificationEndpoint} from '../lib/contracts/endpoint.mjs';
+import {verificationEndpoint,protectionBypassHeaders} from '../lib/contracts/endpoint.mjs';
 import {TOOL_NAMES,V3_TOOL_NAMES} from '../lib/client-contract.mjs';
 import {SKILLS} from '../lib/catalog.mjs';
 import {CapabilityPlanSchema} from '../lib/capabilities/planner.mjs';
 if(!process.argv[2])throw Error('Usage: node scripts/verify-capability-plan.mjs <explicit HTTPS or loopback MCP endpoint>');
-const endpoint=verificationEndpoint(process.argv[2]),checks=[];
+const endpoint=verificationEndpoint(process.argv[2]),checks=[],bypass=protectionBypassHeaders(endpoint);
 let sequence=0;
 async function rpc(method,params={}){
   const id=++sequence;
-  const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json, text/event-stream','MCP-Protocol-Version':'2025-06-18'},body:JSON.stringify({jsonrpc:'2.0',id,method,params}),signal:AbortSignal.timeout(12000)});
+  const r=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json, text/event-stream','MCP-Protocol-Version':'2025-06-18',...bypass},body:JSON.stringify({jsonrpc:'2.0',id,method,params}),signal:AbortSignal.timeout(12000)});
   const raw=await r.text();assert.equal(r.status,200,`HTTP ${r.status}`);
   let response;
   if(r.headers.get('content-type')?.includes('text/event-stream')){

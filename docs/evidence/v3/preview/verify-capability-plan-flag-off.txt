@@ -1,0 +1,80 @@
+PASS real MCP initialization
+PASS legacy eight tools first (plus exactly six V3 tools when flagged), new fields advertised only on route_task
+PASS all curated skill resources listed
+PASS default route response has no capability plan
+PASS explicit false preserves the exact legacy response
+PASS opt-in returns a schema-valid data workflow with missing runtime identified
+PASS private scope overrides requested federation and optional model
+PASS caller cannot assert verified connection or execution authority
+PASS unknown capability IDs are rejected
+PASS context requires an explicit opt-in
+PASS bundled skill reading still works
+PASS four concurrent plans preserve distinct clients and request identities
+PASS local mode does not invoke an explicitly requested paid advisor
+PASS no-match plans do not fabricate a connected capability
+{
+  "scope": "actual_http_candidate_runtime_not_native_client_verification",
+  "endpoint": "https://soren-mcp-v3-preview-5b1z89yay-sorensadr-gmailcoms-projects.vercel.app/api/mcp",
+  "checks": [
+    {
+      "name": "real MCP initialization",
+      "status": "PASS"
+    },
+    {
+      "name": "legacy eight tools first (plus exactly six V3 tools when flagged), new fields advertised only on route_task",
+      "status": "PASS"
+    },
+    {
+      "name": "all curated skill resources listed",
+      "status": "PASS"
+    },
+    {
+      "name": "default route response has no capability plan",
+      "status": "PASS"
+    },
+    {
+      "name": "explicit false preserves the exact legacy response",
+      "status": "PASS"
+    },
+    {
+      "name": "opt-in returns a schema-valid data workflow with missing runtime identified",
+      "status": "PASS"
+    },
+    {
+      "name": "private scope overrides requested federation and optional model",
+      "status": "PASS"
+    },
+    {
+      "name": "caller cannot assert verified connection or execution authority",
+      "status": "PASS"
+    },
+    {
+      "name": "unknown capability IDs are rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "context requires an explicit opt-in",
+      "status": "PASS"
+    },
+    {
+      "name": "bundled skill reading still works",
+      "status": "PASS"
+    },
+    {
+      "name": "four concurrent plans preserve distinct clients and request identities",
+      "status": "PASS"
+    },
+    {
+      "name": "local mode does not invoke an explicitly requested paid advisor",
+      "status": "PASS"
+    },
+    {
+      "name": "no-match plans do not fabricate a connected capability",
+      "status": "PASS"
+    }
+  ],
+  "passed": 14,
+  "total": 14,
+  "paidInferenceTested": false,
+  "productionModified": false
+}

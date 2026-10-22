@@ -24,7 +24,7 @@ The live runtime and this repository are different codebases (`docs/v3/drift-rec
 5. **Bearer identity needs the store.** Any request carrying an `Authorization` header is validated. A malformed header returns HTTP 401. A well-formed bearer token without a configured store returns HTTP 503 `private_identity_unavailable`. Clients that send a bearer token today would stop working until the store and identity configuration exist.
 6. **Request bounds.** Cross-origin browser requests return 403. Bodies over 16 KiB return 413.
 
-A local production build of the candidate was compared with live production in `docs/evidence/v3/preview/live-vs-candidate.md`; it confirms items 1 to 6. The isolated Vercel preview comparison is still outstanding, so precondition 4 below is not met yet.
+A local production build of the candidate (`docs/evidence/v3/preview/live-vs-candidate.md`) and the isolated Vercel preview of `850df17` (`docs/evidence/v3/preview/vercel-preview.md`) were compared with live production; both confirm items 1 to 6. Precondition 4 below is met for `850df17` and must be repeated if the merge commit differs.
 
 ## Shared gateway store requirements
 
