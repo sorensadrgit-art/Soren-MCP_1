@@ -1,0 +1,37 @@
+{
+  "scope": "research_data_schema_references_workflow_dags_and_negative_fixtures",
+  "result": "PASS",
+  "catalogEntries": 30,
+  "entityKinds": {
+    "bundled_skill": 4,
+    "discovery_catalog": 3,
+    "skill_collection": 6,
+    "reference_corpus": 1,
+    "mcp_server": 7,
+    "software_library": 6,
+    "workflow_runtime": 3
+  },
+  "inventoryStates": {
+    "existing_in_inspected_source": 8,
+    "research_candidate": 22
+  },
+  "sourceRecords": 31,
+  "domainsCovered": 5,
+  "workflowRecipes": 5,
+  "evaluationSpecifications": 24,
+  "negativeFixturesRejected": [
+    "execution permission injection",
+    "unresolved source",
+    "unknown domain",
+    "missing alternative",
+    "library/MCP confusion",
+    "cyclic step dependency",
+    "unresolved workflow capability",
+    "false routing benchmark result"
+  ],
+  "liveConnectionsTested": false,
+  "routingAccuracyMeasured": false,
+  "thirdPartyPackagesInstalled": false,
+  "runtimeWiredToCatalog": false,
+  "productionModified": false
+}

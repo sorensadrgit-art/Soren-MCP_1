@@ -1,0 +1,332 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Soren review-ready capability metadata (research artifact, not an execution policy)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "researchDate",
+    "artifactType",
+    "baseline",
+    "domains",
+    "sharedPolicy",
+    "records"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "researchDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "artifactType": {
+      "const": "review_ready_capability_metadata_not_runtime_configuration"
+    },
+    "baseline": {
+      "type": "object",
+      "required": [
+        "repository",
+        "ref",
+        "evidenceScope",
+        "liveRuntimeProbedThisTurn",
+        "endpoint"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ref": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "evidenceScope": {
+          "const": "source_inspection"
+        },
+        "liveRuntimeProbedThisTurn": {
+          "const": false
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "domains": {
+      "type": "object",
+      "required": [
+        "assistance",
+        "research",
+        "data",
+        "development",
+        "automation"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "assistance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "research": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data": {
+          "type": "string",
+          "minLength": 1
+        },
+        "development": {
+          "type": "string",
+          "minLength": 1
+        },
+        "automation": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "sharedPolicy": {
+      "type": "object",
+      "required": [
+        "catalogInclusionGrantsPermission",
+        "automaticInstall",
+        "automaticExecution",
+        "externalContentApproval",
+        "sourceDocumentationStatus",
+        "targetClientConnectionStatus",
+        "secretValuesStored",
+        "recommendedSelection",
+        "publisherIdentityIsNotApproval",
+        "licensePolicy",
+        "priorityMeaning"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "catalogInclusionGrantsPermission": {
+          "const": false
+        },
+        "automaticInstall": {
+          "const": false
+        },
+        "automaticExecution": {
+          "const": false
+        },
+        "secretValuesStored": {
+          "const": false
+        },
+        "externalContentApproval": {
+          "const": "REQUIRES_EXACT_REVISION_REVIEW"
+        },
+        "sourceDocumentationStatus": {
+          "const": "REVIEWED_AS_OF_RESEARCH_DATE"
+        },
+        "targetClientConnectionStatus": {
+          "const": "NOT_PROBED"
+        },
+        "recommendedSelection": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publisherIdentityIsNotApproval": {
+          "const": true
+        },
+        "licensePolicy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priorityMeaning": {
+          "type": "object",
+          "required": [
+            "P0",
+            "P1",
+            "P2"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "P0": {
+              "type": "string",
+              "minLength": 1
+            },
+            "P1": {
+              "type": "string",
+              "minLength": 1
+            },
+            "P2": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "domains",
+          "name",
+          "capabilities",
+          "useWhen",
+          "avoidWhen",
+          "delivery",
+          "effects",
+          "requires",
+          "sourceIds",
+          "constraints",
+          "inventoryState",
+          "priority",
+          "alternatives",
+          "targetAvailability",
+          "selectedArtifactRevision",
+          "selectedArtifactSha256",
+          "executionAuthorized"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$"
+          },
+          "kind": {
+            "enum": [
+              "bundled_skill",
+              "skill_collection",
+              "discovery_catalog",
+              "mcp_server",
+              "software_library",
+              "workflow_runtime",
+              "reference_corpus"
+            ]
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "assistance",
+                "research",
+                "data",
+                "development",
+                "automation"
+              ]
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "capabilities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          },
+          "useWhen": {
+            "type": "string",
+            "minLength": 1
+          },
+          "avoidWhen": {
+            "type": "string",
+            "minLength": 1
+          },
+          "delivery": {
+            "enum": [
+              "existing_read_skill",
+              "existing_provider_adapter",
+              "source_selection",
+              "native_mcp_if_available",
+              "authorized_host_runtime",
+              "authorized_workflow_platform"
+            ]
+          },
+          "effects": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "guidance_only",
+                "may_bundle_code",
+                "network_read",
+                "possible_network_read",
+                "read_private",
+                "write_private",
+                "write_remote",
+                "possible_remote_write",
+                "possible_metered_usage",
+                "compute",
+                "possible_file_write",
+                "execute_workflow",
+                "schedule"
+              ]
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          },
+          "requires": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "sourceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^S[0-9]{2}$"
+            },
+            "uniqueItems": true,
+            "minItems": 1
+          },
+          "constraints": {
+            "type": "string",
+            "minLength": 1
+          },
+          "inventoryState": {
+            "enum": [
+              "existing_in_inspected_source",
+              "research_candidate"
+            ]
+          },
+          "priority": {
+            "enum": [
+              "P0",
+              "P1",
+              "P2"
+            ]
+          },
+          "alternatives": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "targetAvailability": {
+            "const": "NOT_PROBED"
+          },
+          "selectedArtifactRevision": {
+            "type": "null"
+          },
+          "selectedArtifactSha256": {
+            "type": "null"
+          },
+          "executionAuthorized": {
+            "const": false
+          }
+        }
+      }
+    }
+  }
+}
