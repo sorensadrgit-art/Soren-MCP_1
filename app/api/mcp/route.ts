@@ -148,7 +148,7 @@ const handler=createMcpHandler((server)=>{
     description:"Soren V3: list capability profiles (skills, integrations, recipes) for task families. Bundled reviewed data only.",
     inputSchema:z.object({}),
   },async()=>withErrorBoundary(async()=>({profiles:listProfiles(),
-    recipes:RECIPES.map(r=>({id:r.id,title:r.title,profile:r.profile,uri:recipeResourceUri(r.id)})),
+    recipes:RECIPES.filter(r=>r.approved===true).map(r=>({id:r.id,title:r.title,profile:r.profile,uri:recipeResourceUri(r.id)})),
     policy:"Profiles are advisory groupings; they never grant permissions or connect tools."})));
 
   server.registerTool("plan_toolchain",{
@@ -156,7 +156,7 @@ const handler=createMcpHandler((server)=>{
     title:"Plan Toolchain",
     description:"Soren V3: advisory plan of skills, MCP servers, version-matched docs, steps, approvals and verification for a task. Reported connections stay client_reported.",
     inputSchema:z.object({
-      task:z.string().min(1).max(2000),
+      task:z.string().min(1).max(500),
       runtime:z.string().max(60).optional(),
       project_packages:packageMap.optional(),
       available_connections:z.array(catalogId).max(20).optional(),
@@ -205,12 +205,12 @@ const handler=createMcpHandler((server)=>{
     inputSchema:z.object({client:z.enum(CLIENT_IDS as unknown as [string,...string[]]),integration:catalogId}),
   },async({client,integration})=>withErrorBoundary(async()=>getClientSetupGuide(client,integration)));
 
-  for(const item of KNOWLEDGE_ITEMS){
+  for(const item of KNOWLEDGE_ITEMS.filter(entry=>entry.approved===true)){
     const uri=knowledgeResourceUri(item.id);
     server.registerResource("knowledge-"+item.id,uri,{title:item.title,description:item.summary,mimeType:"application/json"},
       async(resource)=>({contents:[{uri:resource.href,mimeType:"application/json",text:JSON.stringify(item,null,2)}]}));
   }
-  for(const recipe of RECIPES){
+  for(const recipe of RECIPES.filter(entry=>entry.approved===true)){
     server.registerResource("recipe-"+recipe.id,recipeResourceUri(recipe.id),{title:recipe.title,description:recipe.summary,mimeType:"application/json"},
       async(resource)=>({contents:[{uri:resource.href,mimeType:"application/json",text:JSON.stringify(recipe,null,2)}]}));
   }
