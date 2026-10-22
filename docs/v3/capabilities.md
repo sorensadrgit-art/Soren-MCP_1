@@ -1,6 +1,6 @@
 # SOREN Universal V3 capabilities
 
-Version 2.5.0. V3 adds a reviewed knowledge engine, an integration catalog, capability profiles, recipes and an advisory toolchain planner. Every V3 answer comes from catalogs bundled in this repository. SOREN never calls external services, runs commands, edits client configuration or handles credentials.
+Version 2.5.0. V3 adds a reviewed knowledge engine, an integration catalog, capability profiles, recipes and an advisory toolchain planner. Every V3 answer comes from catalogs bundled in this repository. The V3 catalog tools never call external services, run commands, edit client configuration or handle credentials. Legacy tools differ: default federated `route_task`, `discover_skills` and `search_mcp_servers` call external providers (see `docs/v3/production-activation.md`).
 
 ## Feature flag
 

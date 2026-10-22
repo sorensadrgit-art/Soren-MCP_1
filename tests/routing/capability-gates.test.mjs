@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {buildCapabilityPlan,CAPABILITIES} from '../../lib/capabilities/planner.mjs';
-import {RECIPES} from '../../lib/recipes/catalog.mjs';
-import {KNOWLEDGE_ITEMS} from '../../lib/knowledge/catalog.mjs';
+import {RECIPES,recipeResourceUri} from '../../lib/recipes/catalog.mjs';
+import {KNOWLEDGE_ITEMS,knowledgeResourceUri} from '../../lib/knowledge/catalog.mjs';
+import {runRouteSession,INIT} from '../helpers/mcp-route.mjs';
 
 test('a read hint cannot remove the approval gate of a remote write named in the task',()=>{
   const task='Commit and push the fix to the GitHub repository';
@@ -41,7 +42,13 @@ test('private and provided-only plans never recommend public network-only capabi
   const browser=buildCapabilityPlan('Read this login-protected page using my approved browser profile.',{domain:'research',source_scope:'private'});
   assert.equal(browser.primaryCapabilityId,'service.playwright');
 });
-test('only approved recipes and knowledge entries are eligible for MCP resources',()=>{
+test('recipes and knowledge entries declare a boolean approval flag',()=>{
   assert.ok(RECIPES.every(r=>typeof r.approved==='boolean'));
   assert.ok(KNOWLEDGE_ITEMS.every(k=>typeof k.approved==='boolean'));
+});
+test('the MCP route lists exactly the approved knowledge and recipe resources',()=>{
+  const [,list]=runRouteSession([INIT,['resources/list']],{v3:true});
+  const listed=new Set(list.body.result.resources.map(r=>r.uri));
+  const all=[...KNOWLEDGE_ITEMS.map(k=>[knowledgeResourceUri(k.id),k.approved]),...RECIPES.map(r=>[recipeResourceUri(r.id),r.approved])];
+  for(const [uri,approved] of all)assert.equal(listed.has(uri),approved===true,uri);
 });

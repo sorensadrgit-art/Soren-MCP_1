@@ -39,7 +39,7 @@ The original 25-file handoff remains unchanged under `docs/implementation/`. Ver
 Endpoint: https://soren-shared-mcp-skills.vercel.app/api/mcp
 Alias: soren-skills
 MCP identity: soren-universal-skill-router
-MCP contract: 2.2.0
+MCP contract: 2.4.0 (live); this branch: 2.5.0
 Package: 1.0.0
 ```
 

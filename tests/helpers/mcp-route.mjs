@@ -22,7 +22,9 @@ process.stdout.write('\\n@@RESULT@@'+JSON.stringify(out));
 export function runRouteSession(calls,{v3=false,env={}}={}){
   const childEnv={...process.env,...env};
   if(v3)childEnv.SOREN_V3_TOOLS='1';else delete childEnv.SOREN_V3_TOOLS;
-  const result=spawnSync(process.execPath,['--input-type=module','-e',CHILD],{cwd:ROOT,env:childEnv,input:JSON.stringify(calls),encoding:'utf8',timeout:90000,maxBuffer:32*1024*1024});
+  // Node 22.9-22.17 only strips types behind a flag; the child imports route.ts directly.
+  const strip=process.features?.typescript?[]:['--experimental-strip-types'];
+  const result=spawnSync(process.execPath,[...strip,'--input-type=module','-e',CHILD],{cwd:ROOT,env:childEnv,input:JSON.stringify(calls),encoding:'utf8',timeout:90000,maxBuffer:32*1024*1024});
   const marker=(result.stdout||'').lastIndexOf('@@RESULT@@');
   if(marker<0)throw new Error('route session failed: '+String(result.stderr||result.error||'').slice(0,800));
   return JSON.parse(result.stdout.slice(marker+'@@RESULT@@'.length));
