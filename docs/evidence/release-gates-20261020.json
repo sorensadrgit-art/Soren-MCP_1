@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "baseRevision": "cf851014c6aff9d51f967d18ea9cc2b950c6bb7f",
+  "branch": "work/release-gates-20261020",
+  "sourceSnapshot": [
+    {
+      "path": ".env.example",
+      "sha256": "ec22c954e3d5c9aaebff1bb622eab482bcbbf875088e4da1135546acd6ffc317"
+    },
+    {
+      "path": "package.json",
+      "sha256": "7afd4e712893d205fc2a809da30067fa8afa98c22c6c650a66218914ff143127"
+    },
+    {
+      "path": "lib/security/auth.mjs",
+      "sha256": "8360379cf056aecea9a227264440b8c7df4f788a8d7b907611466492d4a57c63"
+    },
+    {
+      "path": "tests/security/auth.test.mjs",
+      "sha256": "09b3a0bde2729c7d1bc7a1a49a11d6101913d20a65f35a346a5931254cb37042"
+    },
+    {
+      "path": "lib/operations/activation-preflight.mjs",
+      "sha256": "800cc5a33df380e525b546420885c2777d6cc69137a2645faa108ec21b9f01e3"
+    },
+    {
+      "path": "scripts/activation-preflight.mjs",
+      "sha256": "b5134ab7a7fbe6867e2e9a608ead24bb3aec42b31631a358a29d838f99894068"
+    },
+    {
+      "path": "tests/operations/activation-preflight.test.mjs",
+      "sha256": "15637b7af3542577143bbb7170ea02c9596cbc5e3e43e0b860d9e5da1057205d"
+    },
+    {
+      "path": "tests/operations/activation-preflight-cli.test.mjs",
+      "sha256": "cf7a17a3c8a357573632741ba8641e0a238d1692f248f6968d642eb2c10fca5c"
+    }
+  ],
+  "validation": [
+    {
+      "check": "final-tests",
+      "exitCode": 0,
+      "startedAt": "2026-10-20T16:28:18.315662+00:00",
+      "finishedAt": "2026-10-20T16:28:54.206306+00:00"
+    },
+    {
+      "check": "final-typecheck",
+      "exitCode": 0,
+      "startedAt": "2026-10-20T16:28:54.224619+00:00",
+      "finishedAt": "2026-10-20T16:28:56.843347+00:00"
+    },
+    {
+      "check": "final-build",
+      "exitCode": 0,
+      "startedAt": "2026-10-20T16:28:56.843347+00:00",
+      "finishedAt": "2026-10-20T16:29:01.860290+00:00"
+    }
+  ],
+  "nodeTests": {
+    "tests": 174,
+    "pass": 174,
+    "fail": 0,
+    "skipped": 0,
+    "report": "release-gates-tests-20261020-summary.txt",
+    "sha256": "0d1a4ea7cb6dc3df81292e184c010e90d13fedcefd68f42db6898a48ef25448b",
+    "fullTranscriptPublished": false,
+    "completeTranscriptLocation": "ignored local evidence; PR CI will provide a fresh public run"
+  },
+  "review": {
+    "mode": "independent_read_only_native_agent_static_review",
+    "findings": 2,
+    "findingsReproducedAsFailingTests": 2,
+    "regressionsResolved": 2,
+    "hostedSecurityCertification": false
+  },
+  "nativeChecks": [
+    {
+      "client": "Factory Droid",
+      "status": "PAYLOAD_UNVERIFIED",
+      "startedAt": "2026-10-20T16:11:22.577654+00:00",
+      "finishedAt": "2026-10-20T16:11:50.670205+00:00",
+      "exitCode": 0,
+      "traceSha256": "29022647469e2e3fb95f1a86ecc1b8e340bf82d002ba04e618ebfffe8d4b7b97",
+      "persistentConfigChanged": false,
+      "permissionsBypassed": false,
+      "endpointScope": "existing_production_V2.2_not_candidate_build",
+      "guiVerified": false,
+      "observation": "Native Script wrapper recorded route_task without wrapper error, but returned payload was flattened. Final model text alone is not verification."
+    },
+    {
+      "client": "Codex CLI",
+      "status": "BLOCKED",
+      "startedAt": "2026-10-20T16:10:36.652905+00:00",
+      "finishedAt": "2026-10-20T16:10:49.966407+00:00",
+      "exitCode": 0,
+      "traceSha256": "dae6dc392db8027ceae562d22eaab3e4eaee9104f063c70cfca47a91960be9d1",
+      "persistentConfigChanged": false,
+      "permissionsBypassed": false,
+      "endpointScope": "existing_production_V2.2_not_candidate_build",
+      "guiVerified": false,
+      "observation": "Deferred tool discovery failed before invocation. Probe-only plugin isolation did not change global settings."
+    },
+    {
+      "client": "Claude Code",
+      "status": "BLOCKED",
+      "startedAt": "2026-10-20T16:17:39.180492+00:00",
+      "finishedAt": "2026-10-20T16:17:50.907205+00:00",
+      "exitCode": 0,
+      "traceSha256": "a565712bd9be7631d629fac49d9576d37105bc409eecffc58b84a87a8584a6df",
+      "persistentConfigChanged": false,
+      "permissionsBypassed": false,
+      "endpointScope": "existing_production_V2.2_not_candidate_build",
+      "guiVerified": false,
+      "observation": "Existing UserPromptSubmit hook references a missing file; zero model turns. Hook was not bypassed."
+    }
+  ],
+  "infrastructure": {
+    "supabaseConnected": false,
+    "vercelEnvironmentMetadataResult": 403,
+    "vercelCliAvailable": false,
+    "productionDeploymentUnchanged": "dpl_8efcRaKMX6uZX6fqPRJq7aEQ2NvT",
+    "signingOrScheduledDeliveryPerformed": false
+  },
+  "acceptanceCountsUnchanged": {
+    "PASS": 41,
+    "BLOCKED": 24
+  },
+  "productionModified": false,
+  "updaterArmed": false,
+  "liveHostedAcceptanceReclassified": false,
+  "notes": [
+    "No raw native transcripts, personal configuration or credentials are published.",
+    "Source-only tests and configuration diagnostics cannot satisfy live activation gates."
+  ]
+}
