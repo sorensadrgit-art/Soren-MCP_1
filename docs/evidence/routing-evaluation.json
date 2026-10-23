@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-22T17:03:30.876Z",
+  "observedAt": "2026-10-23T15:38:53.821Z",
   "fixtureSha256": "c36b95b64e49b99e6ea24ed57527d54c258049739e5bf73915a13c59b4ea1bcc",
   "labelReview": "developer_authored_human_review_pending",
   "contract": "2.5.0",
@@ -17,13 +17,13 @@
   "bypassCorrect": true,
   "localRoute": {
     "samples": 100,
-    "p50Ms": 0.15380000000000393,
-    "p95Ms": 0.32439999999999714
+    "p50Ms": 0.2137519999999995,
+    "p95Ms": 0.3937779999999975
   },
   "bundledRead": {
     "samples": 100,
-    "p50Ms": 0.5427999999999997,
-    "p95Ms": 0.9586000000000183
+    "p50Ms": 0.022209000000003698,
+    "p95Ms": 0.05715899999999863
   },
   "concurrentLocal": {
     "samples": 20,
@@ -243,7 +243,8 @@
       "category": "mixed",
       "selected": [
         "motion-systems",
-        "skill-orchestration"
+        "skill-orchestration",
+        "soren-learning-loop"
       ],
       "passed": true,
       "frozenLabelPassed": true,
