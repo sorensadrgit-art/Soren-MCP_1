@@ -1,3 +1,16 @@
+# RESOLVED (see phase-e-final-v3-only.md)
+
+This deviation applied to the earlier Phase E run against deployment
+dpl_B9uW548d2RqCDVrEKeAhtTvVWY7W, where the preview environment still had the
+TypeSafe JEV tools enabled (17 tools advertised). The finalization run set a
+V3-only baseline (SOREN_TYPESAFE_TOOLS=0, TYPESAFE_JEV_ENABLED=false) on a new
+deployment (dpl_4VALcS5XcaKu7uT9pNb3SR2UQTKk), which now advertises exactly
+14 tools (8 legacy + 6 V3) and passes every required gate. The stale skill-count
+constant in probe-preview-sdk.mjs was also corrected to derive from the catalog
+(SKILLS.length = 23).
+
+---
+
 # Phase E deviation note: tool inventory count mismatch (test expectation, not a defect)
 
 Observed: 2026-10-23T09:33:09Z
