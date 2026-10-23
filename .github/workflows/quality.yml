@@ -25,6 +25,8 @@ jobs:
         run: npm run typecheck
       - name: Knowledge content hashes (fails on drift)
         run: npm run knowledge:hash
+      - name: Foundry approved-skill hashes and review receipts
+        run: npm run foundry:verify
       - name: Legacy routing evaluation (frozen fixture + versioned expectations)
         run: npm run evaluate:routing
       - name: V3 routing evaluation
