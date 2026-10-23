@@ -1,0 +1,80 @@
+{
+  "provenance": "produced by scripts/verify-gateway-store.mjs (the implementation behind npm run verify:gateway-store), executed by the session probe wrapper against the real non-production project with the owner-supplied gateway JWT, the project publishable key and an independently generated rate key; same environment contract as npm run verify:gateway-store; no credential values are recorded",
+  "observedAt": "2026-10-23T02:32:41.131Z",
+  "status": "PASS",
+  "target": "nonproduction",
+  "supabaseHost": "xoyefnfesvrqsohuppxe.supabase.co",
+  "gatewayKeyExpiresAt": "2026-10-23T03:25:28.000Z",
+  "checks": [
+    {
+      "name": "seeded agent principal resolves with skills:read only",
+      "pass": true,
+      "detail": {
+        "role": "reader",
+        "permissions": [
+          "skills:read"
+        ]
+      }
+    },
+    {
+      "name": "gateway key cannot resolve principals in another workspace",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": "42501"
+      }
+    },
+    {
+      "name": "anon key alone cannot call gateway RPCs",
+      "pass": true
+    },
+    {
+      "name": "gateway key denied get_workspace_status",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": "42501"
+      }
+    },
+    {
+      "name": "gateway key denied set_grant",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": "42501"
+      }
+    },
+    {
+      "name": "gateway key denied publish_catalog",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": "42501"
+      }
+    },
+    {
+      "name": "gateway key denied get_health_snapshot",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": "42501"
+      }
+    },
+    {
+      "name": "gateway key cannot read tables directly",
+      "pass": true,
+      "detail": {
+        "status": 403,
+        "code": "42501"
+      }
+    },
+    {
+      "name": "federation budget claim succeeds for an HMAC subject",
+      "pass": true
+    },
+    {
+      "name": "federation cache round-trips a negative entry and rejects an over-long negative TTL",
+      "pass": true
+    }
+  ]
+}

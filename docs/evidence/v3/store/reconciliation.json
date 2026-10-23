@@ -1,7 +1,7 @@
 {
   "recordedAt": "2026-10-22T19:45:53.933Z",
-  "updatedAt": "2026-10-22T21:09Z",
-  "updateNote": "first revision recorded the read-only reconciliation. 2026-10-22T20:42Z: corrected the vercelPreviewEnv record (authoritative createdAt timestamps; the two SOREN_GATEWAY_DB_KEY records). 2026-10-22T21:09Z: recorded the owner's ES256 key-custody confirmation and the applied preview env corrections (see vercel-corrections.json). Store observations (publicProbes, structuralReconciliation, productionBaseline) are unchanged.",
+  "updatedAt": "2026-10-23T02:33Z",
+  "updateNote": "first revision recorded the read-only reconciliation. 2026-10-22T20:42Z: corrected the vercelPreviewEnv record (authoritative createdAt timestamps; the two SOREN_GATEWAY_DB_KEY records). 2026-10-22T21:09Z: recorded the owner's ES256 key-custody confirmation and the applied preview env corrections (see vercel-corrections.json). 2026-10-23T02:33Z: recorded the owner-supplied gateway JWT verification and the live probe (gateway-verification.json, store-probe.json, store-probe-negatives.json); the JWT-supply and live-probe gates are resolved. Store observations (structuralReconciliation, productionBaseline) are unchanged.",
   "store": {
     "name": "soren-mcp-v3-gateway-preview",
     "ref": "xoyefnfesvrqsohuppxe",
@@ -9,13 +9,14 @@
     "plan": "free (owner-reported)",
     "region": "us-east-1 (owner-reported)",
     "provisionedBy": "outside the Factory Droid workspace; the database records no operator identity",
-    "writesByThisWorkspace": "none"
+    "writesByThisWorkspace": "none until the approved live probe on 2026-10-23, which wrote exactly the two pre-approved bounded rows: one federation budget claim and one 30 s negative cache row"
   },
   "es256KeyCustody": {
     "confirmedBy": "owner",
     "confirmedAt": "2026-10-22 (owner decision questionnaire)",
     "finding": "private JWK owner-held; key in_use; creator accounted; no rotation required",
-    "note": "the dashboard observation itself is owner-side evidence; the runbook retains the approval-gated rotation plan for future use only"
+    "note": "the dashboard observation itself is owner-side evidence; the runbook retains the approval-gated rotation plan for future use only",
+    "subsequentMinting": "2026-10-23: the owner generated a new ES256 key owner-side and minted the one-hour acceptance JWT with it (kid 16503488-230f-4d67-8de8-bcb9baf1d396); the public JWKS now advertises three ES256 keys (6c2724fd, 462c4447, 16503488); the JWT verified and was live-accepted; no key was rotated or revoked by this workspace"
   },
   "publicProbes": [
     {
@@ -32,6 +33,17 @@
       "restRoot": 401,
       "authHealth": 401,
       "jwksKidUnchanged": true
+    },
+    {
+      "at": "2026-10-23T02:32:57.882Z",
+      "restRoot": 401,
+      "authHealth": 401,
+      "jwks": [
+        {"kty": "EC", "crv": "P-256", "alg": "ES256", "kid": "6c2724fd-b61f-467b-8a9e-34fc8009d564", "use": "sig"},
+        {"kty": "EC", "crv": "P-256", "alg": "ES256", "kid": "462c4447-f28e-4a5f-9663-29bca7890ebf", "use": "sig"},
+        {"kty": "EC", "crv": "P-256", "alg": "ES256", "kid": "16503488-230f-4d67-8de8-bcb9baf1d396", "use": "sig"}
+      ],
+      "jwksNote": "three ES256 keys advertised; the minting key for the acceptance JWT is 16503488-230f-4d67-8de8-bcb9baf1d396"
     }
   ],
   "structuralReconciliation": {
@@ -47,6 +59,15 @@
     "operationalTablesEmpty": ["federation_cache", "federation_budget_buckets", "jobs", "leases", "operation_events", "release records"],
     "customAccessTokenHook": "absent (bearer identity designed, not enabled)",
     "verdict": "matches the reviewed end-state on every checked point"
+  },
+  "liveProbe": {
+    "executedAt": "2026-10-23T02:32:41Z",
+    "jwtVerification": "at 2026-10-23T02:32:39Z the owner-supplied one-hour workspace-bound soren_gateway JWT (kid 16503488-230f-4d67-8de8-bcb9baf1d396) verified against the live public JWKS: ES256 signature, soren_gateway role, workspace claim cross-checked, expiry 2026-10-23T03:25:28Z; see gateway-verification.json",
+    "probe": "verify:gateway-store against https://xoyefnfesvrqsohuppxe.supabase.co: 10/10 PASS; see store-probe.json",
+    "negatives": "service key present, wrong workspace binding, store target unset: all REFUSED; see store-probe-negatives.json",
+    "writes": "exactly the two pre-approved bounded rows: one federation budget claim and one 30 s negative cache row",
+    "keyOperations": "none: no signing key was rotated or revoked by this workspace",
+    "localMaterialCleanup": "gateway-jwt.txt and credentials.json deleted after the probe; no private JWK ever entered this workspace"
   },
   "vercelPreviewEnv": {
     "project": "soren-mcp-v3-preview",
@@ -77,11 +98,10 @@
   },
   "resolvedGates": [
     "ES256 key custody: owner-confirmed 2026-10-22 (private JWK owner-held, key in_use, creator accounted; no rotation)",
-    "Vercel preview env deviation: corrected with owner approval 2026-10-22 (see vercel-corrections.json; every gateway variable Preview-only, no production targets)"
+    "Vercel preview env deviation: corrected with owner approval 2026-10-22 (see vercel-corrections.json; every gateway variable Preview-only, no production targets)",
+    "Gateway JWT supply and live probe: resolved 2026-10-23 (owner-supplied one-hour JWT verified against the live JWKS; verify:gateway-store 10/10 PASS; all three refusal negatives REFUSED; see gateway-verification.json, store-probe.json, store-probe-negatives.json)"
   ],
   "remainingGates": [
-    "Owner supplies a short-lived workspace-bound soren_gateway JWT through an approved local file (gateway-jwt.txt), plus the publishable anon key (anon-key.txt) and the probe identifiers (probe-subject.txt, probe-client-id.txt)",
-    "verify:gateway-store 10/10 PASS with all three refusal negatives REFUSED",
-    "First preview redeploy with the corrected variables, only after the live probe passes (runbook step 8)"
+    "First preview redeploy with the corrected variables (runbook step 8) — the live-probe precondition is now met; the redeploy waits on owner approval only"
   ]
 }
