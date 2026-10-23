@@ -1,0 +1,33 @@
+Phase E final rate-limit and failure-boundary probe (V3-only deployment)
+observed: ~2026-10-23T11:57:34Z
+endpoint: https://soren-mcp-v3-preview-9cxi5yafc-sorensadr-gmailcoms-projects.vercel.app/api/mcp
+method: tools/call discover_skills (providers:["skillsmp"]), distinct valid public
+        tech-topic queries (cache misses) to claim federation budget.
+
+Budget policy (supabase/migrations/0001_private_control_plane.sql claim_federation_budget):
+  global 30/min; per-subject 30/min authenticated, 6/min unauthenticated.
+  Subject = HMAC(SOREN_RATE_KEY, x-vercel-forwarded-for) for unauthenticated calls.
+
+Observed sequence (one minute window):
+  0 gsap tailwind        prov=ok                          (claim 1 allowed)
+  1 three.js next.js     prov=ok                          (claim 2 allowed)
+  2 webgl react          prov=ok                          (claim 3 allowed)
+  3 shader tailwind      prov=ok                          (claim 4 allowed)
+  4 animation next.js    prov=ok                          (claim 5 allowed)
+  5 webgl motion         prov=ok                          (claim 6 allowed)
+  6 shader               prov=unavailable reason=provider_quota_exceeded  (claim 7 DENIED)
+  7 gsap animation       prov=unavailable reason=provider_quota_exceeded  (claim 8 DENIED)
+  8 three.js motion      prov=unavailable reason=provider_quota_exceeded  (claim 9 DENIED)
+  9 react                prov=unavailable reason=provider_quota_exceeded  (claim 10 DENIED)
+
+Result: per-address unauthenticated cap of 6 claims/min enforced exactly. The
+upstream provider was healthy in this run (prov=ok for allowed claims), so the
+denials are attributable to the budget gate, not upstream flakiness. The server
+degrades gracefully (HTTP 200, structured per-provider body), no 5xx.
+
+Failure boundaries (same deployment):
+  cross-origin POST        -> 403
+  malformed identity POST  -> 401
+  oversized body POST      -> 413
+Privacy boundary: queries without safe public tech keywords are sanitized to an
+empty public query and are NOT transmitted upstream (no budget claimed).

@@ -1,0 +1,25 @@
+{
+  "provenance": "produced by scripts/verify-gateway-store.mjs precondition refusals, executed by the session probe wrapper immediately after the positive run; same environment, one variable changed per run; no credential values are recorded",
+  "observedAt": "2026-10-23T02:32:41.132Z",
+  "serviceKeyPresent": {
+    "status": "REFUSED",
+    "issues": [
+      "SUPABASE_SERVICE_ROLE_KEY must not be set for this probe"
+    ],
+    "checks": []
+  },
+  "wrongWorkspaceBinding": {
+    "status": "REFUSED",
+    "issues": [
+      "SOREN_GATEWAY_DB_KEY workspace_id does not match SOREN_WORKSPACE_ID"
+    ],
+    "checks": []
+  },
+  "targetUnset": {
+    "status": "REFUSED",
+    "issues": [
+      "SOREN_STORE_TARGET must be nonproduction"
+    ],
+    "checks": []
+  }
+}

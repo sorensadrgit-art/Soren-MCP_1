@@ -1,0 +1,38 @@
+Phase E protected preview verify:mcp run
+endpoint: https://soren-mcp-v3-preview-26243r08f-sorensadr-gmailcoms-projects.vercel.app/api/mcp
+deployment: dpl_B9uW548d2RqCDVrEKeAhtTvVWY7W (target: preview, source commit 30ac3e3726a1efa6e58cd1221fe242f42d089660)
+observed: 2026-10-23T09:33:09Z
+protection: Vercel Authentication active (ssoProtection all_except_custom_domains); temporary automation bypass used for the run and revoked immediately after.
+
+PASS Responsive web dashboard and connection navigator
+PASS Legacy 2025 handshake and branded server identity
+PASS Native 2026-07 discovery
+FAIL Legacy eight tool schemas first (plus exactly six V3 tools when enabled) with safety annotations
+PASS All 23 curated SKILL.md resources listed and readable
+PASS Tool list_skills
+PASS Tool search_skills
+PASS Tool read_skill
+PASS Tool list_providers
+PASS Tool route_task
+PASS V3 tools not advertised (SOREN_V3_TOOLS off)   [see deviation note]
+PASS Federated routing returns review-only candidates
+PASS SkillsMP external discovery
+PASS Skills.sh authenticated discovery and inspection
+WARN Official MCP registry discovery
+PASS Reject non-curated SKILL.md path traversal
+PASS Reject invalid external candidate path
+PASS Reject malformed route arguments
+PASS Four simultaneous agent requests do not cross-contaminate
+PASS Cross-origin browser request rejected
+PASS Reject supplied malformed identity even for a bundled public read
+PASS Reject oversized streaming request body
+
+{
+  "endpoint": "https://soren-mcp-v3-preview-26243r08f-sorensadr-gmailcoms-projects.vercel.app/api/mcp",
+  "protectedTarget": true,
+  "requests": 22,
+  "checks": 22,
+  "passed": 20,
+  "failed": ["Legacy eight tool schemas first (plus exactly six V3 tools when enabled) with safety annotations"],
+  "warnings": ["Official MCP registry discovery"]
+}

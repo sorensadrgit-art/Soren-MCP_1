@@ -2,6 +2,10 @@
 /**
  * Probes a NON-PRODUCTION gateway store with the gateway credential only. It writes one budget claim
  * and one 30-second negative cache entry; it never reads or prints credential values.
+ *
+ * Real PostgREST denies a call the role may not make with HTTP 403, or with HTTP 404 when it hides the
+ * unprivileged object from that role's schema cache. Both prove denial here: the same request machinery
+ * is proven correct by the successful principal lookup, so a 404 is a privilege answer, not a route error.
  */
 import {createHmac, randomBytes, randomUUID} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
@@ -50,11 +54,17 @@ export async function verifyGatewayStore({env = process.env, fetchImpl = fetch} 
     catch (error) { checks.push({name, pass: false, error: String(error?.message || error).slice(0, 200)}); }
   };
   const expect = (condition, message) => { if (!condition) throw new Error(message); };
+  const errorCode = async response => { try { return JSON.parse(await response.text())?.code ?? null; } catch { return null; } };
   const raw = (path, {bearer, body, method = 'POST'} = {}) => fetchImpl(`${origin}${path}`, {
     method, redirect: 'error', cache: 'no-store', signal: AbortSignal.timeout(5000),
     headers: {'Content-Type': 'application/json', apikey: env.SUPABASE_ANON_KEY, ...(bearer ? {Authorization: `Bearer ${bearer}`} : {})},
     ...(method === 'POST' ? {body: JSON.stringify(body ?? {})} : {}),
   });
+  const denial = async response => {
+    const code = await errorCode(response);
+    if (![403, 404].includes(response.status)) throw new Error(`expected 403 permission denial or 404 schema-cache denial, got ${response.status}`);
+    return {status: response.status, code};
+  };
   const store = createGatewayStore({env, fetchImpl});
   const issuer = env.SOREN_PROBE_ISSUER || `${origin}/auth/v1`;
   const principalArgs = workspace => ({p_workspace_id: workspace, p_issuer: issuer, p_subject: env.SOREN_PROBE_SUBJECT, p_client_id: env.SOREN_PROBE_CLIENT_ID});
@@ -67,20 +77,18 @@ export async function verifyGatewayStore({env = process.env, fetchImpl = fetch} 
   });
   await check('gateway key cannot resolve principals in another workspace', async () => {
     const response = await raw('/rest/v1/rpc/get_principal_context', {bearer: env.SOREN_GATEWAY_DB_KEY, body: principalArgs(randomUUID())});
-    expect(response.status === 403, `expected 403, got ${response.status}`);
+    const code = await errorCode(response);
+    expect(response.status === 403, `expected 403 workspace binding denial, got ${response.status}`);
+    return {status: response.status, code};
   });
   await check('anon key alone cannot call gateway RPCs', async () => {
     const response = await raw('/rest/v1/rpc/get_principal_context', {body: principalArgs(env.SOREN_WORKSPACE_ID)});
     expect([401, 403, 404].includes(response.status), `expected denial, got ${response.status}`);
   });
-  for (const [name, body] of Object.entries(forbiddenRpcs(env.SOREN_WORKSPACE_ID))) await check(`gateway key denied ${name}`, async () => {
-    const response = await raw(`/rest/v1/rpc/${name}`, {bearer: env.SOREN_GATEWAY_DB_KEY, body});
-    expect(response.status === 403, `expected 403 permission denied, got ${response.status}`);
-  });
-  await check('gateway key cannot read tables directly', async () => {
-    const response = await raw('/rest/v1/grants?select=id&limit=1', {bearer: env.SOREN_GATEWAY_DB_KEY, method: 'GET'});
-    expect(response.status === 403, `expected 403 permission denied, got ${response.status}`);
-  });
+  for (const [name, body] of Object.entries(forbiddenRpcs(env.SOREN_WORKSPACE_ID))) await check(`gateway key denied ${name}`, async () =>
+    denial(await raw(`/rest/v1/rpc/${name}`, {bearer: env.SOREN_GATEWAY_DB_KEY, body})));
+  await check('gateway key cannot read tables directly', async () =>
+    denial(await raw('/rest/v1/grants?select=id&limit=1', {bearer: env.SOREN_GATEWAY_DB_KEY, method: 'GET'})));
   await check('federation budget claim succeeds for an HMAC subject', async () => {
     const subject = createHmac('sha256', env.SOREN_RATE_KEY).update(`probe:${randomUUID()}`).digest('hex');
     const budget = await store.rpc('claim_federation_budget', {p_subject: subject, p_authenticated: false});

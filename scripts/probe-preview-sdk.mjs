@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import {Client,StreamableHTTPClientTransport} from '@modelcontextprotocol/client';
 import {verificationEndpoint,protectionBypassHeaders} from '../lib/contracts/endpoint.mjs';
 import {TOOL_NAMES,V3_TOOL_NAMES} from '../lib/client-contract.mjs';
+import {SKILLS} from '../lib/catalog.mjs';
 
 const [raw,out]=process.argv.slice(2);
 if(!raw)throw new Error('Usage: node scripts/probe-preview-sdk.mjs <https MCP endpoint> [report.json]');
@@ -25,7 +26,7 @@ const toolNames=(await client.listTools()).tools.map(t=>t.name);
 check('14 tools: 8 legacy in order then 6 V3',JSON.stringify(toolNames)===JSON.stringify([...TOOL_NAMES,...V3_TOOL_NAMES]),toolNames);
 const resources=(await client.listResources()).resources.map(r=>r.uri);
 const counts={total:resources.length,skill:resources.filter(u=>u.startsWith('skill://')).length,knowledge:resources.filter(u=>u.startsWith('soren://knowledge/')).length,recipe:resources.filter(u=>u.startsWith('soren://recipe/')).length};
-check('resources: 22 skills, 44 knowledge, 8 recipes',counts.skill===22&&counts.knowledge===44&&counts.recipe===8,counts);
+check(`resources: ${SKILLS.length} skills, 44 knowledge, 8 recipes`,counts.skill===SKILLS.length&&counts.knowledge===44&&counts.recipe===8,counts);
 
 const latency={
   route_task:await timed(async()=>text(await client.callTool({name:'route_task',arguments:{task:'GSAP Three.js WebGL website',runtime:'codex',discovery:'local'}})).primary.name),

@@ -1,0 +1,27 @@
+{
+  "recordedAt": "2026-10-22T21:09Z",
+  "project": "soren-mcp-v3-preview (prj_n1PULnMPv3uCy1Df7qBCnKBRzNNp)",
+  "ownerApproval": "the owner approved the full correction set on 2026-10-22 (decision questionnaire: 'Approve full set'), including creating SOREN_RATE_KEY with a freshly generated 32-byte value; no redeploy by this workspace",
+  "sequence": [
+    {"actor": "sorensadr-5641 (owner user, another session)", "action": "re-scoped SUPABASE_URL, SOREN_WORKSPACE_ID, SOREN_CAPABILITY_MODE, SUPABASE_ANON_KEY and OREN_RATE_KEY to Preview-only", "at": "2026-10-22T20:54:17Z-20:55:15Z (updatedAt values)"},
+    {"actor": "sorensadr-5641 (owner user, another session)", "action": "deployed a new preview deployment dpl_BuAvrCT2nbiqyruPiX9MzkUGj8t9 (READY)", "at": "2026-10-22T20:57:34Z"},
+    {"actor": "this workspace (owner-approved)", "action": "deleted the production-targeted SOREN_GATEWAY_DB_KEY record (created 2026-10-22T19:39:28.583Z; a sensitive secret aimed at an environment that must never have a production deployment)", "at": "2026-10-22T21:08-21:09Z"},
+    {"actor": "this workspace (owner-approved)", "action": "deleted the typo'd OREN_RATE_KEY record (created 2026-10-22T19:23:49.626Z, Preview-only after the operator re-scope)", "at": "2026-10-22T21:08-21:09Z"},
+    {"actor": "this workspace (owner-approved)", "action": "created SOREN_RATE_KEY: Preview-only, type sensitive, record id Ew9bUQilCzjCTMFW, createdAt 2026-10-22T21:09:09.794Z, fresh 32-byte random value generated locally (value never printed, never committed; stored only gitignored and in Vercel)", "at": "2026-10-22T21:09:09.794Z"}
+  ],
+  "verifiedEndState": {
+    "totalRecords": 10,
+    "gatewayVariablesAllPreviewOnly": ["SUPABASE_URL", "SOREN_WORKSPACE_ID", "SOREN_CAPABILITY_MODE", "SUPABASE_ANON_KEY", "SOREN_GATEWAY_DB_KEY", "SOREN_RATE_KEY"],
+    "noRecordTargetsProduction": true,
+    "orenRateKeyGone": true,
+    "typeSafeAndFlagVarsUntouched": ["TYPESAFE_API_KEY", "TYPESAFE_JEV_ENABLED", "SOREN_TYPESAFE_TOOLS", "SOREN_V3_TOOLS"],
+    "previewGatewayKeyRecordUntouched": true
+  },
+  "deploymentImpact": {
+    "redeployedByThisWorkspace": "none",
+    "latestDeployment": "dpl_BuAvrCT2nbiqyruPiX9MzkUGj8t9 (preview, READY, 2026-10-22T20:57:34Z, created by the operator's session)",
+    "note": "that deployment was built before SOREN_RATE_KEY existed, so it still fails closed (lib/gateway.mjs: shared_provider_budget_unavailable); no deployment has been built with the corrected variable set, and per the runbook the next preview deploy waits for the live probe",
+    "newDeploymentProtection": "unauthenticated request to the new deployment URL returns 302 (Vercel Authentication remains enabled)"
+  },
+  "secretsDisclosed": "none; the API never returned any variable value, and the generated SOREN_RATE_KEY value exists only in the gitignored local credentials file and in Vercel"
+}
