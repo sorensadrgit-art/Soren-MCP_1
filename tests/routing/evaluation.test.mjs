@@ -9,17 +9,22 @@ const expectations=JSON.parse(fs.readFileSync(new URL('./evaluation-expectations
 test('frozen 60-case routing regression preserves choices, bypasses and concurrency',async()=>{
   const result=await evaluateRouting();assert.equal(result.taskCount,60);assert.equal(result.passed,60,JSON.stringify(result.results.filter(x=>!x.passed)));assert.ok(result.explicitChoicesPreserved);assert.ok(result.bypassCorrect);assert.ok(result.concurrentLocal.isolated);assert.equal(result.federation.upstreamFixtureCalls,30);assert.equal(result.federation.liveUpstreamRequests,0);
 });
-test('versioned expectations: ROUTE-056 is revised from contract 2.5.0 only, and the frozen label is still reported',async()=>{
+test('versioned expectations: ROUTE-056 preserved and three owner-approved v2.5.1 fallbacks are traceable',async()=>{
   const current=await evaluateRouting();
-  assert.deepEqual(current.revisionsApplied,['ROUTE-056']);
-  assert.deepEqual(current.revisionApprovals,{'ROUTE-056':'owner_approved'});
-  assert.equal(current.frozenLabelPassed,59);
+  assert.deepEqual(current.revisionsApplied,['ROUTE-056','ROUTE-058','ROUTE-059','ROUTE-060']);
+  assert.deepEqual(current.revisionApprovals,{'ROUTE-056':'owner_approved','ROUTE-058':'owner_approved','ROUTE-059':'owner_approved','ROUTE-060':'owner_approved'});
+  assert.equal(current.frozenLabelPassed,56);
   const route056=current.results.find(r=>r.id==='ROUTE-056');
   assert.equal(route056.revised,true);assert.equal(route056.frozenLabelPassed,false);
   assert.ok(!route056.selected.includes('motion-systems'),'an unavailable skill must never be recommended');
   const older=effectiveExpectations(raw,fixture,expectations,'2.4.0');
   assert.deepEqual(older.applied,[]);
   assert.equal(older.tasks.find(t=>t.id==='ROUTE-056').bypass,true);
+  const beforeNewRelease=effectiveExpectations(raw,fixture,expectations,'2.5.0');
+  assert.deepEqual(beforeNewRelease.applied,['ROUTE-056']);
+  for(const id of ['ROUTE-058','ROUTE-059','ROUTE-060'])assert.equal(beforeNewRelease.tasks.find(t=>t.id===id).bypass,true);
+  const after=effectiveExpectations(raw,fixture,expectations,'2.5.1');
+  for(const id of ['ROUTE-058','ROUTE-059','ROUTE-060'])assert.equal(after.tasks.find(t=>t.id===id).bypass,false);
 });
 test('editing the frozen fixture invalidates the revisions instead of silently re-labelling',()=>{
   const edited=raw.replace('GSAP WebGL camera','GSAP WebGL camera rig');
