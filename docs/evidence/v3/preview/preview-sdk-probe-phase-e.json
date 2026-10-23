@@ -1,0 +1,159 @@
+{
+  "observedAt": "2026-10-23T09:33:09.346Z",
+  "endpoint": "https://soren-mcp-v3-preview-26243r08f-sorensadr-gmailcoms-projects.vercel.app/api/mcp",
+  "protectedTarget": true,
+  "client": "@modelcontextprotocol/client",
+  "server": {
+    "name": "soren-universal-skill-router",
+    "version": "2.5.0"
+  },
+  "toolNames": [
+    "list_skills",
+    "search_skills",
+    "route_task",
+    "read_skill",
+    "list_providers",
+    "discover_skills",
+    "inspect_candidate",
+    "search_mcp_servers",
+    "list_capability_profiles",
+    "plan_toolchain",
+    "list_integrations",
+    "search_knowledge",
+    "read_recipe",
+    "get_client_setup_guide",
+    "soren_jev_suggest_specialist",
+    "soren_jev_triage_learning",
+    "soren_jev_verify_claim"
+  ],
+  "resourceCounts": {
+    "total": 75,
+    "skill": 23,
+    "knowledge": 44,
+    "recipe": 8
+  },
+  "latency": {
+    "route_task": {
+      "samples": 10,
+      "p50Ms": 39.8,
+      "p95Ms": 52.9
+    },
+    "plan_toolchain": {
+      "samples": 10,
+      "p50Ms": 46.4,
+      "p95Ms": 62.1
+    },
+    "search_knowledge": {
+      "samples": 10,
+      "p50Ms": 45.4,
+      "p95Ms": 66
+    },
+    "read_recipe": {
+      "samples": 10,
+      "p50Ms": 48,
+      "p95Ms": 68.1
+    },
+    "resource_read": {
+      "samples": 10,
+      "p50Ms": 39.6,
+      "p95Ms": 73.8
+    }
+  },
+  "checks": [
+    {
+      "label": "server identity",
+      "ok": true,
+      "detail": {
+        "name": "soren-universal-skill-router",
+        "version": "2.5.0"
+      }
+    },
+    {
+      "label": "14 tools: 8 legacy in order then 6 V3",
+      "ok": false,
+      "detail": [
+        "list_skills",
+        "search_skills",
+        "route_task",
+        "read_skill",
+        "list_providers",
+        "discover_skills",
+        "inspect_candidate",
+        "search_mcp_servers",
+        "list_capability_profiles",
+        "plan_toolchain",
+        "list_integrations",
+        "search_knowledge",
+        "read_recipe",
+        "get_client_setup_guide",
+        "soren_jev_suggest_specialist",
+        "soren_jev_triage_learning",
+        "soren_jev_verify_claim"
+      ]
+    },
+    {
+      "label": "resources: 22 skills, 44 knowledge, 8 recipes",
+      "ok": false,
+      "detail": {
+        "total": 75,
+        "skill": 23,
+        "knowledge": 44,
+        "recipe": 8
+      }
+    },
+    {
+      "label": "route_task primary motion-systems",
+      "ok": true
+    },
+    {
+      "label": "plan_toolchain immersive-web, 9 steps, nothing verified",
+      "ok": true,
+      "detail": {
+        "profile": "immersive-web",
+        "steps": 9,
+        "verified": 0
+      }
+    },
+    {
+      "label": "search_knowledge returns a primary",
+      "ok": true,
+      "detail": {
+        "primary": "r3f-performance",
+        "results": 3
+      }
+    },
+    {
+      "label": "read_recipe cinematic-portfolio has 9 steps",
+      "ok": true
+    },
+    {
+      "label": "knowledge resource readable",
+      "ok": true
+    },
+    {
+      "label": "unknown runtime gets a guide template, CLI listed as tool",
+      "ok": true
+    },
+    {
+      "label": "setup guide is dry-run only",
+      "ok": true
+    },
+    {
+      "label": "capability plan gates mixed read/write request",
+      "ok": true,
+      "detail": {
+        "operation": "edit",
+        "status": "NEEDS_APPROVAL"
+      }
+    },
+    {
+      "label": "recipe traversal rejected",
+      "ok": true
+    },
+    {
+      "label": "skill traversal rejected",
+      "ok": true
+    }
+  ],
+  "note": "Latency is measured from the operator workstation to Vercel iad1 and includes network round trips."
+}

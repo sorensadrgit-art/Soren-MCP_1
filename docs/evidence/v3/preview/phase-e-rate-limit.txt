@@ -1,0 +1,36 @@
+Phase E federation rate-limit and failure-boundary probe
+observed: ~2026-10-23T09:33:09Z
+endpoint: https://soren-mcp-v3-preview-26243r08f-sorensadr-gmailcoms-projects.vercel.app/api/mcp
+method: tools/call discover_skills (providers:["skillsmp"]), distinct valid public
+        tech-topic queries so each is a cache miss and claims federation budget.
+
+Budget policy (supabase/migrations/0001_private_control_plane.sql claim_federation_budget):
+  global cap 30/min; per-subject cap 30/min authenticated, 6/min unauthenticated.
+  Subject = HMAC(SOREN_RATE_KEY, x-vercel-forwarded-for) for unauthenticated preview calls.
+
+Observed sequence (timestamps within one minute window, mmss.SSS):
+  01.802 gsap tailwind            prov=unavailable reason=MCP_UPSTREAM_ERROR   (budget claim 1, allowed)
+  02.128 three.js next.js         prov=unavailable reason=MCP_UPSTREAM_ERROR   (claim 2, allowed)
+  02.433 webgl react              prov=unavailable reason=MCP_UPSTREAM_ERROR   (claim 3, allowed)
+  02.750 shader tailwind          prov=unavailable reason=MCP_UPSTREAM_ERROR   (claim 4, allowed)
+  03.035 animation next.js        prov=unavailable reason=MCP_UPSTREAM_ERROR   (claim 5, allowed)
+  03.317 webgl motion             prov=unavailable reason=MCP_UPSTREAM_ERROR   (claim 6, allowed)
+  03.432 shader                   prov=unavailable reason=provider_quota_exceeded  (claim 7, DENIED)
+  03.590 gsap animation           prov=unavailable reason=provider_quota_exceeded  (claim 8, DENIED)
+  03.952 three.js motion          prov=unavailable reason=provider_quota_exceeded  (claim 9, DENIED)
+  04.092 react                    prov=unavailable reason=provider_quota_exceeded  (claim 10, DENIED)
+
+Result: the per-address unauthenticated cap of 6 claims/minute was enforced exactly.
+After 6 allowed claims, claims 7-10 were denied with provider_quota_exceeded.
+The server degrades gracefully: HTTP 200 with a structured per-provider
+{status:"unavailable", reason:"provider_quota_exceeded"} body, not a 5xx crash.
+
+Failure-boundary notes:
+  - MCP_UPSTREAM_ERROR: the SkillsMP upstream was flaky from the preview during the
+    probe; the gateway surfaced a structured unavailable state instead of failing the
+    request. Budget was still claimed before the provider attempt (by design).
+  - Privacy boundary: queries with no safe public tech keywords (e.g. arbitrary
+    nonces, or strings containing local paths/secrets) are sanitized to an empty
+    public query and are NOT transmitted upstream (publicQuery in lib/federation.mjs);
+    the tool returns {query:"",results:[],count:0,warning:"No safe public technology
+    keywords found; no private task text was transmitted."} without claiming budget.

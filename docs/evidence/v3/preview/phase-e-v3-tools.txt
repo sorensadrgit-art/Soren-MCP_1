@@ -1,0 +1,21 @@
+Phase E V3 tool functional checks (real MCP wire calls against the protected preview)
+observed: 2026-10-23T09:33:09Z
+endpoint: https://soren-mcp-v3-preview-26243r08f-sorensadr-gmailcoms-projects.vercel.app/api/mcp
+
+PASS list_capability_profiles        immersive-web profile present
+PASS plan_toolchain                  profile=immersive-web, executionPlan=9 steps, authority=advisory_only
+PASS list_integrations               13 integrations, every proxiedBySoren=false
+PASS search_knowledge                primary result carries contentSha256
+PASS read_recipe                     cinematic-portfolio has 9 steps
+PASS get_client_setup_guide          dryRunOnly=true, executedBySoren=false
+PASS V3 rejects recipe traversal     read_recipe id="../../.env" -> error (isError)
+
+Summary: all 6 V3 tools functional; traversal guard holds.
+
+Modern-protocol note: the deployed server enforces strict MCP 2026-07-28 header
+checks - resources/read requires the Mcp-Name header to echo params.uri (and
+tools/call requires Mcp-Name=params.name). Verified: with Mcp-Name set to the URI,
+both soren://recipe/cinematic-portfolio and soren://knowledge/r3f-v9 read
+successfully (knowledge id parsed = r3f-v9). The shipped verify-mcp reads resources
+over the legacy 2025-06-18 protocol, which is why it did not surface this header
+requirement; an SDK client following the 2026-07-28 spec sends these headers.
