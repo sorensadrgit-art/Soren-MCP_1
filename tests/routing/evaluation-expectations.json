@@ -2,14 +2,25 @@
   "schemaVersion": 1,
   "fixture": "tests/routing/evaluation.json",
   "fixtureSha256": "c36b95b64e49b99e6ea24ed57527d54c258049739e5bf73915a13c59b4ea1bcc",
-  "note": "The 60-case fixture stays frozen. Each revision supersedes one frozen label from a stated contract version onward and records why. Each revision carries its own approval record; the frozen fixture's labels remain developer-authored and independent label review of them is still pending.",
+  "note": "The 60-case fixture remains frozen. Versioned revisions preserve its old bypass labels while owner-approved v2.5.1 advisory fallbacks are tested. Nine owner-directed changes have separate strict behavioral regression tests; these owner choices are not the independent human review of the remaining labels.",
   "labelReview": "developer_authored_human_review_pending",
   "revisions": [
     {
       "id": "ROUTE-056",
       "sinceContract": "2.5.0",
-      "frozen": {"bypass": true, "acceptableTopThree": []},
-      "expected": {"bypass": false, "acceptableTopThree": ["gsap-motion"], "forbidden": ["motion-systems"]},
+      "frozen": {
+        "bypass": true,
+        "acceptableTopThree": []
+      },
+      "expected": {
+        "bypass": false,
+        "acceptableTopThree": [
+          "gsap-motion"
+        ],
+        "forbidden": [
+          "motion-systems"
+        ]
+      },
       "reason": "Contract 2.5.0 bundles gsap-motion, an approved GSAP skill. With motion-systems unavailable, recommending the remaining approved GSAP skill is the intended fallback, not a leak of the unavailable skill. Before 2.5.0 no alternative existed, so bypass was correct.",
       "recordedAt": "2026-10-22",
       "recordedAtCorrection": {
@@ -23,6 +34,81 @@
         "approvedBy": "repository owner (sorensadrgit-art)",
         "approvedAt": "2026-10-22T17:05:00Z",
         "scope": "gsap-motion is the accepted ROUTE-056 fallback when motion-systems is unavailable, from contract 2.5.0 onward. The frozen bypass label stays the expectation for earlier contracts and is still reported as frozenLabelPassed."
+      }
+    },
+    {
+      "id": "ROUTE-058",
+      "sinceContract": "2.5.1",
+      "frozen": {
+        "bypass": true,
+        "acceptableTopThree": []
+      },
+      "expected": {
+        "bypass": false,
+        "acceptableTopThree": [
+          "agent-capability-navigation"
+        ],
+        "forbidden": [
+          "mcp-integration"
+        ]
+      },
+      "reason": "With the remote MCP specialist unavailable, select the reviewed advisory navigation skill to locate documentation and explain next steps, not to configure an MCP server or grant trust.",
+      "recordedAt": "2026-10-23",
+      "approval": {
+        "status": "owner_approved",
+        "approvedBy": "repository owner (explicit ChatGPT instruction to change all nine cases)",
+        "approvedAt": "2026-10-23T15:50:16.432Z",
+        "scope": "Owner approved change for ROUTE-058 from contract 2.5.1 onward. Frozen fixture remains unchanged; fallback is advisory only."
+      }
+    },
+    {
+      "id": "ROUTE-059",
+      "sinceContract": "2.5.1",
+      "frozen": {
+        "bypass": true,
+        "acceptableTopThree": []
+      },
+      "expected": {
+        "bypass": false,
+        "acceptableTopThree": [
+          "agent-capability-navigation"
+        ],
+        "forbidden": [
+          "skill-orchestration"
+        ]
+      },
+      "reason": "When deterministic skill orchestration is unavailable, fall back only to advisory skill/navigation planning. Do not claim to have ranked skills via the unavailable specialist.",
+      "recordedAt": "2026-10-23",
+      "approval": {
+        "status": "owner_approved",
+        "approvedBy": "repository owner (explicit ChatGPT instruction to change all nine cases)",
+        "approvedAt": "2026-10-23T15:50:16.432Z",
+        "scope": "Owner approved change for ROUTE-059 from contract 2.5.1 onward. Frozen fixture remains unchanged; fallback is advisory only."
+      }
+    },
+    {
+      "id": "ROUTE-060",
+      "sinceContract": "2.5.1",
+      "frozen": {
+        "bypass": true,
+        "acceptableTopThree": []
+      },
+      "expected": {
+        "bypass": false,
+        "acceptableTopThree": [
+          "threejs-production"
+        ],
+        "forbidden": [
+          "motion-systems"
+        ]
+      },
+      "reason": "For cinematic Three.js animation when motion-systems is unavailable, the approved Three.js production specialist is a relevant local fallback; never recommend an excluded skill.",
+      "recordedAt": "2026-10-23",
+      "approval": {
+        "status": "owner_approved",
+        "approvedBy": "repository owner (explicit ChatGPT instruction to change all nine cases)",
+        "approvedAt": "2026-10-23T15:50:16.432Z",
+        "scope": "Owner approved change for ROUTE-060 from contract 2.5.1 onward. Frozen fixture remains unchanged; fallback is advisory only."
       }
     }
   ]

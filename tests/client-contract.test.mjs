@@ -70,5 +70,5 @@ test("Curated skills: the original four first and unchanged, then the reviewed V
 test("V3 tools are distinct from legacy tools and annotated local read-only",()=>{
   assert.equal(new Set([...TOOL_NAMES,...V3_TOOL_NAMES]).size,14);
   for(const name of V3_TOOL_NAMES)assert.deepEqual(V3_TOOL_ANNOTATIONS[name],{readOnlyHint:true,destructiveHint:false,idempotentHint:true,openWorldHint:false});
-  assert.equal(MCP_VERSION,"2.5.0");
+  assert.equal(MCP_VERSION,"2.5.1");
 });

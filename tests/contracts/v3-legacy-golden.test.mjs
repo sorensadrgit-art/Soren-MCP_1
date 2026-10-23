@@ -68,7 +68,7 @@ test('flag on: legacy eight unchanged first, then exactly six advisory V3 tools'
     assert.equal(tool.annotations.destructiveHint,false,tool.name);
     assert.equal(tool.annotations.openWorldHint,false,tool.name);
   }
-  assert.equal(sessionOn[0].body.result.serverInfo.version,'2.5.0');
+  assert.equal(sessionOn[0].body.result.serverInfo.version,'2.5.1');
   const uris=sessionOn[2].body.result.resources.map(r=>r.uri);
   for(const uri of fixture.resourceUris)assert.ok(uris.includes(uri),uri);
   assert.ok(uris.some(uri=>uri.startsWith('soren://knowledge/')));
