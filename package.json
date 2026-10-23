@@ -38,7 +38,10 @@
     "evaluate:routing": "node scripts/evaluate-routing.mjs",
     "release:produce": "node scripts/produce-release.mjs",
     "release:verify-staged": "node scripts/verify-staged-release.mjs",
-    "activation:preflight": "node scripts/activation-preflight.mjs"
+    "activation:preflight": "node scripts/activation-preflight.mjs",
+    "foundry:stage": "node scripts/foundry-bridge.mjs stage",
+    "foundry:approve": "node scripts/foundry-bridge.mjs approve",
+    "foundry:verify": "node scripts/foundry-bridge.mjs verify"
   },
   "dependencies": {
     "@iarna/toml": "2.2.5",

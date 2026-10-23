@@ -83,3 +83,7 @@ No production or signing secrets belong in public MCP responses, browser bundles
 ## Opt-in typed capability planning
 
 This source branch adds `include_capability_plan: true` to `route_task`, backed by the reviewed 30-entry, five-domain catalog. It returns a bounded plan with missing connection/runtime/review requirements; it does not install or execute capabilities. Existing requests retain their original response fields and behavior. New planning defaults to provided-only sources. Optional TypeSafe advice remains disabled until both caller and server opt in. See [the implementation and request guide](docs/capability-planning.md). Source publication is not production activation.
+
+## Human-reviewed Skill Foundry imports
+
+The opt-in [Foundry → SOREN curation bridge](docs/foundry-curation-bridge.md) stages SKILL.md files from Skill Foundry Core V3, derives searchable metadata, and requires explicit owner approval with exact content and evidence digests before Router can recommend them. Pending candidates are gitignored. Run `npm run foundry:verify` to check approved records; this integration never changes production or installs skills automatically.

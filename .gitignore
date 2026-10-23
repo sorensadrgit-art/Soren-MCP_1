@@ -15,3 +15,7 @@ dist/
 *.pfx
 *.p12
 !.github/**
+
+# Quarantined Foundry candidates and transient registry writes are never published.
+catalog/foundry-pending/
+catalog/foundry-approved.json.tmp-*
