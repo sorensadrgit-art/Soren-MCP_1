@@ -123,6 +123,33 @@ function rehearsal(f, { timeout = false } = {}) {
   return { store, provider, controller: createReleaseController({ store, provider, clock: () => now, verify: verifyRelease }), sends: () => sends, outcomes: () => outcomes, stale: () => { staleFence = true; } };
 }
 
+test('provider error during mutation sets UNKNOWN_OUTCOME and triggers paused cooldown on rollback', async () => {
+  const f = fixtures();
+  f.snapshot.activeDeploymentId = 'candidate';
+  f.snapshot.release = { releaseId: 'current', state: 'PROBATION', promotedAt: date(-1000), rollbackCount: 0, deploymentId: 'candidate', projectId: 'project', environment: 'production' };
+  f.snapshot.previous = { wasStable: true, authentic: true, authorized: true, deploymentId: 'previous', sequence: 1, projectId: 'project', environment: 'production', manifestSha256: sha256(f.manifestBytes), artifactSha256: f.manifest.artifactSha256, sourceCommit: f.manifest.sourceCommit, schemaCompatibility: f.manifest.schemaCompatibility, identityVerifiedAt: date(-1000) };
+  f.snapshot.rollbackProbes = { candidate: [{ id: 'probe', status: 'FAIL', failureClass: 'core_contract', observedAt: date(-1000) }], control: { deploymentId: 'previous', status: 'PASS', observedAt: date(-1000) }, independent: { deploymentId: 'candidate', status: 'FAIL', failureClass: 'core_contract', observedAt: date(-1000), independent: true } };
+
+  const r = rehearsal(f);
+  r.provider.activeDeployment = async () => 'candidate';
+  r.provider.rollback = async () => { throw new Error('network_failure_during_rollback'); };
+
+  let cooldownEntered = null;
+  r.store.enterCooldown = async (params) => { cooldownEntered = params; };
+
+  const current = { ...f.manifest, releaseId: 'current' };
+  const intent = await r.controller.rollback({ manifest: current, previousVerification: f }, f.lease);
+
+  assert.equal(intent.status, 'UNKNOWN_OUTCOME');
+  assert.deepEqual(cooldownEntered, {
+    projectId: 'project',
+    environment: 'production',
+    releaseId: 'current',
+    until: new Date(now + 60 * 60_000).toISOString(),
+    mode: 'paused'
+  });
+});
+
 test('unknown outcome after sent mutation reconciles exact provider identity; never retries mutation', async () => {
   const f = fixtures(); const r = rehearsal(f, { timeout: true });
   const first = await r.controller.promote(f, f.lease); assert.equal(first.status, 'UNKNOWN_OUTCOME'); assert.equal(r.sends(), 1);
