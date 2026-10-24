@@ -43,7 +43,7 @@ MCP contract: 2.4.0 (live); this branch: 2.5.0
 Package: 1.0.0
 ```
 
-This branch implements contract 2.5.0 (V3). The live endpoint runs 2.4.0 (see `docs/v3/drift-reconciliation.md`). The eight legacy tool names remain stable, and 22 skills are bundled. Six advisory V3 tools register only when `SOREN_V3_TOOLS=1`; the flag is off by default and is not enabled in production. Public tools are read-only. Curated instructions are optional reference material; external candidates require exact-version review. Router advice never overrides the host agent's permissions or project instructions.
+This branch implements contract 2.5.0 (V3). The live endpoint runs 2.4.0 (see `docs/v3/drift-reconciliation.md`). The eight legacy tool names remain stable, and 23 skills are bundled in this source branch (22 remain live until deployment). Six advisory V3 tools register only when `SOREN_V3_TOOLS=1`; the flag is off by default and is not enabled in production. Public tools are read-only. Curated instructions are optional reference material; external candidates require exact-version review. Router advice never overrides the host agent's permissions or project instructions.
 
 ## Opt-in typed capability planning (ported from PR #4)
 
@@ -87,3 +87,7 @@ This source branch adds `include_capability_plan: true` to `route_task`, backed 
 ## Human-reviewed Skill Foundry imports
 
 The opt-in [Foundry → SOREN curation bridge](docs/foundry-curation-bridge.md) stages SKILL.md files from Skill Foundry Core V3, derives searchable metadata, and requires explicit owner approval with exact content and evidence digests before Router can recommend them. Pending candidates are gitignored. Run `npm run foundry:verify` to check approved records; this integration never changes production or installs skills automatically.
+
+## MinerU 4.x document processing (source integration)
+
+This branch adds the curated `mineru` skill for PDF/scan OCR, Markdown conversion, long-document reading and citation locators. The source is based on [MinerU](https://github.com/opendatalab/MinerU) and its license is preserved. [Installation and privacy guide](docs/mineru-4.md) explains how to install the separate Python engine. Adding a skill to GitHub does not install that engine or deploy this router.
