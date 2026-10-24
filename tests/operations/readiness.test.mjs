@@ -1,12 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {getReadiness} from '../../lib/operations/readiness.mjs';
+import {getReadiness, clearReadinessCache} from '../../lib/operations/readiness.mjs';
 
-let baseTime = Date.UTC(2026, 9, 20, 12, 0, 0);
-function getNextNow() {
-  baseTime += 60000; // Advance time by 60s to ensure module-level cache expires between test cases
-  return baseTime;
-}
+test.beforeEach(() => {
+  clearReadinessCache();
+});
+
+const now = Date.UTC(2026, 9, 20, 12, 0, 0);
 
 const validPrivateEnv = {
   SOREN_CAPABILITY_MODE: 'private_enabled',
@@ -18,7 +18,6 @@ const validPrivateEnv = {
 };
 
 test('getReadiness - public_only mode returns public readiness without invoking store or fetch', async () => {
-  const now = getNextNow();
   let storeCalled = false;
   let fetchCalled = false;
 
@@ -37,7 +36,6 @@ test('getReadiness - public_only mode returns public readiness without invoking 
 });
 
 test('getReadiness - defaults to public_only mode when SOREN_CAPABILITY_MODE is unset', async () => {
-  const now = getNextNow();
   const result = await getReadiness({ env: {}, now });
   assert.equal(result.ready, true);
   assert.equal(result.mode, 'public_only');
@@ -45,7 +43,6 @@ test('getReadiness - defaults to public_only mode when SOREN_CAPABILITY_MODE is 
 });
 
 test('getReadiness - private_enabled mode with missing configuration falls back to public readiness with status UNHEALTHY', async () => {
-  const now = getNextNow();
   let storeCalled = false;
   const result = await getReadiness({
     env: { SOREN_CAPABILITY_MODE: 'private_enabled' },
@@ -60,7 +57,6 @@ test('getReadiness - private_enabled mode with missing configuration falls back 
 });
 
 test('getReadiness - private_enabled mode succeeds when health snapshot and auth probe are healthy', async () => {
-  const now = getNextNow();
   let fetchedUrl = null;
   let fetchHeaders = null;
 
@@ -90,7 +86,6 @@ test('getReadiness - private_enabled mode succeeds when health snapshot and auth
 });
 
 test('getReadiness - private_enabled mode fails when store returns null snapshot', async () => {
-  const now = getNextNow();
   const createStore = () => ({
     getHealthSnapshot: async () => null,
   });
@@ -109,7 +104,6 @@ test('getReadiness - private_enabled mode fails when store returns null snapshot
 });
 
 test('getReadiness - private_enabled mode fails when auth endpoint returns non-ok status', async () => {
-  const now = getNextNow();
   const createStore = () => ({
     getHealthSnapshot: async () => ({ status: 'HEALTHY' }),
   });
@@ -128,7 +122,6 @@ test('getReadiness - private_enabled mode fails when auth endpoint returns non-o
 });
 
 test('getReadiness - handles exceptions from store or fetch gracefully', async () => {
-  const now = getNextNow();
   const createStore = () => ({
     getHealthSnapshot: async () => { throw new Error('DB Connection Error'); },
   });
@@ -147,7 +140,6 @@ test('getReadiness - handles exceptions from store or fetch gracefully', async (
 });
 
 test('getReadiness - caches result for 15 seconds for the same SUPABASE_URL origin', async () => {
-  const now = getNextNow();
   let callCount = 0;
   const env = { ...validPrivateEnv, SUPABASE_URL: 'https://cache.supabase.co' };
 
@@ -177,7 +169,6 @@ test('getReadiness - caches result for 15 seconds for the same SUPABASE_URL orig
 });
 
 test('getReadiness - cache is bypassed if SUPABASE_URL origin changes', async () => {
-  const now = getNextNow();
   let callCount = 0;
 
   const createStore = () => ({
