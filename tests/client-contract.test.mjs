@@ -61,7 +61,7 @@ test("Every client has a correct native configuration with a single endpoint and
 test("Curated skills: the original four first and unchanged, then the reviewed V3 catalog",()=>{
   assert.deepEqual(SKILLS.slice(0,4).map(s=>s.name),["accessibility","motion-systems","mcp-integration","skill-orchestration"]);
   assert.deepEqual(SKILLS.map(s=>s.name).sort(),["21st-ui-components","accessibility","agent-capability-navigation","agentic-coding",
-    "agentic-design-to-code","blender-to-r3f","gltf-asset-pipeline","graphics-performance-qa","gsap-motion","mcp-integration",
+    "agentic-design-to-code","blender-to-r3f","gltf-asset-pipeline","graphics-performance-qa","gsap-motion","mcp-integration","mineru",
     "motion-systems","motionsites-design","nextjs-runtime-engineering","playwright-browser-qa","react-three-fiber",
     "shader-material-lab","skill-orchestration","soren-learning-loop","soren-universal-deployment","spline-to-web","superpowers-engineering",
     "threejs-production","webgpu-progressive-rendering"]);
