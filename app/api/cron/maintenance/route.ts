@@ -7,19 +7,22 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 45;
 
+export type MaintenanceRouteContext = {
+  params?: Promise<Record<string, string>>;
+  getOidcToken?: typeof getVercelOidcToken;
+  store?: ReturnType<typeof getOperationsStore>;
+  runner?: typeof runMaintenance;
+};
+
 export async function GET(
   request: Request,
-  options: {
-    getOidcToken?: typeof getVercelOidcToken;
-    store?: ReturnType<typeof getOperationsStore>;
-    runner?: typeof runMaintenance;
-  } = {}
+  context: MaintenanceRouteContext = {}
 ) {
   try {
     authorizeCron(request);
-    const getOidcToken = options.getOidcToken ?? getVercelOidcToken;
-    const store = options.store ?? getOperationsStore();
-    const runner = options.runner ?? runMaintenance;
+    const getOidcToken = context.getOidcToken ?? getVercelOidcToken;
+    const store = context.store ?? getOperationsStore();
+    const runner = context.runner ?? runMaintenance;
     let oidcToken = '';
     try { oidcToken = await getOidcToken(); } catch { /* Provider configuration remains explicitly UNKNOWN. */ }
     const result = await runner({store, oidcToken});
