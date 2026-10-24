@@ -18,6 +18,46 @@ test('coerces lockfile and package.json specs to a concrete version',()=>{
   assert.equal(coerceVersion('latest'),null);
 });
 
+test('handles edge cases for coerceVersion',()=>{
+  // Invalid, falsy or non-string inputs
+  assert.equal(coerceVersion(null), null);
+  assert.equal(coerceVersion(undefined), null);
+  assert.equal(coerceVersion(''), null);
+  assert.equal(coerceVersion('   '), null);
+
+  // Malformed version strings
+  assert.equal(coerceVersion('v.1'), null);
+  assert.equal(coerceVersion('1.0.0.0.0'), null);
+  assert.equal(coerceVersion('v'), null);
+  assert.equal(coerceVersion('1.'), null);
+  assert.equal(coerceVersion('.1'), null);
+  assert.equal(coerceVersion('abc'), null);
+
+  // Partial versions and wildcards
+  assert.equal(coerceVersion('v1'), '1.0.0');
+  assert.equal(coerceVersion('1.x'), '1.0.0');
+  assert.equal(coerceVersion('1.*'), '1.0.0');
+  assert.equal(coerceVersion('1.2.x'), '1.2.0');
+  assert.equal(coerceVersion('1.2.*'), '1.2.0');
+
+  // Prefix operators and whitespace
+  assert.equal(coerceVersion('>= 2.0.0'), '2.0.0');
+  assert.equal(coerceVersion('<=1.5.0'), '1.5.0');
+  assert.equal(coerceVersion('>1.0.0'), '1.0.0');
+  assert.equal(coerceVersion('<3.0.0'), '3.0.0');
+  assert.equal(coerceVersion('=1.2.3'), '1.2.3');
+
+  // Prerelease tags
+  assert.equal(coerceVersion('^1.2.3-beta.1'), '1.2.3-beta.1');
+  assert.equal(coerceVersion('~2.0.0-rc.0'), '2.0.0-rc.0');
+  assert.equal(coerceVersion('1.0.0-0'), '1.0.0-0');
+
+  // Protocols and dist-tags
+  assert.equal(coerceVersion('git+https://github.com/foo/bar.git'), null);
+  assert.equal(coerceVersion('file:../foo'), null);
+  assert.equal(coerceVersion('next'), null);
+});
+
 test('evaluates comparator ranges with OR sets and excludes prereleases unless the range opts in',()=>{
   assert.ok(satisfies('9.8.2','>=9.0.0 <10.0.0'));
   assert.ok(!satisfies('10.0.0','>=9.0.0 <10.0.0'));
