@@ -69,6 +69,9 @@
     "typescript": "^5.9.0"
   },
   "overrides": {
+    "@vercel/cli-config": {
+      "zod": "^4.6.6"
+    },
     "zod": "^4.6.6"
   },
   "engines": {
