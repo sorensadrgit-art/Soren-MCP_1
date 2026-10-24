@@ -75,9 +75,8 @@ import { validateBytes } from 'gltf-validator';
 
 const bytes = new Uint8Array(await readFile('public/models/chair.glb'));
 const report = await validateBytes(bytes);
-const { numErrors, numWarnings } = report.issues;
+const { numErrors } = report.issues;
 if (numErrors > 0) throw new Error(`glTF validation failed with ${numErrors} errors`);
-console.log({ numErrors, numWarnings });
 ```
 
 Runtime decoders must match the compression chosen:
