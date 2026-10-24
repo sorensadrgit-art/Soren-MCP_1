@@ -3,9 +3,19 @@ import assert from 'node:assert/strict';
 import {guardedProviderCall,limitRequestBody,validateSuppliedIdentity,allowedBrowserOrigin} from '../../lib/gateway.mjs';
 const env={SOREN_RATE_KEY:'test-only-'.repeat(8)};
 const request=new Request('http://localhost/api/mcp');
-test('same-origin browser calls use the preserved Host through Next URL normalization',()=>{
-  assert.equal(allowedBrowserOrigin(new Request('http://localhost:3187/api/mcp',{headers:{host:'127.0.0.1:3187',origin:'http://127.0.0.1:3187'}})),true);
-  for(const origin of ['http://evil.example','https://127.0.0.1:3187','null'])assert.equal(allowedBrowserOrigin(new Request('http://localhost:3187/api/mcp',{headers:{host:'127.0.0.1:3187',origin}})),false);
+test('allowedBrowserOrigin validates browser origin against trusted origins without Host header manipulation',()=>{
+  const testEnv = { SOREN_ADMIN_ORIGIN: 'https://admin.example.com', SOREN_GATEWAY_ORIGIN: 'https://gateway.example.com' };
+  // Same origin as request URL
+  assert.equal(allowedBrowserOrigin(new Request('http://localhost:3187/api/mcp',{headers:{origin:'http://localhost:3187'}}), {env: testEnv}), true);
+  // Allowed configured origins
+  assert.equal(allowedBrowserOrigin(new Request('http://localhost:3187/api/mcp',{headers:{origin:'https://admin.example.com'}}), {env: testEnv}), true);
+  assert.equal(allowedBrowserOrigin(new Request('http://localhost:3187/api/mcp',{headers:{origin:'https://gateway.example.com'}}), {env: testEnv}), true);
+  // Host header injection attempt should be rejected when origin is untrusted
+  assert.equal(allowedBrowserOrigin(new Request('http://localhost:3187/api/mcp',{headers:{host:'evil.example.com',origin:'http://evil.example.com'}}), {env: testEnv}), false);
+  // Missing origin header returns true (non-browser or same-origin direct request)
+  assert.equal(allowedBrowserOrigin(new Request('http://localhost:3187/api/mcp')), true);
+  // Other untrusted origins are rejected
+  for(const origin of ['http://evil.example','https://127.0.0.1:3187','null'])assert.equal(allowedBrowserOrigin(new Request('http://localhost:3187/api/mcp',{headers:{origin}}), {env: testEnv}),false);
 });
 test('request size enforcement handles declared and streaming bodies',async()=>{
   await assert.rejects(()=>limitRequestBody(new Request(request.url,{method:'POST',body:'x'.repeat(16385)})),/too_large/);
