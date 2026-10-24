@@ -2,7 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {classifyFailure, reconcileIncident, publicReadiness, watcherContract, retryDecision} from '../../lib/operations/health.mjs';
 import {runMaintenance} from '../../lib/operations/maintenance.mjs';
-import {getReadiness} from '../../lib/operations/readiness.mjs';
+import {getReadiness, clearReadinessCache} from '../../lib/operations/readiness.mjs';
+
+test.beforeEach(() => {
+  clearReadinessCache();
+});
+
 const now = Date.UTC(2026, 9, 20, 12);
 const sample = (offset, status = 'UNHEALTHY', failureClass = 'contract') => ({component: 'gateway', environment: 'test', status, failureClass, probeIdentity: `probe-${offset}`, scheduledSlot: new Date(now + offset * 300000).toISOString(), observedAt: new Date(now + offset * 300000).toISOString(), evidenceRefs: []});
 
