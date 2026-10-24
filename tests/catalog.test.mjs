@@ -33,3 +33,11 @@ test("agent routing does not execute arbitrary skills", () => {
   assert.equal(r.primary?.name, "mcp-integration");
   assert.ok(r.recommendations.length <= 3);
 });
+
+test("MinerU 4 is curated, readable, and routes PDF OCR/Markdown jobs", () => {
+  const skill = SKILLS.find(s => s.name === "mineru");
+  assert.ok(skill, "MinerU must be explicitly registered");
+  assert.match(readSkill("mineru"), /^---\nname: mineru\n/);
+  assert.equal(searchSkills("OCR scanned PDF lecture slides to Markdown")[0]?.name, "mineru");
+  assert.equal(routeTask("Convert scanned PDF lecture slides to Markdown with MinerU").primary?.name, "mineru");
+});
