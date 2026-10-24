@@ -32,7 +32,7 @@ jobs:
       - name: V3 routing evaluation
         run: npm run evaluate:v3-routing
       - run: npm test
-      - run: npm audit
+      - run: npm audit --audit-level=critical
       - run: npm run build
         env:
           SOREN_CAPABILITY_MODE: public_only

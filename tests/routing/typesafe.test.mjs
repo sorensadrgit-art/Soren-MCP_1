@@ -138,3 +138,87 @@ test('TypeSafe skips a caller-supplied roster with no approved candidates',async
   assert.equal(decision.status,'no_eligible_skills');
   assert.equal(calls,0);
 });
+
+test('applyJevRouting handles missing, null, or undefined decision objects', () => {
+  for (const invalidDecision of [null, undefined, {}]) {
+    const result = applyJevRouting(sample, invalidDecision);
+    assert.equal(result.primary.name, sample.primary.name);
+    assert.deepEqual(result.recommendations, sample.recommendations);
+    assert.deepEqual(result.decisionEngine, { name: 'typesafe-jev', status: 'unavailable' });
+  }
+});
+
+test('applyJevRouting handles non-ok status codes in decision object', () => {
+  for (const status of ['disabled', 'not_configured', 'unsafe_input', 'no_public_terms', 'no_eligible_skills', 'invalid_response', 'custom_error']) {
+    const result = applyJevRouting(sample, { status });
+    assert.deepEqual(result.recommendations, sample.recommendations);
+    assert.deepEqual(result.decisionEngine, { name: 'typesafe-jev', status });
+  }
+});
+
+test('applyJevRouting respects preferredSkills array option when populated vs empty', () => {
+  // Empty preferredSkills should not block routing
+  const resultWithEmpty = applyJevRouting(sample, { status: 'ok', choice: 'motion-systems', confidence: 0.95 }, { preferredSkills: [] });
+  assert.equal(resultWithEmpty.primary.name, 'motion-systems');
+  assert.equal(resultWithEmpty.decisionEngine.status, 'applied');
+
+  // Populated preferredSkills should preserve explicit preference
+  const resultWithPreferred = applyJevRouting(sample, { status: 'ok', choice: 'motion-systems', confidence: 0.95 }, { preferredSkills: ['mcp-integration'] });
+  assert.equal(resultWithPreferred.primary.name, sample.primary.name);
+  assert.equal(resultWithPreferred.decisionEngine.status, 'explicit_preference_preserved');
+});
+
+test('applyJevRouting edge cases for choice = "none", low confidence threshold (0.85), and ineligible candidate', () => {
+  // Choice "none"
+  const noneRes = applyJevRouting(sample, { status: 'ok', choice: 'none', confidence: 0.99 });
+  assert.equal(noneRes.decisionEngine.status, 'no_match');
+
+  // Confidence exactly at threshold 0.85
+  const exactThresholdRes = applyJevRouting(sample, { status: 'ok', choice: 'motion-systems', confidence: 0.85 });
+  assert.equal(exactThresholdRes.decisionEngine.status, 'applied');
+
+  // Confidence just below threshold 0.849, NaN, null, string, infinity
+  for (const conf of [0.849, 0, -1, NaN, null, undefined, '0.9', Infinity]) {
+    const lowConfRes = applyJevRouting(sample, { status: 'ok', choice: 'motion-systems', confidence: conf });
+    assert.equal(lowConfRes.decisionEngine.status, 'low_confidence');
+  }
+
+  // Choice not found in base.recommendations
+  const missingChoiceRes = applyJevRouting(sample, { status: 'ok', choice: 'non-existent-skill', confidence: 0.95 });
+  assert.equal(missingChoiceRes.decisionEngine.status, 'ineligible');
+});
+
+test('applyJevRouting successfully reorders recommendations and maintains immutability', () => {
+  const multiSample = {
+    ...sample,
+    recommendations: [
+      { name: 'mcp-integration', score: 8 },
+      { name: 'accessibility', score: 6 },
+      { name: 'motion-systems', score: 5 },
+      { name: 'skill-orchestration', score: 4 },
+    ]
+  };
+
+  const originalSampleCopy = JSON.parse(JSON.stringify(multiSample));
+  const decision = { status: 'ok', choice: 'motion-systems', confidence: 0.92 };
+
+  const result = applyJevRouting(multiSample, decision);
+
+  // Check reordering: selected skill comes first, others preserve relative order
+  assert.equal(result.primary.name, 'motion-systems');
+  assert.deepEqual(result.recommendations.map(r => r.name), [
+    'motion-systems',
+    'mcp-integration',
+    'accessibility',
+    'skill-orchestration',
+  ]);
+  assert.deepEqual(result.decisionEngine, {
+    name: 'typesafe-jev',
+    status: 'applied',
+    choice: 'motion-systems',
+    confidence: 0.92,
+  });
+
+  // Verify immutability of original base object
+  assert.deepEqual(multiSample, originalSampleCopy);
+});
